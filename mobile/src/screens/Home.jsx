@@ -1,10 +1,24 @@
-import { View } from "react-native";
+import { View, TouchableOpacity, StyleSheet, Text, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-export function Home(){
+export default function Home(){
+
+    const navigation = useNavigation();
+
     return(
         <View>
-            <Text>Olá</Text>
+            <View>
+                <Image source={require('../assets/logo2.png')} />
+            </View>
         </View>
     )
 }
-export default function Home()
+
+const styles = StyleSheet.create({
+    TouchableOpacity : {
+        backgroundColor: 'blue',
+        borderRadius: 10,
+        width: 300,
+        height: 200
+    }
+});

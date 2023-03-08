@@ -8,28 +8,32 @@ import {
 } from "@expo-google-fonts/poppins";
 
 import { Loading } from "./src/components/Loading";
-import { Routes } from "./src/routes";
+import { NavigationContainer } from "@react-navigation/native";
+import Routes from "./src/components/Routes/Routes";
 
-export default function App() {
-  const [fontsLoaded] = useFonts({
-    Poppins_400Regular,
-    Poppins_600SemiBold,
-    Poppins_700Bold,
-    Poppins_800ExtraBold,
-  });
+function App() {
+  // const [fontsLoaded] = useFonts({
+  //   Poppins_400Regular,
+  //   Poppins_600SemiBold,
+  //   Poppins_700Bold,
+  //   Poppins_800ExtraBold,
+  // });
 
-  if (!fontsLoaded) {
-    return <Loading />;
-  }
+  // if (!fontsLoaded) {
+  //   return <Loading />;
+  // }
 
   return (
     <>
-      <Routes />
-      <StatusBar
+      <NavigationContainer>
+        <Routes></Routes>
+      </NavigationContainer>
+      {/* <StatusBar
         barStyle="light-content"
         backgroundColor="transparent"
         translucent
-      />
+      /> */}
     </>
   );
 }
+export default App;
