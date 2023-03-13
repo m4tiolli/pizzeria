@@ -22,7 +22,7 @@ export default function Home() {
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          navigation.navigate("Screen2");
+          navigation.navigate("Autentication");
         }}
       >
         <Icon name="login" size={30} color="#fff" />
@@ -31,7 +31,7 @@ export default function Home() {
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          navigation.navigate("Screen2");
+          navigation.navigate("Autentication");
         }}
       >
         <Image source={require('../assets/iconuser.png')} style={{width: 30, height: 30}} />
