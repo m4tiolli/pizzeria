@@ -4,48 +4,78 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  Button,
 } from "react-native";
-import { useNavigation, tabNavigator } from "@react-navigation/native";
+import React, { useState } from "react";
 
 export default function Autentication() {
-  const navigation = useNavigation();
+  function LoginScreen() {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
-  const LoginScreen = () => {
-    <View>
+    return (
       <View>
-        <Text>E-mail</Text>
-        <TextInput placeholder="youremail@email.com" />
+        <Text>Login Screen</Text>
+        <TextInput
+          placeholder="Username"
+          value={username}
+          onChangeText={setUsername}
+        />
+        <TextInput
+          placeholder="Password"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry
+        />
+        <TouchableOpacity title="Login" onPress={() => alert("Login")}>
+          <Text>Login</Text>
+        </TouchableOpacity>
       </View>
-      <TextInput />
-      <TouchableOpacity>
-        <Text>log in</Text>
-      </TouchableOpacity>
-    </View>;
-  };
+    );
+  }
 
-  const RegisterScreen = () => {
-    <View>
+  function RegisterScreen() {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+
+    return (
       <View>
-        <Text>E-mail</Text>
-        <TextInput placeholder="youremail@email.com" />
+        <Text>Register Screen</Text>
+        <TextInput
+          placeholder="Username"
+          value={username}
+          onChangeText={setUsername}
+        />
+        <TextInput
+          placeholder="Password"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry
+        />
+        <TextInput
+          placeholder="Email"
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
+        />
+        <TouchableOpacity title="Register" onPress={() => alert("Register")}>
+          <Text>Register</Text>
+        </TouchableOpacity>
       </View>
-      <TextInput />
-      <TouchableOpacity>
-        <Text>log in</Text>
-      </TouchableOpacity>
-    </View>;
-  };
+    );
+  }
 
-  const Tabs = TabNavigator({
-    Login: { screen: LoginScreen },
-    Register: { screen: RegisterScreen },
-  });
+  function Alternar() {
+
+  }
 
   return (
     <View>
-      <Text>Tela 2</Text>
-      <Tabs />
+      <Text id="login" onPress={Alternar(log)}>Login</Text>
+      <Text id="register" onPress={() => {RegisterScreen}}>Register</Text>
+      <View id="autenticar" render>
+      <Section />
+      </View>
     </View>
   );
 }
