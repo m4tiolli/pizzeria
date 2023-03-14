@@ -1,101 +1,97 @@
+import React, { useState } from "react";
 import {
-  TouchableOpacity,
   View,
-  StyleSheet,
   Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
   TextInput,
 } from "react-native";
-import React, { useState } from "react";
 
-export default function Autentication() {
-  function LoginScreen() {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+const Autentication = () => {
+  const [isLoginFormVisible, setIsLoginFormVisible] = useState(true);
 
-    return (
-      <View>
-        <Text>Login Screen</Text>
-        <TextInput
-          placeholder="Username"
-          value={username}
-          onChangeText={setUsername}
-        />
-        <TextInput
-          placeholder="Password"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
-        <TouchableOpacity title="Login" onPress={() => alert("Login")}>
-          <Text>Login</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-
-  function RegisterScreen() {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
-
-    return (
-      <View>
-        <Text>Register Screen</Text>
-        <TextInput
-          placeholder="Username"
-          value={username}
-          onChangeText={setUsername}
-        />
-        <TextInput
-          placeholder="Password"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
-        <TextInput
-          placeholder="Email"
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-        />
-        <TouchableOpacity title="Register" onPress={() => alert("Register")}>
-          <Text>Register</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-
-  function Alternar() {
-
-  }
+  const toggleForm = () => {
+    setIsLoginFormVisible(!isLoginFormVisible);
+  };
 
   return (
-<<<<<<< HEAD
-    <View>
-      <Text id="login" onPress={Alternar(log)}>Login</Text>
-      <Text id="register" onPress={() => {RegisterScreen}}>Register</Text>
-      <View id="autenticar" render>
-      <Section />
-=======
+    <View style={styles.docker}>
+      <Image
+        source={require("../assets/logo2.png")}
+        style={{  height: 120, width: 120 }}
+      />
+      <View style={styles.buttons}>
+        <TouchableOpacity style={styles.button} onPress={toggleForm} >
+          <Text style={styles.text}>log in</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={toggleForm}>
+          <Text style={styles.text}>register</Text>
+        </TouchableOpacity>
+      </View>
+      {isLoginFormVisible ? <LoginForm /> : <RegisterForm />}
+    </View>
+  );
+};
+
+const LoginForm = () => {
+  return (
+    <View style={styles.dockerauth}>
+      <View style={styles.boxinput}>
+        <Text style={styles.textinput}>e-mail</Text>
+        <TextInput placeholder="youremail@email.com" style={styles.input} autoComplete={'email'} />
+      </View>
+      <View style={styles.boxinput}>
+        <Text style={styles.textinput}>password</Text>
+        <TextInput secureTextEntry placeholder="yourpassword" placeholderTextColor={"#8e1c1a"} style={styles.input} />
+      </View>
+      <TouchableOpacity
+        style={styles.next}
+      >
+        <Text style={styles.nexttext}>login</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+const RegisterForm = () => {
+  return (
     <View style={styles.dockerauth}>
       <View style={styles.boxinput}>
         <Text style={styles.textinput}>name</Text>
         <TextInput placeholder="matiolli" style={styles.input} />
->>>>>>> 1d3c477 (bla)
       </View>
+      <View style={styles.boxinput}>
+        <Text style={styles.textinput}>cpf</Text>
+        <TextInput placeholder="999.999.999-99" style={styles.input} />
+      </View>
+      <View style={styles.boxinput}>
+        <Text style={styles.textinput}>e-mail</Text>
+        <TextInput placeholder="youremail@email.com" style={styles.input} autoComplete={'email'} />
+      </View>
+      <View style={styles.boxinput}>
+        <Text style={styles.textinput}>password</Text>
+        <TextInput secureTextEntry placeholder="yourpassword" placeholderTextColor={"#8e1c1a"} style={styles.input} />
+      </View>
+      <TouchableOpacity
+        style={styles.next}
+      >
+        <Text style={styles.nexttext}>register</Text>
+      </TouchableOpacity>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  TouchableOpacity: {
-    backgroundColor: "blue",
-    borderRadius: 10,
-    width: 300,
-    height: 200,
+  docker: {
+    backgroundColor: "#efefef",
+    width: "100%",
+    height: "100%",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 30,
   },
-<<<<<<< HEAD
-=======
   buttons: {
     width: "70%",
     height: '5%',
@@ -114,7 +110,8 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '40%',
     backgroundColor: '#efefef',
-    alignItems: 'center'
+    alignItems: 'center',
+    gap: 30
   },
   boxinput: {
     width: "50%",
@@ -139,8 +136,24 @@ const styles = StyleSheet.create({
     height: '85%',
     borderRadius: 2,
     backgroundColor: '#efefef',
-    outlineStyle: 'none'
-
+    outlineStyle: 'none',
+    color: '#8E1C1A',
+    fontFamily: 'Poppins_400Regular',
+    fontWeight: 200
+  },
+  next: {
+    backgroundColor: '#8E1C1A',
+    width: '50%',
+    height: 55,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  nexttext: {
+    color: '#fff',
+    fontFamily: 'Poppins_600SemiBold',
+    fontSize: 30
   }
->>>>>>> 1d3c477 (bla)
 });
+
+export default Autentication;
