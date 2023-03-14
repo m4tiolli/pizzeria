@@ -1,9 +1,10 @@
 import { Image, View } from "react-native";
 
-export function Loading() {
+function Loading() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#09090A' }}>
-      <Image source={require('../assets/logo2.png')}/>
+    <View style={{justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%'}}>
+      <Image source={require('../assets/logo2.png')} style={{width: 50, height: 50}}/>
     </View>
-  )
+  );
 }
+export default Loading;
