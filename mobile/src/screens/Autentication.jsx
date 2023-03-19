@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import {
   View,
-  Text,
   StyleSheet,
   Image,
-  TouchableOpacity,
-  TextInput,
 } from "react-native";
 import { useFonts, Poppins_600SemiBold, Poppins_400Regular } from "@expo-google-fonts/poppins";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import Loading from "../components/Loading";
+import Login from "../components/Login/Login";
+import Register from "../components/Register/Register";
 
-
+const Tab = createMaterialTopTabNavigator();
 
 const Autentication = () => {
   const [isLoginFormVisible, setIsLoginFormVisible] = useState(true);
@@ -24,95 +24,32 @@ const Autentication = () => {
   if (!fontsLoaded) return <Loading />;
   
   return (
-    <View style={styles.docker}>
-      <Image
-        source={require("../assets/logo2.png")}
-        style={{ height: 120, width: 120 }}
+      <View style={styles.docker}>
+        <Image source={require('../assets/logo2.png')} style={{width: 140, height: 140}}/>
+        <Tab.Navigator
+      initialRouteName="Login"
+    >
+      <Tab.Screen
+        name="Login"
+        component={Login}
+        options={{ tabBarLabel: "login" }}
       />
-      <View style={styles.buttons}>
-        <TouchableOpacity style={styles.button} disabled={isLoginFormVisible} onPress={toggleForm}>
-          <Text style={styles.text}>log in</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, underline]} disabled={!isLoginFormVisible} onPress={toggleForm}>
-          <Text style={styles.text}>register</Text>
-        </TouchableOpacity>
-      </View>
-      {isLoginFormVisible ? <LoginForm /> : <RegisterForm />}
-    </View>
-  );
-};
-
-const LoginForm = () => {
-  return (
-    <View style={styles.dockerauth}>
-      <View style={styles.boxinput}>
-        <Text style={styles.textinput}>e-mail</Text>
-        <TextInput
-          placeholder="youremail@email.com"
-          style={styles.input}
-          autoComplete={"email"}
-        />
-      </View>
-      <View style={styles.boxinput}>
-        <Text style={styles.textinput}>password</Text>
-        <TextInput
-          secureTextEntry
-          placeholder="yourpassword"
-          placeholderTextColor={"#8e1c1a"}
-          style={styles.input}
-        />
-      </View>
-      <TouchableOpacity style={styles.next}>
-        <Text style={styles.nexttext}>login</Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
-
-const RegisterForm = () => {
-  return (
-    <View style={styles.dockerauth}>
-      <View style={styles.boxinput}>
-        <Text style={styles.textinput}>name</Text>
-        <TextInput placeholder="matiolli" style={styles.input} />
-      </View>
-      <View style={styles.boxinput}>
-        <Text style={styles.textinput}>cpf</Text>
-        <TextInput placeholder="999.999.999-99" style={styles.input} />
-      </View>
-      <View style={styles.boxinput}>
-        <Text style={styles.textinput}>e-mail</Text>
-        <TextInput
-          placeholder="youremail@email.com"
-          style={styles.input}
-          autoComplete={"email"}
-        />
-      </View>
-      <View style={styles.boxinput}>
-        <Text style={styles.textinput}>password</Text>
-        <TextInput
-          secureTextEntry
-          placeholder="yourpassword"
-          placeholderTextColor={"#8e1c1a"}
-          style={styles.input}
-        />
-      </View>
-      <TouchableOpacity style={styles.next}>
-        <Text style={styles.nexttext}>register</Text>
-      </TouchableOpacity>
-    </View>
+      <Tab.Screen
+        name="Register"
+        component={Register}
+        options={{ tabBarLabel: "register" }}
+      />
+    </Tab.Navigator>
+        </View>
   );
 };
 
 const styles = StyleSheet.create({
   docker: {
     backgroundColor: "#efefef",
-    width: "100%",
-    height: "100%",
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
-    gap: 30,
+    justifyContent: 'center'
   },
   buttons: {
     width: "70%",
