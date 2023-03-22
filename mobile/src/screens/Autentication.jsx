@@ -3,14 +3,18 @@ import {
   View,
   StyleSheet,
   Image,
+  TouchableOpacity,
+  Text,
+  TextInput,
 } from "react-native";
-import { useFonts, Poppins_600SemiBold, Poppins_400Regular } from "@expo-google-fonts/poppins";
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import {
+  useFonts,
+  Poppins_600SemiBold,
+  Poppins_400Regular,
+} from "@expo-google-fonts/poppins";
 import Loading from "../components/Loading";
 import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
-
-const Tab = createMaterialTopTabNavigator();
 
 const Autentication = () => {
   const [isLoginFormVisible, setIsLoginFormVisible] = useState(true);
@@ -22,34 +26,42 @@ const Autentication = () => {
     Poppins_400Regular,
   });
   if (!fontsLoaded) return <Loading />;
-  
+
   return (
-      <View style={styles.docker}>
-        <Image source={require('../assets/logo2.png')} style={{width: 140, height: 140}}/>
-        <Tab.Navigator
-      initialRouteName="Login"
-    >
-      <Tab.Screen
-        name="Login"
-        component={Login}
-        options={{ tabBarLabel: "login" }}
-      />
-      <Tab.Screen
-        name="Register"
-        component={Register}
-        options={{ tabBarLabel: "register" }}
-      />
-    </Tab.Navigator>
-        </View>
+    <View style={styles.docker}>
+      <View style={{justifyContent:'center', alignItems: 'baseline', paddingBottom: 80}}>
+        <Image
+          source={require("../assets/logo2.png")}
+          style={{ height: 120, width: 120 }}
+        />
+      </View>
+      <View style={styles.buttons}>
+        <TouchableOpacity
+          style={styles.button}
+          disabled={isLoginFormVisible}
+          onPress={toggleForm}
+        >
+          <Text style={styles.text}>log in</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.button, underline]}
+          disabled={!isLoginFormVisible}
+          onPress={toggleForm}
+        >
+          <Text style={styles.text}>register</Text>
+        </TouchableOpacity>
+      </View>
+      {isLoginFormVisible ? <Login/> : <Register/>}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   docker: {
     backgroundColor: "#efefef",
-    flex: 1,
     alignItems: "center",
-    justifyContent: 'center'
+    justifyContent: "center",
+    height: "100%",
   },
   buttons: {
     width: "70%",
@@ -58,6 +70,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     backgroundColor: "#efefef",
+    paddingBottom: 50
   },
   text: {
     fontFamily: "Poppins_600SemiBold",
@@ -117,8 +130,8 @@ const styles = StyleSheet.create({
 
 const underline = StyleSheet.create({
   under: {
-    textDecorationLine: 'underline',
-    textDecorationColor: '#8e1c1a',
+    textDecorationLine: "underline",
+    textDecorationColor: "#8e1c1a",
   },
 });
 
