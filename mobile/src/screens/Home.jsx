@@ -13,7 +13,7 @@ export default function Home() {
   });
 
   return (
-    <View style={styles.docker}>
+    <View style={styles.docker} gap={30}>
       <Image
         source={require("../assets/logo2.png")}
         style={{ width: 170, height: 170 }}
