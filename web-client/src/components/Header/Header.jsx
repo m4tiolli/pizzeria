@@ -1,6 +1,7 @@
 import logo from '../../assets/Logo.png'
 import './Header.css'
 import { useNavigate } from 'react-router-dom';
+//import Header from '../../components/Header/Header'
 
 export default function Header() {
     const navigate = useNavigate();
@@ -14,6 +15,16 @@ export default function Header() {
     function mudarDePagina3() {
         navigate("/")
     }
+    function mudarDePagina4() {
+        navigate("pizzas")
+    }
+    function mudarDePagina5() {
+        navigate("bebidas")
+    }
+    function mudarDePagina6(){
+        navigate("sobremesas")
+    }
+
     return (
 
         <div className='header'>
