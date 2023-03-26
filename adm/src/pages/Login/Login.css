@@ -16,7 +16,6 @@
     align-items: center;
     text-align: center;
     background-color: #8e1c1a;
-    gap: 50px;
 }
 .title {
     color: #fff;
@@ -31,10 +30,12 @@
 .container {
     width: 100vw;
     height: 90vh;
+    font-size: 25px;
     align-items: center;
     display: flex;
     justify-content: center;
     background-color: #f2f2f4;
+    
  
 }
 .block {
@@ -47,13 +48,14 @@
     border-radius: 20px
 
 }
+
 .input, .button {
     margin: .7em 0;
     border-radius: 8px;
     padding: .5em 1em ;
     font-size: 15pt;
     border: 2px solid #000;
-    width: calc(60% - 2em);
+    width: calc(60% - 1em);
     font-family: "Poppins";
 }
 .button {
