@@ -1,4 +1,4 @@
-import Login from './components/User/Login/User_Login';
+// import Login from './components/User/Login/User_Login';
 import './App.css';
 import tela_principal from './components/User/TelaPrincipal/User_TelaPrincipal';
 
