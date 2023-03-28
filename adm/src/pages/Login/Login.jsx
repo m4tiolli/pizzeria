@@ -20,14 +20,13 @@ export default function Login() {
           
             <div className="container">
                 <div className="block">
-                    <h1 className="info">Sign in with your <br /> admin account</h1><br />
+                    <h1 className="info">Sign in with your <br /> admin account</h1>
                     <input type="text" className="input" placeholder="User" name="" id="" /><br />
                     <input type="text" className="input" placeholder="Password" name="" id="" /><br />
                     {/*<button className="button">Login</button>*/}
-                  <button className="button" onClick={mudarDePagina}>Login</button>
+                  <button className="buttonLogin" onClick={mudarDePagina}>Login</button>
                 </div>
             </div>
-            
         </div>
     )
 }

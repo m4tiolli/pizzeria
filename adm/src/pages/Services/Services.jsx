@@ -11,6 +11,12 @@ export default function Services() {
   function MudarParaPaginaCadastroProduto() {
     navigate("/CadastroProduto");
   }
+  function MudarParaPaginaEconomia() {
+    navigate("/Economia");
+  }
+  function MudarParaPaginaEstoque() {
+    navigate("/Estoque");
+  }
 
   return (
     <div className="services-container">
@@ -38,8 +44,8 @@ export default function Services() {
           <button className="button yellow-button" onClick={MudarParaPaginaCadastroBalcao}>
             Ver Produtos
           </button>
-          <button className="button yellow-button" onClick={MudarParaPaginaCadastroBalcao}>
-            Ver Mesas
+          <button className="button yellow-button" onClick={MudarParaPaginaEstoque}>
+            Ver Estoque
           </button>
         </div>
         <div className="button-row">
@@ -49,7 +55,7 @@ export default function Services() {
           <button className="button green-button" onClick={MudarParaPaginaCadastroBalcao}>
             Receber Produto
           </button>
-          <button className="button green-button" onClick={MudarParaPaginaCadastroBalcao}>
+          <button className="button green-button" onClick={MudarParaPaginaEconomia}>
             Teste
           </button>
         </div>

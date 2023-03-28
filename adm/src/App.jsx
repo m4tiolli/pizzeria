@@ -4,12 +4,20 @@ import Services from './pages/Services/Services'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CadastroBalcao from'./pages/Forms/CadastroBalcao'
 import CadastroProduto from'./pages/Forms/CadastroProduto'
+import Economia from './pages/Economia/Economia';
+import Estoque from './pages/Estoque/Estoque';
+import VerEstoque from './pages/Estoque/VerEstoque';
+import TelaInicial from './pages/PaginaInicial/TelaInicial';
 
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
+      element: <TelaInicial/>,
+    },
+    {
+      path: "/Login",
       element: <Login/>,
     },
     {
@@ -25,6 +33,20 @@ function App() {
       path:"/CadastroProduto",
       element:<CadastroProduto/>
     },
+    {
+      path:"/Economia",
+      element:<Economia/>
+    },
+    {
+      path:"/Estoque",
+      element:<Estoque/>
+    },
+    {
+      path:"/VerEstoque",
+      element:<VerEstoque/>
+    },
+  
+ 
 
   ]);
 

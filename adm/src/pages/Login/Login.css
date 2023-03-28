@@ -58,27 +58,31 @@
     width: calc(60% - 1em);
     font-family: "Poppins";
 }
-.button {
-    width: 60%;
-    background-color: #8e1c1a;
+.buttonLogin{
+    box-sizing: border-box;
+    width: 200px;
+    height: 75px;    
     color: #fff;
-    font-weight: 800;
-    letter-spacing: 1px;
+    background: #8E1C1A;
+    border: 3px solid #000;
+    border-radius: 10px;
 }
+
 .info {
     font-family: "Poppins";
     margin: auto;
+    font-weight: bold;
 }
-.button:hover {
+.buttonLogin:hover {
     opacity: .9;
     transition: linear .2s;
     transform: scale(1.01);
     
 }
-button:not(:hover) {
+.buttonLogin:not(:hover) {
     transition: linear .2s;
 }
-button:active {
+.buttonLogin:active {
     background-color: #aa1818;
     opacity: 1;
 }
