@@ -1,23 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StatusBar } from "react-native";
+import {
+  useFonts,
+  Poppins_400Regular,
+  Poppins_600SemiBold,
+  Poppins_700Bold,
+  Poppins_800ExtraBold,
+} from "@expo-google-fonts/poppins";
 
-export default function App() {
+import { Loading } from "./src/components/Loading";
+import { NavigationContainer } from "@react-navigation/native";
+import Routes from "./src/components/Routes/Routes";
+
+function App() {
+  // const [fontsLoaded] = useFonts({
+  //   Poppins_400Regular,
+  //   Poppins_600SemiBold,
+  //   Poppins_700Bold,
+  //   Poppins_800ExtraBold,
+  // });
+
+  // if (!fontsLoaded) {
+  //   return <Loading />;
+  // }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <TouchableOpacity>
-        <Text>Olá</Text>
-      </TouchableOpacity>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <NavigationContainer>
+        <Routes />
+      </NavigationContainer>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
+      />
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
