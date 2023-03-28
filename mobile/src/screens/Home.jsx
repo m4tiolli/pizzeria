@@ -31,7 +31,7 @@ export default function Home() {
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          navigation.navigate("Autentication");
+          navigation.navigate("Landing");
         }}
       >
         <Image source={require('../assets/iconuser.png')} style={{width: 30, height: 30}} />
