@@ -7,10 +7,9 @@ use pizzeria;
 create table usuario(
     id int primary key not null auto_increment,
     nome varchar(100),
-    cpf varchar(13),
+    cpf varchar(14),
     datanasc date,
     telefone varchar(20),
-    numtelefone varchar(20),
     email varchar(32),
     senha varchar(32),
     tipo enum('adm', 'cozinha', 'balcao', 'cliente')
@@ -76,3 +75,5 @@ create table infopedido(
     foreign key (idproduto) references produto(id),
     foreign key (idpedido) references pedido(id)
 );
+
+insert into usuario values(default, 'Matiolli', '523.088.698-60', 20060502, '11941811224', 'matiolli@gmail.com', '01100111', 'adm')
