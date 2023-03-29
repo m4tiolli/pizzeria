@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "../../screens/Home";
 import Autentication from "../../screens/Autentication";
-import TabLogin from '../TabLogin/TabLogin'
+import Landing from "../../screens/Landing";
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +16,11 @@ export default function Routes() {
       <Stack.Screen
         name="Autentication"
         component={Autentication}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Landing"
+        component={Landing}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
