@@ -25,7 +25,7 @@ function Home() {
                 </div>
                 <div className='delivery'>
                     <img src={delivery} className='icon' alt=''/>
-                    <button className='button btndelivery'>search</button>
+                    <button className='button btndelivery'>delivery</button>
                 </div>
             </div>
 
