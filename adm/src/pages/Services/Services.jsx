@@ -45,7 +45,7 @@ export default function Services() {
             Ver Produtos
           </button>
           <button className="button yellow-button" onClick={MudarParaPaginaEstoque}>
-            Ver Estoque
+            Estoque
           </button>
         </div>
         <div className="button-row">

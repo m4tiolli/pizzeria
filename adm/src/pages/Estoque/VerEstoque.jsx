@@ -1,12 +1,28 @@
 import React from 'react';
+import "./Estoque";
+import logo from "../../assets/logo.png"
+import { useNavigate } from "react-router-dom";
+
+
+
+
 
 const StockPage = ({ stock }) => {
   // Obtém as categorias do estoque
   const categories = Object.keys(stock);
 
   return (
+    
     <div>
-      <h1>Stock Page</h1>
+      
+      <div className="header">
+        <img src={logo} alt="" className="logo" />
+        <h1 className="title">Pizzeria Admin</h1>
+      </div>
+
+      <div className="container">
+        <h1 className="StockPage-title">Stock Service</h1>
+          
       {categories.map(category => (
         <div key={category}>
           <h2>{category}</h2>
@@ -23,16 +39,18 @@ const StockPage = ({ stock }) => {
           </ul>
         </div>
       ))}
+        </div>
+      
     </div>
   );
 };
 
 const VerEstoque = () => {
   const stock = {
-    fruits: [
+    pizza: [
       {
         id: 1,
-        name: 'Apple',
+        name: 'Pizza',
         description: 'Fresh and delicious',
         price: 1.99,
         image: 'https://images.unsplash.com/photo-1604783901926-87b8f7c08233',
@@ -40,17 +58,17 @@ const VerEstoque = () => {
       },
       {
         id: 2,
-        name: 'Banana',
+        name: 'Sweet Pizza',
         description: 'Sweet and ripe',
         price: 0.99,
         image: 'https://images.unsplash.com/photo-1528822438211-0dffb0d566ce',
         quantity: 5,
       },
     ],
-    vegetables: [
+    more: [
       {
         id: 3,
-        name: 'Carrot',
+        name: 'Candy',
         description: 'Crunchy and healthy',
         price: 2.49,
         image: 'https://images.unsplash.com/photo-1592222983279-ea7eef69fb70',
@@ -58,7 +76,7 @@ const VerEstoque = () => {
       },
       {
         id: 4,
-        name: 'Broccoli',
+        name: 'Soda',
         description: 'Nutritious and delicious',
         price: 3.99,
         image: '',
