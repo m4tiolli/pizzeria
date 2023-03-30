@@ -1,7 +1,49 @@
-import { useFonts, Poppins_300Light_Italic, Poppins_400Regular_Italic } from "@expo-google-fonts/poppins";
 import { View, Image, StyleSheet, TextInput } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign"
+import Loading from '../components/Loading'
+import {
+  useFonts, Poppins_100Thin,
+  Poppins_100Thin_Italic,
+  Poppins_200ExtraLight,
+  Poppins_200ExtraLight_Italic,
+  Poppins_300Light,
+  Poppins_300Light_Italic,
+  Poppins_400Regular,
+  Poppins_400Regular_Italic,
+  Poppins_500Medium,
+  Poppins_500Medium_Italic,
+  Poppins_600SemiBold,
+  Poppins_600SemiBold_Italic,
+  Poppins_700Bold,
+  Poppins_700Bold_Italic,
+  Poppins_800ExtraBold,
+  Poppins_800ExtraBold_Italic,
+  Poppins_900Black,
+  Poppins_900Black_Italic
+} from "@expo-google-fonts/poppins";
+
 export default function Landing() {
+  const [fontsLoaded] = useFonts({
+    Poppins_100Thin,
+    Poppins_100Thin_Italic,
+    Poppins_200ExtraLight,
+    Poppins_200ExtraLight_Italic,
+    Poppins_300Light,
+    Poppins_300Light_Italic,
+    Poppins_400Regular,
+    Poppins_400Regular_Italic,
+    Poppins_500Medium,
+    Poppins_500Medium_Italic,
+    Poppins_600SemiBold,
+    Poppins_600SemiBold_Italic,
+    Poppins_700Bold,
+    Poppins_700Bold_Italic,
+    Poppins_800ExtraBold,
+    Poppins_800ExtraBold_Italic,
+    Poppins_900Black,
+    Poppins_900Black_Italic
+  });
+  if (!fontsLoaded) return <Loading />;
   return (
     <View style={styles.docker}>
       <View style={styles.header}>
@@ -12,8 +54,8 @@ export default function Landing() {
         <View style={styles.searchs}>
           <Icon name="filter" size={40} color={"#8e1c1c"} />
           <View style={styles.input}>
-            <TextInput placeholder="pesquisar por pizzas" style={{fontFamily: 'Poppins_600SemiBold'}} />
-            <Icon name="search1" size={'60%'} color={"#8e1c1c"} />
+            <TextInput placeholder="pesquisar por pizzas" style={{ fontFamily: 'Poppins_300Light_Italic', outline: 'none' }} />
+            <Icon name="search1" size={'150%'} color={"#8e1c1c"} />
           </View>
         </View>
       </View>
@@ -29,6 +71,10 @@ const styles = StyleSheet.create({
     height: "15%",
     justifyContent: "space-around",
     alignItems: "center",
+    shadowColor: "#171717",
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
   },
   searchs: {
     justifyContent: "space-between",
