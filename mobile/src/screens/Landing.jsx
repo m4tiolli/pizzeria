@@ -1,4 +1,4 @@
-import { View, Image, StyleSheet, TextInput } from "react-native";
+import { View, Image, StyleSheet, TextInput, ScrollView } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign"
 import Loading from '../components/Loading'
 import {
@@ -21,6 +21,7 @@ import {
   Poppins_900Black,
   Poppins_900Black_Italic
 } from "@expo-google-fonts/poppins";
+import Item from "../components/Item/Item";
 
 export default function Landing() {
   const [fontsLoaded] = useFonts({
@@ -59,6 +60,18 @@ export default function Landing() {
           </View>
         </View>
       </View>
+      <ScrollView>
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+      </ScrollView>
     </View>
   );
 }

@@ -128,11 +128,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const underline = StyleSheet.create({
-  under: {
-    textDecorationLine: "underline",
-    textDecorationColor: "#8e1c1a",
-  },
-});
-
 export default Autentication;
