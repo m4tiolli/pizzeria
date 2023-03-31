@@ -1,14 +1,20 @@
-import Header from "../../components/Header/Header";
+
 import btnpesquisa from "../../assets/searchnormal1.png";
 import delivery from "../../assets/delivery.png";
 import cardapio from "../../assets/cardapio.png";
-
 import "./Home.css";
+import HeaderInicial from "../../components/HeaderInicial/Header";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const navigate = useNavigate();
+
+    function navcardapio() {
+        navigate("/cardapio")
+    }
   return (
     <div className="screen">
-      <Header />
+      <HeaderInicial />
       <h1 className="title1">
         welcome to our pizzeria. choose a pizza and be happy!
       </h1>
@@ -25,7 +31,7 @@ function Home() {
       </div>
       <div className="options">
         <div className="cardapio">
-          <div>
+          <div onClick={navcardapio}>
             <img src={cardapio} className="icon" alt="" />
             <button className="button btncardapio">cardapio</button>
           </div>

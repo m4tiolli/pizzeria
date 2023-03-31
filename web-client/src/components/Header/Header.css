@@ -13,16 +13,17 @@
 }
 
 .img {
-    height: 80%;
+    width: 5%;
+    height: auto;
     margin-left: 1em;
 }
 
-.buttons1 {
-    width: 30%;
+.buttons2 {
+    width: 90%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    
+    gap: 1vw;
 }
 
 .signup {
@@ -30,46 +31,66 @@
     background-color: transparent;
 }
 
-.signin {
+.signin, .carrinho {
     background-color: #8e1c1e;
     color: white;
 }
 
-.signin,
-.signup {
+.signin1,
+.signup1,
+.carrinho {
     font-family: "Poppins";
     padding: 10px;
-    width: 40%;
+    width: 10%;
     border-radius: 10px;
     font-size: 1.5vw;
     border: none;
 }
 
-.signin:hover,
-.signup:hover {
+.signin1:hover,
+.signup1:hover,
+.carrinho:hover {
     opacity: .7;
     transition: .2s;
 }
 
-.signin:not(:hover),
-.signup:not(:hover) {
+.signin1:not(:hover),
+.signup1:not(:hover),
+.carrinho:not(:hover) {
     transition: .2s;
 }
 
-.signin:active,
-.signup:active {
+.signin1:active,
+.signup1:active,
+.carrinho:active {
     transform: translateY(1px);
     box-shadow: 0px 5px 3px rgba(0, 0, 0, 0.2);
 }
 
-.pizzas {
-    
+.pizzas, .bebidas, .sobremesas{ 
+  background-color: transparent;
+  border: 4px solid #8e1c1e;
+  border-radius: 10px;
+  color: #8e1c1e;
+  font-size: 1.5vw;
+  display: flex;
+  justify-content: center;
+  text-transform: lowercase;
+  font-family: "Poppins";
+width: 20%;
+  border-radius: 50px;
+  font-size: 1.5vw;
+ 
+
+}
+.pizzas:hover, .pizzas:focus, .bebidas:hover, .bebidas:focus, .sobremesas:hover, .sobremesas:focus{
+    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    color: #fff;
+    outline: 0;
+    font-family:  "Poppins"; 
 }
 
-.bebidas {
-
-}
-
-.sobremesas {
-
+.pizzas:hover, .bebidas:hover, .sobremesas:hover{
+    box-shadow: 0 0 40px 40px #8e1c1e inset;
 }

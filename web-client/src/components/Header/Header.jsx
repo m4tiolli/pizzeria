@@ -28,10 +28,14 @@ export default function Header() {
     return (
 
         <div className='header'>
-            <img className='img' onClick={mudarDePagina3} src={logo} alt="" />
-            <div className='buttons1'>
+            <img className='img' onClick={mudarDePagina3} src={logo} alt="" />  
+            <div className='buttons2'>
+            <button className='pizzas' onClick={mudarDePagina4}>Pizzas</button>
+                <button className='sobremesas' onClick={mudarDePagina6}>Sobremesas</button>
+                <button className='bebidas' onClick={mudarDePagina5}>Bebidas</button>
+                <button className='carrinho' onClick={mudarDePagina5}>carrinho</button>
                 <button className='signup' onClick={mudarDePagina1}>sign up</button>
-                <button className='signin' onClick={mudarDePagina2}>sign in</button>
+                <button className='signin' onClick={mudarDePagina2}>sign in</button>              
             </div>
         </div>
     )
