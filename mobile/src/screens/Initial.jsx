@@ -22,6 +22,7 @@ import {
 } from "@expo-google-fonts/poppins";
 
 import Icon from "react-native-vector-icons/SimpleLineIcons";
+import Loading from "../components/Loading";
 
 
 export default function Initial() {
@@ -48,11 +49,13 @@ export default function Initial() {
     Poppins_900Black_Italic
   });
 
+  if (!fontsLoaded) return <Loading />
+
   return (
     <View style={styles.docker} gap={30}>
       <Image
         source={require("../assets/logo2.png")}
-        style={{ width: 170, height: 170 }}
+        style={{ width: 170, height: 170, marginVertical: 60 }}
       />
       <View style={styles.buttons}>
         <TouchableOpacity
@@ -67,7 +70,7 @@ export default function Initial() {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            navigation.navigate("Landing");
+            navigation.navigate("Home");
           }}
         >
           <Image source={require('../assets/iconuser.png')} style={{ width: 30, height: 30 }} />
@@ -97,9 +100,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     flexDirection: "row",
+    marginVertical: 10
   },
   buttons: {
-    gap: 30
+    gap: 30,
   },
   icon: {
     width: 30,

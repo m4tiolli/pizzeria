@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
     borderColor: "#8E1C1A",
     justifyContent: "center",
     alignItems: "center",
+    marginVertical: 15
   },
   textinput: {
     top: -14,
@@ -76,6 +77,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: "center",
     justifyContent: "center",
+    marginVertical: 10
   },
   nexttext: {
     color: "#fff",

@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     borderColor: "#8E1C1A",
     justifyContent: "center",
     alignItems: "center",
+    marginVertical: 10
   },
   textinput: {
     top: -14,
