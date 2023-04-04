@@ -5,10 +5,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    scroll-behavior: smooth;
 }
-
-.blablabla{
+section{
     position: relative;
     width: 100%;
     min-height: 100vh;
@@ -95,22 +93,7 @@ header .navegation li a{
     border-radius: 40px;
     transition: 0.3s ease-in-out;
 }
-.content .text button{
-    display: inline-block;
-    margin-top: 25px;
-    padding: 10px 25px;
-    background: #e51e2a;
-    color: #fff;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-decoration: none;
-    border-radius: 40px;
-    transition: 0.3s ease-in-out;
-}
 .content .text a:hover{
-    transform: translateY(-10px);
-}
-.content .text button:hover{
     transform: translateY(-10px);
 }
 .icons{

@@ -1,14 +1,12 @@
 import React from 'react';
-import logo from "../../assets/logo.png";
 import { useNavigate } from 'react-router-dom';
 import './style.css';
 
-
 export default function TelaInicial() {
   const navigate = useNavigate();
-  
+
   function mudarDePagina() {
-    navigate("/Login");
+    navigate('/Login');
   }
 
   return (
@@ -22,11 +20,11 @@ export default function TelaInicial() {
           <title>Document</title>
         </head>
         <body>
-          <section>
+          <div className="blablabla">
             <div className="circle"></div>
             <header>
               <a href="#">
-                <img src={logo} alt="" className="logo" />
+                <img alt="" className="logo" />
               </a>
               <nav className="navegation">
                 <ul>
@@ -34,7 +32,7 @@ export default function TelaInicial() {
                     <a href="#">Home</a>
                   </li>
                   <li>
-                    <a href="#">Products</a>
+                    <a href="#icons">Products</a>
                   </li>
                   <li>
                     <a href="#">Newsletter</a>
@@ -45,23 +43,22 @@ export default function TelaInicial() {
                 </ul>
               </nav>
             </header>
-            <div className="content">
+            <div id="home" className="content">
               <div className="text">
                 <h2>
-                  THAT'S WHAT <br />
-                  <span>I LIKE</span>
+                  THAT'S WHAT IS<br />
+                  <span>PIZZE</span>
                 </h2>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Asperiores autem eaque voluptas accusamus, illum, quisquam
-                  distinctio adipisci iusto earum corrupti soluta tenetur
-                  voluptatibus aperiam saepe vitae architecto eligendi
-                  repellendus delectus?
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?
                 </p>
                 <button onClick={mudarDePagina}>FAZER LOGIN</button>
               </div>
             </div>
-            <ul className="icons">
+            <ul id="icons" className="icons">
               <li>
                 <a href="#">
                   <img src="img/facebook.png" alt="" />
@@ -78,13 +75,22 @@ export default function TelaInicial() {
                 </a>
               </li>
             </ul>
-            <div className="boxImg">
-              <img src="img/cocacola1.png" alt="" className="img1" />
-              <img src="img/cocacola2.png" alt="" className="img2" />
-              <img src="img/cocacola3.png" alt="" className="img3" />
-              <img src="img/cocacola4.png" alt="" className="img4" />
-            </div>
-          </section>
+
+          </div>
+
+
+          {/* Nova seção */}
+      <section class="about" id="about">
+<h3 class="sub-heading">about us</h3>
+<h1 class="heading">why choose us?</h1>
+<div class="row">
+<div class="image">
+  <img src="" alt="" />
+</div>
+</div>
+<span></span>
+      </section>
+           
         </body>
       </html>
     </div>
