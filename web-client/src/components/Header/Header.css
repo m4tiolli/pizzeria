@@ -2,8 +2,8 @@
 
 .header {
     width: 100vw;
-    height: 15vh;
-    background-color: white;
+    height: 12vh;
+    background-color: #efefef;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,11 +17,12 @@
     margin-left: 1em;
 }
 
-.buttons {
-    width: 20%;
+.buttons1 {
+    width: 30%;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    
 }
 
 .signup {
@@ -32,7 +33,6 @@
 .signin {
     background-color: #8e1c1e;
     color: white;
-
 }
 
 .signin,
@@ -41,7 +41,8 @@
     padding: 10px;
     width: 40%;
     border-radius: 10px;
-    font-size: 1.5em
+    font-size: 1.5vw;
+    border: none;
 }
 
 .signin:hover,
@@ -59,4 +60,16 @@
 .signup:active {
     transform: translateY(1px);
     box-shadow: 0px 5px 3px rgba(0, 0, 0, 0.2);
+}
+
+.pizzas {
+    
+}
+
+.bebidas {
+
+}
+
+.sobremesas {
+
 }
