@@ -25,7 +25,7 @@
   font-family: "Poppins";
   font-size: 3.5vw;
   color: #8e1c1e;
-  margin: 0;
+  margin-top: 35px;
 }
 
 .input {
@@ -42,8 +42,8 @@
 
 .buttonregister {
   font-family: "Poppins";
-  padding: .5em 2em;
-  width: 60%;
+  padding: 0.03em 2em;
+  width: 13vw;
   border-radius: 10px;
   font-size: 2vw;
   border: none;
@@ -53,6 +53,10 @@
   justify-content: center;
   display: flex;
   margin: .5em auto;
+}
+
+.fundoRegister{
+  height: 10vw;
 }
 
 .buttonregister:hover {

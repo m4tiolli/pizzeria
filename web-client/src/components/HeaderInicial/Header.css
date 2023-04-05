@@ -25,40 +25,41 @@
     
 }
 
-.signup {
+.signup1 {
     color: #8e1c1e;
     background-color: transparent;
+    margin-right: 0px;
 }
 
-.signin {
+.signin1 {
     background-color: #8e1c1e;
     color: white;
+    margin-right: 0px;
 }
 
-.signin,
-.signup {
+.signin1,
+.signup1 {
     font-family: "Poppins";
-    padding: 10px;
-    width: 10%;
+    padding: 5px;
+    width: 30%;
     border-radius: 10px;
     font-size: 1.5vw;
-    border: none;
-    margin-right: 30px;
+    border: none; 
 }
 
-.signin:hover,
-.signup:hover {
+.signin1:hover,
+.signup1:hover {
     opacity: .7;
     transition: .2s;
 }
 
-.signin:not(:hover),
-.signup:not(:hover) {
+.signin1:not(:hover),
+.signup1:not(:hover) {
     transition: .2s;
 }
 
-.signin:active,
-.signup:active {
+.signin1:active,
+.signup1:active {
     transform: translateY(1px);
     box-shadow: 0px 5px 3px rgba(0, 0, 0, 0.2);
 }

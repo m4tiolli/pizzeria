@@ -7,7 +7,7 @@ function Login() {
       <Header />
       <div className="conteudologin">
         <div className="blocologin">
-          <div>
+          <div className="fundoLogin">
             <h1 className="titlelogin">login</h1>
             <input
               className="input"
@@ -24,6 +24,7 @@ function Login() {
               name=""
               id=""
             />
+            <button className="esqueci">Esqueci minha senha</button>
             <button className="buttonlogin">login</button>
           </div>
         </div>

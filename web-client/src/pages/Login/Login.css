@@ -38,12 +38,13 @@
   font-family: "Poppins";
   font-weight: 300;
   outline: none;
+
 }
 
 .buttonlogin {
   font-family: "Poppins";
-  padding: .5em 2em;
-  width: 60%;
+  padding: 0.03em 2em;
+  width: 13vw;
   border-radius: 10px;
   font-size: 2vw;
   border: none;
@@ -67,4 +68,20 @@
   transform: translateY(2px);
   opacity: .9;
   box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
+}
+
+.fundoLogin{
+  height: 26vw;
+}
+
+.esqueci{
+  color: #8e1c1e;
+  background-color: transparent;
+  border: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 30px;
+  display: flex;
 }

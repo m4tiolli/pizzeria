@@ -21,8 +21,8 @@ export default function HeaderInicial() {
         <div className='header'>
             <img className='img' onClick={mudarDePagina3} src={logo} alt="" />
             <div className='buttons1'>
-                <button className='signup' onClick={mudarDePagina1}>sign up</button>
-                <button className='signin' onClick={mudarDePagina2}>sign in</button>
+                <button className='signup1' onClick={mudarDePagina2}>sign up</button>
+                <button className='signin1' onClick={mudarDePagina1}>sign in</button>
             </div>
         </div>
     )
