@@ -8,7 +8,8 @@ import Economia from './pages/Economia/Economia';
 import Estoque from './pages/Estoque/Estoque';
 import VerEstoque from './pages/Estoque/VerEstoque';
 import TelaInicial from './pages/PaginaInicial/TelaInicial';
-
+import Produtos from './pages/Produtos/Produtos';
+import VerProdutos from './pages/Produtos/VerProdutos'
 
 function App() {
   const router = createBrowserRouter([
@@ -16,6 +17,7 @@ function App() {
       path: "/",
       element: <TelaInicial/>,
     },
+    
     {
       path: "/Login",
       element: <Login/>,
@@ -45,6 +47,15 @@ function App() {
       path:"/VerEstoque",
       element:<VerEstoque/>
     },
+    {
+      path: "/Produtos",
+      element: <Produtos/>,
+    },
+    {
+      path: "/VerProdutos",
+      element: <VerProdutos/>,
+    },
+    
   
  
 

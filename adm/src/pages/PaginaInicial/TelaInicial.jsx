@@ -20,7 +20,7 @@ export default function TelaInicial() {
           <title>Document</title>
         </head>
         <body>
-          <div className="blablabla">
+          <div className='blablabla'>
             <div className="circle"></div>
             <header>
               <a href="#">
@@ -32,7 +32,7 @@ export default function TelaInicial() {
                     <a href="#">Home</a>
                   </li>
                   <li>
-                    <a href="#icons">Products</a>
+                    <a href="#about">About</a>
                   </li>
                   <li>
                     <a href="#">Newsletter</a>
@@ -75,21 +75,90 @@ export default function TelaInicial() {
                 </a>
               </li>
             </ul>
-
-          </div>
-
+            </div>
 
           {/* Nova seção */}
-      <section class="about" id="about">
-<h3 class="sub-heading">about us</h3>
-<h1 class="heading">why choose us?</h1>
-<div class="row">
-<div class="image">
-  <img src="" alt="" />
-</div>
-</div>
-<span></span>
-      </section>
+          <div className="circle"></div>
+      <div class="blablabla about" id="about">
+      
+                <h3 class="sub-heading">about us</h3>
+                <h1 class="heading">why choose us?</h1>
+                <div className='content'>
+                <div className='text'>
+                <p>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                  autem eaque voluptas accusamus, illum, quisquam distinctio adipisci
+                  iusto earum corrupti soluta tenetur voluptatibus aperiam saepe vitae
+                  architecto eligendi repellendus delectus?</p>
+                  </div>
+                  </div>
+                 
+          <div class="row">
+                <div class="image">
+                    <img src="" alt="" />
+                </div>
+           </div>
+          <span></span>
+      </div>
            
         </body>
       </html>

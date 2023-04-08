@@ -8,6 +8,7 @@ export default function Estoque() {
   function MudarParaPaginaVerEstoque() {
     navigate("/VerEstoque");
   }
+  
 
 
   return (
