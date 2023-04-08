@@ -25,13 +25,13 @@
   font-family: "Poppins";
   font-size: 3.5vw;
   color: #8e1c1e;
-  margin: .5em 0;
+  margin-top: 35px;
 }
 
 .input {
   height: 2em;
   width: 16vw;
-  margin: 1.5em 0px;
+  margin: .5em 0px;
   border: 3px solid #8e1c1e;
   padding: 0.5em 2em;
   border-radius: 5px;
@@ -42,8 +42,8 @@
 
 .buttonregister {
   font-family: "Poppins";
-  padding: .5em 2em;
-  width: 60%;
+  padding: 0.03em 2em;
+  width: 13vw;
   border-radius: 10px;
   font-size: 2vw;
   border: none;
@@ -53,6 +53,10 @@
   justify-content: center;
   display: flex;
   margin: .5em auto;
+}
+
+.fundoRegister{
+  height: 10vw;
 }
 
 .buttonregister:hover {
@@ -67,4 +71,8 @@
   transform: translateY(2px);
   opacity: .9;
   box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
+}
+.blocoregister > div {
+  width: 90%;
+  height: 90%;
 }

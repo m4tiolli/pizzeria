@@ -30,7 +30,7 @@
 
 /* div da pesquisa, 6% de altura e 65% de largura da tela, display flex e a distribuição de espaço será entre os objetos, ficará centralizado na tela com margin auto */
 .search {
-  height: 6vh;
+  height: 8vh;
   width: 65%;
   display: flex;
   justify-content: space-between;

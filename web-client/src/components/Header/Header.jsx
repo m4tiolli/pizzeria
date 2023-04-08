@@ -1,4 +1,5 @@
 import logo from '../../assets/Logo.png'
+import carrinho from '../../assets/carrinho.png'
 import './Header.css'
 import { useNavigate } from 'react-router-dom';
 //import Header from '../../components/Header/Header'
@@ -28,10 +29,17 @@ export default function Header() {
     return (
 
         <div className='header'>
-            <img className='img' onClick={mudarDePagina3} src={logo} alt="" />
-            <div className='buttons1'>
-                <button className='signup' onClick={mudarDePagina1}>sign up</button>
-                <button className='signin' onClick={mudarDePagina2}>sign in</button>
+            <img className='img' onClick={mudarDePagina3} src={logo} alt="" />  
+            <div className='buttons2'>
+            <button className='pizzas' onClick={mudarDePagina4}>Pizzas</button>
+                <button className='sobremesas' onClick={mudarDePagina6}>Sobremesas</button>
+                <button className='bebidas' onClick={mudarDePagina5}>Bebidas</button>
+            <div className='fundoCarri'>
+                <button className='textCarrinho' onClick={mudarDePagina5}>carrinho</button>
+                <img src={carrinho} className='iconCarri' alt=""></img>
+            </div>
+                <button className='signup2' onClick={mudarDePagina2}>sign up</button>
+                <button className='signin2' onClick={mudarDePagina1}>sign in</button>              
             </div>
         </div>
     )

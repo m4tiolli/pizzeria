@@ -7,7 +7,7 @@ function Register() {
       <Header />
       <div className="conteudoregister">
         <div className="blocoregister">
-          <div>
+          <div className="fundoRegister">
             <h1 className="titleregister">register</h1>
             <input
               className="input"
