@@ -1,7 +1,7 @@
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register';
-import Cardapio from './pages/Cardapio/Cardapio';
+import Cardapio from './pages/Pizzas/Pizzas';
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
       element: <Register />,
     },
     {
-      path: "/cardapio",
+      path: "/Pizzas",
       element: <Cardapio />,
     },
   ]);

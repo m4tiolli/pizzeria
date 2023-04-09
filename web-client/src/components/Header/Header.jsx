@@ -17,7 +17,7 @@ export default function Header() {
         navigate("/")
     }
     function mudarDePagina4() {
-        navigate("pizzas")
+        navigate("/Pizzas")
     }
     function mudarDePagina5() {
         navigate("bebidas")

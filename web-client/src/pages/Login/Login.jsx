@@ -1,8 +1,16 @@
 import "./Login.css";
 import Header from "../../components/Header/Header";
+import RecuperarSenha from "RecuperarSenha"
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
+  const navigate = useNavigate();
+
+  function navRecuperarSenha(){
+    navigate("/RecuperarSenha")
+}
   return (
+
     <div>
       <Header />
       <div className="conteudologin">
@@ -24,7 +32,7 @@ function Login() {
               name=""
               id=""
             />
-            <button className="esqueci">Esqueci minha senha</button>
+            <button className="esqueci" onClick={RecuperarSenha} alt=''>Esqueci minha senha</button>
             <button className="buttonlogin">login</button>
           </div>
         </div>
