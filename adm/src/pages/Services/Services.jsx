@@ -17,6 +17,9 @@ export default function Services() {
   function MudarParaPaginaEstoque() {
     navigate("/Estoque");
   }
+  function MudarParaPaginaProdutos() {
+    navigate("/Produtos");
+  }
 
   return (
     <div className="services-container">
@@ -41,7 +44,7 @@ export default function Services() {
           <button className="button yellow-button" onClick={MudarParaPaginaCadastroBalcao}>
             Ver Balcões
           </button>
-          <button className="button yellow-button" onClick={MudarParaPaginaCadastroBalcao}>
+          <button className="button yellow-button" onClick={MudarParaPaginaProdutos}>
             Ver Produtos
           </button>
           <button className="button yellow-button" onClick={MudarParaPaginaEstoque}>

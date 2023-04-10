@@ -10,7 +10,7 @@ function Home() {
   const navigate = useNavigate();
 
     function navcardapio() {
-        navigate("/cardapio")
+        navigate("/Pizzas")
     }
   return (
     <div className="screen">
