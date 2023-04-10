@@ -30,6 +30,7 @@ import {
   Poppins_900Black_Italic,
 } from "@expo-google-fonts/poppins";
 import Item from "../components/Item/Item";
+import DrawerLayout from "react-native-drawer-layout";
 
 export default function Landing() {
   const [fontsLoaded] = useFonts({
@@ -53,38 +54,57 @@ export default function Landing() {
     Poppins_900Black_Italic,
   });
   if (!fontsLoaded) return <Loading />;
-  return (
-    <View style={styles.docker}>
-      <StatusBar hidden={true} />
-      <View style={styles.header}>
-        <Icon name="filter" size={30} color={"#8e1c1c"} />
-        <View style={styles.input}>
-          <TextInput
-            placeholder="pesquisar por pizzas"
-            style={{
-              fontFamily: "Poppins_300Light_Italic",
-              outline: "none",
-              paddingRight: "20%",
-              paddingLeft: 10,
-            }}
-          />
-          <Icon name="search1" size={30} color={"#8e1c1c"} />
+  const FilterComponent = () => {
+    const [drawerOpen, setDrawerOpen] = useState(false);
+
+    const handleDrawerOpen = () => {
+      setDrawerOpen(true);
+    };
+
+    const handleDrawerClose = () => {
+      setDrawerOpen(false);
+    };
+    return (
+      <View style={styles.docker}>
+        <StatusBar hidden={true} />
+        <View style={styles.header}>
+          <Icon name="filter" size={30} color={"#8e1c1c"} />
+          <View style={styles.input}>
+            <TextInput
+              placeholder="pesquisar por pizzas"
+              style={{
+                fontFamily: "Poppins_300Light_Italic",
+                outline: "none",
+                paddingRight: "20%",
+                paddingLeft: 10,
+              }}
+            />
+            <Icon name="search1" size={30} color={"#8e1c1c"} />
+          </View>
         </View>
+        <DrawerLayout
+          drawerWidth={200}
+          drawerPosition="right"
+          onDrawerOpen={handleDrawerOpen}
+          onDrawerClose={handleDrawerClose}
+        >
+          <Text>Oi</Text>
+        </DrawerLayout>
+        <ScrollView style={{ paddingBottom: 400 }}>
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+        </ScrollView>
       </View>
-      <ScrollView style={{ paddingBottom: 400 }}>
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-      </ScrollView>
-    </View>
-  );
+    );
+  };
 }
 const styles = StyleSheet.create({
   docker: {
