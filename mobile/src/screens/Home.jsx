@@ -1,6 +1,9 @@
-import Navigator from "../components/Navigator/Navigator"
+
+import Navigator from "../components/Navigator/Navigator";
 export default function Landing() {
-    return(
-        <Navigator />
-    )
+  return (
+
+      <Navigator />
+
+  );
 }

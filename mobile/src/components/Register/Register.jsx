@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import {
   View,
   Text,
@@ -7,6 +8,7 @@ import {
 } from "react-native";
 
 export default function Register() {
+  const navigation = useNavigation
   return (
     <View style={styles.dockerauth}>
       <View style={styles.boxinput}>
@@ -35,7 +37,7 @@ export default function Register() {
         />
       </View>
       <TouchableOpacity style={styles.next}>
-        <Text style={styles.nexttext}>register</Text>
+        <Text style={styles.nexttext} onPress={()=>{navigation.navigate("Home")}}>register</Text>
       </TouchableOpacity>
     </View>
   );

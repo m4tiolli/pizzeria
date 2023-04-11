@@ -17,6 +17,8 @@ import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
 
 const Autentication = () => {
+
+
   const [isLoginFormVisible, setIsLoginFormVisible] = useState(true);
   const toggleForm = () => {
     setIsLoginFormVisible(!isLoginFormVisible);

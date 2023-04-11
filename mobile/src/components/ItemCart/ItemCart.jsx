@@ -1,8 +1,6 @@
 import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
-import pizzaexemplo from "../../assets/pizzaexemplo.png";
-import { useNavigation } from "@react-navigation/native";
-function Item() {
-  const navigation = useNavigation();
+import Icon from 'react-native-vector-icons/FontAwesome'
+function ItemCart({image, title, desc, qtd}) {
   return (
     <View
       style={{
@@ -14,7 +12,7 @@ function Item() {
     >
       <View style={styles.item}>
         <Image
-          source={pizzaexemplo}
+          source={image}
           style={{
             height: 120,
             width: 120,
@@ -24,28 +22,24 @@ function Item() {
           }}
         />
         <View style={styles.box}>
-          <Text style={styles.title}>Pepperoni</Text>
-          <Text style={styles.infos}>sauce, cheese, pepperoni</Text>
+          <View style={{flexDirection: 'row', width: '90%', justifyContent: 'space-between'}}>
+            <Text style={styles.title}>{title}</Text>
+            <Icon name='trash-o' color={"#898989"} size={20} />
+          </View>
+          <Text style={styles.infos}>{desc}</Text>
           <View
             style={{
               flexDirection: "row",
-              width: "80%",
+              width: "85%",
               justifyContent: "space-between",
               position: "absolute",
               bottom: 10,
             }}
           >
             <TouchableOpacity style={styles.cart}>
-              <Text
-                style={styles.carttext}
-                onPress={() => {
-                  navigation.navigate("Cart");
-                }}
-              >
-                add to cart
-              </Text>
+              <Text style={styles.carttext}>ver informações</Text>
             </TouchableOpacity>
-            <Text style={styles.price}>20$</Text>
+            <Text style={styles.price}>{qtd}</Text>
           </View>
         </View>
       </View>
@@ -84,7 +78,7 @@ const styles = StyleSheet.create({
   carttext: {
     color: "#fff",
     fontFamily: "Poppins_400Regular",
-    fontSize: 15,
+    fontSize: 12,
   },
   title: {
     fontFamily: "Poppins_500Medium",
@@ -93,11 +87,13 @@ const styles = StyleSheet.create({
   infos: {
     fontFamily: "Poppins_500Medium",
     color: "#898989",
+    width: '90%',
+    textAlign: 'left'
   },
   price: {
     fontFamily: "Poppins_500Medium",
-    color: "#698C3D",
+    color: "#898989",
     fontSize: 20,
   },
 });
-export default Item;
+export default ItemCart;

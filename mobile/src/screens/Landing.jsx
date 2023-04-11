@@ -54,6 +54,7 @@ export default function Landing() {
     Poppins_900Black_Italic,
   });
   if (!fontsLoaded) return <Loading />;
+<<<<<<< HEAD
   const FilterComponent = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -68,6 +69,16 @@ export default function Landing() {
       <View style={styles.docker}>
         <StatusBar hidden={true} />
         <View style={styles.header}>
+=======
+  return (
+    <View style={styles.docker}>
+      <StatusBar hidden={true} />
+      <View style={styles.header}>
+        <View style={{alignItems: 'center', justifyContent: 'center'}}>
+          <Image source={require("../assets/logo2.png")} style={{ width: 50, height: 50 }} />
+        </View>
+        <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+>>>>>>> c1cb6ea5 (carrinho)
           <Icon name="filter" size={30} color={"#8e1c1c"} />
           <View style={styles.input}>
             <TextInput
@@ -103,8 +114,25 @@ export default function Landing() {
           <Item />
         </ScrollView>
       </View>
+<<<<<<< HEAD
     );
   };
+=======
+      <ScrollView style={{ paddingBottom: 400, paddingTop: 50 }}>
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+      </ScrollView>
+    </View>
+  );
+>>>>>>> c1cb6ea5 (carrinho)
 }
 const styles = StyleSheet.create({
   docker: {
@@ -114,10 +142,7 @@ const styles = StyleSheet.create({
   },
   header: {
     height: "10%",
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    backgroundColor: "#efefef",
+    flexDirection: "col",
   },
   input: {
     flexDirection: "row",
