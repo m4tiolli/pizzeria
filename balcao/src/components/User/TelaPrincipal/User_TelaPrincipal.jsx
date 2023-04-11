@@ -19,10 +19,34 @@
               <button className="ButtonTitle" align="right"> User </button>
         </div>
 
-        <div className="container">
-        <input type="text" className="input" placeholder="Pesquisar item" name="" id="" /><br/>
-        <button className="button">Pizzas</button> <button className="button">Bebidas</button> <button className="button">Apeditivos</button> <button className="button">Promoções</button>
-        </div>
+        <main  align="center">
+
+               <div className="input_pesquisar"><input className="input" type="text"placeholder="Pesquisar item"/></div>
+         <div className="pizza-area"></div>
+        </main>
+
+         <div className="models">
+
+            <div className="buttons" style={{ display: "flex", justifyContent: "flex-end" }}>
+               <button className="button">Pizzas</button> 
+               <button className="button">Bebidas</button> 
+               <button className="button">Aperitivos</button> 
+               <button className="button">Promoções</button>
+
+            </div>
+
+            <div className="pizza-item">
+               <a href="">
+                  <div className="pizza-item--img"><img src=""/></div>
+                  <div className="pizza-item--add">+</div>
+               </a>
+               <div className="pizza-item--price">R$ --</div>
+               <div className="pizza-item--name">--</div>
+               <div className="pizza-item--desc">--</div>
+             </div>
+
+
+         </div>
     </div>
     
  )
