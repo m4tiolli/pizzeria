@@ -1,14 +1,14 @@
  import "./User_TelaPrincipal.css";
  import logo from "../../../assets/logo.png"
- import menu_hamburger from "../../../assets/menu_hamburger.png"
+//  import menu_hamburger from "../../../assets/menu_hamburger.png"
 
  export default function Tela_principal()
 {   
      return (
    <div>
-      <FontAwesomeIcon icon="fa-solid fa-bars" />
+
          <div className="header">
-            <button className="" img="menu_hambuger"></button>
+            <button className=""></button>
          <img src={logo} alt="" className="logo" />
               <h1 className="title">Pizzeria Balcão</h1>
               <button className="buttonTitle"> Delivery </button>   
