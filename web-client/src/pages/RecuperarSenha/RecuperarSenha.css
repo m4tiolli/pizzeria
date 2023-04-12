@@ -1,5 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap");
 
+.ConteudoRecuSenha1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #efefef;
+    width: 100vw;
+    height: 88vh;
+}
+
 .BlocoRecuSenha1{
     width: 30%;
     height: 70%;
@@ -13,13 +22,14 @@
 }
 
 .fundoRecuSenha1{
-    height: 26vw;
+    height: 20vw;
+    width: 29vw;
 }
 
 .inputRecuSenha1{
     height: 2em;
     width: 16vw;
-    margin: 1.5em 0px;
+    margin: 2.5em 0 2.5em;
     border: 3px solid #8e1c1e;
     padding: 0.5em 2em;
     border-radius: 5px;
@@ -41,4 +51,14 @@
     justify-content: center;
     display: flex;
     margin: .5em auto;
+}
+
+.titleRecuSenha1{
+    line-height: 70px;
+    display: flex;
+    color: #8e1c1e;
+    font-family: "Poppins";
+    font-size: 3.5vw;
+    margin:  auto;
+    padding-bottom: 60px;
 }
