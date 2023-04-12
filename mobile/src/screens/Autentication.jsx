@@ -33,8 +33,8 @@ const Autentication = () => {
     <View style={styles.docker}>
       <View style={{justifyContent:'center', alignItems: 'baseline', paddingBottom: 20}}>
         <Image
-          source={require("../assets/logo2.png")}
-          style={{ height: 120, width: 120 }}
+          source={require("../assets/text.svg")}
+          style={{ height: 120, width: 95 }}
         />
       </View>
       <View style={styles.buttons}>

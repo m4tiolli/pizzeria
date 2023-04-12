@@ -4,10 +4,10 @@
     "slug": "mobile",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/logo2.png",
+    "icon": "./src/assets/circle.svg",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./src/assets/logo2.png",
+      "image": "./src/assets/circle.svg",
       "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
@@ -22,12 +22,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./src/assets/circle.svg",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./src/assets/logo2.png"
+      "favicon": "./src/assets/circle.svg"
     }
   }
 }

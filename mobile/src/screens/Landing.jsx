@@ -75,25 +75,6 @@ export default function Landing() {
               paddingLeft: 10,
             }}
           />
-          <Drawer
-            open={filterOpen}
-            onOpen={() => setFilterOpen(true)}
-            onClose={() => setFilterOpen(false)}
-            renderDrawerContent={() => {
-              return <Text>Drawer content</Text>;
-            }}
-          >
-            <Icon
-              name="search1"
-              size={30}
-              color={"#8e1c1c"}
-              onPress={() => setFilterOpen((prevOpen) => !prevOpen)}
-            />
-            <Button
-              onPress={() => setFilterOpen((prevOpen) => !prevOpen)}
-              title="oi"
-            />
-          </Drawer>
         </View>
       </View>
       <ScrollView style={{ paddingBottom: 400 }}>
@@ -108,6 +89,25 @@ export default function Landing() {
         <Item />
         <Item />
       </ScrollView>
+        <Drawer
+          open={filterOpen}
+          onOpen={() => setFilterOpen(true)}
+          onClose={() => setFilterOpen(false)}
+          renderDrawerContent={() => {
+            return <Text>Drawer content</Text>;
+          }}
+        >
+          <Icon
+            name="search1"
+            size={30}
+            color={"#8e1c1c"}
+            onPress={() => setFilterOpen((prevOpen) => !prevOpen)}
+          />
+          <Button
+            onPress={() => setFilterOpen((prevOpen) => !prevOpen)}
+            title="oi"
+          />
+        </Drawer>
     </View>
   );
 }
