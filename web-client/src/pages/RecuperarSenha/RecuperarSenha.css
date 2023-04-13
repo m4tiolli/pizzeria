@@ -22,21 +22,11 @@
 }
 
 .fundoRecuSenha1{
-    height: 20vw;
+    height: 25vw;
     width: 29vw;
 }
 
-.inputRecuSenha1{
-    height: 2em;
-    width: 16vw;
-    margin: 2.5em 0 2.5em;
-    border: 3px solid #8e1c1e;
-    padding: 0.5em 2em;
-    border-radius: 5px;
-    font-family: "Poppins";
-    font-weight: 300;
-    outline: none;
-}
+
 
 .btnRecuperar1{
     font-family: "Poppins";
@@ -53,12 +43,29 @@
     margin: .5em auto;
 }
 
+.btnRecuperar1:hover {
+    transition: .2s linear;
+    opacity: .8;
+  }
+  
+  .btnRecuperar1:not(hover) {
+    transition: .2s linear;
+  }
+  
+  .btnRecuperar1:active {
+    transition: .1s linear;
+    transform: translateY(2px);
+    opacity: .9;
+    box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
+  }
+  
+
 .titleRecuSenha1{
-    line-height: 70px;
+    line-height: 60px;
     display: flex;
     color: #8e1c1e;
     font-family: "Poppins";
     font-size: 3.5vw;
     margin:  auto;
-    padding-bottom: 60px;
+    padding-bottom: 20px;
 }

@@ -16,17 +16,29 @@ function RecuperarSenha() {
                     <div className="fundoRecuSenha1">
                         <h1 className="titleRecuSenha1">recuperar senha</h1>
                         <div className="inputpai">
-              <label className="labelinput" htmlFor="Email">e-mail</label>
-            <div className="inputdiv">
-              <input
-                className="inputtext"
-                type="text"
-                name=""
-                id="Email"
-                placeholder="youremail@email.com"
-              />
-            </div>
-            </div>
+                            <label className="labelinput" htmlFor="Email">e-mail</label>
+                        <div className="inputdiv">
+                            <input
+                            className="inputtext"
+                            type="text"
+                            name=""
+                            id="Email"
+                            placeholder="youremail@email.com"
+                            />
+                        </div>
+                        </div>
+                        <div className="inputpai">
+                            <label className="labelinput" htmlFor="CPF">CPF</label>
+                        <div className="inputdiv">
+                            <input
+                            className="inputtext"
+                            type="CPF"
+                            name=""
+                            id="CPF"
+                            placeholder="000.000.000-00"
+                            />
+                        </div>
+                        </div>
                     <br/>
                     <button className="btnRecuperar1" onClick={navRecuperarSenha2}>Recuperar</button>
                     </div>

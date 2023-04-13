@@ -4,6 +4,8 @@ import Register from './pages/Register/Register';
 import Cardapio from './pages/Pizzas/Pizzas';
 import RecuperarSenha from './pages/RecuperarSenha/RecuperarSenha';
 import RecuperarSenha2 from './pages/RecuperarSenha2/RecuperarSenha2';
+import SelectEnde from './pages/SelectEnde/SelectEnde';
+import Carrinho from './pages/Carrinho/Carrinho';
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 function App() {
@@ -31,6 +33,14 @@ function App() {
     {
       path: "/RecuperarSenha2",
       element: <RecuperarSenha2/>
+    },
+    {
+      path: "/SelectEnde",
+      element: <SelectEnde/>
+    },
+    {
+      path: "/Carrinho",
+      element: <Carrinho/>
     }
   ]);
 

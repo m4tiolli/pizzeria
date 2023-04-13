@@ -25,6 +25,9 @@ export default function Header() {
     function mudarDePagina6(){
         navigate("sobremesas")
     }
+    function mudarDePagina7(){
+        navigate("/Carrinho")
+    }
 
     return (
 
@@ -34,8 +37,8 @@ export default function Header() {
             <button className='pizzas' onClick={mudarDePagina4}>Pizzas</button>
                 <button className='sobremesas' onClick={mudarDePagina6}>Sobremesas</button>
                 <button className='bebidas' onClick={mudarDePagina5}>Bebidas</button>
-            <div className='fundoCarri'>
-                <button className='textCarrinho' onClick={mudarDePagina5}>carrinho</button>
+            <div className='fundoCarri' onClick={mudarDePagina7}>
+                <button className='textCarrinho'>carrinho</button>
                 <img src={carrinho} className='iconCarri' alt=""></img>
             </div>
                 <button className='signup2' onClick={mudarDePagina2}>sign up</button>

@@ -28,19 +28,6 @@
   margin: .5em 0;
 }
 
-.input {
-  height: 2em;
-  width: 16vw;
-  margin: 1.5em 0px;
-  border: 3px solid #8e1c1e;
-  padding: 0.5em 2em;
-  border-radius: 5px;
-  font-family: "Poppins";
-  font-weight: 300;
-  outline: none;
-
-}
-
 .buttonlogin {
   font-family: "Poppins";
   padding: 0.03em 2em;
@@ -88,25 +75,10 @@
   display: flex;
 }
 
-.lblEmail1 {
-  width: 65px;
-  height: 23.88px;
-  border-radius: 5px;
-  background-color: #efefef;
-
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 0.5vw;
-
-  display: flex;
-  
-  color: #8E1C1A;
-}
-
 .inputdiv {
   height: 2em;
   width: 16vw;
-  padding: 0.5em 2em;
+  padding: 0.3em 2em;
   margin: .5em 0px;
   border: 3px solid #8e1c1e;
   border-radius: 5px;

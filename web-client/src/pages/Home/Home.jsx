@@ -12,6 +12,9 @@ function Home() {
     function navcardapio() {
         navigate("/Pizzas")
     }
+    function navSelectEnde() {
+      navigate("/SelectEnde")
+    }
   return (
     <div className="screen">
       <HeaderInicial />
@@ -33,10 +36,10 @@ function Home() {
         <div className="cardapio">
           <div onClick={navcardapio}>
             <img src={cardapio} className="icon" alt="" />
-            <button className="button btncardapio">cardapio</button>
+            <button className="button btncardapio" >cardapio</button>
           </div>
         </div>
-        <div className="delivery">
+        <div className="delivery" onClick={navSelectEnde}>
           <div>
             <img src={delivery} className="icon" alt="" />
             <button className="button btndelivery">delivery</button>
