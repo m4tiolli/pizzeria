@@ -3,7 +3,7 @@ import btnpesquisa from "../../assets/searchnormal1.png";
 import delivery from "../../assets/delivery.png";
 import cardapio from "../../assets/cardapio.png";
 import "./Home.css";
-import HeaderInicial from "../../components/HeaderInicial/Header";
+import Header from "../../components/Header/Header";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
@@ -17,7 +17,7 @@ function Home() {
     }
   return (
     <div className="screen">
-      <HeaderInicial />
+      <Header />
       <h1 className="title1">
         welcome to our pizzeria. choose a pizza and be happy!
       </h1>

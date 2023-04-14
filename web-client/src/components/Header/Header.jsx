@@ -1,10 +1,10 @@
-import logo from '../../assets/Logo.png'
-import carrinho from '../../assets/carrinho.png'
-import './Header.css'
+import Text from '../../assets/text.svg';
+import carrinho from '../../assets/carrinho.png';
+import './Header.css';
 import { useNavigate } from 'react-router-dom';
 //import Header from '../../components/Header/Header'
 
-export default function Header() {
+export default function HeaderInicial() {
     const navigate = useNavigate();
 
     function mudarDePagina1() {
@@ -16,33 +16,21 @@ export default function Header() {
     function mudarDePagina3() {
         navigate("/")
     }
-    function mudarDePagina4() {
-        navigate("/Pizzas")
-    }
-    function mudarDePagina5() {
-        navigate("bebidas")
-    }
-    function mudarDePagina6(){
-        navigate("sobremesas")
-    }
-    function mudarDePagina7(){
+    function mudarDePagina4(){
         navigate("/Carrinho")
     }
 
     return (
 
         <div className='header'>
-            <img className='img' onClick={mudarDePagina3} src={logo} alt="" />  
-            <div className='buttons2'>
-            <button className='pizzas' onClick={mudarDePagina4}>Pizzas</button>
-                <button className='sobremesas' onClick={mudarDePagina6}>Sobremesas</button>
-                <button className='bebidas' onClick={mudarDePagina5}>Bebidas</button>
-            <div className='fundoCarri' onClick={mudarDePagina7}>
-                <button className='textCarrinho'>carrinho</button>
-                <img src={carrinho} className='iconCarri' alt=""></img>
-            </div>
-                <button className='signup2' onClick={mudarDePagina2}>sign up</button>
-                <button className='signin2' onClick={mudarDePagina1}>sign in</button>              
+            <img className='img' onClick={mudarDePagina3} src={Text} alt="" />
+            <div className='buttons1'>
+                <div className='divCarrinho' onClick={mudarDePagina4}>
+                <button className='carrinho'>carrinho</button>
+                <img className='imgCarrinho' src={carrinho}></img>
+                </div>
+                <button className='signup1' onClick={mudarDePagina2}>sign up</button>
+                <button className='signin1' onClick={mudarDePagina1}>sign in</button>
             </div>
         </div>
     )
