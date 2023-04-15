@@ -1,7 +1,8 @@
 import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 import pizzaexemplo from "../../assets/pizzaexemplo.png";
 import { useNavigation } from "@react-navigation/native";
-function Item() {
+
+export default function Item({ pizza }) {
   const navigation = useNavigation();
   return (
     <View
@@ -14,7 +15,7 @@ function Item() {
     >
       <View style={styles.item}>
         <Image
-          source={pizzaexemplo}
+          source={{ uri: pizza.imagem}}
           style={{
             height: 120,
             width: 120,
@@ -24,8 +25,8 @@ function Item() {
           }}
         />
         <View style={styles.box}>
-          <Text style={styles.title}>Pepperoni</Text>
-          <Text style={styles.infos}>sauce, cheese, pepperoni</Text>
+          <Text style={styles.title}>{pizza.nome}</Text>
+          <Text style={styles.infos}>{pizza.descricao}</Text>
           <View
             style={{
               flexDirection: "row",
@@ -45,7 +46,7 @@ function Item() {
                 add to cart
               </Text>
             </TouchableOpacity>
-            <Text style={styles.price}>20$</Text>
+            <Text style={styles.price}>{pizza.preco}</Text>
           </View>
         </View>
       </View>
@@ -100,4 +101,3 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 });
-export default Item;
