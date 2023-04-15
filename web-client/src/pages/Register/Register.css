@@ -1,99 +1,70 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap");
 
-.header {
-    width: 100vw;
-    height: 15vh;
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
-    z-index: 1;
-    position: sticky;
+.conteudoregister {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #efefef;
+  width: 100vw;
+  height: 88vh;
 }
 
-.img {
-    height: 80%;
-    margin-left: 1em;
+.blocoregister {
+  width: 30%;
+  height: 70%;
+  border-radius: 20px;
+  background-color: #fff;
+  text-align: center;
+  box-shadow: 1vw 1vw 1vw rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.buttons {
-    width: 20%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.titleregister {
+  font-family: "Poppins";
+  font-size: 3.5vw;
+  color: #8e1c1e;
+  margin-top: 0px;
 }
 
-.signup {
-    color: #8e1c1e;
-    background-color: transparent;
+
+
+.buttonregister {
+  font-family: "Poppins";
+  padding: 0.03em 2em;
+  width: 13vw;
+  border-radius: 10px;
+  font-size: 2vw;
+  border: none;
+  background-color: #8e1c1e;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin: .5em auto;
 }
 
-.signin {
-    background-color: #8e1c1e;
-    color: white;
+.fundoRegister{
+  height: 10vw;
+  margin: auto;
 
 }
 
-.signin,
-.signup {
-    font-family: "Poppins";
-    padding: 10px;
-    width: 40%;
-    border-radius: 10px;
-    font-size: 1.5em
+.buttonregister:hover {
+  transition: .2s linear;
+  opacity: .8;
 }
-
-.signin:hover,
-.signup:hover {
-    opacity: .7;
-    transition: .2s;
+.buttonregister:not(hover) {
+  transition: .2s linear;
 }
-
-.signin:not(:hover),
-.signup:not(:hover) {
-    transition: .2s;
+.buttonregister:active {
+  transition: .1s linear;
+  transform: translateY(2px);
+  opacity: .9;
+  box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
 }
-
-.signin:active,
-.signup:active {
-    transform: translateY(1px);
-    box-shadow: 0px 5px 3px rgba(0, 0, 0, 0.2);
-}
-
-.cont {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #efefef;
-    width: 100vw;
-    height: 90vh
-}
-
-.block {
-    width: 30%;
-    height: 70%;
-    border-radius: 20px;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    flex-direction: column
-}
-
-.title {
-    font-family: "Poppins";
-    font-size: 3em;
-    color: #8e1c1e;
-}
-
-input {
-    width: 60%;
-    height: fit-content;
-    margin: auto;
-    border: 2px solid #8e1c1e;
-    padding: .5em 2em;
-    border-radius: 5px;
-    font-family: 'Poppins';
-    font-weight: 300;
-    outline: none;
+.blocoregister > div {
+  width: 90%;
+  height: 100%;
 }

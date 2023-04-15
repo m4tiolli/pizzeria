@@ -5,7 +5,6 @@ import {
   Image,
   TouchableOpacity,
   Text,
-  TextInput,
 } from "react-native";
 import {
   useFonts,
@@ -17,6 +16,8 @@ import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
 
 const Autentication = () => {
+
+
   const [isLoginFormVisible, setIsLoginFormVisible] = useState(true);
   const toggleForm = () => {
     setIsLoginFormVisible(!isLoginFormVisible);
@@ -29,7 +30,7 @@ const Autentication = () => {
 
   return (
     <View style={styles.docker}>
-      <View style={{justifyContent:'center', alignItems: 'baseline', paddingBottom: 80}}>
+      <View style={{justifyContent:'center', alignItems: 'baseline', paddingBottom: 20}}>
         <Image
           source={require("../assets/logo2.png")}
           style={{ height: 120, width: 120 }}
@@ -44,7 +45,7 @@ const Autentication = () => {
           <Text style={styles.text}>log in</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.button, underline]}
+          style={styles.button}
           disabled={!isLoginFormVisible}
           onPress={toggleForm}
         >
@@ -70,12 +71,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     backgroundColor: "#efefef",
-    paddingBottom: 50
+    marginBottom: 30
   },
   text: {
     fontFamily: "Poppins_600SemiBold",
     color: "#8E1C1A",
-    fontSize: 20,
+    fontSize: 25,
     letterSpacing: 1,
   },
   dockerauth: {
@@ -125,13 +126,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontFamily: "Poppins_600SemiBold",
     fontSize: 30,
-  },
-});
-
-const underline = StyleSheet.create({
-  under: {
-    textDecorationLine: "underline",
-    textDecorationColor: "#8e1c1a",
   },
 });
 

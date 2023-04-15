@@ -2,8 +2,8 @@
 
 .header {
     width: 100vw;
-    height: 15vh;
-    background-color: white;
+    height: 12vh;
+    background-color: #efefef;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,46 +17,63 @@
     margin-left: 1em;
 }
 
-.buttons {
-    width: 20%;
+.buttons1 {
+    width: 30%;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    
 }
 
-.signup {
+.signup1 {
     color: #8e1c1e;
     background-color: transparent;
+    margin-right: 0px;
 }
 
-.signin {
+.signin1 {
     background-color: #8e1c1e;
     color: white;
-
+    margin-right: 0px;
 }
 
-.signin,
-.signup {
+.signin1,
+.signup1 {
     font-family: "Poppins";
-    padding: 10px;
-    width: 40%;
+    padding: 5px;
+    width: 30%;
     border-radius: 10px;
-    font-size: 1.5em
+    font-size: 1.5vw;
+    border: none; 
 }
 
-.signin:hover,
-.signup:hover {
+.signin1:hover,
+.signup1:hover {
     opacity: .7;
     transition: .2s;
 }
 
-.signin:not(:hover),
-.signup:not(:hover) {
+.signin1:not(:hover),
+.signup1:not(:hover) {
     transition: .2s;
 }
 
-.signin:active,
-.signup:active {
+.signin1:active,
+.signup1:active {
     transform: translateY(1px);
     box-shadow: 0px 5px 3px rgba(0, 0, 0, 0.2);
+}
+
+.divCarrinho{
+    background-color: #8e1c1e;
+    color: white;
+    margin-right: 0px;
+}
+
+.carrinho{
+    width: 80%;
+}
+
+.imgCarrinh{
+    width: 20%;
 }

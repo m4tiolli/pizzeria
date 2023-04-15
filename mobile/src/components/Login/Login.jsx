@@ -5,8 +5,10 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
+import { useNavigation } from '@react-navigation/native'
 
 export default function Login() {
+  const navigation = useNavigation();
   return (
     <View style={styles.dockerauth}>
       <View style={styles.boxinput}>
@@ -27,7 +29,7 @@ export default function Login() {
         />
       </View>
       <TouchableOpacity style={styles.next}>
-        <Text style={styles.nexttext}>login</Text>
+        <Text style={styles.nexttext} onPress={()=>{navigation.navigate("Home")}}>login</Text>
       </TouchableOpacity>
     </View>
   );
@@ -49,6 +51,7 @@ const styles = StyleSheet.create({
     borderColor: "#8E1C1A",
     justifyContent: "center",
     alignItems: "center",
+    marginVertical: 15
   },
   textinput: {
     top: -14,
@@ -76,6 +79,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: "center",
     justifyContent: "center",
+    marginVertical: 10
   },
   nexttext: {
     color: "#fff",
