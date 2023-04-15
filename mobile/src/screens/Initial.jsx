@@ -54,8 +54,8 @@ export default function Initial() {
   return (
     <View style={styles.docker} gap={30}>
       <Image
-        source={require("../assets/text.svg")}
-        style={{ width: 135, height: 170, marginVertical: 60 }}
+        source={require("../assets/logo2.png")}
+        style={{ width: 170, height: 170, marginVertical: 60 }}
       />
       <View style={styles.buttons}>
         <TouchableOpacity

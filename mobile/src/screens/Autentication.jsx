@@ -5,7 +5,6 @@ import {
   Image,
   TouchableOpacity,
   Text,
-  TextInput,
 } from "react-native";
 import {
   useFonts,
@@ -33,8 +32,8 @@ const Autentication = () => {
     <View style={styles.docker}>
       <View style={{justifyContent:'center', alignItems: 'baseline', paddingBottom: 20}}>
         <Image
-          source={require("../assets/text.svg")}
-          style={{ height: 120, width: 95 }}
+          source={require("../assets/logo2.png")}
+          style={{ height: 120, width: 120 }}
         />
       </View>
       <View style={styles.buttons}>

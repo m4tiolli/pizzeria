@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   View,
-  Image,
   StyleSheet,
   TextInput,
   ScrollView,
   StatusBar,
-  Button,
-  Text,
+  Image,
 } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
 import Loading from "../components/Loading";
@@ -33,11 +31,23 @@ import {
   Poppins_900Black_Italic,
 } from "@expo-google-fonts/poppins";
 import Item from "../components/Item/Item";
-import "react-native-gesture-handler";
-import { Drawer } from "react-native-drawer-layout";
 
 export default function Landing() {
-  const [filterOpen, setFilterOpen] = useState(false);
+  useEffect(() => {
+    fetch("https://localhost:44383/api/pizza", {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        setUsuarios(json);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Erro ao buscar pizzas");
+      });
+  }, []);
+
+  const [usuarios, setUsuarios] = useState([]);
   const [fontsLoaded] = useFonts({
     Poppins_100Thin,
     Poppins_100Thin_Italic,
@@ -58,56 +68,37 @@ export default function Landing() {
     Poppins_900Black,
     Poppins_900Black_Italic,
   });
-
   if (!fontsLoaded) return <Loading />;
+
   return (
     <View style={styles.docker}>
       <StatusBar hidden={true} />
       <View style={styles.header}>
-        <Icon name="filter" size={30} color={"#8e1c1c"} />
-        <View style={styles.input}>
-          <TextInput
-            placeholder="pesquisar por pizzas"
-            style={{
-              fontFamily: "Poppins_300Light_Italic",
-              outline: "none",
-              paddingRight: "20%",
-              paddingLeft: 10,
-            }}
-          />
+        <Image
+          source={require("../assets/logo2.png")}
+          style={{ height: '30%' }}
+        />
+        <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-evenly'}}>
+          <Icon name="filter" size={30} color={"#8e1c1c"} />
+          <View style={styles.input}>
+            <TextInput
+              placeholder="pesquisar por pizzas"
+              style={{
+                fontFamily: "Poppins_300Light_Italic",
+                outline: "none",
+                paddingRight: "20%",
+                paddingLeft: 10,
+              }}
+            />
+            <Icon name="search1" size={30} color={"#8e1c1c"} />
+          </View>
         </View>
       </View>
       <ScrollView style={{ paddingBottom: 400 }}>
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
+        {usuarios.map((pizza, index) => (
+          <Item pizza={pizza} key={index} />
+        ))}
       </ScrollView>
-        <Drawer
-          open={filterOpen}
-          onOpen={() => setFilterOpen(true)}
-          onClose={() => setFilterOpen(false)}
-          renderDrawerContent={() => {
-            return <Text>Drawer content</Text>;
-          }}
-        >
-          <Icon
-            name="search1"
-            size={30}
-            color={"#8e1c1c"}
-            onPress={() => setFilterOpen((prevOpen) => !prevOpen)}
-          />
-          <Button
-            onPress={() => setFilterOpen((prevOpen) => !prevOpen)}
-            title="oi"
-          />
-        </Drawer>
     </View>
   );
 }
@@ -120,11 +111,12 @@ const styles = StyleSheet.create({
   header: {
     height: "10%",
     flexDirection: "col",
+    alignItems: 'center'
   },
   input: {
     flexDirection: "row",
     width: "70%",
-    height: "80%",
+    height: "60%",
     justifyContent: "space-between",
     alignItems: "center",
     shadowColor: "#171717",
