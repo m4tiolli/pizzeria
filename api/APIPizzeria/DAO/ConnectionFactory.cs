@@ -10,7 +10,7 @@ namespace APIPizzeria.DAO
     {
         public static MySqlConnection Build()
         {
-            return new MySqlConnection("Server=localhost;Database=pizzeria;Uid=root;Pwd=root;");
+            return new MySqlConnection("Server=localhost;Database=pizzeria;Uid=root;Pwd=;");
         }
     }
 }

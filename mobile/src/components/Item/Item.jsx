@@ -22,6 +22,7 @@ export default function Item({ pizza }) {
             position: "absolute",
             left: -35,
             top: -5,
+            borderRadius: 15
           }}
         />
         <View style={styles.box}>
