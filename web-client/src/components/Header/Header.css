@@ -68,12 +68,24 @@
     background-color: #8e1c1e;
     color: white;
     margin-right: 0px;
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    padding: 5px 
 }
 
 .carrinho{
-    width: 80%;
+    width: 90%;
+    background-color: #8e1c1e;
+    font-family: "Poppins";
+    border: none;
+    color: white;
+    font-size: 1.5vw;
+    
 }
 
 .imgCarrinh{
-    width: 20%;
+    height: auto;
+    width: auto;
 }
