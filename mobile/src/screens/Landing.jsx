@@ -6,6 +6,7 @@ import {
   ScrollView,
   StatusBar,
   Image,
+  PixelRatio
 } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
 import Loading from "../components/Loading";
@@ -75,11 +76,11 @@ export default function Landing() {
       <StatusBar hidden={true} />
       <View style={styles.header}>
         <Image
-          source={require("../assets/logo2.png")}
-          style={{ height: '30%' }}
+          source={require("../assets/text.svg")}
+          style={{ height: PixelRatio.getPixelSizeForLayoutSize(20), width: PixelRatio.getPixelSizeForLayoutSize(16) }}
         />
         <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-evenly'}}>
-          <Icon name="filter" size={30} color={"#8e1c1c"} />
+          <Icon name="filter" size={PixelRatio.getPixelSizeForLayoutSize(10)} color={"#8e1c1c"} />
           <View style={styles.input}>
             <TextInput
               placeholder="pesquisar por pizzas"
@@ -90,11 +91,11 @@ export default function Landing() {
                 paddingLeft: 10,
               }}
             />
-            <Icon name="search1" size={30} color={"#8e1c1c"} />
+            <Icon name="search1" size={PixelRatio.getPixelSizeForLayoutSize(10)} color={"#8e1c1c"} />
           </View>
         </View>
       </View>
-      <ScrollView style={{ paddingBottom: 400 }}>
+      <ScrollView style={{ paddingBottom: PixelRatio.getPixelSizeForLayoutSize(100) }}>
         {usuarios.map((pizza, index) => (
           <Item pizza={pizza} key={index} />
         ))}
@@ -109,14 +110,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#efefef",
   },
   header: {
-    height: "10%",
+    height: "15%",
     flexDirection: "col",
     alignItems: 'center'
   },
   input: {
     flexDirection: "row",
     width: "70%",
-    height: "60%",
+    height: PixelRatio.getPixelSizeForLayoutSize(15),
     justifyContent: "space-between",
     alignItems: "center",
     shadowColor: "#171717",

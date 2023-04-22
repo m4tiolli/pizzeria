@@ -1,4 +1,4 @@
-import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, Image, ScrollView, TouchableOpacity, PixelRatio } from "react-native";
 import ItemCart from "../components/ItemCart/ItemCart";
 import Icon from "react-native-vector-icons/FontAwesome";
 const pizza = require("../assets/pizzaexemplo.png");
@@ -28,9 +28,9 @@ function Cart() {
   return (
     <View style={{ width: "100%", height: "100%" }}>
       <View style={{ alignItems: "center" }}>
-        <Image
-          source={require("../assets/logo2.png")}
-          style={{ width: 50, height: 50 }}
+      <Image
+          source={require("../assets/text.svg")}
+          style={{ height: PixelRatio.getPixelSizeForLayoutSize(20), width: PixelRatio.getPixelSizeForLayoutSize(16) }}
         />
       </View>
       <ScrollView style={{ paddingBottom: 200 }}>
@@ -49,7 +49,7 @@ function Cart() {
             margin: "auto",
           }}
         >
-          <Icon name="trash-o" color={"#8e1c1a"} size={50} />
+          <Icon name="trash-o" color={"#8e1c1a"} size={PixelRatio.getPixelSizeForLayoutSize(15)} />
           <TouchableOpacity
             style={{
               backgroundColor: "#8E1C1A",

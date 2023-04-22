@@ -1,7 +1,15 @@
-import { View, TouchableOpacity, StyleSheet, Text, Image } from "react-native";
+import {
+  View,
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  Image,
+  PixelRatio,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import {
-  useFonts, Poppins_100Thin,
+  useFonts,
+  Poppins_100Thin,
   Poppins_100Thin_Italic,
   Poppins_200ExtraLight,
   Poppins_200ExtraLight_Italic,
@@ -18,12 +26,12 @@ import {
   Poppins_800ExtraBold,
   Poppins_800ExtraBold_Italic,
   Poppins_900Black,
-  Poppins_900Black_Italic
+  Poppins_900Black_Italic,
 } from "@expo-google-fonts/poppins";
 
-import Icon from "react-native-vector-icons/SimpleLineIcons";
+import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import Loading from "../components/Loading";
-
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 export default function Initial() {
   const navigation = useNavigation();
@@ -46,16 +54,20 @@ export default function Initial() {
     Poppins_800ExtraBold,
     Poppins_800ExtraBold_Italic,
     Poppins_900Black,
-    Poppins_900Black_Italic
+    Poppins_900Black_Italic,
   });
 
-  if (!fontsLoaded) return <Loading />
+  if (!fontsLoaded) return <Loading />;
 
   return (
     <View style={styles.docker} gap={30}>
       <Image
-        source={require("../assets/logo2.png")}
-        style={{ width: 170, height: 170, marginVertical: 60 }}
+        source={require("../assets/text.svg")}
+        style={{
+          width: PixelRatio.getPixelSizeForLayoutSize(50),
+          height: PixelRatio.getPixelSizeForLayoutSize(63),
+          marginVertical: 60,
+        }}
       />
       <View style={styles.buttons}>
         <TouchableOpacity
@@ -64,7 +76,11 @@ export default function Initial() {
             navigation.navigate("Autentication");
           }}
         >
-          <Icon name="login" size={30} color="#fff" />
+          <SimpleLineIcons
+            name="login"
+            size={PixelRatio.getPixelSizeForLayoutSize(8)}
+            color="#fff"
+          />
           <Text style={styles.text}>log in or register</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -73,7 +89,11 @@ export default function Initial() {
             navigation.navigate("Home");
           }}
         >
-          <Image source={require('../assets/iconuser.png')} style={{ width: 30, height: 30 }} />
+          <FontAwesome
+            name="user"
+            size={PixelRatio.getPixelSizeForLayoutSize(8)}
+            color="#fff"
+          />
           <Text style={styles.text}>enter as a guest</Text>
         </TouchableOpacity>
       </View>
@@ -89,7 +109,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    gap: 120
+    gap: 120,
   },
   button: {
     backgroundColor: "#8E1C1A",
@@ -97,10 +117,10 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 5,
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "space-evenly",
     alignItems: "center",
     flexDirection: "row",
-    marginVertical: 10
+    marginVertical: 10,
   },
   buttons: {
     gap: 30,
