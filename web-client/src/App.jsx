@@ -1,7 +1,7 @@
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register';
-import Cardapio from './pages/Pizzas/Pizzas';
+import Produtos from './pages/Produtos/Produtos';
 import RecuperarSenha from './pages/RecuperarSenha/RecuperarSenha';
 import RecuperarSenha2 from './pages/RecuperarSenha2/RecuperarSenha2';
 import SelectEnde from './pages/SelectEnde/SelectEnde';
@@ -23,8 +23,8 @@ function App() {
       element: <Register />,
     },
     {
-      path: "/Pizzas",
-      element: <Cardapio />,
+      path: "/Produtos",
+      element: <Produtos />,
     },
     {
       path: "/RecuperarSenha",
