@@ -10,7 +10,7 @@ function Home() {
   const navigate = useNavigate();
 
     function navcardapio() {
-        navigate("/Pizzas")
+        navigate("/Produtos")
     }
     function navSelectEnde() {
       navigate("/SelectEnde")
