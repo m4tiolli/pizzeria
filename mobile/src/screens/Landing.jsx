@@ -35,7 +35,7 @@ import Item from "../components/Item/Item";
 
 export default function Landing() {
   useEffect(() => {
-    fetch("https://localhost:44383/api/pizza", {
+    fetch("https://pizzeriatcc.azurewebsites.net/api/pizza", {
       method: "GET",
     })
       .then((response) => response.json())
