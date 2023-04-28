@@ -34,7 +34,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    background-color: #f2f2f4;
+    background-color: #fff;
     
  
 }
@@ -85,4 +85,6 @@
 .buttonLogin:active {
     background-color: #aa1818;
     opacity: 1;
-}
+} 
+
+

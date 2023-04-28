@@ -14,9 +14,9 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import ModalComp from "../.././components/ModalCompCadastroProduto.jsx";
+import ModalComp from "../.././components/ModalCompCadastroBalcao";
 
-const VerProdutos = () => {
+const VerBalcoes = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [data, setData] = useState([]);
   const [dataEdit, setDataEdit] = useState({});
@@ -27,19 +27,19 @@ const VerProdutos = () => {
   });
 
   useEffect(() => {
-    const db_costumer = localStorage.getItem("cad_cliente")
-      ? JSON.parse(localStorage.getItem("cad_cliente"))
+    const db_costumer = localStorage.getItem("cad_balcao")
+      ? JSON.parse(localStorage.getItem("cad_balcao"))
       : [];
 
     setData(db_costumer);
   }, [setData]);
 
-  const handleRemove = (product_code) => {
-    const newArray = data.filter((item) => item.product_code !== product_code);
+  const handleRemove = (CPF) => {
+    const newArray = data.filter((item) => item.CPF !== CPF);
 
     setData(newArray);
 
-    localStorage.setItem("cad_cliente", JSON.stringify(newArray));
+    localStorage.setItem("cad_balcao", JSON.stringify(newArray));
   };
 
   return (
@@ -57,9 +57,9 @@ const VerProdutos = () => {
       fontSize="20px"
       fontFamily="poppins"
     >
-      <Box maxW={1000} w="100%" h="100vh" py={10} px={2}>
+      <Box maxW={1200} w="100%" h="100vh" py={10} px={2}>
         <Button bg="#8e1c1a" color="white" onClick={() => [setDataEdit({}), onOpen()]}>
-          NOVO PRODUTO
+          NOVO BALCAO
         </Button>
 
         <Box overflowY="auto" height="100%">
@@ -70,16 +70,22 @@ const VerProdutos = () => {
                   Nome
                 </Th>
                 <Th maxW={isMobile ? 5 : 100} fontSize="20px">
-                  Preço
+                  CPF
                 </Th>
                 <Th maxW={isMobile ? 5 : 100} fontSize="20px">
-                  Categoria
+                  Email
                 </Th>
                 <Th maxW={isMobile ? 5 : 100} fontSize="20px">
-                  Descrição
+                  Usuário
                 </Th>
                 <Th maxW={isMobile ? 5 : 100} fontSize="20px">
-                  Código
+                  Celular
+                </Th>
+                <Th maxW={isMobile ? 5 : 100} fontSize="20px">
+                  Senha
+                </Th>
+                <Th maxW={isMobile ? 5 : 100} fontSize="20px">
+                  CEP
                 </Th>
                 
                 <Th p={0}></Th>
@@ -87,18 +93,20 @@ const VerProdutos = () => {
               </Tr>
             </Thead>
             <Tbody>
-              {data.map(({ name, price, category, description, product_code }, index) => (
-                <Tr key={index} cursor="pointer " _hover={{ bg: "gray.100" }}>
+              {data.map(({ name, email, CPF, phone_number, password, user_name, CEP}, index) => (
+                <Tr key={index} cursor="pointer" _hover={{ bg: "gray.100" }}>
                   <Td maxW={isMobile ? 5 : 100}>{name}</Td>
-                  <Td maxW={isMobile ? 5 : 100}>{price}</Td>
-                  <Td maxW={isMobile ? 5 : 100}>{category}</Td> 
-                  <Td maxW={isMobile ? 5 : 100}>{description}</Td> 
-                  <Td maxW={isMobile ? 5 : 100}>{product_code}</Td>
+                  <Td maxW={isMobile ? 5 : 100}>{CPF}</Td>
+                  <Td maxW={isMobile ? 5 : 100}>{email}</Td> 
+                  <Td maxW={isMobile ? 5 : 100}>{user_name}</Td>
+                  <Td maxW={isMobile ? 5 : 100}>{phone_number}</Td> 
+                  <Td maxW={isMobile ? 5 : 100}>{password}</Td>
+                  <Td maxW={isMobile ? 5 : 100}>{CEP}</Td>
                   <Td p={0}>
                     <EditIcon
                       fontSize={20}
                       onClick={() => [
-                        setDataEdit({ name, price, category, description, product_code, index }),
+                        setDataEdit({ name, CPF, email, user_name, phone_number, password, CEP, index }),
                         onOpen(),
                       ]}
                     />
@@ -106,7 +114,7 @@ const VerProdutos = () => {
                   <Td p={0}>
                     <DeleteIcon
                       fontSize={20}
-                      onClick={() => handleRemove(product_code)}
+                      onClick={() => handleRemove(CPF)}
                     />
                   </Td>
                 </Tr>
@@ -130,4 +138,4 @@ const VerProdutos = () => {
   );
 };
 
-export default VerProdutos;
+export default VerBalcoes;

@@ -1,5 +1,8 @@
 import React,{useState} from 'react';
 import './VerEconomia.css'
+
+
+
 export default function VerEconomia() {
   return (
 <>

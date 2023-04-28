@@ -1,61 +1,31 @@
-import React, { useState } from "react";
 
-function Economia() {
-  const [ganhos, setGanhos] = useState(0);
-  const [despesas, setDespesas] = useState(0);
-  const [mes, setMes] = useState("");
+import { useNavigate } from "react-router-dom";
+import logo from "../../assets/logo.png";
 
-  const handleGanhosChange = (event) => {
-    setGanhos(event.target.value);
-  };
+export default function Estoque() {
+  const navigate = useNavigate();
 
-  const handleDespesasChange = (event) => {
-    setDespesas(event.target.value);
-  };
+  function MudarParaPaginaVerEconomia() {
+    navigate("/VerEconomia");
+  }
+  
 
-  const handleMesChange = (event) => {
-    setMes(event.target.value);
-  };
-
-  const handleSalvarClick = () => {
-    // Salva ganhos e despesas no banco de dados com o mês selecionado
-    // Por exemplo, usando a API fetch() ou axios()
-    console.log(`Salvando ganhos:${ganhos} despesas:${despesas} mês:${mes}`);
-  };
 
   return (
-    <div>
-      <h2>Área de Economia</h2>
-      <div>
-        <label htmlFor="mes">Mês:</label>
-        <input
-          type="text"
-          id="mes"
-          value={mes}
-          onChange={handleMesChange}
-        />
+    <div className="services-container">
+      <div className="header">
+        <img src={logo} alt="" className="logo" />
+        <h1 className="title">Pizzeria</h1>
       </div>
-      <div>
-        <label htmlFor="ganhos">Ganhos:</label>
-        <input
-          type="number"
-          id="ganhos"
-          value={ganhos}
-          onChange={handleGanhosChange}
-        />
+      <div className="buttoncontainer">
+        <h1 className="services-title">Economia</h1>
+        <div className="button-row">
+          <button className="button red-button" onClick={MudarParaPaginaVerEconomia}>
+            Ver Economia
+          </button>
+        </div>
       </div>
-      <div>
-        <label htmlFor="despesas">Despesas:</label>
-        <input
-          type="number"
-          id="despesas"
-          value={despesas}
-          onChange={handleDespesasChange}
-        />
-      </div>
-      <button onClick={handleSalvarClick}>Salvar</button>
+     
     </div>
   );
 }
-
-export default Economia;
