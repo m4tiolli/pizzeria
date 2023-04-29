@@ -1,53 +1,87 @@
-
-import "./Login.css"
 import { useNavigate } from "react-router-dom";
-
+import { useRef } from "react";
+import "./Login.css";
 export default function Login() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    function mudarDePagina() {
-      navigate("/Services");
+  const containerRef = useRef(null);
+  function mudarDePagina() {
+    navigate("/Services");
   }
-  
+  function handleSignUpClick() {
+    containerRef.current.classList.add("right-panel-active");
+  }
+  function handleSignInClick() {
+    containerRef.current.classList.remove("right-panel-active");
+  }
   return (
-    
-    <div classname="body">
-      <div className="login-container">
-        <div className="buttonsForm">
-          <div className="btnColor"></div>
-          <login-button id="btnSignin">Sign in</login-button>
-          <login-button id="btnSignup" >Sign up</login-button>
-        </div>
-    
-        <form id="signin">
-          <input type="text" placeholder="Email" required />
-          <i className="fas fa-envelope iEmail"></i>
-          <input type="password" placeholder="Password" required />
-          <i className="fas fa-lock iPassword"></i>
-          <div className="divCheck">
-            <input type="checkbox" />
-            <span>Remember Password</span>
+    <div className="body">
+    <div className="container" ref={containerRef}>
+      <div className="form-container sign-up-container">
+        <form action="#">
+          <h1>Create Account</h1>
+          <div className="social-container">
+            <a href="#" className="social">
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" className="social">
+              <i className="fab fa-google-plus-g"></i>
+            </a>
+            <a href="#" className="social">
+              <i className="fab fa-linkedin-in"></i>
+            </a>
           </div>
-          <button type="submit">Sign in</button>
-        </form>
-    
-        <form id="signup">
-          <input type="text" placeholder="Email" required />
-          <i className="fas fa-envelope iEmail"></i>
-          <input type="password" placeholder="Password" required />
-          <i className="fas fa-lock iPassword"></i>
-          <input type="password" placeholder="Password" required />
-          <i className="fas fa-lock iPassword2"></i>
-          <div className="divCheck">
-            <input type="checkbox" required />
-            <span>Terms</span>
-          </div>
-          <login-button type="submit" onClick={mudarDePagina}>Sign up</login-button>
+          <span>or use your email for registration</span>
+          <input type="text" placeholder="Name" />
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="Password" />
+          <button>Sign Up</button>
         </form>
       </div>
-    
-      <script src="Login.js"></script>
-    </div>
-   
-  );
+      <div className="form-container sign-in-container">
+        <form action="#">
+          <h1>Sign in</h1>
+          <div className="social-container">
+            <a href="#" className="social">
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" className="social">
+              <i className="fab fa-google-plus-g"></i>
+            </a>
+            <a href="#" className="social">
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+          <span>or use your account</span>
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="Password" />
+          <a href="#">Forgot your password?</a>
+          <button onClick={mudarDePagina}>Sign In</button>
+        </form>
+      </div>
+      <div className="overlay-container">
+        <div className="overlay">
+          <div className="overlay-panel overlay-left">
+            <h1>Welcome Back!</h1>
+            <p>
+              To keep connected with us please login with your personal details
+            </p>
+            <button className="ghost" onClick={handleSignInClick} id="signIn">
+              Sign In
+            </button>
+          </div>
+          <div className="overlay-panel overlay-right">
+            <h1>Hi There!</h1>
+            <p>Enter your personal details to open an account with us</p>
+            <button className="ghost" onClick={handleSignUpClick} id="signUp">
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+);
+
 }
+

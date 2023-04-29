@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
-export default function Estoque() {
+export default function Economia() {
   const navigate = useNavigate();
 
   function MudarParaPaginaVerEconomia() {
