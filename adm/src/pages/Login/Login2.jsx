@@ -19,7 +19,7 @@ export default function Login() {
     <div className="container" ref={containerRef}>
       <div className="form-container sign-up-container">
         <form action="#">
-          <h1>Create Account</h1>
+          <h1 className="info">Create Account</h1>
           <div className="social-container">
             <a href="#" className="social">
               <i className="fab fa-facebook-f"></i>

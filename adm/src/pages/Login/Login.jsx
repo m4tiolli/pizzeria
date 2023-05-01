@@ -1,33 +1,88 @@
-import "./Login.css"
-import logo from "../../assets/logo.png"
-
 import { useNavigate } from "react-router-dom";
-
+import { useRef } from "react";
+import "./Login.css";
 export default function Login() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    function mudarDePagina() {
-        navigate("/Services");
-    }
-
-    return (
-        <div>
-            <div className="header">
-
-                    <img src={logo} alt="" className="logo" />
-                    <h1 className="title">Pizzeria Admin</h1>
-            </div>
-          
-            <div className="container">
-                <div className="block">
-                    <h1 className="info">Sign in with your <br /> admin account</h1>
-                    <input type="text" className="input" placeholder="User" name="" id="" /><br />
-                    <input type="text" className="input" placeholder="Password" name="" id="" /><br />
-                    {/*<button className="button">Login</button>*/}
-                  <button className="buttonLogin" onClick={mudarDePagina}>Login</button>
-                </div>
-            </div>
+  const containerRef = useRef(null);
+  function mudarDePagina() {
+    navigate("/Services");
+  }
+  function handleSignUpClick() {
+    containerRef.current.classList.add("right-panel-active");
+  }
+  function handleSignInClick() {
+    containerRef.current.classList.remove("right-panel-active");
+  }
+  return (
+    <div className="Login">
+    <div className="container" ref={containerRef}>
+      <div className="form-container sign-up-container">
+        <form action="#">
+          <h1>Criar Conta</h1>
+          <div className="social-container">
+            <a href="#" className="social">
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" className="social">
+              <i className="fab fa-google-plus-g"></i>
+            </a>
+            <a href="#" className="social">
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+          <span>or use your email for registration</span>
+          <input type="text" placeholder="Name" />
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="Password" />
+          <button>Sign Up</button>
+        </form>
+      </div>
+      <div className="form-container sign-in-container">
+        <form action="#">
+          <h1 className="info">Entrar</h1>
+          <div className="social-container">
+            <a href="#" className="social">
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" className="social">
+              <i className="fab fa-google-plus-g"></i>
+            </a>
+            <a href="#" className="social">
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+          <span>ou use sua conta</span>
+          <input type="email" placeholder="Email" />
+          <br /><br />
+          <input type="password" placeholder="Password" />
+          <a href="#">Esqueceu sua senha?</a>
+          <button  className="Login-button" onClick={mudarDePagina}>Entrar</button>
+        </form>
+      </div>
+      <div className="overlay-container">
+        <div className="overlay">
+          <div className="overlay-panel overlay-left">
+            <h1>Bem-vindo de volta!</h1>
+            <p>
+              To keep connected with us please login with your personal details
+            </p>
+            <button className="Login-button-ghost" onClick={handleSignInClick} id="signIn">
+              Sign In
+            </button>
+          </div>
+          <div className="overlay-panel overlay-right">
+            <h1>Hi There!</h1>
+            <p>Enter your personal details to open an account with us</p>
+            <button className="Login-button-ghost" onClick={handleSignUpClick} id="signUp">
+              Sign Up
+            </button>
+          </div>
         </div>
-    )
+      </div>
+      </div>
+      </div>
+);
+
 }
 

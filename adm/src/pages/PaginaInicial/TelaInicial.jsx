@@ -62,7 +62,7 @@ function TrocaImagem(caminho){
           <div className="circle"></div>
           <div className="main-text">
             <img src="" alt="" />
-            <h3>Pizzaria's ADM.</h3>
+            <h3>Pizzeria's ADM.</h3>
             
             <p>
             Administrar uma pizzaria exige organização e gestão eficiente de estoque e equipe para garantir a qualidade e satisfação dos clientes.
