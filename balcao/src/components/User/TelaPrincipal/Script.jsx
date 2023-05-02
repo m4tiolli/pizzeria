@@ -83,4 +83,5 @@ size.querySelector("span").innerHTML = pizzaJson[key].sizes[sizeIndex];
 };
 
 const escolherTamanhoPreco = (key) => {}
+
 // Ações nos botões de tamanho

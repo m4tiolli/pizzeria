@@ -1,7 +1,7 @@
 import "./User_TelaPrincipal.css";
 import logo from "../../../assets/logo.png";
-// import "pizzas.js";
-import "script.jsx"
+import "./Pizzas.js";
+import "./Script.jsx";
 
 
 export default function Tela_principal() {
