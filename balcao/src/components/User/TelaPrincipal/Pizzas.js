@@ -1,4 +1,7 @@
-let pizzaJson = [
+//import "./User_TelaPrincipal.jsx";
+//dados das pizzas
+
+let pizzas  = [
   {
       id: 1,
       name: 'Mussarela',
@@ -96,3 +99,5 @@ let pizzaJson = [
       description: 'Creme de leite, lascas de chocolate e morangos'
     }
 ];
+
+export default pizzas;
