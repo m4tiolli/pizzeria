@@ -19,7 +19,7 @@ export default function Login() {
     <div className="container" ref={containerRef}>
       <div className="form-container sign-up-container">
         <form action="#">
-          <h1>Criar Conta</h1>
+          <h1 className="info">Criar Conta</h1>
           <div className="social-container">
             <a href="#" className="social">
               <i className="fab fa-facebook-f"></i>
@@ -31,11 +31,11 @@ export default function Login() {
               <i className="fab fa-linkedin-in"></i>
             </a>
           </div>
-          <span>or use your email for registration</span>
+          <span>ou use seu e-mail para cadastro</span>
           <input type="text" placeholder="Name" />
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
-          <button>Sign Up</button>
+          <button className="Login-button">Cadastrar-se</button>
         </form>
       </div>
       <div className="form-container sign-in-container">
@@ -54,7 +54,7 @@ export default function Login() {
           </div>
           <span>ou use sua conta</span>
           <input type="email" placeholder="Email" />
-          <br /><br />
+          
           <input type="password" placeholder="Password" />
           <a href="#">Esqueceu sua senha?</a>
           <button  className="Login-button" onClick={mudarDePagina}>Entrar</button>
@@ -65,17 +65,17 @@ export default function Login() {
           <div className="overlay-panel overlay-left">
             <h1>Bem-vindo de volta!</h1>
             <p>
-              To keep connected with us please login with your personal details
+            Para manter-se conectado conosco, faça login com seus dados pessoais
             </p>
             <button className="Login-button-ghost" onClick={handleSignInClick} id="signIn">
-              Sign In
+              Entrar
             </button>
           </div>
           <div className="overlay-panel overlay-right">
-            <h1>Hi There!</h1>
-            <p>Enter your personal details to open an account with us</p>
+            <h1>Olá!</h1>
+            <p>Introduza os seus dados para abrir uma conta connosco</p>
             <button className="Login-button-ghost" onClick={handleSignUpClick} id="signUp">
-              Sign Up
+              Cadastrar-se
             </button>
           </div>
         </div>

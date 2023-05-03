@@ -1,13 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-.background{
-    width: 100vW;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #fff;
-}
+
+
 .header {
     width: 100vW;
     height: 10vh;
@@ -24,31 +17,9 @@
     text-transform: uppercase;
 }
 .logo {
-    height: 95%;
-    
+    height: 95%;   
 }
-.container {
-    width: 100vw;
-    height: 90vh;
-    font-size: 25px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    background-color: #fff;
-    
- 
-}
-.block {
-    width: fit-content;
-    height:fit-content;
-    padding: 2em;
-    background-color: #f7f7f7;
-    align-items: center;
-    text-align: center;
-    border-radius: 20px
-
-}
-
+/* esse .input, . button altera os botões e inputs do service */
 .input, .button {
     margin: .7em 0;
     border-radius: 8px;
@@ -58,6 +29,7 @@
     width: calc(60% - 1em);
     font-family: "Poppins";
 }
+/*  */
 .buttonLogin{
     box-sizing: border-box;
     width: 200px;
@@ -70,8 +42,8 @@
 
 .info {
     font-family: "Poppins";
-    
     font-weight: bold;
+	font-size: 30px;
 }
 .buttonLogin:hover {
     opacity: .9;
@@ -86,21 +58,15 @@
     background-color: #aa1818;
     opacity: 1;
 } 
-
-
 * {
 	box-sizing: border-box;
 }
-
 h1 {
-
 	margin: 0;
 }
-
 h2 {
 	text-align: center;
 }
-
 p {
 	font-size: 14px;
 	font-weight: 100;
@@ -108,11 +74,9 @@ p {
 	letter-spacing: 0.5px;
 	margin: 20px 0 30px;
 }
-
 span {
 	font-size: 12px;
 }
-
 a {
 	color: #333;
 	font-size: 14px;
@@ -152,7 +116,6 @@ a {
 
 .Login-button-ghost {
 	background-color: transparent;
-	
 	border-radius: 20px;
 	border: 1px solid #F2eee3;
 	background-color: #F2eee3;
@@ -175,13 +138,11 @@ form {
 	height: 100%;
 	text-align: center;
 }
-
 input {
 	background-color: #f2eee3;
 	border: none;
 	margin: 8px 0;
 	width: 100%;
-	
 }
 
 .container {
@@ -195,38 +156,32 @@ input {
 	max-width: 100%;
 	min-height: 480px;
 }
-
 .form-container {
 	position: absolute;
 	top: 0;
 	height: 100%;
 	transition: all 0.6s ease-in-out;
 }
-
 .sign-in-container {
 	left: 0;
 	width: 50%;
 	z-index: 2;
 }
-
 .container.right-panel-active .sign-in-container {
 	transform: translateX(100%);
 }
-
 .sign-up-container {
 	left: 0;
 	width: 50%;
 	opacity: 0;
 	z-index: 1;
 }
-
 .container.right-panel-active .sign-up-container {
 	transform: translateX(100%);
 	opacity: 1;
 	z-index: 5;
 	animation: show 0.6s;
 }
-
 @keyframes show {
 	0%, 49.99% {
 		opacity: 0;
@@ -238,7 +193,6 @@ input {
 		z-index: 5;
 	}
 }
-
 .overlay-container {
 	position: absolute;
 	top: 0;
@@ -249,11 +203,9 @@ input {
 	transition: transform 0.6s ease-in-out;
 	z-index: 100;
 }
-
 .container.right-panel-active .overlay-container{
 	transform: translateX(-100%);
 }
-
 .overlay {
 	background: #F2eee3;
 	background: -webkit-linear-gradient(to right, #F2eee3, #e7d4c5);
@@ -269,11 +221,9 @@ input {
   	transform: translateX(0);
 	transition: transform 0.6s ease-in-out;
 }
-
 .container.right-panel-active .overlay {
   	transform: translateX(50%);
 }
-
 .overlay-panel {
 	position: absolute;
 	display: flex;

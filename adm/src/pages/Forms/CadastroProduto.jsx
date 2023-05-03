@@ -24,7 +24,7 @@ function CadastroProduto() {
 
     const body = { nome, descricao, preco, imagem, tipo };
 
-    fetch("https://localhost:44383/api/pizza", {
+    fetch("https://pizzeriatcc.azurewebsites.net/api/pizza", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
@@ -161,6 +161,7 @@ function CadastroProduto() {
                     accept="image/*"
                     id="imagem"
                     display="none"
+                    value={imagem}
                     onChange={handleFileChange}
                   />
                 </Flex>
