@@ -1,3 +1,14 @@
 .Produtos-Container{
-    background-color: aliceblue;
+    background-color: #efefef;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
+    padding-top: 10vw;
+    padding-bottom: 20vw;
+    gap: 2.5vw;
+    padding-left: 2.5vw;
+}
+#root {
+    width: 100%;
+    height: fit-content;
 }

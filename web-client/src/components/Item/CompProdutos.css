@@ -1,5 +1,32 @@
 .containerPizza{
     background-color: aliceblue;
-    width: 460vw;
-    height: 400vw;
+    width: 20vw;
+    height: 20vw;
+}
+
+.fundoPizza{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.imgPizza{
+    width: 50%;
+    height: 50%;
+
+}
+
+.nomePizza{
+    font-size: 1.5vw;
+}
+
+.escricaoPizza{
+    font-size: 0.5vw;
+}
+
+.precoPizza{
+    font-size: 1.5vw;
 }

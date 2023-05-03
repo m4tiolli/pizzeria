@@ -3,7 +3,6 @@
 
 /* não vai ter barra de scroll e a tela não vai ter nenhum espaço em branco ao redor dela */
 * {
-  overflow: hidden;
   margin: 0;
   padding: 0;
 }
