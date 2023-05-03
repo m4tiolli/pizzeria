@@ -31,13 +31,13 @@ CompProdutos .containerPizza{
 
 .imgPizza{
 
- width: 50%;
+ width: 15;
 
- height: 50%;
+ height: 15%;
 
- top: -50px;
+ top: absolute;
 
- position: absolute;
+ position: relative;
 
 }
 
@@ -47,13 +47,14 @@ CompProdutos .containerPizza{
 .nomePizza{
 
  font-size: 1.5vw;
+ top: relative;
 
 }
 
 
 
 
-.escricaoPizza{
+.descricaoPizza{
 
  font-size: 0.5vw;
 

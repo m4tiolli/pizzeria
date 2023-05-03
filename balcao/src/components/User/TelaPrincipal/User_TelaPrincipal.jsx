@@ -27,28 +27,36 @@ export default function Tela_principal() {
 
     return (
         <div>
-            <div className="header">
-                <button className=""></button>
-                <img src={logo} alt="" className="logo" />
-                <h1 className="title">Pizzeria Balcão</h1>
-                <button className="buttonTitle"> Delivery </button>
-                <button className="buttonTitle"> Pedidos Para Retirar </button>
-                <button className="buttonTitle"> Mesas Disponíveis </button>
-                <button className="buttonTitle"> Estoque </button>
-                <button className="buttonTitle"> Chat </button>
-                <button className="buttonTitle"> User </button>
-            </div>
-
-            <main align="center">
-
-                <div className="input_pesquisar"><input className="input" type="text" placeholder="Pesquisar item" /></div>
-                <div className="pizza-area"></div>
-            </main>
             <div id="root"> 
+
+                <div className="header">
+                    <button className=""></button>
+                    <img src={logo} alt="" className="logo" />
+                    <h1 className="title">Pizzeria Balcão</h1>
+                    <button className="buttonTitle"> Delivery </button>
+                    <button className="buttonTitle"> Pedidos Para Retirar </button>
+                    <button className="buttonTitle"> Mesas Disponíveis </button>
+                    <button className="buttonTitle"> Estoque </button>
+                    <button className="buttonTitle"> Chat </button>
+                    <button className="buttonTitle"> User </button>
+                </div>
+
+                <main align="center">
+
+                    <input className="input" type="text" placeholder="Pesquisar item" />
+                    <div className="pizza-area"></div>
+                    <button className='button'>Pizzas</button>
+                    <button className='button'>Bebidas</button>
+                    <button className='button'>Aperitivos</button>
+                    <button className='button'>Promoções</button>
+            </main>
+
                 <div className="Produtos-Container">
                     {
                         
+                        
                         produtos.map((pizza, index) => (
+                            
                             <Produto pizza={pizza} key={index} />
                         ))
 
