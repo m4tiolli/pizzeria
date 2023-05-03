@@ -5,13 +5,14 @@ function Produto({ pizza }){
         <div className='containerPizza'>
             <div className="fundoPizza">
                 <img className='imgPizza' src={pizza.imagem}></img>
-            <div>
+            <div className="divTexts">
                 <h1 className='nomePizza'>{pizza.nome}</h1>
                 <h3 className='descricaoPizza' >{pizza.descricao}</h3>
-            <div>
-                <h3 className='precoPizza'>{pizza.preco}</h3>
-                <button></button>
+                <h3 className='precoPizza'>R${pizza.preco}</h3>
             </div>
+            <div className="buttonsPro">
+                <button className='btnAddCart' >Add to cart</button>
+                <button className='btnAlterar' >Alterar</button>
             </div>
             </div>
         </div>
