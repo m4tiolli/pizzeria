@@ -1,28 +1,31 @@
 import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
-import pizzaexemplo from "../../assets/pizzaexemplo.png";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Item({ pizza }) {
   const navigation = useNavigation();
+  function navegar() {
+    navigation.navigate("Produto", { pizzas: pizza });
+  }
   return (
-    <View
+    <TouchableOpacity
       style={{
         width: "100%",
         justifyContent: "center",
         alignItems: "center",
         marginVertical: 10,
       }}
+      onPress={() => navegar(pizza)}
     >
       <View style={styles.item}>
         <Image
-          source={{ uri: pizza.imagem}}
+          source={{ uri: pizza.imagem }}
           style={{
             height: 120,
             width: 120,
             position: "absolute",
             left: -35,
             top: -5,
-            borderRadius: 15
+            borderRadius: 15,
           }}
         />
         <View style={styles.box}>
@@ -47,11 +50,11 @@ export default function Item({ pizza }) {
                 add to cart
               </Text>
             </TouchableOpacity>
-            <Text style={styles.price}>{pizza.preco}</Text>
+            <Text style={styles.price}>R${pizza.preco}</Text>
           </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 const styles = StyleSheet.create({

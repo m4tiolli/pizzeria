@@ -32,21 +32,26 @@ import {
   Poppins_900Black_Italic,
 } from "@expo-google-fonts/poppins";
 import Item from "../components/Item/Item";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Landing() {
   useEffect(() => {
-    fetch("https://pizzeriatcc.azurewebsites.net/api/pizza", {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((json) => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://pizzeriatcc.azurewebsites.net/api/pizza", {
+          method: "GET",
+        });
+        const json = await response.json();
         setUsuarios(json);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.log(error);
         alert("Erro ao buscar pizzas");
-      });
+      }
+    };
+    fetchData();
   }, []);
+
+  const navigation = useNavigation()
 
   const [usuarios, setUsuarios] = useState([]);
   const [fontsLoaded] = useFonts({
@@ -70,6 +75,8 @@ export default function Landing() {
     Poppins_900Black_Italic,
   });
   if (!fontsLoaded) return <Loading />;
+
+
 
   return (
     <View style={styles.docker}>
@@ -96,8 +103,8 @@ export default function Landing() {
         </View>
       </View>
       <ScrollView style={{ paddingBottom: PixelRatio.getPixelSizeForLayoutSize(100) }}>
-        {usuarios.map((pizza, index) => (
-          <Item pizza={pizza} key={index} />
+        {usuarios.map((pizza) => (
+          <Item pizza={pizza} key={pizza.id} />
         ))}
       </ScrollView>
     </View>
