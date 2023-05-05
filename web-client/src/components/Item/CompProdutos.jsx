@@ -11,8 +11,8 @@ function Produto({ pizza }){
                 <h3 className='precoPizza'>R${pizza.preco}</h3>
             </div>
             <div className="buttonsPro">
-                <button className='btnAddCart' >Add to cart</button>
-                <button className='btnAlterar' >Alterar</button>
+                <button className='btnAddCart' >add to cart</button>
+                <button className='btnAlterar' >alterar</button>
             </div>
             </div>
         </div>

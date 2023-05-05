@@ -48,8 +48,8 @@
 
 .btnAddCart, .btnAlterar{
     font-family: "Poppins";
-    padding: 0.03em 2em;
-    width: 10vw;
+    width: 80%;
+    height: 80%;
     border-radius: 10px;
     font-size: 1vw;
     border: none;
@@ -59,6 +59,14 @@
     justify-content: center;
     display: flex;
     margin: .5em auto;
+}
+
+.btnAddCart{
+    margin-right: 0.9em; 
+}
+
+.btnAlterar{
+    margin-left: 0.9em;
 }
 
 .btnAddCart:hover, .btnAlterar:hover {
