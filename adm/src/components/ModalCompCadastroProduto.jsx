@@ -19,26 +19,23 @@ import {
     const [name, setName] = useState(dataEdit.name || "");
     const [price, setPrice] = useState(dataEdit.price || "");
     const [category, setCategory] = useState(dataEdit.category || "");
-    const [product_code, setProduct_code] = useState(dataEdit.product_code || "");
     const [description, setDescription] = useState(dataEdit.description || "");
-    ////////////////
     const [file, setFile] = useState(null);
     const handleFileChange = (e) => {
       setFile(URL.createObjectURL(e.target.files[0]));
     };
-///////////////////////
+
     const handleSave = () => {
-      if (!name || !price  || !category || !product_code) return;
-  
-      if (product_codeAlreadyExists()) {
-        return alert("Código do produto já cadastrado!");
+      if (!name || !price  || !category) return;
+      if (name_AlreadyExists()) {
+        return alert("Nome do produto já cadastrado!");
       }
       if (Object.keys(dataEdit).length) {
-        data[dataEdit.index] = { name, price, category, description, product_code };
+        data[dataEdit.index] = { name, price, category, description};
       }
   
       const newDataArray = !Object.keys(dataEdit).length
-        ? [...(data ? data : []), { name, price, category, description, product_code }]
+        ? [...(data ? data : []), { name, price, category, description}]
         : [...(data ? data : [])];
   
       localStorage.setItem("cad_cliente", JSON.stringify(newDataArray));
@@ -48,9 +45,9 @@ import {
       onClose();
     };
   
-    const product_codeAlreadyExists = () => {
-      if (dataEdit.product_code !== product_code && data?.length) {
-        return data.find((item) => item.product_code === product_code);
+    const name_AlreadyExists = () => {
+      if (dataEdit.name !== name && data?.length) {
+        return data.find((item) => item.name === name);
       }
   
       return false;
@@ -100,14 +97,7 @@ import {
                     onChange={(e) => setDescription(e.target.value)}
                   />
                 </Box>
-                <Box>
-                  <FormLabel>Código do Produto</FormLabel>
-                  <Input
-                    type="text"
-                    value={product_code}
-                    onChange={(e) => setProduct_code(e.target.value)}
-                  />
-                </Box>
+                
                 <FormLabel htmlFor="imagem">
                   Selecione uma imagem para o produto
                 </FormLabel>

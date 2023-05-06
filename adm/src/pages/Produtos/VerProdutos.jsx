@@ -34,8 +34,8 @@ const VerProdutos = () => {
     setData(db_costumer);
   }, [setData]);
 
-  const handleRemove = (product_code) => {
-    const newArray = data.filter((item) => item.product_code !== product_code);
+  const handleRemove = (name) => {
+    const newArray = data.filter((item) => item.name !== name);
 
     setData(newArray);
 
@@ -78,27 +78,24 @@ const VerProdutos = () => {
                 <Th maxW={isMobile ? 5 : 100} fontSize="20px">
                   Descrição
                 </Th>
-                <Th maxW={isMobile ? 5 : 100} fontSize="20px">
-                  Código
-                </Th>
                 
                 <Th p={0}></Th>
                 <Th p={0}></Th>
               </Tr>
             </Thead>
             <Tbody>
-              {data.map(({ name, price, category, description, product_code }, index) => (
+              {data.map(({ name, price, category, description }, index) => (
                 <Tr key={index} cursor="pointer " _hover={{ bg: "gray.100" }}>
                   <Td maxW={isMobile ? 5 : 100}>{name}</Td>
                   <Td maxW={isMobile ? 5 : 100}>{price}</Td>
                   <Td maxW={isMobile ? 5 : 100}>{category}</Td> 
                   <Td maxW={isMobile ? 5 : 100}>{description}</Td> 
-                  <Td maxW={isMobile ? 5 : 100}>{product_code}</Td>
+
                   <Td p={0}>
                     <EditIcon
                       fontSize={20}
                       onClick={() => [
-                        setDataEdit({ name, price, category, description, product_code, index }),
+                        setDataEdit({ name, price, category, description, index }),
                         onOpen(),
                       ]}
                     />
@@ -106,7 +103,7 @@ const VerProdutos = () => {
                   <Td p={0}>
                     <DeleteIcon
                       fontSize={20}
-                      onClick={() => handleRemove(product_code)}
+                      onClick={() => handleRemove(name)}
                     />
                   </Td>
                 </Tr>

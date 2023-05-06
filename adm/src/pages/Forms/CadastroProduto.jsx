@@ -19,7 +19,7 @@ function CadastroProduto() {
   const [tipo, setTipo] = useState();
   const [imagem, setImagem] = useState();
 
-  const cadastrarPizza = (e) => {
+  const cadastrarProduto = (e) => {
     e.preventDefault();
 
     const body = { nome, descricao, preco, imagem, tipo };
@@ -45,10 +45,11 @@ function CadastroProduto() {
   };
 
   return (
+    
     <Box h="100vh">
       <form
         onSubmit={(e) => {
-          cadastrarPizza(e);
+          cadastrarProduto(e);
         }}
       >
         {/*Div com conteúdo centralizado*/}

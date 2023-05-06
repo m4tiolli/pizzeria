@@ -11,7 +11,6 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-
 function CadastroBalcao() {
   return (
     <Box h="100vh">
@@ -45,8 +44,6 @@ function CadastroBalcao() {
         >
 
           <FormControl display="flex" flexDir="column" gap="4">
-
-
             <HStack spacing="4">
               <Box w="100%">
                 <FormLabel htmlFor="nome">Nome do Responsável</FormLabel>
@@ -126,17 +123,11 @@ function CadastroBalcao() {
               >
                 Cadastrar
               </Button>
-
             </HStack>
-
-
           </FormControl>
         </Center>
       </Flex>
-
-
     </Box>
   )
 }
-
 export default CadastroBalcao

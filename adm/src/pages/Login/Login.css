@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+:root{
+	--primary-color:#FF3131;
+	--secundary-color:#FFF;
+	--text-color-dark:#000;
+	--text-color-light:#fff;
+	--icon-color:#F3F3F3;
+	--theme-color:#ae0617;
+		/* ae0617 */
+		/* 1d1d1f */
+	--background-color:#f6f5f7;
+	--border-button-color: white;
+}
 
 .header {
     width: 100vW;
@@ -8,10 +20,10 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: #8e1c1a;
+    background-color: var(--theme-color);
 }
 .title {
-    color: #fff;
+    color: var(--text-color-light);
     font-size: 25pt;
     font-family: "Poppins";
     text-transform: uppercase;
@@ -29,16 +41,6 @@
     width: calc(60% - 1em);
     font-family: "Poppins";
 }
-/*  */
-.buttonLogin{
-    box-sizing: border-box;
-    width: 200px;
-    height: 75px;    
-    color: #fff;
-    background: #8E1C1A;
-    border: 3px solid #000;
-    border-radius: 10px;
-}
 
 .info {
     font-family: "Poppins";
@@ -55,17 +57,11 @@
     transition: linear .2s;
 }
 .buttonLogin:active {
-    background-color: #aa1818;
+    background-color: var(--theme-color);
     opacity: 1;
 } 
 * {
 	box-sizing: border-box;
-}
-h1 {
-	margin: 0;
-}
-h2 {
-	text-align: center;
 }
 p {
 	font-size: 14px;
@@ -74,17 +70,26 @@ p {
 	letter-spacing: 0.5px;
 	margin: 20px 0 30px;
 }
+.a-login{
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+
+.p-login {
+	padding-bottom: 20%;
+	padding-top: 20%;
+}
 span {
 	font-size: 12px;
 }
-a {
-	color: #333;
-	font-size: 14px;
-	text-decoration: none;
-	margin: 15px 0;
+.input-login{
+	margin:7px;
+	background-color: #EEE;
+	padding: 10px 5px;
+	border-radius: 8px;
 }
 .Login{
-    background: #f6f5f7;
+    background: var(--background-color);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -95,41 +100,38 @@ a {
 }
 .Login-button {
 	border-radius: 20px;
-	border: 1px solid #F2eee3;
-	background-color: #F2eee3;
-	color: black;
+	border: 1px solid var(--theme-color);
+	background-color: var(--theme-color);
+	color: var(--secundary-color);
 	font-size: 12px;
 	padding: 12px 45px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
-	border-color: red;
+	border-color: var(--border-button-color);
+	margin-top: 5px;
 }
-
 .Login-button:active {
 	transform: scale(0.95);
 }
-
 .Login-button:focus {
 	outline: none;
 }
-
 .Login-button-ghost {
 	background-color: transparent;
 	border-radius: 20px;
-	border: 1px solid #F2eee3;
-	background-color: #F2eee3;
-	color: black;
+	border: 1px solid var(--theme-color);
+	background-color: var(--theme-color);
+	color: var(--text-color-light);
 	font-size: 12px;
 	padding: 12px 45px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
-	border-color: red;
+	border-color: var(--border-button-color);
 }
-
 form {
-	background-color: #FFFFFF;
+	background-color: var(--secundary-color);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -139,14 +141,13 @@ form {
 	text-align: center;
 }
 input {
-	background-color: #f2eee3;
+	background-color: var(--theme-color);
 	border: none;
 	margin: 8px 0;
 	width: 100%;
 }
-
 .container {
-	background-color: #fff;
+	background-color: var(--secundary-color);
 	border-radius: 10px;
   	box-shadow: 0 14px 28px rgba(0,0,0,0.25),
 			0 10px 10px rgba(0,0,0,0.22);
@@ -187,7 +188,6 @@ input {
 		opacity: 0;
 		z-index: 1;
 	}
-
 	50%, 100% {
 		opacity: 1;
 		z-index: 5;
@@ -207,13 +207,13 @@ input {
 	transform: translateX(-100%);
 }
 .overlay {
-	background: #F2eee3;
-	background: -webkit-linear-gradient(to right, #F2eee3, #e7d4c5);
-	background: linear-gradient(to right, #F2eee3, #e7d4c5);
+	background: var(--theme-color);
+	background: var(--theme-color);
+	background: var(--theme-color);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;
-	color: black;
+	color: var(--secundary-color);
 	position: relative;
 	left: -100%;
 	height: 100%;
@@ -261,7 +261,7 @@ input {
 }
 
 .social-container a {
-	border: 1px solid red;
+	border: 1px solid var(--border-button-color);
 	border-radius: 50%;
 	display: inline-flex;
 	justify-content: center;
@@ -269,5 +269,5 @@ input {
 	margin: 0 5px;
 	height: 40px;
 	width: 40px;
-	background: #f2eee3;
+	background: var(--theme-color);
 }

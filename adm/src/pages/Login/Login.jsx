@@ -32,9 +32,9 @@ export default function Login() {
             </a>
           </div>
           <span>ou use seu e-mail para cadastro</span>
-          <input type="text" placeholder="Name" />
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
+          <input type="text" placeholder="Name" className="input-login"/>
+          <input type="email" placeholder="Email" className="input-login"/>
+          <input type="password" placeholder="Password" className="input-login"/>
           <button className="Login-button">Cadastrar-se</button>
         </form>
       </div>
@@ -53,18 +53,17 @@ export default function Login() {
             </a>
           </div>
           <span>ou use sua conta</span>
-          <input type="email" placeholder="Email" />
-          
-          <input type="password" placeholder="Password" />
-          <a href="#">Esqueceu sua senha?</a>
+          <input type="email" placeholder="Email" className="input-login"/>
+          <input type="password" placeholder="Password" className="input-login"/>
+          <a className="a-login">Esqueceu sua senha?</a>
           <button  className="Login-button" onClick={mudarDePagina}>Entrar</button>
         </form>
       </div>
       <div className="overlay-container">
         <div className="overlay">
           <div className="overlay-panel overlay-left">
-            <h1>Bem-vindo de volta!</h1>
-            <p>
+          <div className="info">Bem-vindo de volta!</div>
+            <p className="p-login">
             Para manter-se conectado conosco, faça login com seus dados pessoais
             </p>
             <button className="Login-button-ghost" onClick={handleSignInClick} id="signIn">
@@ -72,8 +71,8 @@ export default function Login() {
             </button>
           </div>
           <div className="overlay-panel overlay-right">
-            <h1>Olá!</h1>
-            <p>Introduza os seus dados para abrir uma conta connosco</p>
+            <div className="info">Olá!</div>
+            <p className="p-login">Introduza os seus dados para abrir uma conta connosco</p>
             <button className="Login-button-ghost" onClick={handleSignUpClick} id="signUp">
               Cadastrar-se
             </button>
