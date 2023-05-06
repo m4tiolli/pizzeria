@@ -2,38 +2,38 @@ import { useState, useEffect } from 'react';
 import Header from '../../components/Header/Header'
 import { useNavigate } from "react-router-dom";
 import Produto from '../../components/Item/CompProdutos'
+import "./Produtos.css"
 
-export default function Produtos(){
+export default function Produtos() {
     const navigate = useNavigate();
     useEffect(() => {
-        fetch("https://localhost:44383/api/pizza",{
+        fetch("https://pizzeriatcc.azurewebsites.net/api/pizza", {
             method: "GET",
         })
-        
-            .then((response) => response.jason())
-            .then((jason) => {setProdutos(jason);
+
+            .then((response) => response.json())
+            .then((json) => {
+                setProdutos(json);
             })
             .catch((error) => {
                 console.log(error);
-                alert("Erro ao buscar Produto");  
+                alert("Erro ao buscar Produto");
             });
-}, []);
+    }, []);
 
     const [produtos, setProdutos] = useState([]);
-    return(
-        <div>
+    return (
+        <div id="root">
             <Header />
-            <div>
-                <div ClassName="Produtos-Container">
-                    {
-                        produtos.map((produto, index) => (
-                            <Produto produto={produto} key={index}/>
-                        ))
-                    }
-                </div>
+            <div className="Produtos-Container">
+                {
+                    produtos.map((pizza, index) => (
+                        <Produto pizza={pizza} key={index} />
+                    ))
+                }
             </div>
         </div>
     )
 }
-   
+
 

@@ -6,6 +6,8 @@ import RecuperarSenha from './pages/RecuperarSenha/RecuperarSenha';
 import RecuperarSenha2 from './pages/RecuperarSenha2/RecuperarSenha2';
 import SelectEnde from './pages/SelectEnde/SelectEnde';
 import Carrinho from './pages/Carrinho/Carrinho';
+import FormasPagamento from './pages/FormasPagamento/FormasPagamento';
+import CadastroEnde from './pages/CadastroEnde/CadastroEnde';
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 function App() {
@@ -41,6 +43,14 @@ function App() {
     {
       path: "/Carrinho",
       element: <Carrinho/>
+    },
+    {
+      path: "/FormasPagamento",
+      element: <FormasPagamento/>
+    },
+    {
+      path: "/CadastroEnde",
+      element: <CadastroEnde/>
     }
   ]);
 

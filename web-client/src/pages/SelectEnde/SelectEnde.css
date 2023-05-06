@@ -1,2 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap");
 
+.enderecocontainer {
+    padding-top: 12vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #efefef;
+    width: 100vw;
+    height: 80vh;
+}
+#enderecoprincipal {
+    width: 100vw;
+    height: 100%;
+}
+
