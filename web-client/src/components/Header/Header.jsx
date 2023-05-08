@@ -25,6 +25,13 @@ export default function HeaderInicial() {
         <div className='header'>
             <img className='img' onClick={mudarDePagina3} src={Text} alt="" />
             <div className='buttons1'>
+                    <div className="blockpesquisa">
+                        <img  className="imgpesquisa" alt="" />
+                        <input
+                        className="inputpesquisa"
+                        type="text"
+                        placeholder="search for some pizza..."
+                        />
                 <div className='divCarrinho' onClick={mudarDePagina4}>
                 <button className='carrinho'>carrinho</button>
                 <img className='imgCarrinho' src={carrinho}></img>
@@ -32,6 +39,7 @@ export default function HeaderInicial() {
                 <button className='signup1' onClick={mudarDePagina2}>sign up</button>
                 <button className='signin1' onClick={mudarDePagina1}>sign in</button>
             </div>
+        </div>
         </div>
     )
 }
