@@ -3,10 +3,6 @@ import "./Estoque";
 import logo from "../../assets/logo.png"
 import { useNavigate } from "react-router-dom";
 
-
-
-
-
 const StockPage = ({ stock }) => {
   // Obtém as categorias do estoque
   const categories = Object.keys(stock);

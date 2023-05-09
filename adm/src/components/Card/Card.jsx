@@ -4,6 +4,13 @@ import "./Card.css";
 import "https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
 
 export default function Card() {
+// PROGRESSBAR
+const allProgress = document.querySelectorAll('main .card .progress');
+
+allProgress.forEach(item=> {
+	item.style.setProperty('--value', item.dataset.value)
+})
+
     return (
         <div className="card">
             <div class="head">

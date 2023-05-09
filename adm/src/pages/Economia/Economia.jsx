@@ -9,8 +9,6 @@ export default function Economia() {
     navigate("/VerEconomia");
   }
   
-
-
   return (
     <div className="services-container">
       <div className="header">
@@ -25,7 +23,6 @@ export default function Economia() {
           </button>
         </div>
       </div>
-     
     </div>
   );
 }
