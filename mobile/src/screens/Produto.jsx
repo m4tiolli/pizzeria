@@ -12,6 +12,10 @@ export default function Produto() {
   const route = useRoute();
   const { pizzas } = route.params;
 
+  function navegar() {
+    navigation.navigate("Cart", { pizzas: pizzas });
+  }
+
   const navigation = useNavigation();
   return (
     <View
@@ -39,9 +43,7 @@ export default function Produto() {
       <TouchableOpacity style={styles.cart}>
         <Text
           style={styles.carttext}
-          onPress={() => {
-            navigation.navigate("Cart");
-          }}
+          onPress={navegar}
         >
           add to cart
         </Text>

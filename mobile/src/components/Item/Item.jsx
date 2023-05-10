@@ -1,11 +1,33 @@
 import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Item({ pizza }) {
   const navigation = useNavigation();
   function navegar() {
     navigation.navigate("Produto", { pizzas: pizza });
   }
+  async function carrinho() {
+    //adicionar no asyncStorage
+    const item = {
+      nome: pizza.nome,
+      descricao: pizza.descricao,
+      preco: pizza.preco,
+    };
+    let carrinho = await AsyncStorage.getItem("carrinho");
+    if (!carrinho || carrinho.length === 0) { 
+      await AsyncStorage.setItem("carrinho", JSON.stringify([item]));
+      navigation.navigate("Cart");
+      return;
+    }
+
+    carrinho = JSON.parse(carrinho);
+
+    carrinho.concat([item]);
+    AsyncStorage.setItem("carrinho", JSON.stringify(carrinho));
+    navigation.navigate("Cart");
+  }
+
   return (
     <TouchableOpacity
       style={{
@@ -40,15 +62,8 @@ export default function Item({ pizza }) {
               bottom: 10,
             }}
           >
-            <TouchableOpacity style={styles.cart}>
-              <Text
-                style={styles.carttext}
-                onPress={() => {
-                  navigation.navigate("Cart");
-                }}
-              >
-                add to cart
-              </Text>
+            <TouchableOpacity style={styles.cart} onPress={carrinho}>
+              <Text style={styles.carttext}>add to cart</Text>
             </TouchableOpacity>
             <Text style={styles.price}>R${pizza.preco}</Text>
           </View>
