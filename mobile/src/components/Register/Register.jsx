@@ -28,7 +28,7 @@ export default function Register() {
         .then(() => {navigation.navigate('Home')})
         .catch((error) => {
             console.log(error);
-            alert("Erro ao cadastrar resultado");
+            alert("Erro ao cadastrar usúario");
         });
 }
   const navigation = useNavigation()
