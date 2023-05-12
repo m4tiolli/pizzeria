@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import Produto from '../Pizzas/CompProdutos-module';
+import Aside from '../Aside/Aside'
 import "./User_TelaPrincipal.css";
 import logo from "../../../assets/logo.png";
 
 export default function Tela_principal() {
-        const navigate = useNavigate();
+    const navigate = useNavigate();
     const [produtos, setProdutos] = useState([]);
+    
+    const [asideOpen, setAsideOpen] = useState(false);
 
     useEffect(() => {
         fetch("https://pizzeriatcc.azurewebsites.net/api/pizza", {
@@ -45,19 +48,21 @@ export default function Tela_principal() {
 
                     <input className="input" type="text" placeholder="Pesquisar item" />
                     <div className="pizza-area"></div>
-                    <button className='button'>Pizzas</button>
-                    <button className='button'>Bebidas</button>
-                    <button className='button'>Aperitivos</button>
-                    <button className='button'>Promoções</button>
-            </main>
+                    
 
+            </main>
+            <button className='button'>Pizzas</button>
+            <button className='button'>Bebidas</button>
+            <button className='button'>Aperitivos</button>
+            <button className='button'>Promoções</button>
+            {asideOpen && <aside>Aside</aside>}
                 <div className="Produtos-Container">
                     {
                         
                         
                         produtos.map((pizza, index) => (
                             
-                            <Produto pizza={pizza} key={index} />
+                            <Produto pizza={pizza} key={index} abrirAside={setAsideOpen} />
                         ))
 
                     }
