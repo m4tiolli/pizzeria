@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap");
+
+.conteudoCadastroEnde{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #efefef;
+  width: 100vw;
+  height: 88vh;
+}
+
+.blocoLoginCadastroEnde{
+    width: 30%;
+  height: 70%;
+  border-radius: 20px;
+  background-color: #fff;
+  text-align: center;
+  box-shadow: 1vw 1vw 1vw rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fundoCadastroEnde{
+    height: 26vw;
+}
