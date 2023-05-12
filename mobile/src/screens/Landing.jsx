@@ -1,14 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  View,
-  StyleSheet,
-  TextInput,
-  ScrollView,
-  StatusBar,
-  Image,
-  PixelRatio
-} from "react-native";
-import Icon from "react-native-vector-icons/AntDesign";
+import { View, StyleSheet, ScrollView, PixelRatio } from "react-native";
 import Loading from "../components/Loading";
 import {
   useFonts,
@@ -33,14 +24,18 @@ import {
 } from "@expo-google-fonts/poppins";
 import Item from "../components/Item/Item";
 import { useNavigation } from "@react-navigation/native";
+import Header from "../components/Header/Header";
 
 export default function Landing() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://pizzeriatcc.azurewebsites.net/api/pizza", {
-          method: "GET",
-        });
+        const response = await fetch(
+          "https://pizzeriatcc.azurewebsites.net/api/pizza",
+          {
+            method: "GET",
+          }
+        );
         const json = await response.json();
         setUsuarios(json);
       } catch (error) {
@@ -51,7 +46,7 @@ export default function Landing() {
     fetchData();
   }, []);
 
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
   const [usuarios, setUsuarios] = useState([]);
   const [fontsLoaded] = useFonts({
@@ -76,35 +71,14 @@ export default function Landing() {
   });
   if (!fontsLoaded) return <Loading />;
 
-
-
   return (
     <View style={styles.docker}>
-      <StatusBar hidden={true} />
-      <View style={styles.header}>
-        <Image
-          source={require("../assets/text.svg")}
-          style={{ height: PixelRatio.getPixelSizeForLayoutSize(20), width: PixelRatio.getPixelSizeForLayoutSize(16) }}
-        />
-        <View style={{width: '100%', flexDirection: 'row', justifyContent: 'space-evenly'}}>
-          <Icon name="filter" size={PixelRatio.getPixelSizeForLayoutSize(10)} color={"#8e1c1c"} />
-          <View style={styles.input}>
-            <TextInput
-              placeholder="pesquisar por pizzas"
-              style={{
-                fontFamily: "Poppins_300Light_Italic",
-                outline: "none",
-                paddingRight: "20%",
-                paddingLeft: 10,
-              }}
-            />
-            <Icon name="search1" size={PixelRatio.getPixelSizeForLayoutSize(10)} color={"#8e1c1c"} />
-          </View>
-        </View>
-      </View>
-      <ScrollView style={{ paddingBottom: PixelRatio.getPixelSizeForLayoutSize(100) }}>
-        {usuarios.map((pizza) => (
-          <Item pizza={pizza} key={pizza.id} />
+      <Header />
+      <ScrollView
+        style={{ paddingBottom: PixelRatio.getPixelSizeForLayoutSize(100) }}
+      >
+        {usuarios.map((pizza, index) => (
+          <Item pizza={pizza} key={index} />
         ))}
       </ScrollView>
     </View>
@@ -119,7 +93,7 @@ const styles = StyleSheet.create({
   header: {
     height: "15%",
     flexDirection: "col",
-    alignItems: 'center'
+    alignItems: "center",
   },
   input: {
     flexDirection: "row",

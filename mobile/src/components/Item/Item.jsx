@@ -8,11 +8,12 @@ export default function Item({ pizza }) {
     navigation.navigate("Produto", { pizzas: pizza });
   }
   async function carrinho() {
-    //adicionar no asyncStorage
     const item = {
+      id: pizza.id,
       nome: pizza.nome,
       descricao: pizza.descricao,
       preco: pizza.preco,
+      imagem: pizza.imagem
     };
     let carrinho = await AsyncStorage.getItem("carrinho");
     if (!carrinho || carrinho.length === 0) { 
@@ -23,7 +24,7 @@ export default function Item({ pizza }) {
 
     carrinho = JSON.parse(carrinho);
 
-    carrinho.concat([item]);
+    carrinho = carrinho.concat([item]);
     AsyncStorage.setItem("carrinho", JSON.stringify(carrinho));
     navigation.navigate("Cart");
   }

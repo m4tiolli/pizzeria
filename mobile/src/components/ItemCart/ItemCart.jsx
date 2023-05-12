@@ -1,6 +1,6 @@
 import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
-import Icon from 'react-native-vector-icons/FontAwesome'
-function ItemCart({image, title, desc, qtd}) {
+import Icon from "react-native-vector-icons/FontAwesome";
+function ItemCart({ item }) {
   return (
     <View
       style={{
@@ -12,7 +12,7 @@ function ItemCart({image, title, desc, qtd}) {
     >
       <View style={styles.item}>
         <Image
-          source={image}
+          source={{ uri: item.imagem }}
           style={{
             height: 120,
             width: 120,
@@ -22,11 +22,17 @@ function ItemCart({image, title, desc, qtd}) {
           }}
         />
         <View style={styles.box}>
-          <View style={{flexDirection: 'row', width: '90%', justifyContent: 'space-between'}}>
-            <Text style={styles.title}>{title}</Text>
-            <Icon name='trash-o' color={"#898989"} size={20} />
+          <View
+            style={{
+              flexDirection: "row",
+              width: "90%",
+              justifyContent: "space-between",
+            }}
+          >
+            <Text style={styles.title}>{item.nome}</Text>
+            <Icon name="trash-o" color={"#898989"} size={20} />
           </View>
-          <Text style={styles.infos}>{desc}</Text>
+          <Text style={styles.infos}>{item.descricao}</Text>
           <View
             style={{
               flexDirection: "row",
@@ -39,7 +45,7 @@ function ItemCart({image, title, desc, qtd}) {
             <TouchableOpacity style={styles.cart}>
               <Text style={styles.carttext}>ver informações</Text>
             </TouchableOpacity>
-            <Text style={styles.price}>{qtd}</Text>
+            <Text style={styles.price}>{item.preco}</Text>
           </View>
         </View>
       </View>
@@ -87,8 +93,8 @@ const styles = StyleSheet.create({
   infos: {
     fontFamily: "Poppins_500Medium",
     color: "#898989",
-    width: '90%',
-    textAlign: 'left'
+    width: "90%",
+    textAlign: "left",
   },
   price: {
     fontFamily: "Poppins_500Medium",
