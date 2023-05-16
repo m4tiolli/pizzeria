@@ -14025,26 +14025,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\gabri\\.nuget\\packages\\": {}
+    "/home/codespace/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\tcc\\pizzeria\\pizzeria\\api\\APIPizzeria\\APIPizzeria.csproj",
+      "projectUniqueName": "/workspaces/pizzeria/api/APIPizzeria/APIPizzeria.csproj",
       "projectName": "APIPizzeria",
-      "projectPath": "C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\tcc\\pizzeria\\pizzeria\\api\\APIPizzeria\\APIPizzeria.csproj",
-      "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\tcc\\pizzeria\\pizzeria\\api\\APIPizzeria\\obj\\",
+      "projectPath": "/workspaces/pizzeria/api/APIPizzeria/APIPizzeria.csproj",
+      "packagesPath": "/home/codespace/.nuget/packages/",
+      "outputPath": "/workspaces/pizzeria/api/APIPizzeria/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/codespace/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -14100,7 +14098,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/dotnet/7.0.203/sdk/7.0.203/RuntimeIdentifierGraph.json"
       }
     }
   }
