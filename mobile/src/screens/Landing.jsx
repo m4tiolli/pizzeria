@@ -152,7 +152,7 @@ export default function Landing() {
             />
             <TouchableOpacity
               onPress={() =>
-                navigation.navigate("Search", { param: pesquisas })
+                navigation.navigate("Search", { param: pesquisa})
               }
             >
               <Icon
