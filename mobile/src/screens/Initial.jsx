@@ -62,7 +62,7 @@ export default function Initial() {
   return (
     <View style={styles.docker} gap={30}>
       <Image
-        source={require("../assets/text.svg")}
+        source={require("../assets/text.png")}
         style={{
           width: PixelRatio.getPixelSizeForLayoutSize(50),
           height: PixelRatio.getPixelSizeForLayoutSize(63),

@@ -33,7 +33,7 @@ const Autentication = () => {
     <View style={styles.docker}>
       <View style={{justifyContent:'center', alignItems: 'baseline', paddingBottom: 20}}>
         <Image
-          source={require("../assets/text.svg")}
+          source={require("../assets/text.png")}
           style={{ height: PixelRatio.getPixelSizeForLayoutSize(40), width: PixelRatio.getPixelSizeForLayoutSize(32) }}
         />
       </View>
@@ -85,7 +85,6 @@ const styles = StyleSheet.create({
     height: "40%",
     backgroundColor: "#efefef",
     alignItems: "center",
-    gap: 30,
   },
   boxinput: {
     width: "50%",

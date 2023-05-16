@@ -15,8 +15,11 @@ import Header from "../components/Header/Header";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import React from "react";
 import ItemCart from "../components/ItemCart/ItemCart";
+import Feather from "react-native-vector-icons/Feather";
 
 function Cart() {
+  const navigation = useNavigation();
+
   const [cart, setCart] = useState([]);
 
   useFocusEffect(
@@ -39,6 +42,11 @@ function Cart() {
     AsyncStorage.removeItem("carrinho");
   };
 
+  const deleteItem = () => {
+    setCart(cart.filter((item) => item.id !== id));
+    AsyncStorage.setItem("carrinho", JSON.stringify(cart));
+  };
+
   const calculateTotal = () => {
     let total = 0;
     cart.forEach((item) => {
@@ -57,7 +65,14 @@ function Cart() {
     >
       <Header />
       {cart.length === 0 ? (
-        <Text>Seu carrinho está vazio.</Text>
+        <View style={styles.viewcart}>
+          <Feather
+            name="shopping-cart"
+            size={PixelRatio.getPixelSizeForLayoutSize(30)}
+            color={"#8E1C1A"}
+          />
+          <Text style={styles.textcart}>Seu carrinho está vazio.</Text>
+        </View>
       ) : (
         <>
           <ScrollView>
@@ -65,17 +80,26 @@ function Cart() {
               <ItemCart item={item} key={index} />
             ))}
           </ScrollView>
-          <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
-            
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-evenly",
+              alignItems: "center",
+            }}
+          >
             <TouchableOpacity style={styles.clear} onPress={clearCart}>
-                <Icon name="trash-2" 
-                size={PixelRatio.getPixelSizeForLayoutSize(10)}/>
+              <Icon
+                name="trash-2"
+                size={PixelRatio.getPixelSizeForLayoutSize(15)}
+                color={"#8E1C1A"}
+              />
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.price}
-              onPress={() => console.log("Compra finalizada")}>
+              onPress={() => navigation.navigate("WhereEat")}
+            >
               <Text style={styles.text}>Finalizar Compra</Text>
-            <Text style={styles.text}>R${calculateTotal()}</Text>
+              <Text style={styles.text}>R${calculateTotal()}</Text>
             </TouchableOpacity>
           </View>
         </>
@@ -143,7 +167,7 @@ const styles = StyleSheet.create({
     borderRadius: "10px",
     alignItems: "center",
     justifyContent: "space-evenly",
-    flexDirection: 'row'
+    flexDirection: "row",
   },
   header: {
     height: "15%",
@@ -163,6 +187,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
     borderRadius: 5,
     backgroundColor: "#efefef",
+  },
+  viewcart: {
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  textcart: {
+    fontFamily: "Poppins_300Light",
+    color: "#8e1c1a",
+    marginVertical: PixelRatio.getPixelSizeForLayoutSize(10),
   },
 });
 

@@ -6,17 +6,35 @@ import {
   TouchableOpacity,
   PixelRatio,
 } from "react-native";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useRoute, useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Produto() {
   const route = useRoute();
   const { pizzas } = route.params;
+  const navigation = useNavigation()
 
-  function navegar() {
-    navigation.navigate("Cart", { pizzas: pizzas });
+  async function carrinho() {
+    const item = {
+      id: pizzas.id,
+      nome: pizzas.nome,
+      descricao: pizzas.descricao,
+      preco: pizzas.preco,
+      imagem: pizzas.imagem,
+    };
+    let carrinho = await AsyncStorage.getItem("carrinho");
+    if (!carrinho || carrinho.length === 0) {
+      await AsyncStorage.setItem("carrinho", JSON.stringify([item]));
+      navigation.navigate("Cart");
+      return;
+    }
+
+    carrinho = JSON.parse(carrinho);
+
+    carrinho = carrinho.concat([item]);
+    AsyncStorage.setItem("carrinho", JSON.stringify(carrinho));
+    navigation.navigate("Cart");
   }
-
-  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -39,12 +57,9 @@ export default function Produto() {
       />
       <Text style={styles.title}>{pizzas.nome}</Text>
       <Text style={styles.infos}>{pizzas.descricao}</Text>
-        <Text style={styles.price}>R${pizzas.preco}</Text>
+      <Text style={styles.price}>R${pizzas.preco}</Text>
       <TouchableOpacity style={styles.cart}>
-        <Text
-          style={styles.carttext}
-          onPress={navegar}
-        >
+        <Text style={styles.carttext} onPress={carrinho}>
           add to cart
         </Text>
       </TouchableOpacity>
@@ -59,7 +74,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     position: "absolute",
-    bottom: PixelRatio.getPixelSizeForLayoutSize(25)
+    bottom: PixelRatio.getPixelSizeForLayoutSize(25),
   },
   carttext: {
     color: "#fff",
@@ -80,6 +95,6 @@ const styles = StyleSheet.create({
     color: "#698C3D",
     fontSize: PixelRatio.getPixelSizeForLayoutSize(10),
     position: "absolute",
-    bottom: PixelRatio.getPixelSizeForLayoutSize(50)
+    bottom: PixelRatio.getPixelSizeForLayoutSize(50),
   },
 });

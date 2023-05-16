@@ -3,6 +3,8 @@ import Initial from "../../screens/Initial";
 import Autentication from "../../screens/Autentication";
 import Home from "../../screens/Home";
 import Produto from "../../screens/Produto";
+import WhereEat from "../../screens/WhereEat";
+import Search from "../../screens/Search";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +29,16 @@ export default function Routes() {
       <Stack.Screen
         name="Produto"
         component={Produto}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="WhereEat"
+        component={WhereEat}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Search"
+        component={Search}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

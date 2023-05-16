@@ -1,6 +1,14 @@
 import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 function ItemCart({ item }) {
+  const navigation = useNavigation();
+  function navegar() {
+    navigation.navigate("Produto", { pizzas: item });
+  }
+
   return (
     <View
       style={{
@@ -30,7 +38,6 @@ function ItemCart({ item }) {
             }}
           >
             <Text style={styles.title}>{item.nome}</Text>
-            <Icon name="trash-o" color={"#898989"} size={20} />
           </View>
           <Text style={styles.infos}>{item.descricao}</Text>
           <View
@@ -42,10 +49,10 @@ function ItemCart({ item }) {
               bottom: 10,
             }}
           >
-            <TouchableOpacity style={styles.cart}>
+            <TouchableOpacity style={styles.cart} onPress={() => navegar(item)}>
               <Text style={styles.carttext}>ver informações</Text>
             </TouchableOpacity>
-            <Text style={styles.price}>{item.preco}</Text>
+            <Text style={styles.price}>R${item.preco}</Text>
           </View>
         </View>
       </View>

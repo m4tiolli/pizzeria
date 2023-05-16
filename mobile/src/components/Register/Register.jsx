@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
     height: "40%",
     backgroundColor: "#efefef",
     alignItems: "center",
-    gap: 30,
   },
   boxinput: {
     width: "50%",

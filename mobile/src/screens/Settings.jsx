@@ -11,19 +11,12 @@ import {
 import Octicons from "react-native-vector-icons/Octicons";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import AntDesign from "react-native-vector-icons/AntDesign";
+import Header from './../components/Header/Header';
 
 function Settings() {
   return (
     <View style={{ width: "100%", height: "100%", backgroundColor: "#efefef" }}>
-      <View style={{ alignItems: "center" }}>
-        <Image
-          source={require("../assets/text.svg")}
-          style={{
-            height: PixelRatio.getPixelSizeForLayoutSize(20),
-            width: PixelRatio.getPixelSizeForLayoutSize(16),
-          }}
-        />
-      </View>
+      <Header/>
       <View
         style={{
           width: "100%",
@@ -34,7 +27,7 @@ function Settings() {
         }}
       >
         <Image
-          source={require("../assets/circle.svg")}
+          source={require("../assets/circle.png")}
           style={{
             width: PixelRatio.getPixelSizeForLayoutSize(35),
             height: PixelRatio.getPixelSizeForLayoutSize(35),
