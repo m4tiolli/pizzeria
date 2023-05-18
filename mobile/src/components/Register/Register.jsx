@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import {
   View,
@@ -9,7 +9,6 @@ import {
 } from "react-native";
 
 export default function Register() {
-    
   const [nome, setNome] = useState("");
   const [cpf, setCPF] = useState("");
   const [email, setEmail] = useState("");
@@ -17,45 +16,48 @@ export default function Register() {
   const [tipo, setTipo] = useState("usuario");
 
   function Cadastrar() {
-      const body = { nome, cpf, email, senha, tipo };
+    const body = { nome, cpf, email, senha, tipo };
 
-      fetch("https://localhost:44383/api/usuario", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body)
+    fetch("https://pizzeriatcc.azurewebsites.net/api/usuario", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    })
+      .then((response) => {
+        alert("Usuário cadastrado com sucesso");
       })
-        .then((response) => { alert("Usuário cadastrado com sucesso"); })
-        .then(() => {navigation.navigate('Home')})
-        .catch((error) => {
-            console.log(error);
-            alert("Erro ao cadastrar resultado");
-        });
-}
-  const navigation = useNavigation()
+      .then(() => {
+        navigation.navigate("Home");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Erro ao cadastrar usúario");
+      });
+  }
+  const navigation = useNavigation();
   return (
     <View style={styles.dockerauth}>
       <View style={styles.boxinput}>
         <Text style={styles.textinput}>name</Text>
-        <TextInput 
-        placeholder="name" 
-        value={nome}
-        onChangeText={(texto) => setNome(texto)} 
-        style={styles.input} />
+        <TextInput
+          value={nome}
+          onChangeText={(texto) => setNome(texto)}
+          style={styles.input}
+        />
       </View>
       <View style={styles.boxinput}>
         <Text style={styles.textinput}>cpf</Text>
-        <TextInput 
-        placeholder="cpf"
-        value={cpf}
-        onChangeText={(texto) => setCPF(texto)} 
-        style={styles.input} />
+        <TextInput
+          value={cpf}
+          onChangeText={(texto) => setCPF(texto)}
+          style={styles.input}
+        />
       </View>
       <View style={styles.boxinput}>
         <Text style={styles.textinput}>e-mail</Text>
         <TextInput
-          placeholder="youremail@email.com"
           value={email}
-          onChangeText={(texto) => setEmail(texto)} 
+          onChangeText={(texto) => setEmail(texto)}
           style={styles.input}
           autoComplete={"email"}
         />
@@ -63,17 +65,16 @@ export default function Register() {
       <View style={styles.boxinput}>
         <Text style={styles.textinput}>password</Text>
         <TextInput
-          secureTextEntry
-          placeholder="yourpassword"
+          secureTextEntry={true}
           value={senha}
-          onChangeText={(texto) => setSenha(texto)} 
+          onChangeText={(texto) => setSenha(texto)}
           placeholderTextColor={"#8e1c1a"}
           style={styles.input}
         />
         <TextInput
-          value={'usuario'}
-          onChangeText={(texto) => setTipo(texto)} 
-          style={{display: 'none'}}
+          value={"usuario"}
+          onChangeText={(texto) => setTipo(texto)}
+          style={{ display: "none" }}
         />
       </View>
       <TouchableOpacity onPress={Cadastrar} style={styles.next}>
@@ -89,7 +90,6 @@ const styles = StyleSheet.create({
     height: "40%",
     backgroundColor: "#efefef",
     alignItems: "center",
-    gap: 30,
   },
   boxinput: {
     width: "50%",
@@ -99,10 +99,10 @@ const styles = StyleSheet.create({
     borderColor: "#8E1C1A",
     justifyContent: "center",
     alignItems: "center",
-    marginVertical: 10
+    marginVertical: 10,
   },
   textinput: {
-    top: -14,
+    top: -16,
     left: 10,
     color: "#8E1C1A",
     backgroundColor: "#efefef",

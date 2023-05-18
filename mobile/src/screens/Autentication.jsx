@@ -5,36 +5,32 @@ import {
   Image,
   TouchableOpacity,
   Text,
-  PixelRatio
+  PixelRatio,
 } from "react-native";
-import {
-  useFonts,
-  Poppins_600SemiBold,
-  Poppins_400Regular,
-} from "@expo-google-fonts/poppins";
-import Loading from "../components/Loading";
 import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
 
 const Autentication = () => {
-
-
   const [isLoginFormVisible, setIsLoginFormVisible] = useState(true);
   const toggleForm = () => {
     setIsLoginFormVisible(!isLoginFormVisible);
   };
-  const [fontsLoaded] = useFonts({
-    Poppins_600SemiBold,
-    Poppins_400Regular,
-  });
-  if (!fontsLoaded) return <Loading />;
 
   return (
     <View style={styles.docker}>
-      <View style={{justifyContent:'center', alignItems: 'baseline', paddingBottom: 20}}>
+      <View
+        style={{
+          justifyContent: "center",
+          alignItems: "baseline",
+          paddingBottom: 20,
+        }}
+      >
         <Image
-          source={require("../assets/text.svg")}
-          style={{ height: PixelRatio.getPixelSizeForLayoutSize(40), width: PixelRatio.getPixelSizeForLayoutSize(32) }}
+          source={require("../assets/text.png")}
+          style={{
+            height: PixelRatio.getPixelSizeForLayoutSize(40),
+            width: PixelRatio.getPixelSizeForLayoutSize(32),
+          }}
         />
       </View>
       <View style={styles.buttons}>
@@ -53,7 +49,7 @@ const Autentication = () => {
           <Text style={styles.text}>register</Text>
         </TouchableOpacity>
       </View>
-      {isLoginFormVisible ? <Login/> : <Register/>}
+      {isLoginFormVisible ? <Login /> : <Register />}
     </View>
   );
 };
@@ -72,7 +68,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     backgroundColor: "#efefef",
-    marginBottom: 30
+    marginBottom: 30,
   },
   text: {
     fontFamily: "Poppins_600SemiBold",
@@ -85,7 +81,6 @@ const styles = StyleSheet.create({
     height: "40%",
     backgroundColor: "#efefef",
     alignItems: "center",
-    gap: 30,
   },
   boxinput: {
     width: "50%",

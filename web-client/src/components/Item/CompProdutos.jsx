@@ -1,6 +1,12 @@
 import "./CompProdutos.css";
+import { useNavigate } from 'react-router-dom';
 
 function Produto({ pizza }){
+    const navigate = useNavigate();
+
+    function navAlterar(){
+        navigate("/Alterar")
+    }
     return(
         <div className='containerPizza'>
             <div className="fundoPizza">
@@ -11,8 +17,8 @@ function Produto({ pizza }){
                 <h3 className='precoPizza'>R${pizza.preco}</h3>
             </div>
             <div className="buttonsPro">
-                <button className='btnAddCart' >add to cart</button>
-                <button className='btnAlterar' >alterar</button>
+                <button className='btnAddCart' >add to cart +</button>
+                <button className='btnAlterar' onClick={navAlterar}>alterar</button>
             </div>
             </div>
         </div>

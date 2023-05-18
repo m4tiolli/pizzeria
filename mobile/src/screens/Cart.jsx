@@ -1,72 +1,204 @@
-import { View, Text, Image, ScrollView, TouchableOpacity, PixelRatio } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  PixelRatio,
+  StyleSheet,
+  TextInput,
+} from "react-native";
+import Icon from "react-native-vector-icons/Feather";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useState, useEffect } from "react";
+import Header from "../components/Header/Header";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import React from "react";
 import ItemCart from "../components/ItemCart/ItemCart";
-import Icon from "react-native-vector-icons/FontAwesome";
-const pizza = require("../assets/pizzaexemplo.png");
-const coca = require("../assets/coca.png");
-const chocolate = require("../assets/chocolate.png")
-const data = [
-  {
-    image: pizza,
-    title: 'Pepperoni',
-    desc: 'Blablabla',
-    qtd: 'x3'
-  },
-  {
-    image: coca,
-    title: 'Coca',
-    desc: 'Blablabla',
-    qtd: 'x1'
-  },
-  {
-    image: chocolate,
-    title: 'Chocolate',
-    desc: 'Blablabla',
-    qtd: 'x2'
-  },
-]
+import Feather from "react-native-vector-icons/Feather";
+
 function Cart() {
+  const navigation = useNavigation();
+
+  const [cart, setCart] = useState([]);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      getCart();
+    }, [])
+  );
+
+  const getCart = async () => {
+    debugger;
+    const cartData = await AsyncStorage.getItem("carrinho");
+
+    if (cartData !== null) {
+      setCart(JSON.parse(cartData));
+    }
+  };
+
+  const clearCart = () => {
+    setCart([]);
+    AsyncStorage.removeItem("carrinho");
+  };
+
+  const deleteItem = () => {
+    setCart(cart.filter((item) => item.id !== id));
+    AsyncStorage.setItem("carrinho", JSON.stringify(cart));
+  };
+
+  const calculateTotal = () => {
+    let total = 0;
+    cart.forEach((item) => {
+      total += item.preco;
+    });
+    return total.toFixed(2);
+  };
+
   return (
-    <View style={{ width: "100%", height: "100%" }}>
-      <View style={{ alignItems: "center" }}>
-      <Image
-          source={require("../assets/text.svg")}
-          style={{ height: PixelRatio.getPixelSizeForLayoutSize(20), width: PixelRatio.getPixelSizeForLayoutSize(16) }}
-        />
-      </View>
-      <ScrollView style={{ paddingBottom: 200 }}>
-        {data.map((item, index) => (
-          <ItemCart image={item.image} title={item.title} desc={item.desc} qtd={item.qtd} />
-        ))}
-      </ScrollView>
-      <View style={{width: '100%', alignItems: 'center'}}>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            width: "80%",
-            position: "absolute",
-            bottom: 10,
-            margin: "auto",
-          }}
-        >
-          <Icon name="trash-o" color={"#8e1c1a"} size={PixelRatio.getPixelSizeForLayoutSize(15)} />
-          <TouchableOpacity
+    <View
+      style={{
+        width: "100%",
+        height: "100%",
+        backgroundColor: "#efefef",
+      }}
+    >
+      <Header />
+      {cart.length === 0 ? (
+        <View style={styles.viewcart}>
+          <Feather
+            name="shopping-cart"
+            size={PixelRatio.getPixelSizeForLayoutSize(30)}
+            color={"#8E1C1A"}
+          />
+          <Text style={styles.textcart}>Seu carrinho está vazio.</Text>
+        </View>
+      ) : (
+        <>
+          <ScrollView>
+            {cart.map((item, index) => (
+              <ItemCart item={item} key={index} />
+            ))}
+          </ScrollView>
+          <View
             style={{
-              backgroundColor: "#8E1C1A",
-              width: "70%",
-              borderRadius: 5,
-              alignItems: "center",
-              justifyContent: "space-around",
               flexDirection: "row",
-              paddingHorizontal: 10
+              justifyContent: "space-evenly",
+              alignItems: "center",
             }}
           >
-            <Text style={{fontFamily: 'Poppins_500Medium', color: '#fff', fontSize: 15}}>finalizar compra</Text>
-            <Text style={{fontFamily: 'Poppins_500Medium', color: '#fff', fontSize: 11}}>R$ 69,99</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+            <TouchableOpacity style={styles.clear} onPress={clearCart}>
+              <Icon
+                name="trash-2"
+                size={PixelRatio.getPixelSizeForLayoutSize(15)}
+                color={"#8E1C1A"}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.price}
+              onPress={() => navigation.navigate("WhereEat")}
+            >
+              <Text style={styles.text}>Finalizar Compra</Text>
+              <Text style={styles.text}>R${calculateTotal()}</Text>
+            </TouchableOpacity>
+          </View>
+        </>
+      )}
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  item: {
+    width: "60%",
+    height: 150,
+    marginVertical: 10,
+  },
+  text: {
+    color: "#fff",
+    fontSize: 15,
+    fontFamily: "Poppins_500Medium",
+  },
+  box: {
+    width: "90%",
+    height: "68%",
+    backgroundColor: "#fff",
+    position: "absolute",
+    bottom: 0,
+    right: 0,
+    zIndex: 2,
+    borderRadius: 10,
+    shadowColor: "#171717",
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    padding: 10,
+    alignItems: "center",
+  },
+  cart: {
+    backgroundColor: "#8E1C1A",
+    width: "60%",
+    borderRadius: 5,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  carttext: {
+    color: "#fff",
+    fontFamily: "Poppins_400Regular",
+    fontSize: 12,
+  },
+  title: {
+    fontFamily: "Poppins_500Medium",
+    fontSize: 20,
+  },
+  infos: {
+    fontFamily: "Poppins_500Medium",
+    color: "#898989",
+    width: "90%",
+    textAlign: "left",
+  },
+  price: {
+    fontFamily: "Poppins_500Medium",
+    color: "#fff",
+    fontSize: 20,
+    backgroundColor: "#8E1C1A",
+    width: "60%",
+    height: 40,
+    borderRadius: "10px",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    flexDirection: "row",
+  },
+  header: {
+    height: "15%",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  input: {
+    flexDirection: "row",
+    width: "90%",
+    height: PixelRatio.getPixelSizeForLayoutSize(15),
+    justifyContent: "space-between",
+    alignItems: "center",
+    shadowColor: "#171717",
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    paddingHorizontal: 5,
+    borderRadius: 5,
+    backgroundColor: "#efefef",
+  },
+  viewcart: {
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  textcart: {
+    fontFamily: "Poppins_300Light",
+    color: "#8e1c1a",
+    marginVertical: PixelRatio.getPixelSizeForLayoutSize(10),
+  },
+});
+
 export default Cart;

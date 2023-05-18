@@ -1,28 +1,54 @@
 import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
-import pizzaexemplo from "../../assets/pizzaexemplo.png";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Item({ pizza }) {
   const navigation = useNavigation();
+  function navegar() {
+    navigation.navigate("Produto", { pizzas: pizza });
+  }
+  async function carrinho() {
+    const item = {
+      id: pizza.id,
+      nome: pizza.nome,
+      descricao: pizza.descricao,
+      preco: pizza.preco,
+      imagem: pizza.imagem
+    };
+    let carrinho = await AsyncStorage.getItem("carrinho");
+    if (!carrinho || carrinho.length === 0) { 
+      await AsyncStorage.setItem("carrinho", JSON.stringify([item]));
+      navigation.navigate("Cart");
+      return;
+    }
+
+    carrinho = JSON.parse(carrinho);
+
+    carrinho = carrinho.concat([item]);
+    AsyncStorage.setItem("carrinho", JSON.stringify(carrinho));
+    navigation.navigate("Cart");
+  }
+
   return (
-    <View
+    <TouchableOpacity
       style={{
         width: "100%",
         justifyContent: "center",
         alignItems: "center",
         marginVertical: 10,
       }}
+      onPress={() => navegar(pizza)}
     >
       <View style={styles.item}>
         <Image
-          source={{ uri: pizza.imagem}}
+          source={{ uri: pizza.imagem }}
           style={{
             height: 120,
             width: 120,
             position: "absolute",
             left: -35,
             top: -5,
-            borderRadius: 15
+            borderRadius: 15,
           }}
         />
         <View style={styles.box}>
@@ -37,21 +63,14 @@ export default function Item({ pizza }) {
               bottom: 10,
             }}
           >
-            <TouchableOpacity style={styles.cart}>
-              <Text
-                style={styles.carttext}
-                onPress={() => {
-                  navigation.navigate("Cart");
-                }}
-              >
-                add to cart
-              </Text>
+            <TouchableOpacity style={styles.cart} onPress={carrinho}>
+              <Text style={styles.carttext}>add to cart</Text>
             </TouchableOpacity>
-            <Text style={styles.price}>{pizza.preco}</Text>
+            <Text style={styles.price}>R${pizza.preco}</Text>
           </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 const styles = StyleSheet.create({

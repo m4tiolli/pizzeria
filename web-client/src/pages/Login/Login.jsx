@@ -23,7 +23,7 @@ function Login() {
                 type="text"
                 name=""
                 id="Email"
-                placeholder="youremail@email.com"
+              
               />
             </div>
             </div>
@@ -36,7 +36,7 @@ function Login() {
                 type="password"
                 name=""
                 id="Password"
-                placeholder="yourpassword"
+            
               />
             </div>
             </div>

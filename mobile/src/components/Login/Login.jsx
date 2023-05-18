@@ -14,7 +14,6 @@ export default function Login() {
       <View style={styles.boxinput}>
         <Text style={styles.textinput}>e-mail</Text>
         <TextInput
-          placeholder="youremail@email.com"
           style={styles.input}
           autoComplete={"email"}
         />
@@ -23,7 +22,7 @@ export default function Login() {
         <Text style={styles.textinput}>password</Text>
         <TextInput
           secureTextEntry
-          placeholder="yourpassword"
+          
           placeholderTextColor={"#8e1c1a"}
           style={styles.input}
         />
@@ -41,7 +40,6 @@ const styles = StyleSheet.create({
     height: "40%",
     backgroundColor: "#efefef",
     alignItems: "center",
-    gap: 30,
   },
   boxinput: {
     width: "50%",
@@ -54,7 +52,7 @@ const styles = StyleSheet.create({
     marginVertical: 15
   },
   textinput: {
-    top: -14,
+    top: -16,
     left: 10,
     color: "#8E1C1A",
     backgroundColor: "#efefef",

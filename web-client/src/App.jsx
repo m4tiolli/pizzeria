@@ -8,6 +8,7 @@ import SelectEnde from './pages/SelectEnde/SelectEnde';
 import Carrinho from './pages/Carrinho/Carrinho';
 import FormasPagamento from './pages/FormasPagamento/FormasPagamento';
 import CadastroEnde from './pages/CadastroEnde/CadastroEnde';
+import Alterar from './pages/Alterar/Alterar';
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 function App() {
@@ -51,6 +52,10 @@ function App() {
     {
       path: "/CadastroEnde",
       element: <CadastroEnde/>
+    },
+    {
+      path: "/Alterar",
+      element: <Alterar/>
     }
   ]);
 

@@ -21,17 +21,6 @@ function Home() {
       <h1 className="title1">
         welcome to our pizzeria. choose a pizza and be happy!
       </h1>
-      <div className="search">
-        <div className="blockpesquisa">
-          <img src={btnpesquisa} className="imgpesquisa" alt="" />
-          <input
-            className="inputpesquisa"
-            type="text"
-            placeholder="search for some pizza..."
-          />
-        </div>
-        <button className="btnSearch">search</button>
-      </div>
       <div className="options">
         <div className="cardapio">
           <div onClick={navcardapio}>

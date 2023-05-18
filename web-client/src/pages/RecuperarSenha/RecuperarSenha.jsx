@@ -23,7 +23,7 @@ function RecuperarSenha() {
                             type="text"
                             name=""
                             id="Email"
-                            placeholder="youremail@email.com"
+                       
                             />
                         </div>
                         </div>
@@ -35,7 +35,7 @@ function RecuperarSenha() {
                             type="CPF"
                             name=""
                             id="CPF"
-                            placeholder="000.000.000-00"
+                       
                             />
                         </div>
                         </div>

@@ -31,7 +31,6 @@ function Navigator() {
               <Icon name="shoppingcart" color={"#8e1e1a"} size={30} />
             </TouchableOpacity>
           ),
-          tabBarBadge: 3,
         }}
       />
       <Tab.Screen

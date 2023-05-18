@@ -121,7 +121,7 @@ function CadastroProduto() {
                     id="descricao"
                     placeholder="Descrição"
                     value={descricao}
-                    onChange={(e) => setDescricao(e.target.value)}
+                     
                   />
                 </Box>
               </HStack>

@@ -17,7 +17,7 @@ function RecuperarSenha2(){
                             type="Password"
                             name=""
                             id="NovaSenha"
-                            placeholder="yourpassword"
+                        
                             />
                         </div>
                         </div>
@@ -29,7 +29,7 @@ function RecuperarSenha2(){
                             type="CPF"
                             name=""
                             id="ConfirSenha"
-                            placeholder="yourpassword"
+                          
                             />
                         </div>
                         </div>
