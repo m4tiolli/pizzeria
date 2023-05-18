@@ -1,18 +1,3 @@
-// import React,{useState} from 'react';
-// import './VerEconomia.css'
-// import Card from '../.././components/Card/Card';
-
-// export default function VerEconomia(){
-//   return (
-//     <div>
-//       <h1>Teste</h1>
-//       <Card></Card>
-//     </div>
-//   );
-// }
-
-
-
 import React,{useState} from 'react';
 import './VerEconomia.css'
 export default function VerEconomia() {
