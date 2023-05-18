@@ -110,6 +110,14 @@ export default function VerEconomia() {
 
   return (
 <div>
+<meta charSet="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="VerEconomia.css" />
+  <title>AdminSite</title>
   <section id="content">  
     {/* MAIN */}
     <main>
@@ -131,8 +139,6 @@ export default function VerEconomia() {
 					<span class="progress" data-value="40%"></span>
 					<span class="label">40%</span>
 				</div>
-
-
 				<div class="card">
 					<div class="head">
 						<div>
@@ -159,7 +165,8 @@ export default function VerEconomia() {
       <div className="data">
        
           {/*  */}
-        
+          <div class="content-data">
+          </div>
       <div class="content-data">
 					<div class="head">
 							<li><a href="#">Relatório Mensal</a></li>

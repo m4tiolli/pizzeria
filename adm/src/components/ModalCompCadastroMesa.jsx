@@ -55,11 +55,7 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
       .then((response) => response.json())
       .then((dataFromDB) => {
         const body = {
-          nome: name,
-          descricao: description,
-          preco: price,
-          imagem: image,
-          tipo: category,
+          nome: number,
         };
 
 

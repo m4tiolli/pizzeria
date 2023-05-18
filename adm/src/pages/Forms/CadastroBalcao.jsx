@@ -130,4 +130,5 @@ function CadastroBalcao() {
     </Box>
   )
 }
+
 export default CadastroBalcao

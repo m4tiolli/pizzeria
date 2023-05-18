@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 import ModalComp from "../.././components/ModalCompCadastroBalcao";
 
 const VerBalcoes = () => {
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [data, setData] = useState([]);
   const [dataEdit, setDataEdit] = useState({});
@@ -27,21 +28,38 @@ const VerBalcoes = () => {
   });
 
   useEffect(() => {
-    const db_costumer = localStorage.getItem("cad_balcao")
-      ? JSON.parse(localStorage.getItem("cad_balcao"))
-      : [];
+    fetch("https://pizzeria2.azurewebsites.net/api/pizza")
+      .then((response) => response.json())
+      .then((dataFromDB) => {
+        setData(dataFromDB);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Erro ao obter dados do banco de dados");
+      });
+  }, []);
 
-    setData(db_costumer);
-  }, [setData]);
 
   const handleRemove = (CPF) => {
-    const newArray = data.filter((item) => item.CPF !== CPF);
-
-    setData(newArray);
-
-    localStorage.setItem("cad_balcao", JSON.stringify(newArray));
+    fetch(`https://pizzeria2.azurewebsites.net/api/pizza/?CPF=${CPF}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => {
+        if (response.ok) {
+          const newArray = data.filter((item) => item.CPF !== CPF);
+          setData(newArray);
+          localStorage.setItem("cad_cliente", JSON.stringify(newArray));
+        } else {
+          throw new Error("Erro ao remover balcão");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Erro ao remover Balcão");
+      });
   };
-
+  
   return (
 
 <div>

@@ -23,6 +23,9 @@ export default function Services() {
   function MudarParaPaginaVerBalcoes() {
     navigate("/VerBalcoes");
   }
+  function MudarParaPaginaVerMesas() {
+    navigate("/VerMesas");
+  }
 
 
   return (
@@ -40,7 +43,7 @@ export default function Services() {
           <button className="button red-button" onClick={MudarParaPaginaCadastroProduto}>
             Cadastrar Produto
           </button>
-          <button className="button red-button" onClick={MudarParaPaginaCadastroBalcao}>
+          <button className="button red-button" onClick={MudarParaPaginaVerMesas}>
             Cadastrar Mesas
           </button>
         </div>
@@ -67,7 +70,6 @@ export default function Services() {
           </button>
         </div>
       </div>
-     
     </div>
   );
 }

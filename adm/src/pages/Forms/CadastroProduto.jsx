@@ -24,7 +24,7 @@ function CadastroProduto() {
 
     const body = { nome, descricao, preco, imagem, tipo };
 
-    fetch("https://pizzeriatcc.azurewebsites.net/api/pizza", {
+    fetch("https://pizzeria2.azurewebsites.net/api/pizza", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),

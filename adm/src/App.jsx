@@ -12,6 +12,7 @@ import Produtos from './pages/Produtos/Produtos';
 import VerProdutos from './pages/Produtos/VerProdutos'
 import VerEconomia from './pages/Economia/VerEconomia.jsx';
 import VerBalcoes from './pages/Balcoes/VerBalcoes'
+import VerMesas from './pages/Mesas/VerMesas'
 
 function App() {
   const router = createBrowserRouter([
@@ -60,6 +61,11 @@ function App() {
       path: "/VerBalcoes",
       element: <VerBalcoes/>,
     },
+    {
+      path: "/VerMesas",
+      element: <VerMesas/>,
+    },
+    
   ]);
 
   return <RouterProvider router={router} />;

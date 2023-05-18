@@ -1,61 +1,74 @@
 import {
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    Button,
-    FormControl,
-    FormLabel,
-    Input,
-    Box,
-    Flex,
-    Center,
-    HStack
-  } from "@chakra-ui/react";
-  import { useState } from "react";
-  
-  const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
-    const [name, setName] = useState(dataEdit.name || "");
-    const [CPF, setCPF] = useState(dataEdit.CPF || "");
-    const [email, setEmail] = useState(dataEdit.email || "");
-    const [phone_number, setPhone_number] = useState(dataEdit.phone_number || "");
-    const [user_name, setUser_name] = useState(dataEdit.user_name || "");
-    const [password, setPassword] = useState(dataEdit.password || "");
-    const [CEP, setCEP] = useState(dataEdit.CEP || "");
-    
-   
-    const handleSave = () => {
-      if (!name || !CPF  || !email || !phone_number || !user_name || !password || !CEP ) return;
-  
-      if (CPFAlreadyExists()) {
-        return alert("CPF já cadastrado!");
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  Box,
+  Flex,
+  Center,
+  HStack
+} from "@chakra-ui/react";
+import { useState } from "react";
+
+const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
+  const [name, setName] = useState(dataEdit.name || "");
+  const [CPF, setCPF] = useState(dataEdit.CPF || "");
+  const [email, setEmail] = useState(dataEdit.email || "");
+  const [phone_number, setPhone_number] = useState(dataEdit.phone_number || "");
+  const [user_name, setUser_name] = useState(dataEdit.user_name || "");
+  const [password, setPassword] = useState(dataEdit.password || "");
+  const [CEP, setCEP] = useState(dataEdit.CEP || "");
+
+  const handleSave = async () => {
+    if (!name || !CPF || !email || !phone_number || !user_name || !password || !CEP) return;
+
+    if (CPFAlreadyExists()) {
+      return alert("CPF já cadastrado!");
+    }
+
+    try {
+      const response = await fetch("https://pizzeria2.azurewebsites.net/api/balcao", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, CPF, email, phone_number, user_name, password, CEP }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Ocorreu um erro ao fazer o POST.");
       }
-      if (Object.keys(dataEdit).length) {
-        data[dataEdit.index] = { name, CPF, email, phone_number, user_name, password, CEP };
-      }
-  
+
+      const responseData = await response.json();
+      console.log(responseData);
+
       const newDataArray = !Object.keys(dataEdit).length
-        ? [...(data ? data : []), { name, CPF, email, phone_number, user_name, password, CEP }]
+        ? [...(data ? data : []), responseData]
         : [...(data ? data : [])];
-  
-      localStorage.setItem("cad_balcao", JSON.stringify(newDataArray));
-  
+
       setData(newDataArray);
-  
       onClose();
-    };
-  
-    const CPFAlreadyExists = () => {
-      if (dataEdit.CPF !== CPF && data?.length) {
-        return data.find((item) => item.CPF === CPF);
-      }
-  
-      return false;
-    };
-  
+    } catch (error) {
+      console.error(error);
+      alert("Ocorreu um erro ao cadastrar o balcão.");
+    }
+  };
+
+  const CPFAlreadyExists = () => {
+    if (dataEdit.CPF !== CPF && data?.length) {
+      return data.find((item) => item.CPF === CPF);
+    }
+
+    return false;
+  };
+
     return (
       <>
         <Modal isOpen={isOpen} onClose={onClose}>
