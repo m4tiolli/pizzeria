@@ -1,5 +1,6 @@
 import Text from '../../assets/text.svg';
 import carrinho from '../../assets/carrinho.png';
+import lupinha from '../../assets/searchnormal1.png';
 import './Header.css';
 import { useNavigate } from 'react-router-dom';
 //import Header from '../../components/Header/Header'
@@ -26,9 +27,9 @@ export default function HeaderInicial() {
             <img className='img' onClick={mudarDePagina3} src={Text} alt="" />
             <div className='buttons1'>
                     <div className="blockpesquisa">
-                        <img  className="imgpesquisa" alt="" />
+                        <img  className="imgpesquisa" src={lupinha}></img>
                         <input
-                        className="inputpesquisa"
+                        className="inputPesquisa"
                         type="text"
                         placeholder="search for some pizza..."
                         />
@@ -37,6 +38,7 @@ export default function HeaderInicial() {
                 <button className='carrinho'>carrinho</button>
                 <img className='imgCarrinho' src={carrinho}></img>
                 </div>
+                
                 <button className='signup1' onClick={mudarDePagina2}>sign up</button>
                 <button className='signin1' onClick={mudarDePagina1}>sign in</button>
           

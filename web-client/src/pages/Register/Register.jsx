@@ -3,6 +3,14 @@ import Header from "../../components/Header/Header";
 import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 
+function validateForm() {
+  var validar = document.forms["inputdiv"]["name", "email", "password", "cpf"].value;
+  if (validar == "") {
+    alert("Por favor, preencha todos os campos");
+    return false;
+  }
+}
+
 function Register() {
 
   const navigate = useNavigate();
@@ -15,91 +23,95 @@ function Register() {
   const cadastrarUsuario = (e) => {
     e.preventDefault();
 
-    const body = { nome, cpf, email, senha };
-    fetch("https://pizzeriatcc.azurewebsites.net/api/usuario", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
-    })
-      .then((response) => { alert("Usúario cadastrado com sucesso"); })
-      .then(() => {
-        navigate('/');
-      })
-      .catch((error) => {
-        console.log(error);
-        alert("Erro ao cadastrar usúario")
-      });
+    if (nome == "" || cpf == "" || email == "" || senha == ""){
+      alert("Por favor, preencha todos os campos.")
+      return;
     }
-    return (
-      <div>
-        <Header />
-        <div onSubmit={e => { cadastrarUsuario(e) }} className="conteudoregister">
-          <div className="blocoregister">
-            <div className="fundoRegister">
-              <h1 className="titleregister">register</h1>
-              <div className="inputpai">
-                <label className="labelinput" htmlFor="name">name</label>
-                <div className="inputdiv">
-                  <input
-                    className="inputtext"
-                    type="text"
-                    name=""
-                    id="name"
-                    value={nome}
-                    onChange={(e) => setNome(e.target.value)}
-               
-                  />
-                </div>
+    else {
+
+      const body = { nome, cpf, email, senha };
+      fetch("https://pizzeria2.azurewebsites.net/api/usuario", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      })
+        .then((response) => { alert("Usúario cadastrado com sucesso"); })
+        .then(() => {
+          navigate('/');
+        })
+        .catch((error) => {
+          console.log(error);
+          alert("Erro ao cadastrar usúario")
+        });
+    }
+  }
+
+  return (
+    <div>
+      <Header />
+      <div onSubmit={e => { cadastrarUsuario(e) }} className="conteudoregister">
+        <div className="blocoregister">
+          <div className="fundoRegister">
+            <h1 className="titleregister">register</h1>
+            <div className="inputpai">
+              <label className="labelinput" htmlFor="name">name</label>
+              <div className="inputdiv">
+                <input
+                  className="inputtext"
+                  type="text"
+                  name="name"
+                  id="name"
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                  required />
               </div>
-              <br />
-              <div className="inputpai">
-                <label className="labelinput" htmlFor="Email">e-mail</label>
-                <div className="inputdiv">
-                  <input
-                    className="inputtext"
-                    type="text"
-                    name=""
-                    value={email}
-                    id="Email"
-                    onChange={(e) => setEmail(e.target.value)}
-                   
-                  />
-                </div>
-              </div>
-              <br />
-              <div className="inputpai">
-                <label className="labelinput" htmlFor="Password">password</label>
-                <div className="inputdiv">
-                  <input
-                    className="inputtext"
-                    type="password"
-                    name=""
-                    value={senha}
-                    onChange={(e) => setSenha(e.target.value)}
-                    id="Password"
-                  
-                  />
-                </div>
-              </div>
-              <div className="inputpai">
-                <label className="labelinput" htmlFor="CPF">CPF</label>
-                <div className="inputdiv">
-                  <input
-                    className="inputtext"
-                    type="text"
-                    name=""
-                    value={cpf}
-                    onChange={(e) => setCPF(e.target.value)}
-                    id="CPF"
-                   
-                  />
-                </div>
-              </div>
-              <button className="buttonregister" onClick={cadastrarUsuario}>register</button>
             </div>
+            <br />
+            <div className="inputpai">
+              <label className="labelinput" htmlFor="Email">e-mail</label>
+              <div name={"inputdiv"} className="inputdiv">
+                <input
+                  className="inputtext"
+                  type="text"
+                  name="email"
+                  value={email}
+                  id="Email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  required />
+              </div>
+            </div>
+            <br />
+            <div className="inputpai">
+              <label className="labelinput" htmlFor="Password">password</label>
+              <div className="inputdiv">
+                <input
+                  className="inputtext"
+                  type="password"
+                  name="password"
+                  value={senha}
+                  onChange={(e) => setSenha(e.target.value)}
+                  id="Password"
+                  required />
+              </div>
+            </div>
+            <div className="inputpai">
+              <label className="labelinput" htmlFor="CPF">CPF</label>
+              <div className="inputdiv">
+                <input
+                  className="inputtext"
+                  type="text"
+                  name="cpf"
+                  value={cpf}
+                  onChange={(e) => setCPF(e.target.value)}
+                  id="CPF"
+                  required />
+              </div>
+            </div>
+            <button className="buttonregister" onClick={cadastrarUsuario}>register</button>
           </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
 export default Register;

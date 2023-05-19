@@ -7,7 +7,7 @@ import "./Produtos.css"
 export default function Produtos() {
     const navigate = useNavigate();
     useEffect(() => {
-        fetch("https://pizzeriatcc.azurewebsites.net/api/pizza", {
+        fetch("https://pizzeria2.azurewebsites.net/api/pizza", {
             method: "GET",
         })
 
