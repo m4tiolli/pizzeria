@@ -1,8 +1,8 @@
 import Text from '../../assets/text.svg';
 import carrinho from '../../assets/carrinho.png';
-import lupinha from '../../assets/searchnormal1.png';
 import './Header.css';
 import { useNavigate } from 'react-router-dom';
+import { FiSearch } from 'react-icons/fi'
 //import Header from '../../components/Header/Header'
 
 export default function HeaderInicial() {
@@ -17,7 +17,7 @@ export default function HeaderInicial() {
     function mudarDePagina3() {
         navigate("/")
     }
-    function mudarDePagina4(){
+    function mudarDePagina4() {
         navigate("/Carrinho")
     }
 
@@ -26,23 +26,26 @@ export default function HeaderInicial() {
         <div className='header'>
             <img className='img' onClick={mudarDePagina3} src={Text} alt="" />
             <div className='buttons1'>
-                    <div className="blockpesquisa">
-                        <img  className="imgpesquisa" src={lupinha}></img>
-                        <input
+                <div className="blockpesquisa">
+                    <FiSearch
+                    color='#8e1c1a'
+                    className='img'
+                    />
+                    <input
                         className="inputPesquisa"
                         type="text"
                         placeholder="search for some pizza..."
-                        />
-                    </div>
-                <div className='divCarrinho' onClick={mudarDePagina4}>
-                <button className='carrinho'>carrinho</button>
-                <img className='imgCarrinho' src={carrinho}></img>
+                    />
                 </div>
-                
+                <div className='divCarrinho' onClick={mudarDePagina4}>
+                    <button className='carrinho'>carrinho</button>
+                    <img className='imgCarrinho' src={carrinho}></img>
+                </div>
+
                 <button className='signup1' onClick={mudarDePagina2}>sign up</button>
                 <button className='signin1' onClick={mudarDePagina1}>sign in</button>
-          
-        </div>
+
+            </div>
         </div>
     )
 }

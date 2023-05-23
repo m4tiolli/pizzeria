@@ -13,8 +13,9 @@
 }
 
 .img {
-    height: 80%;
-    margin-left: 1em;
+    height: 70%;
+    width: auto;
+    margin: 0 1em;
 }
 
 .buttons1 {

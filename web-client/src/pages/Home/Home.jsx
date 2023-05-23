@@ -1,10 +1,8 @@
-
-import btnpesquisa from "../../assets/searchnormal1.png";
-import delivery from "../../assets/delivery.png";
-import cardapio from "../../assets/cardapio.png";
 import "./Home.css";
 import Header from "../../components/Header/Header";
 import { useNavigate } from "react-router-dom";
+import { BiFoodMenu } from "react-icons/bi";
+import { MdOutlineDeliveryDining } from "react-icons/md";
 
 function Home() {
   const navigate = useNavigate();
@@ -24,13 +22,13 @@ function Home() {
       <div className="options">
         <div className="cardapio">
           <div onClick={navcardapio}>
-            <img src={cardapio} className="icon" alt="" />
+            <BiFoodMenu className="iconCarda"/>
             <button className="button btncardapio" >cardapio</button>
           </div>
         </div>
         <div className="delivery" onClick={navSelectEnde}>
           <div>
-            <img src={delivery} className="icon" alt="" />
+            <MdOutlineDeliveryDining className="iconDeli"/>
             <button className="button btndelivery">delivery</button>
           </div>
         </div>

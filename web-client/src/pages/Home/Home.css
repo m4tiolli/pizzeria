@@ -112,9 +112,18 @@
   text-align: left;
 }
 /* os icones terao largura de 4% da tela e o espaçamento entre os lados horizontalmente vai ser distribuido automaticamente */
-.icon {
-  width: 4vw;
+.iconCarda {
+  width: 10vw;
+  height: 3vw;
   margin: auto;
+  color: #8e1c1e;
+}
+
+.iconDeli{
+  width: 10vw;
+  height: 4vw;
+  margin: auto;
+  color: #698C3D;
 }
 
 /* as cores do texto dos botoes */
