@@ -14,7 +14,7 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import ModalComp from "../.././components/ModalCompCadastroProduto.jsx";
+import ModalComp from "../.././components/ModalCompCadastroMesa.jsx";
 
 const VerProdutos = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -27,7 +27,7 @@ const VerProdutos = () => {
   });
 
   useEffect(() => {
-    fetch("https://pizzeria2.azurewebsites.net/api/pizza")
+    fetch("https://pizzeria3.azurewebsites.net/api/pizza")
       .then((response) => response.json())
       .then((dataFromDB) => {
         setData(dataFromDB);
@@ -40,7 +40,7 @@ const VerProdutos = () => {
 
 
   const handleRemove = (id) => {
-    fetch(`https://pizzeria2.azurewebsites.net/api/pizza/?id=${id}`, {
+    fetch(`https://pizzeria3.azurewebsites.net/api/pizza/?id=${id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     })
@@ -50,12 +50,12 @@ const VerProdutos = () => {
           setData(newArray);
           localStorage.setItem("cad_cliente", JSON.stringify(newArray));
         } else {
-          throw new Error("Erro ao remover produto");
+          throw new Error("Erro ao remover a mesa");
         }
       })
       .catch((error) => {
         console.log(error);
-        alert("Erro ao remover produto");
+        alert("Erro ao remover a mesa");
       });
   };
   
@@ -80,7 +80,7 @@ const VerProdutos = () => {
             color="white"
             onClick={() => [setDataEdit({}), onOpen()]}
           >
-            NOVO PRODUTO
+            NOVA MESAS
           </Button>
 
           <Box overflowY="auto" height="100%">
@@ -88,43 +88,24 @@ const VerProdutos = () => {
               <Thead>
                 <Tr>
                   <Th maxW={isMobile ? 5 : 100} fontSize="20px">
-                    Nome
+                    Número das mesas
                   </Th>
-                  <Th maxW={isMobile ? 5 : 100} fontSize="20px">
-                    Preço
-                  </Th>
-                  <Th maxW={isMobile ? 5 : 100} fontSize="20px">
-                    Categoria
-                  </Th>
-                  <Th maxW={isMobile ? 5 : 100} fontSize="20px">
-                    Descrição
-                  </Th>
-
                   <Th p={0}></Th>
                   <Th p={0}></Th>
                 </Tr>
               </Thead>
               <Tbody>
-                {data.map(({ id, nome, preco, tipo, descricao }, index) => (
+                {data.map(({ id, nome}, index) => (
                   <Tr
                     key={index}
                     cursor="pointer"
                     _hover={{ bg: "gray.100" }}
                   >
-                    <Td maxW={isMobile ? 5 : 100}>{nome}</Td>
-                    <Td maxW={isMobile ? 5 : 100}>{preco}</Td>
-                    <Td maxW={isMobile ? 5 : 100}>{tipo}</Td>
-                    <Td maxW={isMobile ? 5 : 100}>{descricao}</Td>
+                    <Td maxW={isMobile ? 5 : 100}>{nome}</Td>                
     
                   <Td p={0}>
-                    <EditIcon
-                      fontSize={20}
-                      onClick={() => [
-                        setDataEdit({ name, price, category, description, index }),
-                        onOpen(),
-                      ]}
-                    />
                   </Td>
+                  
                   <Td p={0}>
                     <DeleteIcon
                       fontSize={20}
@@ -145,7 +126,7 @@ const VerProdutos = () => {
           setData={setData}
           dataEdit={dataEdit}
           setDataEdit={setDataEdit}
-          refresh={refresh}
+          // refresh={refresh}
         />
       )}
     </Flex>

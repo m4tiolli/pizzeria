@@ -34,7 +34,7 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
     }
 
     try {
-      const response = await fetch("https://pizzeria2.azurewebsites.net/api/balcao", {
+      const response = await fetch("https://pizzeria3.azurewebsites.net/api/balcao", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -17,50 +17,22 @@ import { useState } from "react";
 
 const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
   const [name, setName] = useState(dataEdit.name || "");
-  const [price, setPrice] = useState(dataEdit.price || "");
-  const [category, setCategory] = useState(dataEdit.category || "");
-  const [description, setDescription] = useState(dataEdit.description || "");
-  const [imagePreview, setImagePreview] = useState(null);
-  const [image, setImage] = useState(null);
 
-  const handleFileChange = async (e) => {
-    debugger;
-    setImagePreview(URL.createObjectURL(e.target.files[0]));
-    const image = await getBase64(e.target.files[0]);
-    setImage(image);
-  };
-
-  function getBase64(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        let encoded = reader.result.toString().replace(/^data:(.*,)?/, '');
-        if ((encoded.length % 4) > 0) {
-          encoded += '='.repeat(4 - (encoded.length % 4));
-        }
-        resolve(encoded);
-      };
-      reader.onerror = error => reject(error);
-    });
-  }
 
   const handleSave = () => {
-    if (!name || !price || !category) return;
+    if (!name) return;
     if (name_AlreadyExists()) {
       return alert("Nome do produto já cadastrado!");
     }
 
-    fetch("https://pizzeria2.azurewebsites.net/api/pizza")
+    fetch("https://pizzeria3.azurewebsites.net/api/pizza")
       .then((response) => response.json())
       .then((dataFromDB) => {
         const body = {
           nome: number,
         };
 
-
-
-        fetch("https://pizzeria2.azurewebsites.net/api/pizza", {
+        fetch("https://pizzeria3.azurewebsites.net/api/pizza", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body),
@@ -69,7 +41,7 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
             if (response.ok) {
               alert("Produto cadastrado com sucesso");
               const newDataArray = !Object.keys(dataEdit).length
-                ? [...dataFromDB, { name, price, category, description, file: imagePreview }]
+                ? [...dataFromDB, { name }]
                 : [...dataFromDB];
               setData(newDataArray);
               onClose();
@@ -89,9 +61,6 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
       });
   };
 
-
-
-
   const name_AlreadyExists = () => {
     if (dataEdit.name !== name && data?.length) {
       return data.find((item) => item.name === name);
@@ -99,8 +68,6 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
 
     return false;
   };
-
-
 
   return (
     <>
@@ -122,67 +89,6 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
                   onChange={(e) => setName(e.target.value)}
                 />
               </Box>
-              <Box>
-                <FormLabel>Preço</FormLabel>
-                <Input
-                  type="number"
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)}
-                />
-              </Box>
-              <Box>
-                <FormLabel>Categoria</FormLabel>
-                <Input
-                  type="text"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                />
-              </Box>
-              <Box>
-                <FormLabel>Descrição</FormLabel>
-                <Input
-                  type="text"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                />
-              </Box>
-
-              <FormLabel htmlFor="imagem">
-                Selecione uma imagem para o produto
-              </FormLabel>
-              <Box
-                w="60px"
-                h="60px"
-                bg="gray.100"
-                borderRadius="md"
-                mt="2"
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                cursor="pointer"
-                onClick={() => document.getElementById("imagem").click()}
-              >
-                {imagePreview ? (
-                  <Box
-                    as="img"
-                    src={imagePreview}
-                    alt="Imagem do produto"
-                    maxW="100%"
-                    maxH="100%"
-                  />
-                ) : (
-                  <Box as="span" fontSize="13">
-                    Clique p/ selecionar a imagem
-                  </Box>
-                )}
-              </Box>
-              <Input
-                type="file"
-                accept="image/*"
-                id="imagem"
-                display="none"
-                onChange={handleFileChange}
-              />
             </FormControl>
           </ModalBody>
 

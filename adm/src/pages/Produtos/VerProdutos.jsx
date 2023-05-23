@@ -27,7 +27,7 @@ const VerProdutos = () => {
   });
 
   useEffect(() => {
-    fetch("https://pizzeria2.azurewebsites.net/api/pizza")
+    fetch("https://pizzeria3.azurewebsites.net/api/pizza")
       .then((response) => response.json())
       .then((dataFromDB) => {
         setData(dataFromDB);
@@ -40,7 +40,7 @@ const VerProdutos = () => {
 
 
   const handleRemove = (id) => {
-    fetch(`https://pizzeria2.azurewebsites.net/api/pizza/?id=${id}`, {
+    fetch(`https://pizzeria3.azurewebsites.net/api/pizza/?id=${id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     })
@@ -145,7 +145,7 @@ const VerProdutos = () => {
           setData={setData}
           dataEdit={dataEdit}
           setDataEdit={setDataEdit}
-          refresh={refresh}
+          // refresh={refresh}
         />
       )}
     </Flex>

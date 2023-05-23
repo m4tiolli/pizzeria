@@ -30,7 +30,7 @@ function Register() {
     else {
 
       const body = { nome, cpf, email, senha };
-      fetch("https://pizzeria2.azurewebsites.net/api/usuario", {
+      fetch("https://pizzeria3.azurewebsites.net/api/usuario", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)

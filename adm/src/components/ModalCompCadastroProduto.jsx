@@ -51,7 +51,7 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
       return alert("Nome do produto já cadastrado!");
     }
 
-    fetch("https://pizzeria2.azurewebsites.net/api/pizza")
+    fetch("https://pizzeria3.azurewebsites.net/api/pizza")
       .then((response) => response.json())
       .then((dataFromDB) => {
         const body = {
@@ -64,7 +64,7 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
 
 
 
-        fetch("https://pizzeria2.azurewebsites.net/api/pizza", {
+        fetch("https://pizzeria3.azurewebsites.net/api/pizza", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body),

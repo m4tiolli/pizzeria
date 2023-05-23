@@ -28,7 +28,7 @@ function CadastroEnde() {
     else {
 
       const body = { bairro, ruaAvenida, numero, cep, estado, cidade, casaTrabalho };
-      fetch("https://pizzeria2.azurewebsites.net/api/enderecos", {
+      fetch("https://pizzeria3.azurewebsites.net/api/enderecos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
