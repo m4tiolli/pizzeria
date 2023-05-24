@@ -13,7 +13,7 @@ export default function Tela_principal() {
     const [asideOpen, setAsideOpen] = useState(false);
 
     useEffect(() => {
-        fetch("https://pizzeria3.azurewebsites.net/api/pizza", {
+        fetch("https://pizzeria2.azurewebsites.net/api/produto", {
             method: "GET",
         })
             .then((response) => response.json())
