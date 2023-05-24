@@ -13,10 +13,10 @@ export default function Item({ pizza }) {
       nome: pizza.nome,
       descricao: pizza.descricao,
       preco: pizza.preco,
-      imagem: pizza.imagem
+      imagem: pizza.imagem,
     };
     let carrinho = await AsyncStorage.getItem("carrinho");
-    if (!carrinho || carrinho.length === 0) { 
+    if (!carrinho || carrinho.length === 0) {
       await AsyncStorage.setItem("carrinho", JSON.stringify([item]));
       navigation.navigate("Cart");
       return;
@@ -28,7 +28,9 @@ export default function Item({ pizza }) {
     AsyncStorage.setItem("carrinho", JSON.stringify(carrinho));
     navigation.navigate("Cart");
   }
-
+  const longDesc = pizza.descricao;
+  const shortDesc =
+    longDesc.length < 26 ? longDesc + "..." : longDesc.slice(0, 25) + "...";
   return (
     <TouchableOpacity
       style={{
@@ -41,7 +43,7 @@ export default function Item({ pizza }) {
     >
       <View style={styles.item}>
         <Image
-          source={{ uri: pizza.imagem }}
+          source={{ uri: `data:image/png;base64,${pizza.imagem}` }}
           style={{
             height: 120,
             width: 120,
@@ -53,7 +55,7 @@ export default function Item({ pizza }) {
         />
         <View style={styles.box}>
           <Text style={styles.title}>{pizza.nome}</Text>
-          <Text style={styles.infos}>{pizza.descricao}</Text>
+          <Text style={styles.infos}>{shortDesc}</Text>
           <View
             style={{
               flexDirection: "row",
@@ -94,6 +96,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     padding: 10,
     alignItems: "center",
+    elevation: 10,
   },
   cart: {
     backgroundColor: "#8E1C1A",
@@ -101,6 +104,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: "center",
     justifyContent: "center",
+    elevation: 5,
   },
   carttext: {
     color: "#fff",
@@ -114,6 +118,7 @@ const styles = StyleSheet.create({
   infos: {
     fontFamily: "Poppins_500Medium",
     color: "#898989",
+    marginTop: -5,
   },
   price: {
     fontFamily: "Poppins_500Medium",

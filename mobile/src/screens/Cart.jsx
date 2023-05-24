@@ -71,7 +71,7 @@ function Cart() {
             size={PixelRatio.getPixelSizeForLayoutSize(30)}
             color={"#8E1C1A"}
           />
-          <Text style={styles.textcart}>Seu carrinho está vazio.</Text>
+          <Text style={styles.textcart}>Your cart is empty.</Text>
         </View>
       ) : (
         <>
@@ -98,7 +98,7 @@ function Cart() {
               style={styles.price}
               onPress={() => navigation.navigate("WhereEat")}
             >
-              <Text style={styles.text}>Finalizar Compra</Text>
+              <Text style={styles.text}>go to checkout</Text>
               <Text style={styles.text}>R${calculateTotal()}</Text>
             </TouchableOpacity>
           </View>
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#8E1C1A",
     width: "60%",
     height: 40,
-    borderRadius: "10px",
+    borderRadius: 10,
     alignItems: "center",
     justifyContent: "space-evenly",
     flexDirection: "row",
@@ -187,6 +187,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
     borderRadius: 5,
     backgroundColor: "#efefef",
+    elevation: 5
   },
   viewcart: {
     width: "100%",

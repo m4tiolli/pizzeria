@@ -46,7 +46,7 @@ export default function Produto() {
       }}
     >
       <Image
-        source={{ uri: pizzas.imagem }}
+        source={{ uri: `data:image/png;base64,${pizzas.imagem}` }}
         style={{
           height: PixelRatio.getPixelSizeForLayoutSize(100),
           width: "80%",

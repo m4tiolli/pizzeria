@@ -20,13 +20,14 @@ function ItemCart({ item }) {
     >
       <View style={styles.item}>
         <Image
-          source={{ uri: item.imagem }}
+          source={{ uri: `data:image/png;base64, ${item.imagem}` }}
           style={{
             height: 120,
             width: 120,
             position: "absolute",
             left: -35,
             top: -5,
+            borderRadius: 15,
           }}
         />
         <View style={styles.box}>
@@ -39,7 +40,6 @@ function ItemCart({ item }) {
           >
             <Text style={styles.title}>{item.nome}</Text>
           </View>
-          <Text style={styles.infos}>{item.descricao}</Text>
           <View
             style={{
               flexDirection: "row",
@@ -50,7 +50,7 @@ function ItemCart({ item }) {
             }}
           >
             <TouchableOpacity style={styles.cart} onPress={() => navegar(item)}>
-              <Text style={styles.carttext}>ver informações</Text>
+              <Text style={styles.carttext}>show info</Text>
             </TouchableOpacity>
             <Text style={styles.price}>R${item.preco}</Text>
           </View>
@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     padding: 10,
     alignItems: "center",
+    elevation: 10
   },
   cart: {
     backgroundColor: "#8E1C1A",
@@ -91,21 +92,15 @@ const styles = StyleSheet.create({
   carttext: {
     color: "#fff",
     fontFamily: "Poppins_400Regular",
-    fontSize: 12,
+    fontSize: 15,
   },
   title: {
     fontFamily: "Poppins_500Medium",
-    fontSize: 20,
-  },
-  infos: {
-    fontFamily: "Poppins_500Medium",
-    color: "#898989",
-    width: "90%",
-    textAlign: "left",
+    fontSize: 18,
   },
   price: {
     fontFamily: "Poppins_500Medium",
-    color: "#898989",
+    color: "#698C3D",
     fontSize: 20,
   },
 });

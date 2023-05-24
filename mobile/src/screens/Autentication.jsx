@@ -74,7 +74,6 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins_600SemiBold",
     color: "#8E1C1A",
     fontSize: 25,
-    letterSpacing: 1,
   },
   dockerauth: {
     width: "100%",
@@ -108,7 +107,6 @@ const styles = StyleSheet.create({
     outlineStyle: "none",
     color: "#8E1C1A",
     fontFamily: "Poppins_400Regular",
-    fontWeight: 200,
   },
   next: {
     backgroundColor: "#8E1C1A",

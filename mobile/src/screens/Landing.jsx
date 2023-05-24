@@ -60,13 +60,13 @@ export default function Landing() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://pizzeriatcc.azurewebsites.net/api/pizza",
+          "https://pizzeria3.azurewebsites.net/api/produto",
           {
             method: "GET",
           }
         );
         const json = await response.json();
-        setUsuarios(json);
+        setPizza(json);
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -98,7 +98,7 @@ export default function Landing() {
     setTexto(novoTexto);
   };
 
-  const [usuarios, setUsuarios] = useState([]);
+  const [pizza, setPizza] = useState([]);
   if (isLoading)
     return (
       <View
@@ -115,7 +115,6 @@ export default function Landing() {
 
   return (
     <View style={styles.docker}>
-      <StatusBar hidden={true} />
       <View style={styles.header}>
         <Image
           source={require("../assets/text.png")}
@@ -140,11 +139,11 @@ export default function Landing() {
           </TouchableOpacity>
           <View style={styles.input}>
             <TextInput
-              placeholder="pesquisar por pizzas"
+              placeholder="search for pizzas"
               style={{
                 fontFamily: "Poppins_300Light_Italic",
                 outline: "none",
-                paddingRight: "20%",
+                paddingRight: "40%",
                 paddingLeft: 10,
               }}
               onChangeText={handleChangeTexto}
@@ -152,7 +151,7 @@ export default function Landing() {
             />
             <TouchableOpacity
               onPress={() =>
-                navigation.navigate("Search", { param: pesquisa})
+                navigation.navigate("Search", { param: pesquisas, pizza: pizza})
               }
             >
               <Icon
@@ -192,116 +191,98 @@ export default function Landing() {
                   >
                     <Icon
                       name="close"
-                      size={PixelRatio.getPixelSizeForLayoutSize(15)}
+                      size={PixelRatio.getPixelSizeForLayoutSize(10)}
                       color={"#8e1c1c"}
                     />
                   </TouchableOpacity>
                   <Text
                     style={{
-                      fontFamily: "Poppins_400Regular",
-                      fontSize: PixelRatio.getPixelSizeForLayoutSize(10),
+                      fontFamily: "Poppins_300Light",
+                      fontSize: PixelRatio.getPixelSizeForLayoutSize(8),
                       color: "#8e1c1a",
                     }}
                   >
-                    filtrar por:
+                    filter by:
                   </Text>
                 </View>
-                <CheckBox
-                  checked={grandeChecked}
-                  onPress={toggleGrandeChecked}
-                  iconType="material-icons-outlined"
-                  checkedIcon="check-box"
-                  uncheckedIcon="check-box-outline-blank"
-                  checkedColor="#8e1e1a"
-                  uncheckedColor="#8e1e1a"
-                  containerStyle={{ backgroundColor: "#efefef" }}
-                  title={"pizzas grandes"}
-                  textStyle={{
-                    color: "#8e1c1a",
-                    fontFamily: "Poppins_400Regular",
-                    fontSize: PixelRatio.getPixelSizeForLayoutSize(8),
-                  }}
-                />
-                <CheckBox
-                  checked={pequenaChecked}
-                  onPress={togglePequenaChecked}
-                  iconType="material-icons-outlined"
-                  checkedIcon="check-box"
-                  uncheckedIcon="check-box-outline-blank"
-                  checkedColor="#8e1e1a"
-                  uncheckedColor="#8e1e1a"
-                  containerStyle={{ backgroundColor: "#efefef" }}
-                  title={"pizzas pequenas"}
-                  textStyle={{
-                    color: "#8e1c1a",
-                    fontFamily: "Poppins_400Regular",
-                    fontSize: PixelRatio.getPixelSizeForLayoutSize(8),
-                  }}
-                />
-                <CheckBox
-                  checked={salgadaChecked}
-                  onPress={toggleSalgadaChecked}
-                  iconType="material-icons-outlined"
-                  checkedIcon="check-box"
-                  uncheckedIcon="check-box-outline-blank"
-                  checkedColor="#8e1e1a"
-                  uncheckedColor="#8e1e1a"
-                  containerStyle={{ backgroundColor: "#efefef" }}
-                  title={"pizzas salgadas"}
-                  textStyle={{
-                    color: "#8e1c1a",
-                    fontFamily: "Poppins_400Regular",
-                    fontSize: PixelRatio.getPixelSizeForLayoutSize(8),
-                  }}
-                />
-                <CheckBox
-                  checked={doceChecked}
-                  onPress={toggleDoceChecked}
-                  iconType="material-icons-outlined"
-                  checkedIcon="check-box"
-                  uncheckedIcon="check-box-outline-blank"
-                  checkedColor="#8e1e1a"
-                  uncheckedColor="#8e1e1a"
-                  containerStyle={{ backgroundColor: "#efefef" }}
-                  title={"pizzas doces"}
-                  textStyle={{
-                    color: "#8e1c1a",
-                    fontFamily: "Poppins_400Regular",
-                    fontSize: PixelRatio.getPixelSizeForLayoutSize(8),
-                  }}
-                />
-                <CheckBox
-                  checked={bebidaChecked}
-                  onPress={toggleBebidaChecked}
-                  iconType="material-icons-outlined"
-                  checkedIcon="check-box"
-                  uncheckedIcon="check-box-outline-blank"
-                  checkedColor="#8e1e1a"
-                  uncheckedColor="#8e1e1a"
-                  containerStyle={{ backgroundColor: "#efefef" }}
-                  title={"bebidas"}
-                  textStyle={{
-                    color: "#8e1c1a",
-                    fontFamily: "Poppins_400Regular",
-                    fontSize: PixelRatio.getPixelSizeForLayoutSize(8),
-                  }}
-                />
-                <CheckBox
-                  checked={sobremesaChecked}
-                  onPress={toggleSobremesaChecked}
-                  iconType="material-icons-outlined"
-                  checkedIcon="check-box"
-                  uncheckedIcon="check-box-outline-blank"
-                  checkedColor="#8e1e1a"
-                  uncheckedColor="#8e1e1a"
-                  containerStyle={{ backgroundColor: "#efefef" }}
-                  title={"sobremesas"}
-                  textStyle={{
-                    color: "#8e1c1a",
-                    fontFamily: "Poppins_400Regular",
-                    fontSize: PixelRatio.getPixelSizeForLayoutSize(8),
-                  }}
-                />
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <CheckBox
+                    checked={grandeChecked}
+                    onPress={toggleGrandeChecked}
+                    iconType="material-icons-outlined"
+                    checkedIcon="check-box"
+                    uncheckedIcon="check-box-outline-blank"
+                    checkedColor="#8e1e1a"
+                    uncheckedColor="#8e1e1a"
+                    containerStyle={{ backgroundColor: "#efefef" }}
+                  />
+                  <Text style={styles.checkText}>pizzas grandes</Text>
+                </View>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <CheckBox
+                    checked={pequenaChecked}
+                    onPress={togglePequenaChecked}
+                    iconType="material-icons-outlined"
+                    checkedIcon="check-box"
+                    uncheckedIcon="check-box-outline-blank"
+                    checkedColor="#8e1e1a"
+                    uncheckedColor="#8e1e1a"
+                    containerStyle={{ backgroundColor: "#efefef" }}
+                  />
+                  <Text style={styles.checkText}>pizzas pequenas</Text>
+                </View>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <CheckBox
+                    checked={salgadaChecked}
+                    onPress={toggleSalgadaChecked}
+                    iconType="material-icons-outlined"
+                    checkedIcon="check-box"
+                    uncheckedIcon="check-box-outline-blank"
+                    checkedColor="#8e1e1a"
+                    uncheckedColor="#8e1e1a"
+                    containerStyle={{ backgroundColor: "#efefef" }}
+                  />
+                  <Text style={styles.checkText}>pizzas salgadas</Text>
+                </View>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <CheckBox
+                    checked={doceChecked}
+                    onPress={toggleDoceChecked}
+                    iconType="material-icons-outlined"
+                    checkedIcon="check-box"
+                    uncheckedIcon="check-box-outline-blank"
+                    checkedColor="#8e1e1a"
+                    uncheckedColor="#8e1e1a"
+                    containerStyle={{ backgroundColor: "#efefef" }}
+                  />
+                  <Text style={styles.checkText}>pizzas doces</Text>
+                </View>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <CheckBox
+                    checked={bebidaChecked}
+                    onPress={toggleBebidaChecked}
+                    iconType="material-icons-outlined"
+                    checkedIcon="check-box"
+                    uncheckedIcon="check-box-outline-blank"
+                    checkedColor="#8e1e1a"
+                    uncheckedColor="#8e1e1a"
+                    containerStyle={{ backgroundColor: "#efefef" }}
+                  />
+                  <Text style={styles.checkText}>bebidas</Text>
+                </View>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <CheckBox
+                    checked={sobremesaChecked}
+                    onPress={toggleSobremesaChecked}
+                    iconType="material-icons-outlined"
+                    checkedIcon="check-box"
+                    uncheckedIcon="check-box-outline-blank"
+                    checkedColor="#8e1e1a"
+                    uncheckedColor="#8e1e1a"
+                    containerStyle={{ backgroundColor: "#efefef" }}
+                  />
+                  <Text style={styles.checkText}>sobremesas</Text>
+                </View>
                 <View
                   style={{
                     width: "100%",
@@ -314,8 +295,8 @@ export default function Landing() {
                   <TouchableOpacity
                     style={{
                       backgroundColor: "#8e1c1a",
-                      width: PixelRatio.getPixelSizeForLayoutSize(100),
-                      height: PixelRatio.getPixelSizeForLayoutSize(20),
+                      width: "70%",
+                      height: PixelRatio.getPixelSizeForLayoutSize(17),
                       justifyContent: "center",
                       alignItems: "center",
                       borderRadius: 10,
@@ -331,7 +312,7 @@ export default function Landing() {
                         fontSize: PixelRatio.getPixelSizeForLayoutSize(10),
                       }}
                     >
-                      filtrar
+                      filter
                     </Text>
                   </TouchableOpacity>
                 </View>
@@ -343,7 +324,7 @@ export default function Landing() {
         <ScrollView
           style={{ paddingBottom: PixelRatio.getPixelSizeForLayoutSize(100) }}
         >
-          {usuarios.map((pizza, index) => (
+          {pizza.map((pizza, index) => (
             <Item pizza={pizza} key={index} />
           ))}
         </ScrollView>
@@ -358,13 +339,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#efefef",
   },
   header: {
-    height: "15%",
+    height: "20%",
     flexDirection: "column",
     alignItems: "center",
+    zIndex: 5,
+    backgroundColor: "#efefef",
   },
   input: {
     flexDirection: "row",
-    width: "70%",
+    width: "80%",
     height: PixelRatio.getPixelSizeForLayoutSize(15),
     justifyContent: "space-between",
     alignItems: "center",
@@ -375,5 +358,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
     borderRadius: 5,
     backgroundColor: "#efefef",
+    elevation: 5,
+  },
+  checkText: {
+    color: "#8e1c1a",
+    fontFamily: "Poppins_400Regular",
+    fontSize: PixelRatio.getPixelSizeForLayoutSize(6),
   },
 });
