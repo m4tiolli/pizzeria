@@ -1,7 +1,7 @@
 import "./CompProdutos.css";
 import { useNavigate } from 'react-router-dom';
 
-function Produto({ pizza }){
+function Produto({ produto }){
     const navigate = useNavigate();
 
     function navAlterar(){
@@ -10,11 +10,11 @@ function Produto({ pizza }){
     return(
         <div className='containerPizza'>
             <div className="fundoPizza">
-                <img className='imgPizza' src={`data:image/png;base64,${pizza.imagem}`}></img>
+                <img className='imgPizza' src={`data:imagem/png;base64,${produto.imagem}`}></img>
             <div className="divTexts">
-                <h1 className='nomePizza'>{pizza.nome}</h1>
-                <h3 className='descricaoPizza' >{pizza.descricao}</h3>
-                <h3 className='precoPizza'>R${pizza.preco}</h3>
+                <h1 className='nomePizza'>{produto.nome}</h1>
+                <h3 className='descricaoPizza' >{produto.descricao}</h3>
+                <h3 className='precoPizza'>R${produto.valor}</h3>
             </div>
             <div className="buttonsPro">
                 <button className='btnAddCart' >add to cart +</button>

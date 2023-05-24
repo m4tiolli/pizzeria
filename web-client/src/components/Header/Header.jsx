@@ -3,6 +3,8 @@ import carrinho from '../../assets/carrinho.png';
 import './Header.css';
 import { useNavigate } from 'react-router-dom';
 import { FiSearch } from 'react-icons/fi'
+import { useState } from 'react';
+import SearchResults from '../SearchResults/SearchResults';
 //import Header from '../../components/Header/Header'
 
 export default function HeaderInicial() {
@@ -21,6 +23,24 @@ export default function HeaderInicial() {
         navigate("/Carrinho")
     }
 
+    const[pizza, setPizza] = useState([]);
+
+    const handleInputChange = (e) => {
+        debugger;
+        e.preventDefault();
+        const {value} = e.target;
+
+        if (!value) return;
+
+        const url = `https://pizzeria3.azurewebsites.net/api/produto${value}`
+
+        fetch(url)
+        .then((response) => response.json())
+        .then((pizza) => setPizza(pizza)); 
+
+    }
+
+    console.log('Pizza', pizza)
     return (
 
         <div className='header'>
@@ -30,12 +50,17 @@ export default function HeaderInicial() {
                     <FiSearch
                     color='#8e1c1a'
                     className='img'
+                    
                     />
                     <input
                         className="inputPesquisa"
                         type="text"
                         placeholder="search for some pizza..."
+                        name='search'
+                        id='search'
+                        onChange={handleInputChange}
                     />
+                    <SearchResults pizza={pizza}/>
                 </div>
                 <div className='divCarrinho' onClick={mudarDePagina4}>
                     <button className='carrinho'>carrinho</button>
