@@ -1,30 +1,40 @@
 drop database if exists pizzeria;
-
 create database pizzeria;
-
 use pizzeria;
 
-
-CREATE TABLE produto(
-id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-nome VARCHAR(255),
-valor INT
+create table produto(
+	id int not null auto_increment primary key,
+	nome varchar(30),
+	descricao longtext,
+	valor decimal(8,2),
+	imagem longtext,
+	tipo varchar(30)    
 );
 
-CREATE TABLE pedido(
-id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-valorTotal INT NOT NULL
+insert into produto values(default, 'calabresinha', 'calabresa e queijo', 45.00, 
+'https://e7.pngegg.com/pngimages/935/770/png-clipart-pizza-pizza.png', 'pizza salgada');
+insert into produto values(default, 'portuguesa', 'calabresa e queijo', 45.00, 
+'https://w7.pngwing.com/pngs/56/985/png-transparent-pizza-margherita-sushi-pizza-pizza-delivery-pizza-thumbnail.png', 'pizza salgada');
+insert into produto values(default, '4 queijos', 'calabresa e queijo', 45.00, 
+'https://www.designi.com.br/images/preview/10000490.jpg', 'pizza salgada');
+insert into produto values(default, 'frango', 'calabresa e queijo', 45.00, 
+'https://www.designi.com.br/images/preview/10005763.jpg', 'pizza salgada');
+
+create table pedido(
+	id int not null auto_increment primary key,
+	valorTotal decimal(8,2) not null
 );
 
-CREATE TABLE ProdutosPedido(
-    produto INT NOT NULL,
-    pedido INT NOT NULL,
-    quantidade INT NOT NULL,
-    valor INT NOT NULL,
-    FOREIGN KEY (produto)
-        REFERENCES produto (id),
-    FOREIGN KEY (pedido)
-        REFERENCES pedido (id)
+create table ProdutosPedido(
+    produto int not null,
+    pedido int not null,
+    quantidade int not null,
+    valor decimal(8,2) not null,
+	observacao varchar(255),
+    foreign key (produto)
+        references produto (id),
+    foreign key (pedido)
+        references pedido (id)
 );
 
 create table usuario(
@@ -40,25 +50,6 @@ create table usuario(
 
 insert into usuario values(default, 'juju', '11111199987', '2006-03-20', '11 999999999', 'juju@gmail.com', '12345678', 'adm');
 
-create table produtoCad(
-    id int primary key not null auto_increment,
-    nome varchar(30),
-    descricao longtext,
-    preco decimal(8, 2),
-    imagem varchar(255),
-    tipo varchar(32)    
-);
-
-insert into produtoCad values(default, 'calabresinha', 'calabresa e queijo', 45.00, 
-'https://e7.pngegg.com/pngimages/935/770/png-clipart-pizza-pizza.png', 'pizza salgada');
-insert into produtoCad values(default, 'portuguesa', 'calabresa e queijo', 45.00, 
-'https://w7.pngwing.com/pngs/56/985/png-transparent-pizza-margherita-sushi-pizza-pizza-delivery-pizza-thumbnail.png', 'pizza salgada');
-insert into produtoCad values(default, '4 queijos', 'calabresa e queijo', 45.00, 
-'https://www.designi.com.br/images/preview/10000490.jpg', 'pizza salgada');
-insert into produtoCad values(default, 'frango', 'calabresa e queijo', 45.00, 
-'https://www.designi.com.br/images/preview/10005763.jpg', 'pizza salgada');
-
-
 create table carrinho(
     id int primary key not null auto_increment,
     nome varchar(30),
@@ -69,6 +60,8 @@ create table mesa(
     id int primary key not null auto_increment,
     numero int
 );
+
+insert into mesa values(default, 12);
 
 create table enderecos (
     id int primary key not null auto_increment,
@@ -101,23 +94,20 @@ create table infopedido(
     foreign key (idpedido) references pedido(id)
 );
 
-INSERT INTO produto values(default, 'Coca', 10);
-INSERT INTO produto values(default, 'Pizza', 40);
-
-INSERT INTO pedido values (default, 50);
-INSERT INTO pedido values (default, 100);
+insert into pedido values (default, 50);
+insert into pedido values (default, 100);
 -- INSERT INTO pedido values (default, 40);
 -- INSERT INTO pedido values (default, 80 );
 -- INSERT INTO pedido values (default, 10); 
 
-INSERT INTO ProdutosPedido values (1, 1, 5, 50);
-INSERT INTO ProdutosPedido values (2, 2, 1, 40); 
+insert into ProdutosPedido values (1, 1, 5, 50, 'sem queijo, sem queijo');
+insert into ProdutosPedido values (2, 2, 1, 40, null); 
 -- INSERT INTO ProdutosPedido values (1, 3, 10, 100);
 -- INSERT INTO ProdutosPedido values (2, 4, 2, 80);
 -- INSERT INTO ProdutosPedido values (1, 5, 1, 10); 
 
-SELECT PP.Pedido, PP.Produto, PROD.Nome, PP.Quantidade FROM ProdutosPedido PP
-INNER JOIN Produto PROD
-ON PP.Produto = PROD.ID
-INNER JOIN Pedido PED
-ON PP.Pedido = PED.ID;
+select PP.Pedido, PP.Produto, PROD.Nome, PP.Quantidade, PP.Observacao from ProdutosPedido PP
+inner join Produto PROD
+on PP.Produto = PROD.ID
+inner join Pedido PED
+on PP.Pedido = PED.ID;
