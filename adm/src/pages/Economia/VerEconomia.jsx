@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './VerEconomia.css';
+import Header from '../../components/Header/Header'
+import Sidebar from '../../components/Sidebar/Sidebar';
 
 const VerEconomia = () => {
   const [descItem, setDescItem] = useState('');
@@ -118,12 +120,15 @@ const [totalExpenses, setTotalExpenses] = useState('0.00');
 				href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
 				rel="stylesheet"
 			/>
-			<link rel="stylesheet" href="VerEconomia.css" />
+			<link rel="stylesheet" href="VerEconomia.css"/>
 			<title>AdminSite</title>
+
+<Header></Header>
+<Sidebar></Sidebar>
 			<section id="content">
 				{/* MAIN */}
 				<main>
-					<h1 className="title">Dashboard</h1>
+					<h1 className="title_Economia">Economia</h1>
 					<ul className="breadcrumbs">
 						<li><a href="#">Home</a></li>
 						<li className="divider">/</li>

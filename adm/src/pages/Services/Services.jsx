@@ -1,6 +1,8 @@
 import "./Services.css";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import Header from '../../components/Header/Header'
+import Sidebar from '../../components/Sidebar/Sidebar';
 
 export default function Services() {
   const navigate = useNavigate();
@@ -29,11 +31,15 @@ export default function Services() {
 
 
   return (
-    <div className="services-container">
-      <div className="header">
-        <img src={logo} alt="" className="logo" />
-        <h1 className="title">Pizzeria</h1>
-      </div>
+
+    <div className="teste">
+      <link
+				href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+				rel="stylesheet"
+			/>
+      <Header></Header>
+      <Sidebar></Sidebar>
+<section id="content">
       <div className="buttoncontainer">
         <h1 className="services-title">Services</h1>
         <div className="button-row">
@@ -70,6 +76,7 @@ export default function Services() {
           </button>
         </div>
       </div>
+      </section>
     </div>
   );
 }

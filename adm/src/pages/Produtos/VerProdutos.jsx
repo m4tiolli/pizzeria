@@ -27,7 +27,7 @@ const VerProdutos = () => {
   });
 
   useEffect(() => {
-    fetch("https://pizzeria3.azurewebsites.net/api/pizza")
+    fetch("https://pizzeria3.azurewebsites.net/api/produto")
       .then((response) => response.json())
       .then((dataFromDB) => {
         setData(dataFromDB);
@@ -40,7 +40,7 @@ const VerProdutos = () => {
 
 
   const handleRemove = (id) => {
-    fetch(`https://pizzeria3.azurewebsites.net/api/pizza/?id=${id}`, {
+    fetch(`https://pizzeria3.azurewebsites.net/api/produto/?id=${id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     })
@@ -105,14 +105,14 @@ const VerProdutos = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {data.map(({ id, nome, preco, tipo, descricao }, index) => (
+                {data.map(({ id, nome, valor, tipo, descricao }, index) => (
                   <Tr
                     key={index}
                     cursor="pointer"
                     _hover={{ bg: "gray.100" }}
                   >
                     <Td maxW={isMobile ? 5 : 100}>{nome}</Td>
-                    <Td maxW={isMobile ? 5 : 100}>{preco}</Td>
+                    <Td maxW={isMobile ? 5 : 100}>{valor}</Td>
                     <Td maxW={isMobile ? 5 : 100}>{tipo}</Td>
                     <Td maxW={isMobile ? 5 : 100}>{descricao}</Td>
     
@@ -120,7 +120,7 @@ const VerProdutos = () => {
                     <EditIcon
                       fontSize={20}
                       onClick={() => [
-                        setDataEdit({ name, price, category, description, index }),
+                        setDataEdit({ name, valor, category, description, index }),
                         onOpen(),
                       ]}
                     />

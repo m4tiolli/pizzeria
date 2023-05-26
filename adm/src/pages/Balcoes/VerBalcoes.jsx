@@ -28,7 +28,7 @@ const VerBalcoes = () => {
   });
 
   useEffect(() => {
-    fetch("https://pizzeria3.azurewebsites.net/api/pizza")
+    fetch("https://pizzeria3.azurewebsites.net/api/produto")
       .then((response) => response.json())
       .then((dataFromDB) => {
         setData(dataFromDB);
@@ -41,7 +41,7 @@ const VerBalcoes = () => {
 
 
   const handleRemove = (CPF) => {
-    fetch(`https://3.azurewebsites.net/api/pizza/?CPF=${CPF}`, {
+    fetch(`https://3.azurewebsites.net/api/produto/?CPF=${CPF}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     })

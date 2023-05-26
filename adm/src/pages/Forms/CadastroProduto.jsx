@@ -14,7 +14,7 @@ import {
 
 function CadastroProduto() {
   const [nome, setNome] = useState();
-  const [preco, setPreco] = useState();
+  const [valor, setValor] = useState();
   const [descricao, setDescricao] = useState();
   const [tipo, setTipo] = useState();
   const [imagem, setImagem] = useState();
@@ -22,9 +22,9 @@ function CadastroProduto() {
   const cadastrarProduto = (e) => {
     e.preventDefault();
 
-    const body = { nome, descricao, preco, imagem, tipo };
+    const body = { nome, descricao, valor, imagem, tipo };
 
-    fetch("https://pizzeria3.azurewebsites.net/api/pizza", {
+    fetch("https://pizzeria3.azurewebsites.net/api/produto", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
@@ -95,12 +95,12 @@ function CadastroProduto() {
 
               <HStack spacing="4">
                 <Box w="100%">
-                  <FormLabel htmlFor="preco">Preço</FormLabel>
+                  <FormLabel htmlFor="valor">Preço</FormLabel>
                   <Input
-                    id="preco"
+                    id="valor"
                     placeholder="Preço"
-                    value={preco}
-                    onChange={(e) => setPreco(e.target.value)}
+                    value={valor}
+                    onChange={(e) => setValor(e.target.value)}
                   />
                 </Box>
                 <Box w="100%">

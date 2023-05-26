@@ -17,7 +17,7 @@ import { useState } from "react";
 
 const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
   const [name, setName] = useState(dataEdit.name || "");
-  const [price, setPrice] = useState(dataEdit.price || "");
+  const [valor, setValor] = useState(dataEdit.valor || "");
   const [category, setCategory] = useState(dataEdit.category || "");
   const [description, setDescription] = useState(dataEdit.description || "");
   const [imagePreview, setImagePreview] = useState(null);
@@ -46,25 +46,25 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
   }
 
   const handleSave = () => {
-    if (!name || !price || !category) return;
+    if (!name || !valor || !category) return;
     if (name_AlreadyExists()) {
       return alert("Nome do produto já cadastrado!");
     }
 
-    fetch("https://pizzeria3.azurewebsites.net/api/pizza")
+    fetch("https://pizzeria3.azurewebsites.net/api/produto")
       .then((response) => response.json())
       .then((dataFromDB) => {
         const body = {
           nome: name,
           descricao: description,
-          preco: price,
+          valor: valor,
           imagem: image,
           tipo: category,
         };
 
 
 
-        fetch("https://pizzeria3.azurewebsites.net/api/pizza", {
+        fetch("https://pizzeria3.azurewebsites.net/api/produto", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body),
@@ -73,7 +73,7 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
             if (response.ok) {
               alert("Produto cadastrado com sucesso");
               const newDataArray = !Object.keys(dataEdit).length
-                ? [...dataFromDB, { name, price, category, description, file: imagePreview }]
+                ? [...dataFromDB, { name, valor, category, description, file: imagePreview }]
                 : [...dataFromDB];
               setData(newDataArray);
               onClose();
@@ -130,8 +130,8 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
                 <FormLabel>Preço</FormLabel>
                 <Input
                   type="number"
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)}
+                  value={valor}
+                  onChange={(e) => setValor(e.target.value)}
                 />
               </Box>
               <Box>
