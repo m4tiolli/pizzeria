@@ -1,8 +1,8 @@
  .containerPizza {
      display: flex;
      background-color: #fff;
-     width: 250px;
-     height: 500px;
+     width: 300px;
+     height: 600px;
      position: relative;
      flex-wrap: wrap;
      align-items: center;
@@ -25,6 +25,8 @@
 
  .containerTexto {
     width: 100%;
+    top: relative;
+    margin: 10 20px;
  }
 
  .nomePizza {
@@ -57,7 +59,7 @@
     margin-left: 50px;
 }
 
- .observacoes{
+.observacoes{
     width: 20%;
     height: 10px;
  }

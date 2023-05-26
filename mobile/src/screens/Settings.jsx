@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
     borderRadius: 10,
+    elevation: 3
   },
   textbtn: {
     fontFamily: "Poppins_500Medium",

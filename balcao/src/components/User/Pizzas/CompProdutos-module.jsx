@@ -1,9 +1,11 @@
 import { React, useEffect, useState } from "react";
 import "./CompProduto.css";
+import ObservationButton from '../ObservationProduto/ObservationProduto';
+
 
 function Produto({ pizza, abrirAside, atualizarCarrinho }) {
 
-    
+    const [observacao, setObeservacao] = useState("");
 
     function handleClick() {
         AdicionarAoCarrinho();
@@ -11,11 +13,14 @@ function Produto({ pizza, abrirAside, atualizarCarrinho }) {
     }
 
     function AdicionarAoCarrinho() {
-
         let carrinho = localStorage.getItem("carrinho");
 
         if (carrinho == null) {
             carrinho = JSON.stringify([]);
+        }
+
+        if(observacao){
+            pizza.observacao = observacao;
         }
 
         carrinho = JSON.parse(carrinho);
@@ -36,7 +41,8 @@ function Produto({ pizza, abrirAside, atualizarCarrinho }) {
                 <div>
                     <h3 className='precoPizza'>{pizza.preco}</h3>
                     <button className="carrinhoCompras" onClick={handleClick}></button>
-                    <button className="observacoes"></button>
+                    <ObservationButton obeservacao={observacao} setObeservacao={setObeservacao} className="observacoes" />
+
                 </div>
             </div>
         </div>

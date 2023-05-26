@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigation } from "@react-navigation/native";
 import {
   View,
@@ -6,7 +6,9 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
+  PixelRatio,
 } from "react-native";
+import Feather from "react-native-vector-icons/Feather";
 
 export default function Register() {
   const [nome, setNome] = useState("");
@@ -35,6 +37,38 @@ export default function Register() {
       });
   }
   const navigation = useNavigation();
+
+  const handleTextChange = (text) => {
+    if (text.length <= 11) {
+      let maskedText = text.replace(
+        /^(\d{3})(\d{3})(\d{3})(\d{2}).*/,
+        "$1.$2.$3-$4"
+      );
+      setCPF(maskedText);
+    }
+  };
+  const secondInputRef = useRef();
+  const thirdInputRef = useRef();
+  const fourthInputRef = useRef();
+
+  const handleFirstInputSubmit = () => {
+    secondInputRef.current.focus();
+  };
+
+  const handleSecondInputSubmit = () => {
+    thirdInputRef.current.focus();
+  };
+
+  const handleThirdInputSubmit = () => {
+    fourthInputRef.current.focus();
+  };
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <View style={styles.dockerauth}>
       <View style={styles.boxinput}>
@@ -43,14 +77,28 @@ export default function Register() {
           value={nome}
           onChangeText={(texto) => setNome(texto)}
           style={styles.input}
+          placeholder="name"
+          placeholderTextColor="#999"
+          keyboardType="default"
+          autoCapitalize="words"
+          returnKeyType="next"
+          underlineColorAndroid="transparent"
+          onSubmitEditing={handleFirstInputSubmit}
         />
       </View>
       <View style={styles.boxinput}>
         <Text style={styles.textinput}>cpf</Text>
         <TextInput
           value={cpf}
-          onChangeText={(texto) => setCPF(texto)}
+          onChangeText={handleTextChange}
           style={styles.input}
+          keyboardType="numeric"
+          placeholder="999.999.999-99"
+          placeholderTextColor="#999"
+          returnKeyType="next"
+          underlineColorAndroid="transparent"
+          onSubmitEditing={handleSecondInputSubmit}
+          ref={secondInputRef}
         />
       </View>
       <View style={styles.boxinput}>
@@ -60,17 +108,39 @@ export default function Register() {
           onChangeText={(texto) => setEmail(texto)}
           style={styles.input}
           autoComplete={"email"}
+          keyboardType={"email-address"}
+          autoCapitalize={"none"}
+          autoCorrect={false}
+          returnKeyType={"next"}
+          placeholder="yourmail@mail.com"
+          underlineColorAndroid="transparent"
+          onSubmitEditing={handleThirdInputSubmit}
+          ref={thirdInputRef}
         />
       </View>
       <View style={styles.boxinput}>
         <Text style={styles.textinput}>password</Text>
-        <TextInput
-          secureTextEntry={true}
-          value={senha}
-          onChangeText={(texto) => setSenha(texto)}
-          placeholderTextColor={"#8e1c1a"}
-          style={styles.input}
-        />
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <TextInput
+            secureTextEntry={!showPassword}
+            value={senha}
+            onChangeText={(texto) => setSenha(texto)}
+            style={[styles.input, {width: "70%",}]}
+            autoComplete={"password"}
+            returnKeyType={"next"}
+            onSubmitEditing={() => Cadastrar()}
+            placeholder="yourpassword"
+            underlineColorAndroid="transparent"
+            ref={fourthInputRef}
+          />
+          <TouchableOpacity onPress={handleTogglePasswordVisibility}>
+            <Feather
+              name={showPassword ? "eye-off" : "eye"}
+              size={PixelRatio.getPixelSizeForLayoutSize(8)}
+              color={"#8e1c1a"}
+            />
+          </TouchableOpacity>
+        </View>
         <TextInput
           value={"usuario"}
           onChangeText={(texto) => setTipo(texto)}
@@ -111,14 +181,13 @@ const styles = StyleSheet.create({
     padding: 2,
   },
   input: {
-    width: "90%",
+    width: "80%",
     height: "85%",
     borderRadius: 2,
     backgroundColor: "#efefef",
     outlineStyle: "none",
     color: "#8E1C1A",
     fontFamily: "Poppins_400Regular",
-    fontWeight: 200,
   },
   next: {
     backgroundColor: "#8E1C1A",
@@ -127,6 +196,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: "center",
     justifyContent: "center",
+    elevation: 4,
   },
   nexttext: {
     color: "#fff",

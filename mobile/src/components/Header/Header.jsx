@@ -16,7 +16,6 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <StatusBar hidden={true} />
       <View style={styles.header}>
         <Image
           source={require("../../assets/text.png")}

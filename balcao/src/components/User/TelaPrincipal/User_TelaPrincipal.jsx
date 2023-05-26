@@ -14,6 +14,7 @@ export default function Tela_principal() {
 
     useEffect(() => {
         fetch("https://pizzeria3.azurewebsites.net/api/produto", {
+
             method: "GET",
         })
             .then((response) => response.json())

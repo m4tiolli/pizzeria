@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
 import Header from '../../components/Header/Header'
-import { useNavigate } from "react-router-dom";
 import Produto from '../../components/Item/CompProdutos'
 import "./Produtos.css"
 
 export default function Produtos() {
-    const navigate = useNavigate();
     useEffect(() => {
         fetch("https://pizzeria3.azurewebsites.net/api/produto", {
             method: "GET",
@@ -27,8 +25,8 @@ export default function Produtos() {
             <Header />
             <div className="Produtos-Container">
                 {
-                    produtos.map((pizza, index) => (
-                        <Produto pizza={pizza} key={index} />
+                    produtos.map((produto, index) => (
+                        <Produto pizza={produto} key={index} />
                     ))
                 }
             </div>

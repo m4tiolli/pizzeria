@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-/* aside{
-
-} */
-
+.aside{
+    width: 300px;
+    height: auto;
+}
 .imagePizza {
     min-width: auto;
     max-width: 220px;
@@ -13,4 +13,10 @@
     position: relative;
     display: flex;
     align-self: center;
+}
+
+.ContainerPizzas{
+    width: 250;
+    height: 500;
+
 }
