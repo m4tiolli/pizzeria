@@ -79,8 +79,6 @@
   transform: scale(1.01);
 }
 
-
-
 .button.red-button {
   background: #C14325;
 }
@@ -91,7 +89,7 @@
 
 .button.green-button {
   background: #698C3D;
-  margin-bottom: 200px;
+  margin-bottom: 140px;
 }
 
 .services-container {

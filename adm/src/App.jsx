@@ -5,9 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CadastroBalcao from'./pages/Forms/CadastroBalcao'
 import CadastroProduto from'./pages/Forms/CadastroProduto'
 import Economia from './pages/Economia/Economia';
-import Estoque from './pages/Estoque/Estoque';
 import VerEstoque from './pages/Estoque/VerEstoque';
-
 import Produtos from './pages/Produtos/Produtos';
 import VerProdutos from './pages/Produtos/VerProdutos'
 import VerEconomia from './pages/Economia/VerEconomia.jsx';
@@ -36,10 +34,6 @@ function App() {
     {
       path:"/Economia",
       element:<Economia/>
-    },
-    {
-      path:"/Estoque",
-      element:<Estoque/>
     },
     {
       path:"/VerEstoque",

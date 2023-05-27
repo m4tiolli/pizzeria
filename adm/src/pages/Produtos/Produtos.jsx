@@ -4,7 +4,6 @@ import logo from "../../assets/logo.png";
 
 export default function Produtos() {
   const navigate = useNavigate();
-
   function MudarParaPaginaVerProdutos() {
     navigate("/VerProdutos");
     

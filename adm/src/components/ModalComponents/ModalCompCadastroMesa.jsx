@@ -14,24 +14,19 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { useState } from "react";
-
 const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
   const [name, setName] = useState(dataEdit.name || "");
-
-
   const handleSave = () => {
     if (!name) return;
     if (name_AlreadyExists()) {
       return alert("Nome do produto já cadastrado!");
     }
-
     fetch("https://pizzeria3.azurewebsites.net/api/produto")
       .then((response) => response.json())
       .then((dataFromDB) => {
         const body = {
           nome: number,
         };
-
         fetch("https://pizzeria3.azurewebsites.net/api/produto", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -60,15 +55,12 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
         alert("Erro ao obter dados do banco de dados");
       });
   };
-
   const name_AlreadyExists = () => {
     if (dataEdit.name !== name && data?.length) {
       return data.find((item) => item.name === name);
     }
-
     return false;
   };
-
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -91,7 +83,6 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
               </Box>
             </FormControl>
           </ModalBody>
-
           <ModalFooter justifyContent="start">
             <Button colorScheme="green" mr={3} onClick={handleSave}>
               SALVAR
@@ -103,7 +94,6 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
         </ModalContent>
       </Modal>
     </>
-
   );
 };
 export default ModalComp;

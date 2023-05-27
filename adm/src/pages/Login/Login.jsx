@@ -11,7 +11,7 @@ export default function Login() {
 
   const navigate = useNavigate();
   const containerRef = useRef(null);
-  function mudarDePagina() {
+  function MudarParaPaginaServices() {
     navigate("/Services");
   }
 
@@ -27,7 +27,7 @@ export default function Login() {
           <h1 className="info">Sign in with your <br /> admin account</h1><br />
           <input type="text" className="input-login" placeholder="User" name="" id="" /><br />
           <input type="text" className="input-login" placeholder="Password" name="" id="" /><br />
-          <a><button className="button-login" onClick={mudarDePagina}>Login</button></a>
+          <a><button className="button-login" onClick={MudarParaPaginaServices}>Login</button></a>
         </div>
       </div>
     </div>

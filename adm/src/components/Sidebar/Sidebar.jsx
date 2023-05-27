@@ -1,26 +1,59 @@
 import React, { useState } from 'react';
-
+import './Sidebar.css'
+import { useNavigate } from "react-router-dom";
 const Sidebar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
-
   const toggleDropdown = (index) => {
     setActiveDropdown((prevIndex) => (prevIndex === index ? null : index));
   };
-
   const handleDropdownClick = (e, index) => {
     e.preventDefault();
     toggleDropdown(index);
   };
 
+  const navigate = useNavigate();
+
+  function MudarParaPaginaCadastroBalcao() {
+    navigate("/CadastroBalcao");
+  }
+  function MudarParaPaginaCadastroProduto() {
+    navigate("/CadastroProduto");
+  }
+  function MudarParaPaginaVerEconomia() {
+    navigate("/VerEconomia");
+  }
+  function MudarParaPaginaEstoque() {
+    navigate("/Estoque");
+  }
+  function MudarParaPaginaVerProdutos() {
+    navigate("/VerProdutos");
+  }
+  function MudarParaPaginaVerBalcoes() {
+    navigate("/VerBalcoes");
+  }
+  function MudarParaPaginaVerMesas() {
+    navigate("/VerMesas");
+  }
+  function MudarParaPaginaVerEstoque() {
+    navigate("/VerEstoque");
+  }
+function MudarParaPaginaServices(){
+  navigate("/Services");
+}
+  
   return (
     <section id="sidebar">
+        <link
+				href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+				rel="stylesheet"
+			/>
       <a href="#" className="brand">
         <i className="bx bxs-pizza icon" /> Pizzeria Admin
       </a>
       <ul className="side-menu">
         <li>
-          <a href="#" className="active">
-            <i className="bx bxs-dashboard icon" /> Dashboard
+          <a href="#" className="active" onClick={MudarParaPaginaServices}>
+            <i className="bx bxs-dashboard icon" /> Services
           </a>
         </li>
         <li className="divider" data-text="main">
@@ -37,13 +70,13 @@ const Sidebar = () => {
           </a>
           <ul className={`side-dropdown ${activeDropdown === 1 ? 'show' : ''}`}>
             <li>
-              <a href="#">Produtos</a>
+              <a onClick={MudarParaPaginaVerProdutos}>Produtos</a>
             </li>
             <li>
-              <a href="#">Balcões</a>
+              <a onClick={MudarParaPaginaVerBalcoes}>Balcões</a>
             </li>
             <li>
-              <a href="#">Estoque</a>
+              <a onClick={MudarParaPaginaVerEstoque}>Estoque</a>
             </li>
           </ul>
         </li>
@@ -53,7 +86,7 @@ const Sidebar = () => {
           </a>
         </li>
         <li>
-          <a href="#">
+          <a onClick={MudarParaPaginaCadastroBalcao}>
             <i className="bx bxs-widget icon" /> Widgets
           </a>
         </li>
@@ -96,5 +129,4 @@ const Sidebar = () => {
     </section>
   );
 };
-
 export default Sidebar;

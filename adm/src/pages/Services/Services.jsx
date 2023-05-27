@@ -13,14 +13,14 @@ export default function Services() {
   function MudarParaPaginaCadastroProduto() {
     navigate("/CadastroProduto");
   }
-  function MudarParaPaginaEconomia() {
-    navigate("/Economia");
+  function MudarParaPaginaVerEconomia() {
+    navigate("/VerEconomia");
   }
-  function MudarParaPaginaEstoque() {
-    navigate("/Estoque");
+  function MudarParaPaginaVerEstoque() {
+    navigate("/VerEstoque");
   }
-  function MudarParaPaginaProdutos() {
-    navigate("/Produtos");
+  function MudarParaPaginaVerProdutos() {
+    navigate("/VerProdutos");
   }
   function MudarParaPaginaVerBalcoes() {
     navigate("/VerBalcoes");
@@ -33,10 +33,6 @@ export default function Services() {
   return (
 
     <div className="teste">
-      <link
-				href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
-				rel="stylesheet"
-			/>
       <Header></Header>
       <Sidebar></Sidebar>
 <section id="content">
@@ -57,10 +53,10 @@ export default function Services() {
           <button className="button yellow-button" onClick={MudarParaPaginaVerBalcoes}>
             Ver Balcões
           </button>
-          <button className="button yellow-button" onClick={MudarParaPaginaProdutos}>
+          <button className="button yellow-button" onClick={MudarParaPaginaVerProdutos}>
             Ver Produtos
           </button>
-          <button className="button yellow-button" onClick={MudarParaPaginaEstoque}>
+          <button className="button yellow-button" onClick={MudarParaPaginaVerEstoque}>
             Estoque
           </button>
         </div>
@@ -71,7 +67,7 @@ export default function Services() {
           <button className="button green-button" onClick={MudarParaPaginaCadastroBalcao}>
             Receber Produto
           </button>
-          <button className="button green-button" onClick={MudarParaPaginaEconomia}>
+          <button className="button green-button" onClick={MudarParaPaginaVerEconomia}>
             Economia
           </button>
         </div>

@@ -1,7 +1,8 @@
 import React from 'react';
-import "./Estoque";
 import logo from "../../assets/logo.png"
 import { useNavigate } from "react-router-dom";
+import Header from '../../components/Header/Header';
+import Sidebar from '../../components/Sidebar/Sidebar';
 
 const StockPage = ({ stock }) => {
   // Obtém as categorias do estoque
@@ -10,15 +11,10 @@ const StockPage = ({ stock }) => {
   return (
     
     <div>
-      
-      <div className="header">
-        <img src={logo} alt="" className="logo" />
-        <h1 className="title">Pizzeria Admin</h1>
-      </div>
-
+      <Header></Header>
+      <Sidebar></Sidebar>
       <div className="container">
         <h1 className="StockPage-title">Stock Service</h1>
-          
       {categories.map(category => (
         <div key={category}>
           <h2>{category}</h2>

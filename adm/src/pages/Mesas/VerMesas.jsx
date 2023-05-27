@@ -14,7 +14,9 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import ModalComp from "../.././components/ModalCompCadastroMesa.jsx";
+import ModalComp from "../../components/ModalComponents/ModalCompCadastroMesa.jsx";
+import Header from "../../components/Header/Header";
+import Sidebar from "../../components/Sidebar/Sidebar";
 
 const VerProdutos = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -62,11 +64,9 @@ const VerProdutos = () => {
 
   return (
     <div>
-      <div className="header">
-        <img src={logo} alt="" className="logo" />
-        <h1 className="title">Pizzeria</h1>
-      </div>
-
+      <Header></Header>
+      <Sidebar></Sidebar>
+<div id="content">
       <Flex
         h="100vh"
         align="center"
@@ -130,6 +130,7 @@ const VerProdutos = () => {
         />
       )}
     </Flex>
+    </div>
     </div>
   );
 };

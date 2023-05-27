@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './VerEconomia.css';
 import Header from '../../components/Header/Header'
 import Sidebar from '../../components/Sidebar/Sidebar';
-
 const VerEconomia = () => {
   const [descItem, setDescItem] = useState('');
   const [amount, setAmount] = useState('');
@@ -10,41 +9,32 @@ const VerEconomia = () => {
   const [items, setItems] = useState([]);
 const [totalIncomes, setTotalIncomes] = useState('0.00');
 const [totalExpenses, setTotalExpenses] = useState('0.00');
-
-
   useEffect(() => {
     loadItems();
   }, []);
-
   useEffect(() => {
     getTotals(items);
   }, [items]);
-
 // Progress Bar
   useEffect(() => {
     const allProgress = document.querySelectorAll('main .card .progress');
-
     allProgress.forEach((item) => {
       item.style.setProperty('--value', item.dataset.value);
     });
   }, []);
-
   const loadItems = () => {
     const storedItems = JSON.parse(localStorage.getItem('db_items')) || [];
     setItems(storedItems);
   };
-
   const saveItemsToLocalStorage = () => {
     localStorage.setItem('db_items', JSON.stringify(items));
   };
-
   const deleteItem = (index) => {
     const updatedItems = [...items];
     updatedItems.splice(index, 1);
     setItems(updatedItems);
     saveItemsToLocalStorage();
   };
-
   const insertItem = (item, index) => {
 	return (
 	  <tr key={index}>
@@ -65,33 +55,25 @@ const [totalExpenses, setTotalExpenses] = useState('0.00');
 	  </tr>
 	);
   };
-  
-
   const addNewItem = () => {
 	if (descItem === '' || amount === '' || type === '') {
 	  alert('Preencha todos os campos!');
 	  return;
 	}
-  
 	const newItem = {
 	  desc: descItem,
 	  amount: Math.abs(amount).toFixed(2),
 	  type: type === '' ? 'Entrada' : type === 'saida' ? 'Saída' : type,
 	  icon: type === 'Entrada' ? 'bx bxs-chevron-up-circle' : 'bx bxs-chevron-down-circle', // Adicionado o ícone correspondente
 	};
-  
 	const updatedItems = [...items, newItem];
 	setItems(updatedItems);
 	saveItemsToLocalStorage();
-  
 	// Limpar os campos de entrada
 	setDescItem('');
 	setAmount('');
 	setType('');
   };
-  
-  
-
 	const getTotals = (items) => {
 		const amountIncomes = items
 			.filter((item) => item.type === 'Entrada')
@@ -99,30 +81,15 @@ const [totalExpenses, setTotalExpenses] = useState('0.00');
 		const amountExpenses = items
 			.filter((item) => item.type === 'Saída')
 			.map((transaction) => Number(transaction.amount));
-
 		const totalIncomes = amountIncomes.reduce((acc, cur) => acc + cur, 0).toFixed(2);
 		const totalExpenses = Math.abs(amountExpenses.reduce((acc, cur) => acc + cur, 0)).toFixed(2);
 		const totalItems = (totalIncomes - totalExpenses).toFixed(2);
-
 		document.querySelector('.incomes').innerHTML = totalIncomes;
 		document.querySelector('.expenses').innerHTML = totalExpenses;
 		document.querySelector('.total').innerHTML = totalItems;
-		
-
-		
 	};
 	return (
-
 		<div>
-			<meta charSet="UTF-8" />
-			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-			<link
-				href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
-				rel="stylesheet"
-			/>
-			<link rel="stylesheet" href="VerEconomia.css"/>
-			<title>AdminSite</title>
-
 <Header></Header>
 <Sidebar></Sidebar>
 			<section id="content">
@@ -205,7 +172,6 @@ const [totalExpenses, setTotalExpenses] = useState('0.00');
 										<option value="Saída">Saída</option>
 									</select>
 								</div>
-
 								<button id="btnNew" onClick={addNewItem}>Incluir</button>
 							</div>
 

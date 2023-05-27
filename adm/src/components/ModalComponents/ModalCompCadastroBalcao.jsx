@@ -16,7 +16,6 @@ import {
   HStack
 } from "@chakra-ui/react";
 import { useState } from "react";
-
 const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
   const [name, setName] = useState(dataEdit.name || "");
   const [CPF, setCPF] = useState(dataEdit.CPF || "");
@@ -25,14 +24,11 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
   const [user_name, setUser_name] = useState(dataEdit.user_name || "");
   const [password, setPassword] = useState(dataEdit.password || "");
   const [CEP, setCEP] = useState(dataEdit.CEP || "");
-
   const handleSave = async () => {
     if (!name || !CPF || !email || !phone_number || !user_name || !password || !CEP) return;
-
     if (CPFAlreadyExists()) {
       return alert("CPF já cadastrado!");
     }
-
     try {
       const response = await fetch("https://pizzeria3.azurewebsites.net/api/balcao", {
         method: "POST",
@@ -41,18 +37,14 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
         },
         body: JSON.stringify({ name, CPF, email, phone_number, user_name, password, CEP }),
       });
-
       if (!response.ok) {
         throw new Error("Ocorreu um erro ao fazer o POST.");
       }
-
       const responseData = await response.json();
       console.log(responseData);
-
       const newDataArray = !Object.keys(dataEdit).length
         ? [...(data ? data : []), responseData]
         : [...(data ? data : [])];
-
       setData(newDataArray);
       onClose();
     } catch (error) {
@@ -60,15 +52,12 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
       alert("Ocorreu um erro ao cadastrar o balcão.");
     }
   };
-
   const CPFAlreadyExists = () => {
     if (dataEdit.CPF !== CPF && data?.length) {
       return data.find((item) => item.CPF === CPF);
     }
-
     return false;
   };
-
     return (
       <>
         <Modal isOpen={isOpen} onClose={onClose}>
@@ -80,11 +69,9 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
              text-align = "center"
              >Cadastro de Balcões</ModalHeader>
             <ModalBody>
-              <FormControl display="flex" flexDir="column" gap={2} top={4}>
-                
+              <FormControl display="flex" flexDir="column" gap={2} top={4}>                
               <Box h="80vh">
       {/*Div com conteúdo centralizado*/}
-     
       <Flex
         align="center"
         justify="center"
@@ -99,7 +86,6 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
           p="6"
           boxShadow="0 1px 2px #ccc"
         >
-
           <FormControl display="flex" flexDir="column" gap="4">
             <HStack spacing="4">
               <Box w="100%">
@@ -108,10 +94,8 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)} />
-
               </Box>
             </HStack>
-
             <HStack spacing="4">
               <Box w="100%">
                 <FormLabel htmlFor="nome">CPF</FormLabel>
@@ -119,7 +103,6 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
                 type="text"
                 value={CPF}
                 onChange={(e) => setCPF(e.target.value)} />
-              
               </Box>
               <Box w="100%">
                 <FormLabel htmlFor="email">Email</FormLabel>
@@ -129,7 +112,6 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
                 onChange={(e) => setEmail(e.target.value)} />
               </Box>
             </HStack>
-
             <HStack spacing="4">
               <Box w="100%">
                 <FormLabel htmlFor="use_name">Nome do Usuário</FormLabel>
@@ -139,7 +121,6 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
                 onChange={(e) => setUser_name(e.target.value)}/>
               </Box>
             </HStack>
-
             <HStack spacing="4">
               <Box w="100%">
                 <FormLabel htmlFor="password">Senha</FormLabel>
@@ -149,7 +130,6 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
                 onChange={(e) => setPassword(e.target.value)}/>
               </Box>
             </HStack>
-
             <HStack spacing="4">
               <Box w="100%">
                 <FormLabel htmlFor="phone_number">Celular</FormLabel>
@@ -159,7 +139,6 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
                 onChange={(e) => setPhone_number(e.target.value)}/>
               </Box>
             </HStack>
-
             <HStack spacing="4">
               <Box w="100%">
                 <FormLabel htmlFor="CEP">CEP</FormLabel>
@@ -172,12 +151,9 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
           </FormControl>
         </Center>
       </Flex>
-
-
     </Box>
             </FormControl>
             </ModalBody>
-  
             <ModalFooter justifyContent="start">
               <Button colorScheme="green" mr={3} onClick={handleSave}>
                 SALVAR
@@ -191,6 +167,5 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
       </>
     );
   };
-  
   export default ModalComp;
   
