@@ -10,9 +10,15 @@ import {
   Radio,
   Button,
 } from "@chakra-ui/react";
+import Header from "../../components/Header/Header";
+import Sidebar from "../../components/Sidebar/Sidebar";
 
 function CadastroBalcao() {
   return (
+    <div>
+      <Header></Header>
+      <Sidebar></Sidebar>
+      <div id="content">
     <Box h="100vh">
       {/*Div com conteúdo centralizado*/}
       <Center
@@ -23,8 +29,7 @@ function CadastroBalcao() {
         fontWeight="bold"
         fontSize="4xl"
         pb="8">
-
-        Pizzeria
+        Cadastro Balcão
       </Center>
       <Flex
         align="center"
@@ -128,6 +133,8 @@ function CadastroBalcao() {
         </Center>
       </Flex>
     </Box>
+    </div>
+    </div>
   )
 }
 

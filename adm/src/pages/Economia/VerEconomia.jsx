@@ -137,7 +137,6 @@ const [totalExpenses, setTotalExpenses] = useState('0.00');
 					</div>
 					{/*Report */}
 					<div className="data">
-						{/*  */}
 						<div className="content-data">
 						</div>
 						<div className="content-data">

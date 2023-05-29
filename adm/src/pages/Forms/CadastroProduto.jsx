@@ -11,6 +11,8 @@ import {
   Radio,
   Button,
 } from "@chakra-ui/react";
+import Header from "../../components/Header/Header";
+import Sidebar from "../../components/Sidebar/Sidebar";
 
 function CadastroProduto() {
   const [nome, setNome] = useState();
@@ -45,7 +47,10 @@ function CadastroProduto() {
   };
 
   return (
-    
+    <div>
+      <Header></Header>
+      <Sidebar></Sidebar>
+      <div id="content">
     <Box h="100vh">
       <form
         onSubmit={(e) => {
@@ -62,7 +67,7 @@ function CadastroProduto() {
           fontSize="4xl"
           pb="8"
         >
-          Pizzeria
+          Cadastro Produto
         </Center>
         <Flex
           align="center"
@@ -188,6 +193,8 @@ function CadastroProduto() {
         </Flex>
       </form>
     </Box>
+    </div>
+    </div>
   );
 }
 export default CadastroProduto;

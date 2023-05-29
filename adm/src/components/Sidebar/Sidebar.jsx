@@ -1,29 +1,29 @@
-import React, { useState } from 'react';
-import './Sidebar.css'
+import React, { useState } from "react";
+import "./Sidebar.css";
 import { useNavigate } from "react-router-dom";
-const Sidebar = () => {
+
+const Sidebar = ({ isOpen }) => {
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const navigate = useNavigate();
+
   const toggleDropdown = (index) => {
     setActiveDropdown((prevIndex) => (prevIndex === index ? null : index));
   };
+
   const handleDropdownClick = (e, index) => {
     e.preventDefault();
     toggleDropdown(index);
   };
 
-  const navigate = useNavigate();
-
-  function MudarParaPaginaCadastroBalcao() {
+  const MudarParaPaginaCadastroBalcao = () => {
     navigate("/CadastroBalcao");
-  }
+  };
+
   function MudarParaPaginaCadastroProduto() {
     navigate("/CadastroProduto");
   }
   function MudarParaPaginaVerEconomia() {
     navigate("/VerEconomia");
-  }
-  function MudarParaPaginaEstoque() {
-    navigate("/Estoque");
   }
   function MudarParaPaginaVerProdutos() {
     navigate("/VerProdutos");
@@ -46,7 +46,7 @@ function MudarParaPaginaServices(){
         <link
 				href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
 				rel="stylesheet"
-			/>
+			  />
       <a href="#" className="brand">
         <i className="bx bxs-pizza icon" /> Pizzeria Admin
       </a>
@@ -76,18 +76,18 @@ function MudarParaPaginaServices(){
               <a onClick={MudarParaPaginaVerBalcoes}>Balcões</a>
             </li>
             <li>
-              <a onClick={MudarParaPaginaVerEstoque}>Estoque</a>
+              <a onClick={MudarParaPaginaVerMesas}>Mesas</a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#">
-            <i className="bx bxs-chart icon" /> Charts
+          <a onClick={MudarParaPaginaVerEconomia}>
+            <i className="bx bxs-chart icon" /> Economia
           </a>
         </li>
         <li>
-          <a onClick={MudarParaPaginaCadastroBalcao}>
-            <i className="bx bxs-widget icon" /> Widgets
+          <a onClick={MudarParaPaginaVerEstoque}>
+            <i className="bx bxs-widget icon" /> Estoque
           </a>
         </li>
         <li className="divider" data-text="table and forms">
@@ -104,10 +104,10 @@ function MudarParaPaginaServices(){
           </a>
           <ul className={`side-dropdown ${activeDropdown === 2 ? 'show' : ''}`}>
             <li>
-              <a href="#">Cadastro de Balcões</a>
+              <a onClick={MudarParaPaginaCadastroBalcao}>Cadastro de Balcões</a>
             </li>
             <li>
-              <a href="#">Cadastro de Produtos</a>
+              <a onClick={MudarParaPaginaCadastroProduto}>Cadastro de Produtos</a>
             </li>
             <li>
               <a href="#">Cadastro de Mesas</a>

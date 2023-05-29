@@ -13,7 +13,6 @@ export default function Header() {
             <h1 className="title_Header">Pizzeria Admin</h1>
           </div>
         </form>
-       
         <span className="divider"></span>
         <div className="profile">
           <img src={logo} alt="" />
