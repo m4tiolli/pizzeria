@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import Produto from '../Pizzas/CompProdutos-module';
-import Aside from '../Aside/Aside'
+import Sidebar from '../../components/Sidebar/Sidebar'
 import "./User_TelaPrincipal.css";
-import logo from "../../../assets/logo.png";
+import logo from "../../assets/logo";
 
 export default function Tela_principal() {
     const navigate = useNavigate();
     const [produtos, setProdutos] = useState([]);
     const [carrinho, setCarrinho] = useState([]);
 
-    const [asideOpen, setAsideOpen] = useState(false);
+    const [SidebarOpen, setSidebarOpen] = useState(false);
 
     useEffect(() => {
         fetch("https://pizzeria3.azurewebsites.net/api/produto", {
@@ -68,13 +68,13 @@ export default function Tela_principal() {
                 <button className='button'>Bebidas</button>
                 <button className='button'>Aperitivos</button>
                 <button className='button'>Promoções</button>
-                {asideOpen && <Aside carrinho={carrinho} setAsideOpen={setAsideOpen} atualizarCarrinho={AtualizarCarrinho}>Aside</Aside>}
+                {SidebarOpen && <Sidebar carrinho={carrinho} setSidebarOpen={setSidebarOpen} atualizarCarrinho={AtualizarCarrinho}>Sidebar</Sidebar>}
                 <div className="Produtos-Container">
                     {
 
 
                         produtos.map((pizza, index) => (
-                            <Produto pizza={pizza} key={index} abrirAside={setAsideOpen} atualizarCarrinho={AtualizarCarrinho} />
+                            <Produto pizza={pizza} key={index} abrirSidebar={setSidebarOpen} atualizarCarrinho={AtualizarCarrinho} />
                         ))
 
                     }

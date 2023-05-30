@@ -3,13 +3,13 @@ import "./CompProduto.css";
 import ObservationButton from '../ObservationProduto/ObservationProduto';
 
 
-function Produto({ pizza, abrirAside, atualizarCarrinho }) {
+function Produto({ pizza, abrirSidebar, atualizarCarrinho }) {
 
     const [observacao, setObeservacao] = useState("");
 
     function handleClick() {
         AdicionarAoCarrinho();
-        abrirAside(true);
+        abrirSidebar(true);
     }
 
     function AdicionarAoCarrinho() {
