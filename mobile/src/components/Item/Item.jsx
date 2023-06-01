@@ -1,4 +1,11 @@
-import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
+import {
+  View,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  PixelRatio,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -8,88 +15,86 @@ export default function Item({ pizza }) {
     navigation.navigate("Produto", { pizzas: pizza });
   }
   async function carrinho() {
-    const item = {
-      id: pizza.id,
-      nome: pizza.nome,
-      descricao: pizza.descricao,
-      preco: pizza.preco,
-      imagem: pizza.imagem,
-    };
-    let carrinho = await AsyncStorage.getItem("carrinho");
-    if (!carrinho || carrinho.length === 0) {
-      await AsyncStorage.setItem("carrinho", JSON.stringify([item]));
+    try {
+      const item = {
+        id: pizza.id,
+        nome: pizza.nome,
+        descricao: pizza.descricao,
+        valor: pizza.valor,
+        imagem: pizza.imagem,
+        quantidade: 1,
+      };
+      let carrinho = await AsyncStorage.getItem("carrinho");
+      if (!carrinho || carrinho.length === 0) {
+        await AsyncStorage.setItem("carrinho", JSON.stringify([item]));
+        navigation.navigate("Cart");
+        return;
+      }
+
+      carrinho = JSON.parse(carrinho);
+
+      carrinho = carrinho.concat([item]);
+      await AsyncStorage.setItem("carrinho", JSON.stringify(carrinho));
       navigation.navigate("Cart");
-      return;
+    } catch (err) {
+      console.log(err);
     }
-
-    carrinho = JSON.parse(carrinho);
-
-    carrinho = carrinho.concat([item]);
-    AsyncStorage.setItem("carrinho", JSON.stringify(carrinho));
-    navigation.navigate("Cart");
   }
   const longDesc = pizza.descricao;
   const shortDesc =
     longDesc.length < 26 ? longDesc + "..." : longDesc.slice(0, 25) + "...";
+
   return (
-    <TouchableOpacity
-      style={{
-        width: "100%",
-        justifyContent: "center",
-        alignItems: "center",
-        marginVertical: 10,
-      }}
-      onPress={() => navegar(pizza)}
-    >
-      <View style={styles.item}>
-        <Image
-          source={{ uri: `data:image/png;base64,${pizza.imagem}` }}
-          style={{
-            height: 120,
-            width: 120,
-            position: "absolute",
-            left: -35,
-            top: -5,
-            borderRadius: 15,
-          }}
-        />
-        <View style={styles.box}>
-          <Text style={styles.title}>{pizza.nome}</Text>
-          <Text style={styles.infos}>{shortDesc}</Text>
-          <View
+    <View style={styles.container}>
+      <TouchableOpacity
+        style={{ alignSelf: "auto" }}
+        onPress={() => navegar(pizza)}
+      >
+        <View style={styles.item}>
+          <Image
+            source={{ uri: `data:image/png;base64,${pizza.imagem}` }}
             style={{
-              flexDirection: "row",
-              width: "80%",
-              justifyContent: "space-between",
+              height: PixelRatio.getPixelSizeForLayoutSize(40),
+              width: PixelRatio.getPixelSizeForLayoutSize(40),
               position: "absolute",
-              bottom: 10,
+              left: PixelRatio.getPixelSizeForLayoutSize(-20),
+              top: PixelRatio.getPixelSizeForLayoutSize(-20),
+              borderRadius: 15,
             }}
-          >
-            <TouchableOpacity style={styles.cart} onPress={carrinho}>
-              <Text style={styles.carttext}>add to cart</Text>
-            </TouchableOpacity>
-            <Text style={styles.price}>R${pizza.preco}</Text>
+          />
+          <View style={styles.box}>
+            <Text style={styles.title}>{pizza.nome}</Text>
+            <Text style={styles.infos}>{shortDesc}</Text>
+            <View
+              style={{
+                flexDirection: "row",
+                width: "90%",
+                justifyContent: "space-between",
+              }}
+            >
+              <TouchableOpacity style={styles.cart} onPress={() => carrinho()}>
+                <Text style={styles.carttext}>add to cart</Text>
+              </TouchableOpacity>
+              <Text style={styles.price}>R${pizza.valor}</Text>
+            </View>
           </View>
         </View>
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </View>
   );
 }
 const styles = StyleSheet.create({
-  item: {
-    width: "60%",
-    height: 150,
-    marginVertical: 10,
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: PixelRatio.getPixelSizeForLayoutSize(20),
+    marginBottom: PixelRatio.getPixelSizeForLayoutSize(5)
   },
   box: {
-    width: "90%",
-    height: "68%",
     backgroundColor: "#fff",
-    position: "absolute",
-    bottom: 0,
-    right: 0,
     zIndex: 2,
-    borderRadius: 10,
+    borderRadius: 15,
     shadowColor: "#171717",
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.2,
@@ -97,11 +102,12 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: "center",
     elevation: 10,
+    width: PixelRatio.getPixelSizeForLayoutSize(70),
   },
   cart: {
     backgroundColor: "#8E1C1A",
-    width: "60%",
-    borderRadius: 5,
+    width: PixelRatio.getPixelSizeForLayoutSize(40),
+    borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
     elevation: 5,
@@ -118,7 +124,6 @@ const styles = StyleSheet.create({
   infos: {
     fontFamily: "Poppins_500Medium",
     color: "#898989",
-    marginTop: -5,
   },
   price: {
     fontFamily: "Poppins_500Medium",

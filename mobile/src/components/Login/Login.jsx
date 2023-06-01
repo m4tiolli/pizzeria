@@ -7,8 +7,10 @@ import {
   PixelRatio,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Feather from "react-native-vector-icons/Feather";
+import { ChecarLoginUsuario, SalvarJWT } from "../AuthContext";
+import jwtDecode from "jwt-decode";
 
 export default function Login() {
   const navigation = useNavigation();
@@ -24,6 +26,42 @@ export default function Login() {
     setShowPassword(!showPassword);
   };
 
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+
+  useEffect(() => {
+    verificarLogin();
+  });
+
+  async function verificarLogin() {
+    const usuarioLogado = await ChecarLoginUsuario();
+    if (usuarioLogado) {
+      navigation.navigate("Home")
+    }
+  }
+
+  function Login() {
+    fetch("https://pizzeria3.azurewebsites.net/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        email,
+        senha,
+      }),
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        SalvarJWT(json.token);
+      })
+      .then(() => navigation.navigate("Home"))
+      .catch((error) => {
+        console.log(error);
+        alert("Erro ao cadastrar resultado");
+      });
+  }
+
   return (
     <View style={styles.dockerauth}>
       <View style={styles.boxinput}>
@@ -38,6 +76,8 @@ export default function Login() {
           placeholder="yourmail@mail.com"
           underlineColorAndroid="transparent"
           onSubmitEditing={handleFirstInputSubmit}
+          value={email}
+          onChangeText={(texto) => setEmail(texto)}
         />
       </View>
       <View style={styles.boxinput}>
@@ -48,12 +88,14 @@ export default function Login() {
             secureTextEntry={!showPassword}
             placeholderTextColor={"#999"}
             placeholder="yourpassword"
-            style={[styles.input, {width: "70%",}]}
+            style={[styles.input, { width: "70%" }]}
             onSubmitEditing={null}
             underlineColorAndroid="transparent"
             autoCapitalize={"none"}
             autoCorrect={false}
             returnKeyType={"next"}
+            value={senha}
+            onChangeText={(texto) => setSenha(texto)}
           />
           <TouchableOpacity onPress={handleTogglePasswordVisibility}>
             <Feather
@@ -64,12 +106,9 @@ export default function Login() {
           </TouchableOpacity>
         </View>
       </View>
-      <TouchableOpacity style={styles.next}>
+      <TouchableOpacity style={styles.next} onPress={Login}>
         <Text
           style={styles.nexttext}
-          onPress={() => {
-            navigation.navigate("Home");
-          }}
         >
           login
         </Text>

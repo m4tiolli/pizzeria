@@ -50,7 +50,7 @@ function Cart() {
   const calculateTotal = () => {
     let total = 0;
     cart.forEach((item) => {
-      total += item.preco;
+      total += item.valor * item.quantidade;
     });
     return total.toFixed(2);
   };
