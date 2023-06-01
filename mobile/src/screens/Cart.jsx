@@ -17,7 +17,7 @@ import React from "react";
 import ItemCart from "../components/ItemCart/ItemCart";
 import Feather from "react-native-vector-icons/Feather";
 
-function Cart() {
+function Cart({item}) {
   const navigation = useNavigation();
 
   const [cart, setCart] = useState([]);
@@ -29,7 +29,6 @@ function Cart() {
   );
 
   const getCart = async () => {
-    debugger;
     const cartData = await AsyncStorage.getItem("carrinho");
 
     if (cartData !== null) {
@@ -54,6 +53,13 @@ function Cart() {
     });
     return total.toFixed(2);
   };
+
+  const pedido = {
+    valor: calculateTotal(),
+    observacao: cart.observacao,
+    quantidade: cart.quantidade,
+    cart
+  }
 
   return (
     <View
@@ -96,7 +102,7 @@ function Cart() {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.price}
-              onPress={() => navigation.navigate("WhereEat")}
+              onPress={() => navigation.navigate("WhereEat", {pedido: pedido})}
             >
               <Text style={styles.text}>go to checkout</Text>
               <Text style={styles.text}>R${calculateTotal()}</Text>

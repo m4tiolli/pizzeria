@@ -17,6 +17,8 @@ export default function Produto() {
   const { pizzas } = route.params;
   const navigation = useNavigation();
 
+  const [observacao, setObservacao] = useState("");
+
   async function carrinho() {
     const item = {
       id: pizzas.id,
@@ -25,6 +27,7 @@ export default function Produto() {
       valor: pizzas.valor,
       imagem: pizzas.imagem,
       quantidade: quantidade,
+      observacao: observacao
     };
     let carrinho = await AsyncStorage.getItem("carrinho");
     if (!carrinho || carrinho.length === 0) {
@@ -123,6 +126,8 @@ export default function Produto() {
             placeholder="Ex: no onions"
             style={styles.observacaoText}
             multiline={true}
+            value={observacao}
+            onChangeText={(texto) => setObservacao(texto)}
           />
         </View>
         <View
