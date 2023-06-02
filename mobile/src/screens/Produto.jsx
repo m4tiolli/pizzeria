@@ -67,7 +67,7 @@ export default function Produto() {
         <Image
           source={{ uri: `data:image/png;base64,${pizzas.imagem}` }}
           style={{
-            height: PixelRatio.getPixelSizeForLayoutSize(60),
+            height: PixelRatio.getPixelSizeForLayoutSize(80),
             width: "50%",
             borderRadius: 15,
 
@@ -167,6 +167,7 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: "Poppins_500Medium",
     fontSize: PixelRatio.getPixelSizeForLayoutSize(9),
+    marginVertical: PixelRatio.getPixelSizeForLayoutSize(9),
   },
   infos: {
     fontFamily: "Poppins_500Medium",

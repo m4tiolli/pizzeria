@@ -4,30 +4,28 @@
     "slug": "mobile",
     "version": "1.0.0",
     "orientation": "portrait",
-    // "icon": "./src/assets/circle.svg",
+    "icon": "./src/assets/circle.png",
     "userInterfaceStyle": "light",
     "splash": {
-      // "image": "./src/assets/circle.svg",
+      "image": "./src/assets/circle.png",
       "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        // "foregroundImage": "./src/assets/circle.svg",
+        "foregroundImage": "./src/assets/circle.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      // "favicon": "./src/assets/circle.svg"
+      "favicon": "./src/assets/circle.png"
     }
   }
 }

@@ -26,7 +26,7 @@ function Payment() {
                     Alert.alert('Modal has been closed.');
                     setModalVisible(!modalVisible);
                 }}>
-                <View style={styles.modalcontainer}>
+                <View style={styles.modalcontainer} onPress={() => setModalVisible(!modalVisible)}>
                     <View style={styles.modalView}>
                         <TouchableOpacity onPress={() => setModalVisible(!modalVisible)} style={{ position: 'absolute', top: PixelRatio.getPixelSizeForLayoutSize(2), right: PixelRatio.getPixelSizeForLayoutSize(2) }} >
                             <AntDesign name="close" color="#8e1c1a" size={PixelRatio.getPixelSizeForLayoutSize(8)} /></TouchableOpacity>
@@ -63,6 +63,9 @@ function Payment() {
                                 underlineColorAndroid="transparent"
                             />
                         </View>
+                        <TouchableOpacity style={styles.button}>
+                            <Text style={{ fontFamily: 'Poppins_500Medium', color: '#efefef' }}>confirm</Text>
+                        </TouchableOpacity>
                     </View>
                 </View></Modal>
         </View>
@@ -132,6 +135,17 @@ const styles = StyleSheet.create({
         color: "#8E1C1A",
         fontFamily: "Poppins_400Regular",
     },
+    button: {
+        backgroundColor: '#8e1c1c',
+        borderRadius: 5,
+        marginVertical: PixelRatio.getPixelSizeForLayoutSize(10),
+        width: '40%',
+        height: PixelRatio.getPixelSizeForLayoutSize(15),
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        elevation: 4
+    }
 })
 
 export default Payment;
