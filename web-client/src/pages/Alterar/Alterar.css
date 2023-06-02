@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap");
 
-.btnAdicionar1{
-    margin-top: 100px;
+.Produtos-Container{
+    width: auto;
+    height: 72vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }

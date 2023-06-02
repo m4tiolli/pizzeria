@@ -5,12 +5,12 @@ function Produto({ produto }){
     const navigate = useNavigate();
 
     function navAlterar(){
-        navigate("/Alterar")
+        navigate("/Alterar", {state: {produto: produto}})
     }
     return(
         <div className='containerPizza'>
             <div className="fundoPizza">
-                <img className='imgPizza' src={`data:imagem/png;base64,${produto.imagem}`}></img>
+            <img className='imgPizza' src={`data:image/png;base64,${produto.imagem}`} alt="imagem" />
             <div className="divTexts">
                 <h1 className='nomePizza'>{produto.nome}</h1>
                 <h3 className='descricaoPizza' >{produto.descricao}</h3>
