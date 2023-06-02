@@ -67,8 +67,8 @@ export default function Produto() {
         <Image
           source={{ uri: `data:image/png;base64,${pizzas.imagem}` }}
           style={{
-            height: PixelRatio.getPixelSizeForLayoutSize(80),
-            width: "60%",
+            height: PixelRatio.getPixelSizeForLayoutSize(60),
+            width: "50%",
             borderRadius: 15,
 
             top: PixelRatio.getPixelSizeForLayoutSize(0),

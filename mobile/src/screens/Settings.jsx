@@ -12,8 +12,10 @@ import Octicons from "react-native-vector-icons/Octicons";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Header from './../components/Header/Header';
+import { useNavigation } from "@react-navigation/native";
 
 function Settings() {
+  const navigation = useNavigation()
   return (
     <View style={{ width: "100%", height: "100%", backgroundColor: "#efefef" }}>
       <Header/>
@@ -50,7 +52,7 @@ function Settings() {
             color={"#8e1c1a"}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("PaymentMethods")}>
           <Text style={styles.textbtn}>formas de pagamento</Text>
           <AntDesign
             name="creditcard"

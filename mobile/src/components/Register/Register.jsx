@@ -20,7 +20,7 @@ export default function Register() {
   function Cadastrar() {
     const body = { nome, cpf, email, senha, tipo };
 
-    fetch("https://pizzeria3.azurewebsites.net/api/usuario", {
+    fetch("https://pizzeria3.azurewebsites.net/api/auth/cadastrar", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),

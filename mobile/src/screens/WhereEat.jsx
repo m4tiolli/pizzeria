@@ -8,9 +8,6 @@ import {
   StyleSheet,
   TextInput,
 } from "react-native";
-import Header from "../components/Header/Header";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import delivery from '../assets/delivery.png';
 import garfo from '../assets/garfo.png';
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -28,7 +25,7 @@ function WhereEat() {
         alignItems: 'center'
       }}
     >
-      <Header />
+      <Text style={[styles.text, {marginVertical: PixelRatio.getPixelSizeForLayoutSize(10)}]}>where are you going to eat?</Text>
       <TouchableOpacity style={styles.button}>
         <Image
           source={delivery}
@@ -65,7 +62,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'Poppins_500Medium',
-    fontSize: PixelRatio.getPixelSizeForLayoutSize(10),
+    fontSize: PixelRatio.getPixelSizeForLayoutSize(7),
     color: "#8e1c1a",
     textAlign: 'left',
   }
