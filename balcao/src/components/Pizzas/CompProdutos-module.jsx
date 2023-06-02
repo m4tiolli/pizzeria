@@ -42,13 +42,10 @@ function Produto({ pizza, abrirSidebar, atualizarCarrinho }) {
                     <h3 className='precoPizza'>{pizza.preco}</h3>
                     <button className="carrinhoCompras" onClick={handleClick}></button>
                     <ObservationButton obeservacao={observacao} setObeservacao={setObeservacao} className="observacoes" />
-
                 </div>
             </div>
         </div>
-
     )
-
 }
 
 export default Produto

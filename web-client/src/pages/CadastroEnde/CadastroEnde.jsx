@@ -5,6 +5,8 @@ import axios from 'axios';
 import "./CadastroEnde.css";
 
 function CadastroEnde() {
+  
+  const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState(null);
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -42,7 +44,6 @@ function CadastroEnde() {
           alert("Erro ao cadastrar endereço")
         });
 
-        const navigate = useNavigate();
           navigate("/SelectEnde")
     }
   }
