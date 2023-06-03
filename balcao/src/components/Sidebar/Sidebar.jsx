@@ -27,8 +27,8 @@ export default function SidebarPizza({ carrinho, setSidebarOpen, atualizarCarrin
                      <h3 className='descricaoPizza' >{item.descricao}</h3>
                      <h3 className='precoPizza'>{item.preco}</h3>
                      {item.observacao && <h3 className='observacao'>{item.observacao}</h3>}
-                     <button className="adicionar"></button>
-                     <button className="remover"></button>
+                     <button className="adicionar">+</button>
+                     <button className="remover">-</button>
                  </div>
             </div>
              ))}

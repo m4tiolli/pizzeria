@@ -1,85 +1,87 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import Produto from '../Pizzas/CompProdutos-module';
-import Sidebar from '../../components/Sidebar/Sidebar'
+import { MdMenu } from 'react-icons/md'; 
+import { MdShoppingCart, MdTableBar, MdOutlineDeliveryDining } from 'react-icons/md';
+import { BsFillBagCheckFill } from 'react-icons/bs';
+import { FaRegUser } from 'react-icons/fa';
+import Produto from '../../components/Pizzas/CompProdutos-module';
+import Sidebar from '../../components/Sidebar/Sidebar';
 import "./User_TelaPrincipal.css";
-import logo from "../../assets/logo";
+import logo from '../../assets/logo.png';
 
-export default function Tela_principal() {
-    const navigate = useNavigate();
-    const [produtos, setProdutos] = useState([]);
-    const [carrinho, setCarrinho] = useState([]);
+export default function TelaPrincipal() {
+  const navigate = useNavigate();
+  const [produtos, setProdutos] = useState([]);
+  const [carrinho, setCarrinho] = useState([]);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-    const [SidebarOpen, setSidebarOpen] = useState(false);
+  useEffect(() => {
+    fetch("https://pizzeria3.azurewebsites.net/api/produto", {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        setProdutos(json);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Erro ao buscar Produto");
+      })
+  }, []);
 
-    useEffect(() => {
-        fetch("https://pizzeria3.azurewebsites.net/api/produto", {
+  function atualizarCarrinho() {
+    const storage = JSON.parse(localStorage.getItem("carrinho"));
 
-            method: "GET",
-        })
-            .then((response) => response.json())
-
-            .then((json) => {
-
-                setProdutos(json);
-            })
-            .catch((error) => {
-                console.log(error);
-                alert("Erro ao buscar Produto");
-            })
-    });
-
-    function AtualizarCarrinho() {
-        const storage = JSON.parse(localStorage.getItem("carrinho"));
-
-        if (!storage || storage == []) {
-            alert("Carrinho vazio");
-        }
-
-        setCarrinho(storage);
+    if (!storage || storage === []) {
+      alert("Carrinho vazio");
     }
 
-    // SÓ MEXER NO HTML DAQUI PRA BAIXO
+    setCarrinho(storage);
+  }
 
-    return (
-        <div>
-            <div id="root">
+  function abrirCarrinho() {
+    const storage = JSON.parse(localStorage.getItem("carrinho"));
 
-                <div className="header">
-                    <button className=""></button>
-                    <img src={logo} alt="" className="logo" />
-                    <h1 className="title">Pizzeria Balcão</h1>
-                    <button className="buttonTitle"> Delivery </button>
-                    <button className="buttonTitle"> Pedidos Para Retirar </button>
-                    <button className="buttonTitle"> Mesas Disponíveis </button>
-                    <button className="buttonTitle"> Estoque </button>
-                    <button className="buttonTitle"> Chat </button>
-                    <button className="buttonTitle"> User </button>
-                </div>
+    if (!storage || storage === []) {
+      alert("Carrinho vazio");
+    }
 
-                <main align="center">
+    setSidebarOpen(true);
+    setCarrinho(storage);
+  }
 
-                    <input className="input" type="text" placeholder="Pesquisar item" />
-                    <div className="pizza-area"></div>
-
-
-                </main>
-                <button className='button'>Pizzas</button>
-                <button className='button'>Bebidas</button>
-                <button className='button'>Aperitivos</button>
-                <button className='button'>Promoções</button>
-                {SidebarOpen && <Sidebar carrinho={carrinho} setSidebarOpen={setSidebarOpen} atualizarCarrinho={AtualizarCarrinho}>Sidebar</Sidebar>}
-                <div className="Produtos-Container">
-                    {
-
-
-                        produtos.map((pizza, index) => (
-                            <Produto pizza={pizza} key={index} abrirSidebar={setSidebarOpen} atualizarCarrinho={AtualizarCarrinho} />
-                        ))
-
-                    }
-                </div>
-            </div>
+  return (
+    <div>
+      <div id="root">
+        <div className="header">
+          <button className="buttonMenuHamburger"><MdMenu size={30}/></button>
+          <img src={logo} alt="" className="logo" />
+          <h1 className="title">Pizzeria Balcão</h1>
+          <button className="buttonTitle"> <MdOutlineDeliveryDining size={30} /> </button>
+          <button className="buttonTitle"> <BsFillBagCheckFill size={30} /> </button>
+          <button className="buttonTitle"> <MdTableBar size={30} /> </button>
+          <button className='buttonTitle' onClick={abrirCarrinho}><MdShoppingCart size={30} /></button>
+          <button className="buttonTitle"> <FaRegUser size={30} /> </button>
         </div>
-    )
+
+        <main align="center">
+          <input className="input" type="text" placeholder="Pesquisar item" />
+          <div className="pizza-area"></div>
+        </main>
+
+        <button className='button'>Pizzas</button>
+        <button className='button'>Bebidas</button>
+        <button className='button'>Aperitivos</button>
+        <button className='button'>Promoções</button>
+
+        {sidebarOpen && <Sidebar carrinho={carrinho} setSidebarOpen={setSidebarOpen} atualizarCarrinho={atualizarCarrinho}>Sidebar</Sidebar>}
+
+        <div className="Produtos-Container">
+          {produtos.map((pizza, index) => (
+            <Produto pizza={pizza} key={index} abrirSidebar={setSidebarOpen} atualizarCarrinho={atualizarCarrinho} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }

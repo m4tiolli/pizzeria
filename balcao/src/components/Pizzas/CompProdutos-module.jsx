@@ -1,5 +1,7 @@
 import { React, useEffect, useState } from "react";
+import {BsBagPlusFill} from 'react-icons/bs';
 import "./CompProduto.css";
+
 import ObservationButton from '../ObservationProduto/ObservationProduto';
 
 
@@ -40,7 +42,7 @@ function Produto({ pizza, abrirSidebar, atualizarCarrinho }) {
                 <h3 className='descricaoPizza' >{pizza.descricao}</h3>
                 <div>
                     <h3 className='precoPizza'>{pizza.preco}</h3>
-                    <button className="carrinhoCompras" onClick={handleClick}></button>
+                    <button className="carrinhoCompras" onClick={handleClick}><BsBagPlusFill size={30}/></button>
                     <ObservationButton obeservacao={observacao} setObeservacao={setObeservacao} className="observacoes" />
                 </div>
             </div>
