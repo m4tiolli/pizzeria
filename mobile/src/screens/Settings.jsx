@@ -44,7 +44,7 @@ function Settings() {
             color={"#8e1c1a"}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("AddressMethods")}>
           <Text style={styles.textbtn}>meus endereços</Text>
           <MaterialIcons
             name="location-pin"

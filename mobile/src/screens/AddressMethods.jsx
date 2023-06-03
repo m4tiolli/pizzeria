@@ -1,55 +1,49 @@
-import { Text, View, StyleSheet, PixelRatio, Modal, TouchableOpacity, Alert, TextInput } from "react-native";
-import { RadioButton } from "react-native-paper";
-import { useState } from "react";
+import { View, Text, TextInput, Modal, Alert, PixelRatio, StyleSheet, TouchableOpacity } from "react-native";
 import AntDesign from 'react-native-vector-icons/AntDesign';
-function Payment() {
-    const [checked, setChecked] = useState(false);
-    const [modalEditVisible, setModalEditVisible] = useState(false);
+import { useState } from "react";
+import Address from "../components/Address/Address";
+import { RadioButton } from "react-native-paper";
 
+function AddressMethods() {
+    const [modalNewVisible, setModalNewVisible] = useState(false);
+    const [checked, setChecked] = useState(false);
     return (
-        <View style={styles.container}>
-            <RadioButton value="apple"
-                status={"checked"}
-                onPress={() => setChecked(!checked)}
-                color="#8e1c1a"
-            />
-            <View style={{ flexDirection: 'column' }}>
-                <Text style={styles.text1}>credit card 1</Text>
-                <Text style={styles.text2}>58** **** **** **92   07/28</Text>
-            </View><TouchableOpacity onPress={() => setModalEditVisible(true)}>
-                <AntDesign name="edit" color="#8e1c1a" size={PixelRatio.getPixelSizeForLayoutSize(8)} />
+        <View style={{
+            width: "100%",
+            height: "100%",
+            backgroundColor: "#efefef",
+            alignItems: 'center',
+            paddingTop: "20%"
+        }}>
+            <Text style={{
+                fontFamily: 'Poppins_500Medium',
+                fontSize: PixelRatio.getPixelSizeForLayoutSize(7),
+                color: "#8e1c1a",
+                marginVertical: PixelRatio.getPixelSizeForLayoutSize(7)
+            }}>your saved address</Text>
+
+            <Address />
+            <Address />
+            <Address />
+
+            <TouchableOpacity style={styles.addnew1} onPress={() => setModalNewVisible(!modalNewVisible)}>
+                <AntDesign name="plus" size={PixelRatio.getPixelSizeForLayoutSize(7)} color={"#8e1c1a"} />
+                <Text style={{ fontFamily: 'Poppins_400Regular', color: "#8e1c1a" }}>add new</Text>
             </TouchableOpacity>
+
             <Modal
                 animationType="slide"
                 transparent={true}
-                visible={modalEditVisible}
+                visible={modalNewVisible}
                 onRequestClose={() => {
                     Alert.alert('Modal has been closed.');
-                    setModalEditVisible(!modalEditVisible);
+                    setModalNewVisible(!modalNewVisible);
                 }}>
-                <View style={styles.modalcontainer} onPress={() => setModalEditVisible(!modalEditVisible)}>
+                <View style={styles.modalcontainer} onPress={() => setModalNewVisible(!modalNewVisible)}>
                     <View style={styles.modalView}>
-                        <TouchableOpacity onPress={() => setModalEditVisible(!modalEditVisible)} style={{ position: 'absolute', top: PixelRatio.getPixelSizeForLayoutSize(2), right: PixelRatio.getPixelSizeForLayoutSize(2) }} >
+                        <TouchableOpacity onPress={() => setModalNewVisible(!modalNewVisible)} style={{ position: 'absolute', top: PixelRatio.getPixelSizeForLayoutSize(2), right: PixelRatio.getPixelSizeForLayoutSize(2) }} >
                             <AntDesign name="close" color="#8e1c1a" size={PixelRatio.getPixelSizeForLayoutSize(15)} /></TouchableOpacity>
-                        <Text style={styles.text1}>edit payment info</Text>
-                        <View style={{ flexDirection: 'row', width: '80%', justifyContent: 'space-between' }}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 5 }}>
-                                <RadioButton value={checked ? "checked" : "unchecked"}
-                                    status={checked ? "checked" : "unchecked"}
-                                    onPress={() => setChecked(!checked)}
-                                    color="#8e1c1a"
-                                    disabled={true}
-                                /><Text style={{ fontFamily: 'Poppins_500Medium', fontSize: PixelRatio.getPixelSizeForLayoutSize(8), color: "#8e1c1c" }}>debit</Text>
-                            </View>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 5 }}>
-                                <RadioButton value={checked ? "unchecked" : "checked"}
-                                    status={checked ? "unchecked" : "checked"}
-                                    onPress={() => setChecked(!checked)}
-                                    color="#8e1c1a"
-                                    disabled={true}
-                                /><Text style={{ fontFamily: 'Poppins_500Medium', fontSize: PixelRatio.getPixelSizeForLayoutSize(8), color: "#8e1c1c" }}>credit</Text>
-                            </View>
-                        </View>
+                        <Text style={styles.text1}>save new address</Text>
                         <View style={styles.boxinput}>
                             <Text style={styles.textinput}>name</Text>
                             <TextInput
@@ -60,34 +54,52 @@ function Payment() {
                             />
                         </View>
                         <View style={styles.boxinput}>
+                            <Text style={styles.textinput}>uf</Text>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Ex: SP"
+                                underlineColorAndroid="transparent"
+                                placeholderTextColor={"#898989"}
+                            />
+                        </View>
+                        <View style={styles.boxinput}>
+                            <Text style={styles.textinput}>postal code</Text>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Ex: 12345-678"
+                                underlineColorAndroid="transparent"
+                                placeholderTextColor={"#898989"}
+                            />
+                        </View>
+                        <View style={styles.boxinput}>
+                            <Text style={styles.textinput}>city</Text>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Ex: Santana de Parnaiba"
+                                underlineColorAndroid="transparent"
+                                placeholderTextColor={"#898989"}
+                            />
+                        </View>
+                        <View style={styles.boxinput}>
+                            <Text style={styles.textinput}>street</Text>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Ex: Rua Ermelinda"
+                                underlineColorAndroid="transparent"
+                                placeholderTextColor={"#898989"}
+                            />
+                        </View>
+                        <View style={styles.boxinput}>
                             <Text style={styles.textinput}>number</Text>
                             <TextInput
                                 style={styles.input}
-                                placeholder="1234 5678 9123 4567"
-                                underlineColorAndroid="transparent"
-                                placeholderTextColor={"#898989"}
-                            />
-                        </View>
-                        <View style={styles.boxinput}>
-                            <Text style={styles.textinput}>cvc</Text>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="123"
-                                underlineColorAndroid="transparent"
-                                placeholderTextColor={"#898989"}
-                            />
-                        </View>
-                        <View style={styles.boxinput}>
-                            <Text style={styles.textinput}>validation data</Text>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="07/28"
+                                placeholder="Ex: 0123"
                                 underlineColorAndroid="transparent"
                                 placeholderTextColor={"#898989"}
                             />
                         </View>
                         <TouchableOpacity style={styles.button}>
-                            <Text style={{ fontFamily: 'Poppins_500Medium', color: '#efefef', fontSize: PixelRatio.getPixelSizeForLayoutSize(9) }}>save</Text>
+                            <Text style={{ fontFamily: 'Poppins_500Medium', color: '#efefef', fontSize: PixelRatio.getPixelSizeForLayoutSize(9) }}>confirm</Text>
                         </TouchableOpacity>
                     </View>
                 </View></Modal>
@@ -96,25 +108,20 @@ function Payment() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        height: PixelRatio.getPixelSizeForLayoutSize(25),
-        width: '70%',
-        justifyContent: 'space-evenly',
+    addnew1: {
+        backgroundColor: "#efefef",
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-        borderRadius: 10,
-        elevation: 10,
-        shadowColor: "#171717",
-        shadowOffset: { width: -2, height: 4 },
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
-        marginVertical: PixelRatio.getPixelSizeForLayoutSize(10),
+        justifyContent: 'space-evenly',
+        width: '30%',
+        height: PixelRatio.getPixelSizeForLayoutSize(10),
+        borderRadius: 5,
     },
     text1: {
         fontFamily: 'Poppins_500Medium',
         fontSize: PixelRatio.getPixelSizeForLayoutSize(8),
         color: "#8e1c1a",
+        textAlign: 'center'
     },
     text2: {
         fontFamily: 'Poppins_300Light_Italic',
@@ -179,6 +186,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         elevation: 4
     }
-})
+});
 
-export default Payment;
+export default AddressMethods;

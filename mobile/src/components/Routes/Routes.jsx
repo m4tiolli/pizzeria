@@ -9,6 +9,7 @@ import EatHerePayment from "../../screens/EatHerePayment";
 import Pix from "../../screens/Pix"
 import Success from "../../screens/Success";
 import PaymentMethods from "../../screens/PaymentMethods";
+import AddressMethods from "../../screens/AddressMethods";
 
 const Stack = createNativeStackNavigator();
 
@@ -69,6 +70,11 @@ export default function Routes() {
       <Stack.Screen
         name="PaymentMethods"
         component={PaymentMethods}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="AddressMethods"
+        component={AddressMethods}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

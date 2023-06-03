@@ -2,7 +2,7 @@ import { Text, View, StyleSheet, PixelRatio, Modal, TouchableOpacity, Alert, Tex
 import { RadioButton } from "react-native-paper";
 import { useState } from "react";
 import AntDesign from 'react-native-vector-icons/AntDesign';
-function Payment() {
+function Address() {
     const [checked, setChecked] = useState(false);
     const [modalEditVisible, setModalEditVisible] = useState(false);
 
@@ -14,8 +14,8 @@ function Payment() {
                 color="#8e1c1a"
             />
             <View style={{ flexDirection: 'column' }}>
-                <Text style={styles.text1}>credit card 1</Text>
-                <Text style={styles.text2}>58** **** **** **92   07/28</Text>
+                <Text style={styles.text1}>casa</Text>
+                <Text style={styles.text2}>rua ermelinda, nº2</Text>
             </View><TouchableOpacity onPress={() => setModalEditVisible(true)}>
                 <AntDesign name="edit" color="#8e1c1a" size={PixelRatio.getPixelSizeForLayoutSize(8)} />
             </TouchableOpacity>
@@ -31,25 +31,7 @@ function Payment() {
                     <View style={styles.modalView}>
                         <TouchableOpacity onPress={() => setModalEditVisible(!modalEditVisible)} style={{ position: 'absolute', top: PixelRatio.getPixelSizeForLayoutSize(2), right: PixelRatio.getPixelSizeForLayoutSize(2) }} >
                             <AntDesign name="close" color="#8e1c1a" size={PixelRatio.getPixelSizeForLayoutSize(15)} /></TouchableOpacity>
-                        <Text style={styles.text1}>edit payment info</Text>
-                        <View style={{ flexDirection: 'row', width: '80%', justifyContent: 'space-between' }}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 5 }}>
-                                <RadioButton value={checked ? "checked" : "unchecked"}
-                                    status={checked ? "checked" : "unchecked"}
-                                    onPress={() => setChecked(!checked)}
-                                    color="#8e1c1a"
-                                    disabled={true}
-                                /><Text style={{ fontFamily: 'Poppins_500Medium', fontSize: PixelRatio.getPixelSizeForLayoutSize(8), color: "#8e1c1c" }}>debit</Text>
-                            </View>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 5 }}>
-                                <RadioButton value={checked ? "unchecked" : "checked"}
-                                    status={checked ? "unchecked" : "checked"}
-                                    onPress={() => setChecked(!checked)}
-                                    color="#8e1c1a"
-                                    disabled={true}
-                                /><Text style={{ fontFamily: 'Poppins_500Medium', fontSize: PixelRatio.getPixelSizeForLayoutSize(8), color: "#8e1c1c" }}>credit</Text>
-                            </View>
-                        </View>
+                        <Text style={styles.text1}>edit an address</Text>
                         <View style={styles.boxinput}>
                             <Text style={styles.textinput}>name</Text>
                             <TextInput
@@ -60,28 +42,46 @@ function Payment() {
                             />
                         </View>
                         <View style={styles.boxinput}>
+                            <Text style={styles.textinput}>uf</Text>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Ex: SP"
+                                underlineColorAndroid="transparent"
+                                placeholderTextColor={"#898989"}
+                            />
+                        </View>
+                        <View style={styles.boxinput}>
+                            <Text style={styles.textinput}>postal code</Text>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Ex: 12345-678"
+                                underlineColorAndroid="transparent"
+                                placeholderTextColor={"#898989"}
+                            />
+                        </View>
+                        <View style={styles.boxinput}>
+                            <Text style={styles.textinput}>city</Text>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Ex: Santana de Parnaiba"
+                                underlineColorAndroid="transparent"
+                                placeholderTextColor={"#898989"}
+                            />
+                        </View>
+                        <View style={styles.boxinput}>
+                            <Text style={styles.textinput}>street</Text>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Ex: Rua Ermelinda"
+                                underlineColorAndroid="transparent"
+                                placeholderTextColor={"#898989"}
+                            />
+                        </View>
+                        <View style={styles.boxinput}>
                             <Text style={styles.textinput}>number</Text>
                             <TextInput
                                 style={styles.input}
-                                placeholder="1234 5678 9123 4567"
-                                underlineColorAndroid="transparent"
-                                placeholderTextColor={"#898989"}
-                            />
-                        </View>
-                        <View style={styles.boxinput}>
-                            <Text style={styles.textinput}>cvc</Text>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="123"
-                                underlineColorAndroid="transparent"
-                                placeholderTextColor={"#898989"}
-                            />
-                        </View>
-                        <View style={styles.boxinput}>
-                            <Text style={styles.textinput}>validation data</Text>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="07/28"
+                                placeholder="Ex: 0123"
                                 underlineColorAndroid="transparent"
                                 placeholderTextColor={"#898989"}
                             />
@@ -181,4 +181,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Payment;
+export default Address;
