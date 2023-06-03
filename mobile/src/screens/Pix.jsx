@@ -11,7 +11,7 @@ function Pix() {
 
     const chavePix = '83e125e3-2db6-4b6b-9e96-c265a61c3a3a';
     const nomeRecebedor = 'gabriel';
-    const valor = '20.00';
+    const valor = pedido.valor;
 
     const payload = `PIX:02|${chavePix}*|${nomeRecebedor}|${valor}|`;
 

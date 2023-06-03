@@ -1,5 +1,4 @@
 import { View, Text, TouchableOpacity, Image, StyleSheet, PixelRatio } from "react-native";
-import Header from "../components/Header/Header";
 import pix from '../assets/pix.png'
 import cc from '../assets/cc.png'
 import caixa from '../assets/caixa.png'
@@ -18,8 +17,7 @@ function EatHerePayment() {
                 alignItems: 'center'
             }}
         >
-            <Header />
-            <Text style={styles.text}>select the payment method:</Text>
+            <Text style={[styles.text, {marginVertical: PixelRatio.getPixelSizeForLayoutSize(10)}]}>select the payment method:</Text>
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Pix", { pedido: pedido })}>
                 <Image
                     source={pix}
@@ -63,7 +61,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: 'Poppins_500Medium',
-        fontSize: PixelRatio.getPixelSizeForLayoutSize(8),
+        fontSize: PixelRatio.getPixelSizeForLayoutSize(6),
         color: "#8e1c1a",
     }
 });
