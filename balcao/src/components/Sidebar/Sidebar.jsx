@@ -1,38 +1,54 @@
-import { React, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { GrAdd } from 'react-icons/gr';
+import { MdRemove } from 'react-icons/md';
+import {AiFillCloseCircle} from 'react-icons/ai';
+import {RiDeleteBin5Line} from 'react-icons/ri';
 import "./Sidebar.css";
 
 export default function SidebarPizza({ carrinho, setSidebarOpen, atualizarCarrinho }) {
-
+    const navigate = useNavigate();
 
     function LimparCarrinho() {
-         localStorage.removeItem("carrinho");
-         atualizarCarrinho();
-     }
-     function FecharSidebar() {
-         setSidebarOpen(false);
-     }
+        localStorage.removeItem("carrinho");
+        atualizarCarrinho();
+    }
 
-     return (        
-     <section id="sidebar">
-         <div className="sidebar">
-             <button onClick={LimparCarrinho}>Limpar Carrinho</button>
-             <button onClick={FecharSidebar} >Fechar Carrinho</button>
-             {carrinho?.map((item, key) => (
-             <div className="ContainerPizzas" key={key}>
-                 <img className='imagePizza' src={`data:image/png;base64,${item.imagem}`} alt="imagem" />
+    function FecharSidebar() {
+        setSidebarOpen(false);
+    }
 
-                 <div className="Textos">
-                     <h1 className='nomePizza'>{item.nome}</h1>
-                     <h3 className='descricaoPizza' >{item.descricao}</h3>
-                     <h3 className='precoPizza'>{item.preco}</h3>
-                     {item.observacao && <h3 className='observacao'>{item.observacao}</h3>}
-                     <button className="adicionar">+</button>
-                     <button className="remover">-</button>
-                 </div>
+    function RemoverItemCarrinho(index) {
+        const novoCarrinho = [...carrinho];
+        novoCarrinho.splice(index, 1);
+        localStorage.setItem("carrinho", JSON.stringify(novoCarrinho));
+        atualizarCarrinho();
+    }
+
+    return (
+        <section id="sidebar">
+            <div className="sidebar">
+                <div className="buttonContainer">
+                <button className="limparCarrinho" onClick={LimparCarrinho}><RiDeleteBin5Line size={30}/></button>
+                <button className="fecharCarrinho" onClick={FecharSidebar}><AiFillCloseCircle size={30}/></button>
+                </div>
+                {carrinho?.map((item, index) => (
+                    <div className="ContainerPizzas" key={index}>
+                        <img className="imagePizza" src={`data:image/png;base64,${item.imagem}`} alt="imagem" />
+
+                        <div className="Textos">
+                            <h1 className="nomePizza">{item.nome}</h1>
+                            <h3 className="descricaoPizza">{item.descricao}</h3>
+                            <h3 className="precoPizza">{item.preco}</h3>
+                            {item.observacao && <h3 className="observacao">{item.observacao}</h3>}
+                            <div className="buttonContainer">
+                                <button className="adicionar"><GrAdd size={30} /></button>
+                                <button className="remover" onClick={() => RemoverItemCarrinho(index)}><MdRemove size={30} /></button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
-             ))}
-         </div> 
-    </section>      
+        </section>
     );
-};
+}
