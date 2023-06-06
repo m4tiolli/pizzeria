@@ -5,8 +5,8 @@ import { useState } from "react";
 function Produto1({ produto }) {
     const navigate = useNavigate();
 
-    function navAlterar() {
-        navigate("/Alterar", { state: { produto: produto } })
+    function navCarrinho(){
+        navigate("/Carrinho")
     }
 
     const [quantidade, setQuantidade] = useState(1);
@@ -19,7 +19,8 @@ function Produto1({ produto }) {
         setQuantidade(quantidade - 1)
     }
 
-    return (<div className='containerPizza1'>
+    return (
+    <div className='containerPizza1'>
         <img className='imgPizza1' src={`data:image/png;base64,${produto.imagem}`} alt="imagem" />
         <div className="ContainerSemImg">
             <div className="divTexts1">
@@ -45,7 +46,7 @@ function Produto1({ produto }) {
                 </div>
                 <br />
                 <div className="divAdicionar">
-                    <button className='btnAdicionar1' >Adicionar</button>
+                    <button className='btnAdicionar1' onClick={navCarrinho} >Adicionar</button>
                     <h3 className='precoPizza1'>R${produto.valor * quantidade},00</h3>
                 </div>
             </div>
