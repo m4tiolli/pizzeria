@@ -18,7 +18,7 @@ import ModalComp from "../../components/ModalComponents/ModalCompCadastroMesa.js
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 
-const VerProdutos = () => {
+const VerMesas = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [data, setData] = useState([]);
   const [dataEdit, setDataEdit] = useState({});
@@ -29,7 +29,7 @@ const VerProdutos = () => {
   });
 
   useEffect(() => {
-    fetch("https://pizzeria3.azurewebsites.net/api/produto")
+    fetch("https://pizzeria3.azurewebsites.net/api/mesa")
       .then((response) => response.json())
       .then((dataFromDB) => {
         setData(dataFromDB);
@@ -42,7 +42,7 @@ const VerProdutos = () => {
 
 
   const handleRemove = (id) => {
-    fetch(`https://pizzeria3.azurewebsites.net/api/produto/?id=${id}`, {
+    fetch(`https://pizzeria3.azurewebsites.net/api/mesa/?id=${id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     })
@@ -95,13 +95,13 @@ const VerProdutos = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {data.map(({ id, nome}, index) => (
+                {data.map(({ id, numero}, index) => (
                   <Tr
                     key={index}
                     cursor="pointer"
                     _hover={{ bg: "gray.100" }}
                   >
-                    <Td maxW={isMobile ? 5 : 100}>{nome}</Td>                
+                    <Td maxW={isMobile ? 5 : 100}>{numero}</Td>                
     
                   <Td p={0}>
                   </Td>
@@ -135,4 +135,4 @@ const VerProdutos = () => {
   );
 };
 
-export default VerProdutos;
+export default VerMesas;

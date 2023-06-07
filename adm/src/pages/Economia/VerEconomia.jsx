@@ -184,13 +184,7 @@ const VerEconomia = () => {
             <div className="content-data">
               <div className="head">
                 <li>
-                  <a href="#">Relatório Mensal</a>
-                </li>
-                <li>/</li>
-                <li>
-                  <a href="#" className="active">
-                    Relatório Anual
-                  </a>
+                  <a>Entradas e Saídas</a>
                 </li>
                 <div className="menu">
                   <i className="bx bx-dots-horizontal-rounded icon"></i>

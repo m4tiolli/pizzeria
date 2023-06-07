@@ -14,19 +14,24 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { useState } from "react";
+
 const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
   const [numero, setNumero] = useState(dataEdit.numero || "");
   const handleSave = () => {
     if (!numero) return;
     if (name_AlreadyExists()) {
-      return alert("Número da mesa já cadastrada!");
+      return alert("Nome do produto já cadastrado!");
     }
+
     fetch("https://pizzeria3.azurewebsites.net/api/mesa")
       .then((response) => response.json())
       .then((dataFromDB) => {
         const body = {
-          nome: number,
+          numero
         };
+
+
+
         fetch("https://pizzeria3.azurewebsites.net/api/mesa", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -34,20 +39,20 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
         })
           .then((response) => {
             if (response.ok) {
-              alert("Mesa cadastrada com sucesso");
+              alert("Produto cadastrado com sucesso");
               const newDataArray = !Object.keys(dataEdit).length
-                ? [...dataFromDB, { name }]
+                ? [...dataFromDB, {numero}]
                 : [...dataFromDB];
               setData(newDataArray);
               onClose();
               window.location.reload();
             } else {
-              throw new Error("Erro ao cadastrar mesa");
+              throw new Error("Erro ao cadastrar produto");
             }
           })
           .catch((error) => {
             console.log(error);
-            alert("Erro ao cadastrar mesa");
+            alert("Erro ao cadastrar produto");
           });
       })
       .catch((error) => {
@@ -55,12 +60,18 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
         alert("Erro ao obter dados do banco de dados");
       });
   };
+
+
+
+
   const name_AlreadyExists = () => {
     if (dataEdit.numero !== numero && data?.length) {
-      return data.find((item) => item.name === numero);
+      return data.find((item) => item.numero === numero);
     }
+
     return false;
   };
+  
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
