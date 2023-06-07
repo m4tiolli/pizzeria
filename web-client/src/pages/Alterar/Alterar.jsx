@@ -1,23 +1,33 @@
 import "./Alterar.css";
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Produto1 from '../../components/Item1/CompProdutos1'
+import { useLocation, useNavigate } from 'react-router-dom';
 import Header from "../../components/Header/Header";
 
-function Alterar (){
-    const navigate = useNavigate();
+function Alterar() {
 
-    function navCarrinho(){
+    const navigate = useNavigate();
+    const location = useLocation();
+    const produto = location.state.produto;
+
+    const [ quantidade, setQuantidade ] = useState(1)
+
+    
+
+    function navCarrinho() {
         navigate("/Carrinho")
     }
-return(
-    <div>
+
+    return (
         <div>
-            <Header/>
+            <div>
+                <Header />
+            </div>
+            <div className="Produtos-Container">
+                <Produto1 produto={produto} />
+            </div>
         </div>
-        <div>
-            <button className="btnAdicionar1" onClick={navCarrinho}>Adicionar</button>
-        </div>
-    </div>
-);
+    );
 }
 
 export default Alterar;

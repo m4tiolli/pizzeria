@@ -8,13 +8,14 @@ import {
   StyleSheet,
   TextInput,
 } from "react-native";
-import Header from "../components/Header/Header";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import delivery from '../assets/delivery.png';
-import garfo from '../assets/garfo.png'
+import garfo from '../assets/garfo.png';
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 function WhereEat() {
+  const navigation = useNavigation();
+  const route = useRoute();
+  const { pedido } = route.params;
   return (
     <View
       style={{
@@ -24,18 +25,18 @@ function WhereEat() {
         alignItems: 'center'
       }}
     >
-      <Header />
+      <Text style={[styles.text, {marginVertical: PixelRatio.getPixelSizeForLayoutSize(10)}]}>where are you going to eat?</Text>
       <TouchableOpacity style={styles.button}>
         <Image
           source={delivery}
-          style={{ width: PixelRatio.getPixelSizeForLayoutSize(25), height: PixelRatio.getPixelSizeForLayoutSize(25) }}
+          style={{ width: PixelRatio.getPixelSizeForLayoutSize(15), height: PixelRatio.getPixelSizeForLayoutSize(15) }}
         />
         <Text style={styles.text}>to delivery</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("EatHerePayment", {pedido: pedido})}>
         <Image
           source={garfo}
-          style={{ width: PixelRatio.getPixelSizeForLayoutSize(25), height: PixelRatio.getPixelSizeForLayoutSize(25) }}
+          style={{ width: PixelRatio.getPixelSizeForLayoutSize(15), height: PixelRatio.getPixelSizeForLayoutSize(15) }}
         />
         <Text style={styles.text}>eat here</Text>
       </TouchableOpacity>
@@ -45,7 +46,7 @@ function WhereEat() {
 
 const styles = StyleSheet.create({
   button: {
-    width: '80%',
+    width: '75%',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     borderRadius: 15,
@@ -61,8 +62,9 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'Poppins_500Medium',
-    fontSize: PixelRatio.getPixelSizeForLayoutSize(10),
-    color: "#8e1c1a"
+    fontSize: PixelRatio.getPixelSizeForLayoutSize(7),
+    color: "#8e1c1a",
+    textAlign: 'left',
   }
 });
 

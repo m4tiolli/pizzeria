@@ -1,5 +1,5 @@
 import './User_Login.css';
-import logo from '../../../assets/logo.png';
+import logo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -10,7 +10,7 @@ export default function Login() {
     }
     return (
         <div>
-            <div className="header">
+            <div className="headerLogin">
                 <img src={logo} alt="" className="logo" />
                 <h1 className="title">Pizzeria Balcão</h1>
             </div>
@@ -22,7 +22,7 @@ export default function Login() {
                     <input type="text" className="input" placeholder="User" name="" id="" />
 
                     <input type="text" className="input" placeholder="Password" name="" id="" /><br/>
-                    <button className="button" type='submit' onClick={mudarDePagina}>Login</button>
+                    <button className="buttonLogin" type='submit' onClick={mudarDePagina}>Login</button>
                 </div>
 
             </div>

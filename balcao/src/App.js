@@ -1,6 +1,6 @@
-import Login from './components/User/Login/User_Login';
 import './App.css';
-import Tela_principal from './components/User/TelaPrincipal/User_TelaPrincipal';
+import Login from './Pages/Login/User_Login';
+import Tela_principal from './Pages/TelaPrincipal/User_TelaPrincipal';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {

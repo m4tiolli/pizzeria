@@ -151,7 +151,10 @@ export default function Landing() {
             />
             <TouchableOpacity
               onPress={() =>
-                navigation.navigate("Search", { param: pesquisas, pizza: pizza})
+                navigation.navigate("Search", {
+                  pesquisa: pesquisas,
+                  pizza: pizza,
+                })
               }
             >
               <Icon
@@ -302,7 +305,10 @@ export default function Landing() {
                       borderRadius: 10,
                     }}
                     onPress={() =>
-                      navigation.navigate("Search", { param: pesquisas })
+                      navigation.navigate("Search", {
+                        pizza: pizza,
+                        pesquisa: pesquisas,
+                      })
                     }
                   >
                     <Text
@@ -322,7 +328,7 @@ export default function Landing() {
         ></Drawer>
       ) : (
         <ScrollView
-          style={{ paddingBottom: PixelRatio.getPixelSizeForLayoutSize(100) }}
+          style={{  marginBottom: PixelRatio.getPixelSizeForLayoutSize(2) ,paddingBottom: PixelRatio.getPixelSizeForLayoutSize(20), paddingTop: PixelRatio.getPixelSizeForLayoutSize(5) }}
         >
           {pizza.map((pizza, index) => (
             <Item pizza={pizza} key={index} />

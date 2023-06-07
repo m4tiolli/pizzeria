@@ -26,7 +26,7 @@ export default function Produtos() {
             <div className="Produtos-Container">
                 {
                     produtos.map((produto, index) => (
-                        <Produto pizza={produto} key={index} />
+                        <Produto produto={produto} key={index} />
                     ))
                 }
             </div>

@@ -61,3 +61,14 @@
     
     }
     
+    .buttonTitle{
+        background-color: transparent;
+        border: 1px solid transparent;
+        float: right;
+    }
+    
+    .buttonMenuHamburger{
+        background-color: transparent;
+        border: 1px solid transparent;
+        float: left;
+    }

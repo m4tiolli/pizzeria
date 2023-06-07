@@ -57,9 +57,21 @@
     height: 10px;
     margin-right: 50px;
     margin-left: 50px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    float: left;
 }
 
 .observacoes{
     width: 20%;
     height: 10px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    float: left;
  }
+ .buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaçamento entre os botões */
+  }
+  

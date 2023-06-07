@@ -1,0 +1,5 @@
+{
+    "less.lint.hexColorLength": "warning",
+    "scss.lint.hexColorLength": "warning",
+    "css.lint.hexColorLength": "warning"
+}
