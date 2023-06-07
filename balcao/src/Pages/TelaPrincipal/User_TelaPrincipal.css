@@ -65,10 +65,14 @@
   padding: 0.5px, 5px, 5px, 5px;
   font-size: 15pt;
   border: 2px solid #000;
-  width: calc(12% - 2em);
+  width: calc(15% - 2em);
   font-family: "Poppins";
   position: relative;
   align-self: right;
   background-color: #8e1c1a;
   justify-content: flex-end;
+}
+.centered-container {
+  margin: 0 auto;
+  max-width: 800px; /* Defina o valor máximo desejado para a largura */
 }

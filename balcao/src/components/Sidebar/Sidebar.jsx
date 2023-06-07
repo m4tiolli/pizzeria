@@ -12,22 +12,13 @@ export default function SidebarPizza({ carrinho, setSidebarOpen, atualizarCarrin
         atualizarCarrinho();
     }
 
-<<<<<<< HEAD
+
     function FecharSidebar() {
         setSidebarOpen(false);
-    }
-=======
-     return (        
-     <section id="sidebar">
-         <div className="sidebar">
-             <button onClick={LimparCarrinho}>Limpar Carrinho</button>
-             <button onClick={FecharSidebar} >Fechar Carrinho</button>
-             {carrinho?.map((item, key) => (
-             <div className="ContainerPizzaske" y={key}>
-                 <img className='imagePizza' src={`data:image/png;base64,${item.imagem}`} alt="imagem" />
->>>>>>> d70551dd (ALgumas coisinhas)
+    }       
 
-    function RemoverItemCarrinho(index) {
+
+        function RemoverItemCarrinho(index) {
         const novoCarrinho = [...carrinho];
         novoCarrinho.splice(index, 1);
         localStorage.setItem("carrinho", JSON.stringify(novoCarrinho));
@@ -36,7 +27,7 @@ export default function SidebarPizza({ carrinho, setSidebarOpen, atualizarCarrin
 
     return (
         <section id="sidebar">
-            <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
+            <div className='sidebar'>
                 <div className="buttonContainer">
                     <button className="limparCarrinho" onClick={LimparCarrinho}>
                         <RiDeleteBin5Line size={30} />

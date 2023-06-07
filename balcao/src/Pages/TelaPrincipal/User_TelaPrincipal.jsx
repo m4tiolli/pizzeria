@@ -14,6 +14,11 @@ export default function TelaPrincipal() {
   const [produtos, setProdutos] = useState([]);
   const [carrinho, setCarrinho] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [className, setClassName] = useState("");
+
+  useEffect(() => {
+    moverItens();
+  }, [sidebarOpen]);  
 
   useEffect(() => {
     fetch("https://pizzeria3.azurewebsites.net/api/produto", {
@@ -41,15 +46,25 @@ export default function TelaPrincipal() {
 
   function abrirCarrinho() {
     const storage = JSON.parse(localStorage.getItem("carrinho"));
-
+  
     if (!storage || storage === []) {
       alert("Carrinho vazio");
+    } else {
+      setSidebarOpen(!sidebarOpen);
     }
-
-    setSidebarOpen(true);
+  
     setCarrinho(storage);
   }
+  
 
+  function moverItens() {
+    if (sidebarOpen) {
+      setClassName("centered-container");
+    } else {
+      setClassName("");
+    }
+  }
+  
   return (
     <div>
       <div id="root">
@@ -78,7 +93,7 @@ export default function TelaPrincipal() {
 
         {sidebarOpen && <Sidebar carrinho={carrinho} setSidebarOpen={setSidebarOpen} atualizarCarrinho={atualizarCarrinho}>Sidebar</Sidebar>}
 
-        <div className="Produtos-Container">
+        <div className={`Produtos-Container ${className}`}>
           {produtos.map((pizza, index) => (
             <Produto pizza={pizza} key={index} abrirSidebar={setSidebarOpen} atualizarCarrinho={atualizarCarrinho} />
           ))}
