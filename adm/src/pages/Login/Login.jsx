@@ -25,8 +25,8 @@ export default function Login() {
       <div className="container">
         <div className="block">
           <h1 className="info">Sign in with your <br /> admin account</h1><br />
-          <input type="text" className="input-login" placeholder="User" name="" id="" /><br />
-          <input type="text" className="input-login" placeholder="Password" name="" id="" /><br />
+          <input type="email" className="input-login" placeholder="E-mail" name="" id="" /><br />
+          <input type="password" className="input-login" placeholder="Password" name="" id="" /><br />
           <a><button className="button-login" onClick={MudarParaPaginaServices}>Login</button></a>
         </div>
       </div>

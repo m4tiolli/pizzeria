@@ -109,10 +109,6 @@ function MudarParaPaginaServices(){
             <li>
               <a onClick={MudarParaPaginaCadastroProduto}>Cadastro de Produtos</a>
             </li>
-            <li>
-              <a href="#">Cadastro de Mesas</a>
-            </li>
-          
           </ul>
         </li>
       </ul>

@@ -1,5 +1,5 @@
 import { EditIcon, DeleteIcon } from "@chakra-ui/icons";
-import logo from "../../assets/logo.png";
+
 import {
   Box,
   Flex,
@@ -31,7 +31,7 @@ const VerBalcoes = () => {
   });
 
   useEffect(() => {
-    fetch("https://pizzeria3.azurewebsites.net/api/produto")
+    fetch("https://pizzeria3.azurewebsites.net/api/usuario")
       .then((response) => response.json())
       .then((dataFromDB) => {
         setData(dataFromDB);
@@ -44,7 +44,7 @@ const VerBalcoes = () => {
 
 
   const handleRemove = (CPF) => {
-    fetch(`https://3.azurewebsites.net/api/produto/?CPF=${CPF}`, {
+    fetch(`https://3.azurewebsites.net/api/usuario/?CPF=${CPF}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     })
@@ -66,7 +66,6 @@ const VerBalcoes = () => {
   return (
 
 <div>
-   
       <link
 				href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
 				rel="stylesheet"
@@ -109,7 +108,7 @@ const VerBalcoes = () => {
                   Senha
                 </Th>
                 <Th maxW={isMobile ? 5 : 100} fontSize="20px">
-                  CEP
+                  Dat.Nasc
                 </Th>
                 
                 <Th p={0}></Th>
@@ -117,7 +116,7 @@ const VerBalcoes = () => {
               </Tr>
             </Thead>
             <Tbody>
-              {data.map(({ name, email, CPF, phone_number, password, user_name, CEP}, index) => (
+              {data.map(({ name, email, CPF, phone_number, password, user_name, date}, index) => (
                 <Tr key={index} cursor="pointer" _hover={{ bg: "gray.100" }}>
                   <Td maxW={isMobile ? 5 : 100}>{name}</Td>
                   <Td maxW={isMobile ? 5 : 100}>{CPF}</Td>
@@ -125,12 +124,12 @@ const VerBalcoes = () => {
                   <Td maxW={isMobile ? 5 : 100}>{user_name}</Td>
                   <Td maxW={isMobile ? 5 : 100}>{phone_number}</Td> 
                   <Td maxW={isMobile ? 5 : 100}>{password}</Td>
-                  <Td maxW={isMobile ? 5 : 100}>{CEP}</Td>
+                  <Td maxW={isMobile ? 5 : 100}>{date}</Td>
                   <Td p={0}>
                     <EditIcon
                       fontSize={20}
                       onClick={() => [
-                        setDataEdit({ name, CPF, email, user_name, phone_number, password, CEP, index }),
+                        setDataEdit({ name, CPF, email, user_name, phone_number, password, date, index }),
                         onOpen(),
                       ]}
                     />

@@ -4,7 +4,6 @@ import Services from './pages/Services/Services'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CadastroBalcao from'./pages/Forms/CadastroBalcao'
 import CadastroProduto from'./pages/Forms/CadastroProduto'
-import Economia from './pages/Economia/Economia';
 import VerEstoque from './pages/Estoque/VerEstoque';
 import Produtos from './pages/Produtos/Produtos';
 import VerProdutos from './pages/Produtos/VerProdutos'
@@ -30,10 +29,6 @@ function App() {
     {
       path:"/CadastroProduto",
       element:<CadastroProduto/>
-    },
-    {
-      path:"/Economia",
-      element:<Economia/>
     },
     {
       path:"/VerEstoque",

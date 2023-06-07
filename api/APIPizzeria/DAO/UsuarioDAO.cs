@@ -24,7 +24,6 @@ namespace APIPizzeria.DAO
             while (dataReader.Read())
             {
                 var user = new UsuarioDTO();
-
                 user.ID = int.Parse(dataReader["id"].ToString());
                 user.Nome = dataReader["nome"].ToString();
                 user.CPF = dataReader["cpf"].ToString();

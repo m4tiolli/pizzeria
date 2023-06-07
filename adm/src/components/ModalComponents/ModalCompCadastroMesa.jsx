@@ -14,20 +14,25 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { useState } from "react";
+
 const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
-  const [name, setName] = useState(dataEdit.name || "");
+  const [numero, setNumero] = useState(dataEdit.numero || "");
   const handleSave = () => {
-    if (!name) return;
+    if (!numero) return;
     if (name_AlreadyExists()) {
       return alert("Nome do produto já cadastrado!");
     }
-    fetch("https://pizzeria3.azurewebsites.net/api/produto")
+
+    fetch("https://pizzeria3.azurewebsites.net/api/mesa")
       .then((response) => response.json())
       .then((dataFromDB) => {
         const body = {
-          nome: number,
+          numero
         };
-        fetch("https://pizzeria3.azurewebsites.net/api/produto", {
+
+
+
+        fetch("https://pizzeria3.azurewebsites.net/api/mesa", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body),
@@ -36,7 +41,7 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
             if (response.ok) {
               alert("Produto cadastrado com sucesso");
               const newDataArray = !Object.keys(dataEdit).length
-                ? [...dataFromDB, { name }]
+                ? [...dataFromDB, {numero}]
                 : [...dataFromDB];
               setData(newDataArray);
               onClose();
@@ -55,12 +60,18 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
         alert("Erro ao obter dados do banco de dados");
       });
   };
+
+
+
+
   const name_AlreadyExists = () => {
-    if (dataEdit.name !== name && data?.length) {
-      return data.find((item) => item.name === name);
+    if (dataEdit.numero !== numero && data?.length) {
+      return data.find((item) => item.numero === numero);
     }
+
     return false;
   };
+  
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -70,15 +81,15 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
             background="#1d1d1f"
             color="#fff"
             text-align="center"
-          >Cadastro de Produtos</ModalHeader>
+          >Cadastro de Mesas</ModalHeader>
           <ModalBody>
             <FormControl display="flex" flexDir="column" gap={2}>
               <Box>
-                <FormLabel><br />Nome</FormLabel>
+                <FormLabel><br />Número da Mesa</FormLabel>
                 <Input
                   type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  value={numero}
+                  onChange={(e) => setNumero(e.target.value)}
                 />
               </Box>
             </FormControl>
