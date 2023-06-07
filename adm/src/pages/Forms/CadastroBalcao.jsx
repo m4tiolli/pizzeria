@@ -19,7 +19,7 @@ function CadastroBalcao() {
       <Header></Header>
       <Sidebar></Sidebar>
       <div id="content">
-    <Box h="100vh">
+    <Box h="130vh">
       {/*Div com conteúdo centralizado*/}
       <Center
         as="header"
