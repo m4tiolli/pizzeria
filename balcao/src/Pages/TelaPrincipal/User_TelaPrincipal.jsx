@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { MdMenu } from 'react-icons/md'; 
+import { MdMenu } from 'react-icons/md';
 import { MdShoppingCart, MdTableBar, MdOutlineDeliveryDining } from 'react-icons/md';
 import { BsFillBagCheckFill } from 'react-icons/bs';
 import { FaRegUser } from 'react-icons/fa';
@@ -54,7 +54,7 @@ export default function TelaPrincipal() {
     <div>
       <div id="root">
         <div className="header">
-          <button className="buttonMenuHamburger"><MdMenu size={30}/></button>
+          <button className="buttonMenuHamburger"><MdMenu size={30} /></button>
           <img src={logo} alt="" className="logo" />
           <h1 className="title">Pizzeria Balcão</h1>
           <button className="buttonTitle"> <MdOutlineDeliveryDining size={30} /> </button>
@@ -69,10 +69,12 @@ export default function TelaPrincipal() {
           <div className="pizza-area"></div>
         </main>
 
-        <button className='button'>Pizzas</button>
-        <button className='button'>Bebidas</button>
-        <button className='button'>Aperitivos</button>
-        <button className='button'>Promoções</button>
+        <div style={{ textAlign: 'center' }}>
+          <button className='buttonFiltro'>Pizzas</button>
+          <button className='buttonFiltro'>Bebidas</button>
+          <button className='buttonFiltro'>Aperitivos</button>
+          <button className='buttonFiltro'>Promoções</button>
+        </div>
 
         {sidebarOpen && <Sidebar carrinho={carrinho} setSidebarOpen={setSidebarOpen} atualizarCarrinho={atualizarCarrinho}>Sidebar</Sidebar>}
 

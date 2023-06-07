@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import	{MdOutlineManageSearch}  from 'react-icons/md';
+import { MdOutlineManageSearch } from 'react-icons/md';
 
-const ObservationButton = ({obeservacao, setObeservacao}) => {
+const ObservationButton = ({ obeservacao, setObeservacao }) => {
   const [showObservationInput, setShowObservationInput] = useState(false);
 
   const handleButtonClick = () => {
@@ -14,9 +14,9 @@ const ObservationButton = ({obeservacao, setObeservacao}) => {
 
   return (
     <div>
-      <button className="observacoes"onClick={handleButtonClick}>
-        <MdOutlineManageSearch size={30}/>
-        {showObservationInput ? 'Fechar' : 'obs'}
+      <button className="observacoes" onClick={handleButtonClick}>
+        <MdOutlineManageSearch size={30} />
+        {showObservationInput ? 'Fechar' : ''}
       </button>
       {showObservationInput && (
         <div>

@@ -1,77 +1,68 @@
- .containerPizza {
-     display: flex;
-     background-color: #fff;
-     width: 300px;
-     height: 600px;
-     position: relative;
-     flex-wrap: wrap;
-     align-items: center;
-     border-radius: 20px;
-     margin: 20px 20px;
-     box-shadow: 1px 2px 21px -7px rgba(0,0,0,0.75);
-     -webkit-box-shadow: 1px 2px 21px -7px rgba(0,0,0,0.45);
-     -moz-box-shadow: 1px 2px 21px -7px rgba(0,0,0,0.75);
-     
- }
-
- .imgPizza {
-     width: 100%;
-     height: 50%;
-     top: absolute;
-     position: relative;
-     display: flex;
-     align-self: center;
- }
-
- .containerTexto {
-    width: 100%;
-    top: relative;
-    margin: 10 20px;
- }
-
- .nomePizza {
-     font-size: 1.5vw;
-     top: relative;
-    text-align: center;
-    font-weight: bold;
-    color: #000;
- }
-
- .descricaoPizza {
-     font-size: 0.8vw;
-     color: #000;
-     text-align: center;
-     font-weight: 400;
- }
-
- .precoPizza {
-     font-size: 1.5vw;
-     text-align: center;
-     color: #000;
-     margin-top: 0;
-     margin-bottom: 0;
- }
-
- .carrinhoCompras{
-    width: 20%;
-    height: 10px;
-    margin-right: 50px;
-    margin-left: 50px;
-    background-color: transparent;
-    border: 1px solid transparent;
-    float: left;
+.containerPizza {
+  display: flex;
+  background-color: #fff;
+  width: 300px;
+  height: 600px;
+  position: relative;
+  flex-wrap: wrap;
+  align-items: center;
+  border-radius: 20px;
+  margin: 20px 20px;
+  box-shadow: 1px 2px 21px -7px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 2px 21px -7px rgba(0, 0, 0, 0.45);
+  -moz-box-shadow: 1px 2px 21px -7px rgba(0, 0, 0, 0.75);
 }
 
-.observacoes{
-    width: 20%;
-    height: 10px;
-    background-color: transparent;
-    border: 1px solid transparent;
-    float: left;
- }
- .buttons-container {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Espaçamento entre os botões */
-  }
-  
+.imgPizza {
+  width: 100%;
+  height: 50%;
+  top: absolute;
+  position: relative;
+  display: flex;
+  align-self: center;
+}
+
+.containerTexto {
+  width: 100%;
+  top: relative;
+  margin: 10 20px;
+}
+
+.nomePizza {
+  font-size: 1.5vw;
+  top: relative;
+  text-align: center;
+  font-weight: bold;
+  color: #000;
+}
+
+.descricaoPizza {
+  font-size: 0.8vw;
+  color: #000;
+  text-align: center;
+  font-weight: 400;
+}
+
+.precoPizza {
+  font-size: 1.5vw;
+  text-align: center;
+  color: #000;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.carrinhoCompras,
+.observacoes {
+  width: 20%;
+  margin-right: 50px;
+  margin-left: 50px;
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+.observacoes {
+  gap: 5em;
+}
+.buttons-container {
+  display: flex;
+  align-items: center;
+}
