@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Modal, Alert, PixelRatio, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, Modal, PixelRatio, StyleSheet, TouchableOpacity } from "react-native";
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { useState } from "react";
 import Address from "../components/Address/Address";
@@ -36,7 +36,6 @@ function AddressMethods() {
                 transparent={true}
                 visible={modalNewVisible}
                 onRequestClose={() => {
-                    Alert.alert('Modal has been closed.');
                     setModalNewVisible(!modalNewVisible);
                 }}>
                 <View style={styles.modalcontainer} onPress={() => setModalNewVisible(!modalNewVisible)}>

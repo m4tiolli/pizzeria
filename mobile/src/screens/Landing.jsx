@@ -16,6 +16,7 @@ import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/AntDesign";
 import { Drawer } from "react-native-drawer-layout";
 import { CheckBox } from "@rneui/themed";
+import Alert from "../components/Alert/Alert";
 
 export default function Landing() {
   const [pesquisas, setPesquisas] = useState([]);
@@ -54,6 +55,15 @@ export default function Landing() {
     setPesquisas([...pesquisas, " sobremesa"]);
   };
 
+  const handleCheckboxPress = (value) => {
+    if (pesquisas.includes(value)) {
+      setPesquisas(pesquisas.filter(item => item !== value));
+    } else {
+      setPesquisas([...pesquisas, value]);
+    }
+    this
+  };
+
   const [isLoading, setIsLoading] = useState(true);
   const [open, setOpen] = useState(false);
   useEffect(() => {
@@ -70,7 +80,7 @@ export default function Landing() {
         setIsLoading(false);
       } catch (error) {
         console.log(error);
-        alert("Erro ao buscar pizzas");
+        return <Alert message={"Erro ao buscar pizzas"} />
       }
     };
     fetchData();
@@ -211,78 +221,84 @@ export default function Landing() {
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                   <CheckBox
                     checked={grandeChecked}
-                    onPress={toggleGrandeChecked}
+                    onPress={() => handleCheckboxPress('grande')}
                     iconType="material-icons-outlined"
                     checkedIcon="check-box"
                     uncheckedIcon="check-box-outline-blank"
                     checkedColor="#8e1e1a"
                     uncheckedColor="#8e1e1a"
                     containerStyle={{ backgroundColor: "#efefef" }}
+                    value={pesquisas.includes('grande')}
                   />
                   <Text style={styles.checkText}>pizzas grandes</Text>
                 </View>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                   <CheckBox
                     checked={pequenaChecked}
-                    onPress={togglePequenaChecked}
+                    onPress={() => handleCheckboxPress('pequena')}
                     iconType="material-icons-outlined"
                     checkedIcon="check-box"
                     uncheckedIcon="check-box-outline-blank"
                     checkedColor="#8e1e1a"
                     uncheckedColor="#8e1e1a"
                     containerStyle={{ backgroundColor: "#efefef" }}
+                    value={pesquisas.includes('pequena')}
                   />
                   <Text style={styles.checkText}>pizzas pequenas</Text>
                 </View>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                   <CheckBox
                     checked={salgadaChecked}
-                    onPress={toggleSalgadaChecked}
+                    onPress={() => handleCheckboxPress('salgada')}
                     iconType="material-icons-outlined"
                     checkedIcon="check-box"
                     uncheckedIcon="check-box-outline-blank"
                     checkedColor="#8e1e1a"
                     uncheckedColor="#8e1e1a"
                     containerStyle={{ backgroundColor: "#efefef" }}
+                    value={pesquisas.includes('salgada')}
                   />
                   <Text style={styles.checkText}>pizzas salgadas</Text>
                 </View>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                   <CheckBox
                     checked={doceChecked}
-                    onPress={toggleDoceChecked}
+                    onPress={() => handleCheckboxPress('doce')}
                     iconType="material-icons-outlined"
                     checkedIcon="check-box"
                     uncheckedIcon="check-box-outline-blank"
                     checkedColor="#8e1e1a"
                     uncheckedColor="#8e1e1a"
                     containerStyle={{ backgroundColor: "#efefef" }}
+                    value={pesquisas.includes('doce')}
                   />
                   <Text style={styles.checkText}>pizzas doces</Text>
                 </View>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                   <CheckBox
                     checked={bebidaChecked}
-                    onPress={toggleBebidaChecked}
+                    onPress={() => handleCheckboxPress('bebida')}
                     iconType="material-icons-outlined"
                     checkedIcon="check-box"
                     uncheckedIcon="check-box-outline-blank"
                     checkedColor="#8e1e1a"
                     uncheckedColor="#8e1e1a"
                     containerStyle={{ backgroundColor: "#efefef" }}
+                    value={pesquisas.includes('bebida')}
                   />
                   <Text style={styles.checkText}>bebidas</Text>
                 </View>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                   <CheckBox
                     checked={sobremesaChecked}
-                    onPress={toggleSobremesaChecked}
+                    onPress={() => handleCheckboxPress('sobremesa')}
                     iconType="material-icons-outlined"
                     checkedIcon="check-box"
                     uncheckedIcon="check-box-outline-blank"
                     checkedColor="#8e1e1a"
                     uncheckedColor="#8e1e1a"
                     containerStyle={{ backgroundColor: "#efefef" }}
+                    value={pesquisas.includes('sobremesa')}
                   />
                   <Text style={styles.checkText}>sobremesas</Text>
                 </View>
@@ -306,8 +322,8 @@ export default function Landing() {
                     }}
                     onPress={() =>
                       navigation.navigate("Search", {
-                        pizza: pizza,
                         pesquisa: pesquisas,
+                        pizza: pizza,
                       })
                     }
                   >
@@ -328,7 +344,7 @@ export default function Landing() {
         ></Drawer>
       ) : (
         <ScrollView
-          style={{  marginBottom: PixelRatio.getPixelSizeForLayoutSize(2) ,paddingBottom: PixelRatio.getPixelSizeForLayoutSize(20), paddingTop: PixelRatio.getPixelSizeForLayoutSize(5) }}
+          style={{ marginBottom: PixelRatio.getPixelSizeForLayoutSize(2), paddingBottom: PixelRatio.getPixelSizeForLayoutSize(20), paddingTop: PixelRatio.getPixelSizeForLayoutSize(5) }}
         >
           {pizza.map((pizza, index) => (
             <Item pizza={pizza} key={index} />

@@ -3,7 +3,6 @@ import {
   Text,
   TextInput,
   Modal,
-  Alert,
   PixelRatio,
   StyleSheet,
   TouchableOpacity,
@@ -86,7 +85,6 @@ function PaymentMethods() {
         transparent={true}
         visible={modalNewVisible}
         onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
           setModalNewVisible(!modalNewVisible);
         }}
       >
