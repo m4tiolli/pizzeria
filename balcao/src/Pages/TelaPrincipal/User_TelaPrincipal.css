@@ -7,10 +7,15 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #8e1c1a;
+  background-color: #8E1C1A;
   gap: 50px;
 }
-
+.title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 .logo {
   height: 95%;
 }
@@ -49,7 +54,8 @@
 .buttonTitle {
   background-color: transparent;
   border: 1px solid transparent;
-  float: right;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .buttonMenuHamburger {
@@ -73,6 +79,7 @@
   align-self: right;
   background-color: #8e1c1a;
   justify-content: flex-end;
+  color: #fff;
 }
 .centered-container {
   margin: 0 auto;

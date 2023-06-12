@@ -9,31 +9,34 @@ import "./TelaMesas.css"
 
 export default function TelaMesas (pizza) {
     const navigate = useNavigate();
-    const [produtos, setProdutos] = useState([]);
-    const [observacao, setObeservacao] = useState("");
+    const iconStyle = { color: 'white' };
 
     function Home() {
-        navigate("/");
-      }
-      function Delivery() {
-        navigate("/delivery");
-      }
-      function Retirar() {
-        navigate("/retirar");
-      }
-      function User() {
-        navigate("/user");
-      }    
+      navigate("/");
+    }
+    function Delivery() {
+      navigate("/delivery");
+    }
+    function Mesas() {
+      navigate("/mesas");
+    }
+    function Retirar() {
+      navigate("/retirar");
+    }
+    function User() {
+      navigate("/user");
+    } 
 return (
     <div>
       <div id="root">
         <div className="header">
           <img src={logo} alt="" className="logo" />
           <h1 className="title">Pizzeria Balcão</h1>
-          <button className="buttonTitle" onClick={Home}> <AiFillHome size={30}/> </button>
-          <button className="buttonTitle" onClick={Delivery}> <MdOutlineDeliveryDining size={30} /> </button>
-          <button className="buttonTitle" onClick={Retirar}> <BsFillBagCheckFill size={30} /> </button>
-          <button className="buttonTitle" onClick={User}> <FaRegUser size={30} /> </button>
+          <button className='buttonTitle' onClick={Home}><AiFillHome size={30} style={iconStyle}/></button>
+          <button className="buttonTitle" onClick={Delivery}> <MdOutlineDeliveryDining size={30} style={iconStyle} /> </button>
+          <button className="buttonTitle" onClick={Retirar}> <BsFillBagCheckFill size={30} style={iconStyle} /> </button>
+          <button className="buttonTitle" onClick={Mesas}> <MdOutlineTableRestaurant size={30} style={iconStyle} /> </button>
+          <button className="buttonTitle" onClick={User}> <FaRegUser size={30} style={iconStyle} /> </button>
         </div>
         <div style={{ textAlign: 'center' }}>
             <h1>MESAS PARA COMER NO LOCAL</h1>

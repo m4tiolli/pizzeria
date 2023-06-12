@@ -27,7 +27,9 @@
     align-items: center;
   }
   .buttons-containerPedido button{
-    margin: 0 10px;
+    font-size: 15px;
+    margin-bottom: 20px;
     border-radius: 7px;
     background-color: #698C3D;
+    color: #fff;
   }
