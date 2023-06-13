@@ -26,6 +26,7 @@
   font-size: 3.5vw;
   color: #8e1c1e;
   margin-top: 0px;
+  font-weight: 600;
 }
 
 
@@ -70,4 +71,16 @@
 .blocoregister > div {
   width: 90%;
   height: 100%;
+}
+
+.inputtext1{
+  border: none;
+  outline: none;
+  font-family: 'Poppins';
+  font-size: .8vw;
+  font-weight: 300;
+}
+
+.inputdiv{
+  margin-top: 2vh;
 }
