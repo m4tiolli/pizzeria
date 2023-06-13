@@ -7,6 +7,9 @@ import { BsCheckLg } from 'react-icons/bs';
 import "./Sidebar.css";
 
 export default function SidebarPizza({ carrinho, setSidebarOpen, atualizarCarrinho, isSidebarOpen }) {
+
+    const iconStyle = { color: 'white' };
+
     function LimparCarrinho() {
         localStorage.removeItem("carrinho");
         atualizarCarrinho();
@@ -29,14 +32,14 @@ export default function SidebarPizza({ carrinho, setSidebarOpen, atualizarCarrin
         <section id="sidebar">
             <div className='sidebar'>
                 <div className="buttonContainer">
-                    <button className="limparCarrinho" onClick={LimparCarrinho}>
-                        <RiDeleteBin5Line size={30} />
+                    <button className="limparCarrinho" onClick={LimparCarrinho }>
+                        <RiDeleteBin5Line size={30} style={iconStyle}/>
                     </button>
                     <button className="fecharCarrinho" onClick={FecharSidebar}>
-                        <AiFillCloseCircle size={30} />
+                        <AiFillCloseCircle size={30} style={iconStyle}/>
                     </button>
                     <button className="buttonFinalisarPedido">
-                        <BsCheckLg size={30} />
+                        <BsCheckLg size={30} style={iconStyle}/>
                     </button>
                 </div>
             </div>
@@ -51,12 +54,12 @@ export default function SidebarPizza({ carrinho, setSidebarOpen, atualizarCarrin
                             <h3 className="precoPizza">{item.valor}</h3>
                             {item.observacao && <h3 className="observacao">{item.observacao}</h3>}
                             <div className="buttonContainer">
-                                <button className="adicionar">
-                                    <GrAdd size={30} />
+                            <button className="remover" onClick={() => RemoverItemCarrinho(index)}>
+                                    <MdRemove size={30} style={iconStyle}/>
                                 </button>
                                 <h3>1</h3>
-                                <button className="remover" onClick={() => RemoverItemCarrinho(index)}>
-                                    <MdRemove size={30} />
+                                <button className="adicionar">
+                                    <GrAdd size={30} style={iconStyle}/>
                                 </button>
                             </div>
                         </div>

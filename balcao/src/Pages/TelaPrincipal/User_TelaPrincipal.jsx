@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { MdShoppingCart, MdOutlineTableRestaurant, MdOutlineDeliveryDining } from 'react-icons/md';
 import { BsFillBagCheckFill } from 'react-icons/bs';
 import { FaRegUser } from 'react-icons/fa';
-import {AiFillHome} from 'react-icon/ai';
+import { AiFillHome } from 'react-icons/ai'
 import Produto from '../../components/Pizzas/CompProdutos-module';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import "./User_TelaPrincipal.css";

@@ -15,6 +15,9 @@
   height: 500px;
 }
 
+.Textos{
+  color: white;
+}
 .buttonContainer {
   display: flex;
   justify-content: center;
