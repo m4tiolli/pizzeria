@@ -4,6 +4,7 @@ import { BsFillBagCheckFill } from 'react-icons/bs';
 import { FaRegUser } from 'react-icons/fa';
 import { AiFillHome } from 'react-icons/ai';
 import logo from '../../assets/logo.png';
+import "./TelaUser.css";
 
 export default function TelaUser() {
     const navigate = useNavigate();
@@ -37,15 +38,21 @@ export default function TelaUser() {
                     <button className="buttonTitle" onClick={User}> <FaRegUser size={30} style={iconStyle} /> </button>
                 </div>
                 <div className="descrição">
-                <h1>Adminastrador Balcão</h1>
+                <h1>Administrador Balcão</h1>
                 </div>
                 <div className="containerFaturamento">
-                    <button>Caixa</button>
+                    <button className="buttonContainers">Caixa</button>
 
                     <h1>Faturamento do dia:</h1>
                     <h3> 20.03.2006</h3>
                     <h3>Semana 5</h3>
                     <h3>R$ 102.00</h3>
+                </div>
+                <div className="containerBalcao">
+                  <button className="buttonContainers">Usuário</button>
+                  <h1>Responsável pelo Balcão:</h1>
+                  <h3>Julia Linda</h3>
+                  <h3>user2006</h3>
                 </div>
             </div>
         </div>
