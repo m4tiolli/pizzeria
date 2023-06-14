@@ -23,7 +23,7 @@ function Register() {
   const cadastrarUsuario = (e) => {
     e.preventDefault();
 
-    if (nome == "" || cpf == "" || email == "" || senha == ""){
+    if (nome == "" || cpf == "" || email == "" || senha == "") {
       alert("Por favor, preencha todos os campos.")
       return;
     }
@@ -57,7 +57,7 @@ function Register() {
               <label className="labelinput" htmlFor="name">name</label>
               <div className="inputdiv">
                 <input
-                  className="inputtext"
+                  className="inputtext1"
                   type="text"
                   name="name"
                   id="name"
@@ -66,12 +66,11 @@ function Register() {
                   required />
               </div>
             </div>
-            <br />
             <div className="inputpai">
               <label className="labelinput" htmlFor="Email">e-mail</label>
-              <div name={"inputdiv"} className="inputdiv">
+              <div name="inputdiv" className="inputdiv">
                 <input
-                  className="inputtext"
+                  className="inputtext1"
                   type="text"
                   name="email"
                   value={email}
@@ -80,12 +79,11 @@ function Register() {
                   required />
               </div>
             </div>
-            <br />
             <div className="inputpai">
               <label className="labelinput" htmlFor="Password">password</label>
               <div className="inputdiv">
                 <input
-                  className="inputtext"
+                  className="inputtext1"
                   type="password"
                   name="password"
                   value={senha}
@@ -98,7 +96,7 @@ function Register() {
               <label className="labelinput" htmlFor="CPF">CPF</label>
               <div className="inputdiv">
                 <input
-                  className="inputtext"
+                  className="inputtext1"
                   type="text"
                   name="cpf"
                   value={cpf}

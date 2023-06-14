@@ -102,11 +102,12 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: "center",
     elevation: 10,
-    width: PixelRatio.getPixelSizeForLayoutSize(100),
+    width: PixelRatio.getPixelSizeForLayoutSize(80),
   },
   cart: {
     backgroundColor: "#8E1C1A",
-    width: PixelRatio.getPixelSizeForLayoutSize(50),
+    width: PixelRatio.getPixelSizeForLayoutSize(37),
+    height: PixelRatio.getPixelSizeForLayoutSize(14),
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
@@ -115,11 +116,11 @@ const styles = StyleSheet.create({
   carttext: {
     color: "#fff",
     fontFamily: "Poppins_400Regular",
-    fontSize: PixelRatio.getPixelSizeForLayoutSize(7),
+    fontSize: PixelRatio.getPixelSizeForLayoutSize(6),
   },
   title: {
     fontFamily: "Poppins_500Medium",
-    fontSize: PixelRatio.getPixelSizeForLayoutSize(8),
+    fontSize: PixelRatio.getPixelSizeForLayoutSize(6),
   },
   infos: {
     fontFamily: "Poppins_500Medium",

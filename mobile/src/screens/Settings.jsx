@@ -13,6 +13,7 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Header from './../components/Header/Header';
 import { useNavigation } from "@react-navigation/native";
+import Alert from "../components/Alert/Alert";
 
 function Settings() {
   const navigation = useNavigation()
@@ -61,20 +62,21 @@ function Settings() {
           />
         </TouchableOpacity>
       </View>
+      <Alert/> 
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   button: {
-    width: "90%",
-    height: PixelRatio.getPixelSizeForLayoutSize(30),
+    width: "80%",
+    height: "13%",
     backgroundColor: "#efefef",
     margin: PixelRatio.getPixelSizeForLayoutSize(5),
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: PixelRatio.getPixelSizeForLayoutSize(5),
+    padding: "1%",
     shadowColor: "#171717",
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.2,
@@ -84,7 +86,7 @@ const styles = StyleSheet.create({
   },
   textbtn: {
     fontFamily: "Poppins_500Medium",
-    fontSize: PixelRatio.getPixelSizeForLayoutSize(6),
+    fontSize: PixelRatio.getPixelSizeForLayoutSize(5),
     color: '#8e1c1a'
   },
   name: {

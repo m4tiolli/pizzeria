@@ -32,18 +32,21 @@
 .nomePizza{
     font-family: "Poppins";
     font-size: 1.5vw;
+    font-weight: 600;
 }
 
 .descricaoPizza{
     font-size: 0.9vw;
     color: #898989;
     font-family: "Poppins";
+    font-weight: 600;
 }
 
 .precoPizza{
     font-size: 1.5vw;
     font-family: "Poppins";
     color: #698C3D;
+    font-weight: 600;
 }
 
 .btnAddCart, .btnAlterar{

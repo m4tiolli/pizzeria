@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     },
     text1: {
         fontFamily: 'Poppins_500Medium',
-        fontSize: PixelRatio.getPixelSizeForLayoutSize(8),
+        fontSize: PixelRatio.getPixelSizeForLayoutSize(6),
         color: "#8e1c1a",
     },
     text2: {

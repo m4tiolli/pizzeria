@@ -72,12 +72,11 @@
 .divCarrinho{
     background-color: #8e1c1e;
     color: white;
-    margin-right: 0px;
     width: 14%;
     border-radius: 10px;
     padding: 0.3vw;
     height: 60%; 
-    margin-right: 2vw;
+    margin-right: 8vw;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -104,7 +103,7 @@
 .blockpesquisa{
     width: 40%;
     height: 70%;
-    
+    margin-left: 17vw;
 }
 
 .inputPesquisa{
