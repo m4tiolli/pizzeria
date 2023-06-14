@@ -3,7 +3,21 @@ import './VerEconomia.css';
 import Header from '../../components/Header/Header';
 import Sidebar from '../../components/Sidebar/Sidebar';
 
+
+
 const VerEconomia = () => {
+
+ const Grafico = ({ data }) => {
+    return (
+      <div style={{ display: 'flex' }}>
+        {data.map((ponto, index) => (
+          <div key={index} style={{ height: `${ponto}px`, width: '20px', background: 'green', marginRight: '5px' }}></div>
+        ))}
+      </div>
+    );
+  };
+  
+
   const [descItem, setDescItem] = useState('');
   const [amount, setAmount] = useState('');
   const [type, setType] = useState('Entrada'); // Pré-selecionado como 'Entrada'
@@ -12,6 +26,8 @@ const VerEconomia = () => {
   const [totalExpenses, setTotalExpenses] = useState('0.00');
   const [progressIncomes, setProgressIncomes] = useState(0);
   const [progressExpenses, setProgressExpenses] = useState(0);
+
+  const dados = [progressIncomes*2, progressExpenses*2]; // Dados do gráfico
 
   useEffect(() => {
     loadItems();
@@ -180,7 +196,10 @@ const VerEconomia = () => {
           </div>
           {/*Report */}
           <div className="data">
-            <div className="content-data"></div>
+            <div className="content-data"><div>
+      <h1>Meu Gráfico</h1>
+      <Grafico data={dados} />
+    </div></div>
             <div className="content-data">
               <div className="head">
                 <li>
@@ -211,7 +230,6 @@ const VerEconomia = () => {
                   <label htmlFor="amount">Valor</label>
                   <input type="number" id="amount" value={amount} onChange={(e) => setAmount(e.target.value)} />
                 </div>
-
                 <div className="divType">
                   <label htmlFor="type">Tipo</label>
                   <select id="type" value={type} onChange={(e) => setType(e.target.value)}>
