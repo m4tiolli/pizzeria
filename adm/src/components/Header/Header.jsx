@@ -7,7 +7,7 @@ export default function Header() {
     <section id="content">
     <div>
       <nav>
-        <i className="bx bx-menu toggle-sidebar"></i>
+        {/* <i className="bx bx-menu toggle-sidebar"></i> */}
         <form action="#">
           <div>
             <h1 className="title_Header">Pizzeria Admin</h1>

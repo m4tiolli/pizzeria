@@ -1,206 +1,183 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
   Button,
   FormControl,
   FormLabel,
   Input,
-  Box,
-  Flex,
-  Center,
-  HStack
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
 } from "@chakra-ui/react";
 
-const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
-  const [name, setName] = useState(dataEdit.name || "");
-  const [CPF, setCPF] = useState(dataEdit.CPF || "");
-  const [email, setEmail] = useState(dataEdit.email || "");
-  const [phone_number, setPhone_number] = useState(dataEdit.phone_number || "");
-  const [user_name, setUser_name] = useState(dataEdit.user_name || "");
-  const [password, setPassword] = useState(dataEdit.password || "");
-  const [date, setDate] = useState(dataEdit.date || "");
-  const [tipo, setTipo] = useState("balconista");
+const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) => {
+  const [name, setName] = useState("");
+  const [CPF, setCPF] = useState("");
+  const [email, setEmail] = useState("");
+  const [user_name, setUser_name] = useState("");
+  const [phone_number, setPhone_number] = useState("");
+  const [password, setPassword] = useState("");
+  const [date, setDate] = useState("");
 
-  const handleSave = async () => {
-    if (!name || !CPF || !email || !phone_number || !user_name || !password || !date) return;
-    if (CPFAlreadyExists()) {
-      return alert("CPF já cadastrado!");
+  useEffect(() => {
+    if (Object.keys(dataEdit).length !== 0) {
+      setName(dataEdit.name);
+      setCPF(dataEdit.CPF);
+      setEmail(dataEdit.email);
+      setUser_name(dataEdit.user_name);
+      setPhone_number(dataEdit.phone_number);
+      setPassword(dataEdit.password);
+      setDate(dataEdit.date);
+    } else {
+      clearFields();
     }
+  }, [dataEdit]);
 
-    try {
-      const response = await fetch("https://pizzeria3.azurewebsites.net/api/auth/cadastrar", {
-        method: "POST",
-        // headers: {
-        //   "Content-Type": "application/json",
-        // },
-        body: JSON.stringify({
-          name,
-          CPF,
-          email,
-          phone_number,
-          user_name,
-          password,
-          datanasc: date,
-          tipo
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Ocorreu um erro ao fazer o POST.");
-      }
-
-      const responseData = await response.json();
-      console.log(responseData);
-
-      const newDataArray = !Object.keys(dataEdit).length
-        ? [...(data ? data : []), responseData]
-        : [...(data ? data : [])];
-
-      setData(newDataArray);
-      onClose();
-    } catch (error) {
-      console.error(error);
-      alert("Ocorreu um erro ao cadastrar o balcão.");
-    }
+  const clearFields = () => {
+    setName("");
+    setCPF("");
+    setEmail("");
+    setUser_name("");
+    setPhone_number("");
+    setPassword("");
+    setDate("");
   };
 
-  const CPFAlreadyExists = () => {
-    if (dataEdit.CPF !== CPF && data?.length) {
-      return data.find((item) => item.CPF === CPF);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (Object.keys(dataEdit).length !== 0) {
+      const newArray = data.map((item, index) => {
+        if (index === dataEdit.index) {
+          return {
+            name,
+            CPF,
+            email,
+            user_name,
+            phone_number,
+            password,
+            date,
+          };
+        }
+        return item;
+      });
+      setData(newArray);
+      localStorage.setItem("cad_cliente", JSON.stringify(newArray));
+    } else {
+      const newItem = {
+        name,
+        CPF,
+        email,
+        user_name,
+        phone_number,
+        password,
+        date,
+      };
+      setData([...data, newItem]);
+      localStorage.setItem(
+        "cad_cliente",
+        JSON.stringify([...data, newItem])
+      );
     }
-    return false;
+
+    clearFields();
+    onClose();
   };
 
   return (
-    <>
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader background="#1d1d1f" color="#fff" textAlign="center">
-            Cadastro de Balcões
-          </ModalHeader>
+    <Modal isOpen={isOpen} onClose={onClose}>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>Cadastro de Balcão</ModalHeader>
+        <ModalCloseButton />
+        <form onSubmit={handleSubmit}>
           <ModalBody>
-            <FormControl display="flex" flexDir="column" gap={2} top={4}>
-              <Box h="80vh">
-                <Flex align="center" justify="center" bg="blackAlpha.200">
-                  <Center
-                    w="100%"
-                    maxW={840}
-                    bg="white"
-                    position="relative"
-                    borderRadius={5}
-                    p="6"
-                    boxShadow="0 1px 2px #ccc"
-                  >
-                    <FormControl display="flex" flexDir="column" gap="4">
-                      <HStack spacing="4">
-                        <Box w="100%">
-                          <FormLabel>Nome do Responsável</FormLabel>
-                          <Input
-                            placeholder="Nome do Responsável"
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                          />
-                        </Box>
-                      </HStack>
-                      <HStack spacing="4">
-                        <Box w="100%">
-                          <FormLabel htmlFor="CPF">CPF</FormLabel>
-                          <Input
-                            id="CPF"
-                            placeholder="CPF"
-                            type="text"
-                            value={CPF}
-                            onChange={(e) => setCPF(e.target.value)}
-                          />
-                        </Box>
-                        <Box w="100%">
-                          <FormLabel htmlFor="email">Email</FormLabel>
-                          <Input
-                            id="email"
-                            placeholder="Email"
-                            type="text"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                          />
-                        </Box>
-                      </HStack>
-                      <HStack spacing="4">
-                        <Box w="100%">
-                          <FormLabel htmlFor="user_name">
-                            Nome do Usuário
-                          </FormLabel>
-                          <Input
-                            id="user_name"
-                            placeholder="Nome do usuário"
-                            type="text"
-                            value={user_name}
-                            onChange={(e) => setUser_name(e.target.value)}
-                          />
-                        </Box>
-                      </HStack>
-                      <HStack spacing="4">
-                        <Box w="100%">
-                          <FormLabel htmlFor="password">Senha</FormLabel>
-                          <Input
-                            id="senha"
-                            placeholder="Senha"
-                            type="text"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                          />
-                        </Box>
-                      </HStack>
-                      <HStack spacing="4">
-                        <Box w="100%">
-                          <FormLabel htmlFor="phone_number">Celular</FormLabel>
-                          <Input
-                            id="celular"
-                            placeholder="Celular"
-                            type="number"
-                            value={phone_number}
-                            onChange={(e) => setPhone_number(e.target.value)}
-                          />
-                        </Box>
-                      </HStack>
-                      <HStack spacing="4">
-                        <Box w="100%">
-                          <FormLabel htmlFor="date">
-                            Data de Nascimento
-                          </FormLabel>
-                          <Input
-                            id="date"
-                            type="date"
-                            value={date}
-                            onChange={(e) => setDate(e.target.value)}
-                          />
-                        </Box>
-                      </HStack>
-                    </FormControl>
-                  </Center>
-                </Flex>
-              </Box>
+            <FormControl isRequired>
+              <FormLabel>Nome</FormLabel>
+              <Input
+                type="text"
+                placeholder="Digite o nome"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+              />
+            </FormControl>
+
+            <FormControl isRequired>
+              <FormLabel>CPF</FormLabel>
+              <Input
+                type="text"
+                placeholder="Digite o CPF"
+                value={CPF}
+                onChange={(event) => setCPF(event.target.value)}
+              />
+            </FormControl>
+
+            <FormControl isRequired>
+              <FormLabel>Email</FormLabel>
+              <Input
+                type="email"
+                placeholder="Digite o email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
+            </FormControl>
+
+            <FormControl isRequired>
+              <FormLabel>Usuário</FormLabel>
+              <Input
+                type="text"
+                placeholder="Digite o usuário"
+                value={user_name}
+                onChange={(event) => setUser_name(event.target.value)}
+              />
+            </FormControl>
+
+            <FormControl isRequired>
+              <FormLabel>Celular</FormLabel>
+              <Input
+                type="tel"
+                placeholder="Digite o número de celular"
+                value={phone_number}
+                onChange={(event) => setPhone_number(event.target.value)}
+              />
+            </FormControl>
+
+            <FormControl isRequired>
+              <FormLabel>Senha</FormLabel>
+              <Input
+                type="password"
+                placeholder="Digite a senha"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+              />
+            </FormControl>
+
+            <FormControl isRequired>
+              <FormLabel>Data de Nascimento</FormLabel>
+              <Input
+                type="date"
+                placeholder="Digite a data de nascimento"
+                value={date}
+                onChange={(event) => setDate(event.target.value)}
+              />
             </FormControl>
           </ModalBody>
-          <ModalFooter justifyContent="start">
-            <Button colorScheme="green" mr={3} onClick={handleSave}>
-              SALVAR
+
+          <ModalFooter>
+            <Button variant="ghost" mr={3} onClick={onClose}>
+              Cancelar
             </Button>
-            <Button colorScheme="red" onClick={onClose}>
-              CANCELAR
+            <Button colorScheme="blue" type="submit">
+              Salvar
             </Button>
           </ModalFooter>
-        </ModalContent>
-      </Modal>
-    </>
+        </form>
+      </ModalContent>
+    </Modal>
   );
 };
 
-export default ModalComp;
+export default ModalCompCadastroBalcao;

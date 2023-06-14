@@ -32,7 +32,7 @@ export default function Services() {
 
   return (
 
-    <div className="teste">
+    <div className="Services">
       <Header></Header>
       <Sidebar></Sidebar>
 <section id="content">
@@ -56,20 +56,14 @@ export default function Services() {
           <button className="button yellow-button" onClick={MudarParaPaginaVerProdutos}>
             Ver Produtos
           </button>
-          <button className="button yellow-button" onClick={MudarParaPaginaVerEstoque}>
-            Estoque
-          </button>
+          
         </div>
         <div className="button-row">
-          <button className="button green-button" onClick={MudarParaPaginaCadastroBalcao}>
-            Relatório de Vendas
-          </button>
-          <button className="button green-button" onClick={MudarParaPaginaCadastroBalcao}>
-            Receber Produto
-          </button>
+         
+          
           <button className="button green-button" onClick={MudarParaPaginaVerEconomia}>
             Economia
-          </button>
+          </button> 
         </div>
       </div>
       </section>

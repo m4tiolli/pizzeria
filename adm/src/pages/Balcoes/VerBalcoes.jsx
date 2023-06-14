@@ -44,7 +44,7 @@ const VerBalcoes = () => {
 
 
   const handleRemove = (CPF) => {
-    fetch(`https://3.azurewebsites.net/api/usuario/?CPF=${CPF}`, {
+    fetch(`https://pizzeria3.azurewebsites.net/api/usuario/?CPF=${CPF}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     })
