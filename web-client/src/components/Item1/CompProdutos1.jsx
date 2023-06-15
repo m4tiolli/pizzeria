@@ -1,9 +1,13 @@
 import "./CompProdutos1.css";
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useState } from "react";
 
-function Produto1({ produto }) {
+function Produto1() {
     const navigate = useNavigate();
+
+    const {state} = useLocation();
+
+    const {produto} = state;
 
     function navCarrinho(){
         navigate("/Carrinho")

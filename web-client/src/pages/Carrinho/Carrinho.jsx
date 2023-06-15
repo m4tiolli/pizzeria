@@ -17,13 +17,13 @@ function Carrinho() {
     }
 
     return (
-        <div>
+        <div id='container'>
             <Header />
-            <div id='container'>
+            <div className='containerCarrinho1'>
                 <h1 className='txtSeusItens'>Seus itens</h1>
                 {
                     carrinho?.map((produto, key) => (
-                        <ProdutosCarrinho carrinho={produto} key={key}/>
+                        <ProdutosCarrinho produto={produto} key={key}/>
                     ))
                 }
             </div>

@@ -8,7 +8,9 @@ function Alterar() {
             <div>
                 <Header />
             </div>
+            <div className="Produtos-Container">
             <Produto1 />
+            </div>
         </div>
     );
 }
