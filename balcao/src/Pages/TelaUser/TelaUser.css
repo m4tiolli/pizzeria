@@ -1,21 +1,26 @@
 .containerFaturamento,
-.containerBalcao{
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 50%;
-    height: auto;
+.containerBalcao {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 50%;
+  height: 250px;
+  display: inline-block;
 }
-.descrição{
-    text-align: center;
+.descrição {
+  text-align: center;
 }
-.buttonContainers{
-   background-color: #C14325; 
-   font-size: 50px;
-   border-radius: 15px;
-   margin: 0 10px;
-   color: #fff;
-   border: 1px solid transparent;
-
-
+.buttonContainers {
+  background-color: #c14325;
+  width: calc (50% - 2em);
+  font-size: 50px;
+  border-radius: 15px;
+  margin: 0 10px;
+  color: #fff;
+  border: 1px solid transparent;
+}
+.conteudo {
+  height: 250px;
+  display: flex;
+  flex-direction: row;
 }
