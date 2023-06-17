@@ -1,0 +1,35 @@
+.containerPedido{  
+    display: flex;
+    background-color: #fff;
+    width: 300px;
+    height: auto;
+    position: relative;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 20px;
+    margin: 20px 20px;
+    box-shadow: 1px 2px 21px -7px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 1px 2px 21px -7px rgba(0, 0, 0, 0.45);
+    -moz-box-shadow: 1px 2px 21px -7px rgba(0, 0, 0, 0.75);
+}
+  
+ .nomeCliente{
+    text-align: center;
+ }
+
+.containerTexto{
+    padding-left: 15px;
+}
+  .buttons-containerPedido {
+    display: flex;
+    align-items: center;
+  }
+  .buttons-containerPedido button{
+    font-size: 15px;
+    margin-bottom: 20px;
+    border-radius: 7px;
+    background-color: #698C3D;
+    color: #fff;
+  }

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import Header from '../../components/Header/Header'
-import Produto from '../../components/Item/CompProdutos'
-import "./Produtos.css"
+import Header from '../../components/Header/Header';
+import Produto from '../../components/Item/CompProdutos';
+import "./Produtos.css";
 
 export default function Produtos() {
     useEffect(() => {
@@ -26,7 +26,7 @@ export default function Produtos() {
             <div className="Produtos-Container">
                 {
                     produtos.map((produto, index) => (
-                        <Produto produto={produto} key={index} />
+                         <Produto produto={produto} key={index} />
                     ))
                 }
             </div>

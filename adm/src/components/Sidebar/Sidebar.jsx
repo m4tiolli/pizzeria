@@ -85,11 +85,11 @@ function MudarParaPaginaServices(){
             <i className="bx bxs-chart icon" /> Economia
           </a>
         </li>
-        <li>
+        {/* <li>
           <a onClick={MudarParaPaginaVerEstoque}>
             <i className="bx bxs-widget icon" /> Estoque
           </a>
-        </li>
+        </li> */}
         <li className="divider" data-text="table and forms">
           Table and forms
         </li>
@@ -112,7 +112,7 @@ function MudarParaPaginaServices(){
           </ul>
         </li>
       </ul>
-      <div className="ads">
+      {/* <div className="ads">
         <div className="wrapper">
           <a href="#" className="btn-upgrade">
             Upgrade
@@ -121,7 +121,7 @@ function MudarParaPaginaServices(){
             Become a <span>PRO</span> member and enjoy <span>All Features</span>
           </p>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { MdMenu } from 'react-icons/md';
-import { MdShoppingCart, MdTableBar, MdOutlineDeliveryDining } from 'react-icons/md';
+import { MdShoppingCart, MdOutlineTableRestaurant, MdOutlineDeliveryDining } from 'react-icons/md';
 import { BsFillBagCheckFill } from 'react-icons/bs';
 import { FaRegUser } from 'react-icons/fa';
+import { AiFillHome } from 'react-icons/ai'
 import Produto from '../../components/Pizzas/CompProdutos-module';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import "./User_TelaPrincipal.css";
@@ -15,6 +15,7 @@ export default function TelaPrincipal() {
   const [carrinho, setCarrinho] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [className, setClassName] = useState("");
+  const iconStyle = { color: 'white' };
 
   useEffect(() => {
     moverItens();
@@ -33,7 +34,21 @@ export default function TelaPrincipal() {
         alert("Erro ao buscar Produto");
       })
   }, []);
-
+  function Home() {
+    navigate("/");
+  }
+  function Delivery() {
+    navigate("/delivery");
+  }
+  function Mesas() {
+    navigate("/mesas");
+  }
+  function Retirar() {
+    navigate("/retirar");
+  }
+  function User() {
+    navigate("/user");
+  }
   function atualizarCarrinho() {
     const storage = JSON.parse(localStorage.getItem("carrinho"));
 
@@ -43,7 +58,6 @@ export default function TelaPrincipal() {
 
     setCarrinho(storage);
   }
-
   function abrirCarrinho() {
     const storage = JSON.parse(localStorage.getItem("carrinho"));
   
@@ -69,14 +83,14 @@ export default function TelaPrincipal() {
     <div>
       <div id="root">
         <div className="header">
-          <button className="buttonMenuHamburger"><MdMenu size={30} /></button>
           <img src={logo} alt="" className="logo" />
           <h1 className="title">Pizzeria Balcão</h1>
-          <button className="buttonTitle"> <MdOutlineDeliveryDining size={30} /> </button>
-          <button className="buttonTitle"> <BsFillBagCheckFill size={30} /> </button>
-          <button className="buttonTitle"> <MdTableBar size={30} /> </button>
-          <button className='buttonTitle' onClick={abrirCarrinho}><MdShoppingCart size={30} /></button>
-          <button className="buttonTitle"> <FaRegUser size={30} /> </button>
+          <button className='buttonTitle' onClick={Home}><AiFillHome size={30} style={iconStyle}/></button>
+          <button className="buttonTitle" onClick={Delivery}> <MdOutlineDeliveryDining size={30} style={iconStyle} /> </button>
+          <button className="buttonTitle" onClick={Retirar}> <BsFillBagCheckFill size={30} style={iconStyle} /> </button>
+          <button className="buttonTitle" onClick={Mesas}> <MdOutlineTableRestaurant size={30} style={iconStyle} /> </button>
+          <button className='buttonTitle' onClick={abrirCarrinho}><MdShoppingCart size={30} style={iconStyle} /></button>
+          <button className="buttonTitle" onClick={User}> <FaRegUser size={30} style={iconStyle} /> </button>
         </div>
 
         <main align="center">
