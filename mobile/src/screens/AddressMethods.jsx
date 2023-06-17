@@ -1,12 +1,65 @@
 import { View, Text, TextInput, Modal, PixelRatio, StyleSheet, TouchableOpacity } from "react-native";
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import Address from "../components/Address/Address";
+import axios from 'axios';
 import { RadioButton } from "react-native-paper";
 
-function AddressMethods() {
+export default function AddressMethods() {
     const [modalNewVisible, setModalNewVisible] = useState(false);
     const [checked, setChecked] = useState(false);
+
+    // const [bairro, setBairro] = useState("");
+    const [rua, setRua] = useState("");
+    const [num, setNum] = useState("");
+    const [cep, setCEP] = useState("");
+    const [uf, setUF] = useState("");
+    const [cidade, setCidade] = useState("");
+    const [tipo, setTipo] = useState("");
+  
+    function Cadastrar() {
+        if (rua == "" || num == "" || cep == "" || uf == "" || cidade == "" || tipo == ""){
+            alert("Por favor, preencha todos os campos.")
+            return;
+          }
+          else {
+      
+            const body = {rua, num, cep, uf, cidade, tipo };
+            fetch("https://pizzeria3.azurewebsites.net/api/endereco", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(body)
+            })
+              .then((response) => { 
+                alert("Endereço cadastrado com sucesso"); 
+            })
+              .then(() => {
+                navigate('/');
+              })
+              .catch((error) => {
+                console.log(error);
+                alert("Erro ao cadastrar endereço")
+              });
+      
+                navigate("/Settings")
+          }
+
+    const navigation = useNavigation();
+
+    async function buscarEndereco() {
+        try {
+          const response = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
+          const data = response.data;
+          setRua(data.logradouro);
+        //   setBairro(data.bairro);
+          setCidade(data.localidade);
+          setUF(data.uf);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
     return (
         <View style={{
             width: "100%",
@@ -44,8 +97,22 @@ function AddressMethods() {
                             <AntDesign name="close" color="#8e1c1a" size={PixelRatio.getPixelSizeForLayoutSize(15)} /></TouchableOpacity>
                         <Text style={styles.text1}>save new address</Text>
                         <View style={styles.boxinput}>
+                            <Text style={styles.textinput}>postal code</Text>
+                            <TextInput
+                                value={cep}
+                                onChangeText={(texto) => setCEP(texto)}
+                                onBlur={buscarEndereco}
+                                style={styles.input}
+                                placeholder="Ex: 12345-678"
+                                underlineColorAndroid="transparent"
+                                placeholderTextColor={"#898989"}
+                            />
+                        </View>
+                        <View style={styles.boxinput}>
                             <Text style={styles.textinput}>name</Text>
                             <TextInput
+                                value={tipo}
+                                onChangeText={(texto) => setTipo(texto)}
                                 style={styles.input}
                                 placeholder="Ex: home"
                                 underlineColorAndroid="transparent"
@@ -55,6 +122,8 @@ function AddressMethods() {
                         <View style={styles.boxinput}>
                             <Text style={styles.textinput}>uf</Text>
                             <TextInput
+                                value={uf}
+                                onChangeText={(texto) => setUF(texto)}
                                 style={styles.input}
                                 placeholder="Ex: SP"
                                 underlineColorAndroid="transparent"
@@ -62,17 +131,10 @@ function AddressMethods() {
                             />
                         </View>
                         <View style={styles.boxinput}>
-                            <Text style={styles.textinput}>postal code</Text>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Ex: 12345-678"
-                                underlineColorAndroid="transparent"
-                                placeholderTextColor={"#898989"}
-                            />
-                        </View>
-                        <View style={styles.boxinput}>
                             <Text style={styles.textinput}>city</Text>
                             <TextInput
+                                value={cidade}
+                                onChangeText={(texto) => setCidade(texto)}
                                 style={styles.input}
                                 placeholder="Ex: Santana de Parnaiba"
                                 underlineColorAndroid="transparent"
@@ -82,6 +144,8 @@ function AddressMethods() {
                         <View style={styles.boxinput}>
                             <Text style={styles.textinput}>street</Text>
                             <TextInput
+                                value={rua}
+                                onChangeText={(texto) => setRua(texto)}
                                 style={styles.input}
                                 placeholder="Ex: Rua Ermelinda"
                                 underlineColorAndroid="transparent"
@@ -91,6 +155,8 @@ function AddressMethods() {
                         <View style={styles.boxinput}>
                             <Text style={styles.textinput}>number</Text>
                             <TextInput
+                                value={num}
+                                onChangeText={(texto) => setNum(texto)}
                                 style={styles.input}
                                 placeholder="Ex: 0123"
                                 underlineColorAndroid="transparent"
@@ -186,5 +252,4 @@ const styles = StyleSheet.create({
         elevation: 4
     }
 });
-
-export default AddressMethods;
+}
