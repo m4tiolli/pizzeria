@@ -4,13 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using APIPizzeria.DAO;
 using APIPizzeria.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APIPizzeria.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UsuarioController : Controller
+	// [Authorize]
+	public class UsuarioController : Controller
     {
         //Método, rota e status
         [HttpGet]
@@ -21,13 +23,6 @@ namespace APIPizzeria.Controllers
             var users = usuarioDAO.Listar();
 
             return Ok(users);
-        }
-        [HttpPost]
-        public IActionResult Cadastrar([FromBody] UsuarioDTO user)
-        {
-            UsuarioDAO dao = new UsuarioDAO();
-            dao.Cadastrar(user);
-            return Ok();
         }
 
         [HttpPut]
