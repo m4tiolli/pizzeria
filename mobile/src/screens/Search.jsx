@@ -1,9 +1,6 @@
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, StyleSheet, PixelRatio } from "react-native";
 import { useRoute, useNavigation } from "@react-navigation/native";
-import { useEffect } from "react";
-import Header from "../components/Header/Header";
 import Item from "../components/Item/Item";
-import ItemCart from './../components/ItemCart/ItemCart';
 
 export default function Search() {
   const route = useRoute();
@@ -12,14 +9,14 @@ export default function Search() {
 
   function filtrarArrayDeObjetos(arrayDeObjetos, arrayDeStrings) {
     return arrayDeObjetos.filter(objeto => {
-      return arrayDeStrings.some(string => {
-        for (let key in objeto) {
-          if (typeof objeto[key] === 'string' && objeto[key].includes(string)) {
-            return true;
-          }
+      for (let i = 0; i < arrayDeStrings.length; i++) {
+        const string = arrayDeStrings[i];
+        const values = Object.values(objeto);
+        if (values.some(value => typeof value === 'string' && value.includes(string))) {
+          return true;
         }
-        return false;
-      });
+      }
+      return false;
     });
   }
 
@@ -27,11 +24,22 @@ export default function Search() {
 
   return (
     <View style={{ width: "100%", height: "100%" }}>
-      <Header />
-      <Text>mostrando resultados para:{pesquisa}</Text>
-      {objetosFiltrados.map((pizza, index) => (
-        <Item pizza={pizza} key={index} />
-      ))}
+      <Text style={styles.text}>mostrando resultados para: {pesquisa}</Text>
+      <ScrollView>
+        {objetosFiltrados.map((pizza, index) => (
+          <Item pizza={pizza} key={index} />
+        ))}
+      </ScrollView>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  text: {
+    fontFamily: "Poppins_500Medium",
+    fontSize: PixelRatio.getPixelSizeForLayoutSize(5),
+    color: "#8e1c1c",
+    textAlign: "center",
+    marginVertical: PixelRatio.getPixelSizeForLayoutSize(5)
+  }
+})

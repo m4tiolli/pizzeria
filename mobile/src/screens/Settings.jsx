@@ -8,7 +8,7 @@ import {
   StyleSheet,
 } from "react-native";
 
-import Octicons from "react-native-vector-icons/Octicons";
+import FontAwesome from "react-native-vector-icons/FontAwesome"
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Header from './../components/Header/Header';
@@ -29,18 +29,16 @@ function Settings() {
           marginTop: PixelRatio.getPixelSizeForLayoutSize(10),
         }}
       >
-        <Image
-          source={require("../assets/circle.png")}
-          style={{
-            width: PixelRatio.getPixelSizeForLayoutSize(35),
-            height: PixelRatio.getPixelSizeForLayoutSize(35),
-          }}
+        <FontAwesome
+        name="user-circle-o"
+        color={"#8e1c1c"}
+        size={PixelRatio.getPixelSizeForLayoutSize(35)}
         />
         <Text style={styles.name}>Gabriel Matiolli</Text>
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.textbtn}>últimos pedidos</Text>
-          <Octicons
-            name="history"
+          <Text style={styles.textbtn}>editar perfil</Text>
+          <AntDesign
+            name="user"
             size={PixelRatio.getPixelSizeForLayoutSize(10)}
             color={"#8e1c1a"}
           />
@@ -62,7 +60,7 @@ function Settings() {
           />
         </TouchableOpacity>
       </View>
-      <Alert/> 
+      <Alert message={"Seu pedido está pronto!"}/> 
     </View>
   );
 }
