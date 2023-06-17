@@ -102,7 +102,7 @@ function Cart({item}) {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.price}
-              onPress={() => navigation.navigate("WhereEat", {pedido: pedido})}
+              onPress={() => navigation.navigate("where eat?", {pedido: pedido})}
             >
               <Text style={styles.text}>go to checkout</Text>
               <Text style={styles.text}>R${calculateTotal()}</Text>
