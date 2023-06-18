@@ -1,0 +1,3 @@
+[submodule "pizzeria"]
+	path = pizzeria
+	url = https://github.com/m4tiolli/pizzeria
