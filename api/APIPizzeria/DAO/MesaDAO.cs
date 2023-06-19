@@ -58,7 +58,7 @@ namespace APIPizzeria.DAO
 
             var comando = new MySqlCommand(query, conexao);
             comando.Parameters.AddWithValue("@id", mesa.ID);
-            comando.Parameters.AddWithValue("@numero", mesa.Numero);
+            comando.Parameters.AddWithValue("@nome", mesa.Numero);
            
 
             comando.ExecuteNonQuery();

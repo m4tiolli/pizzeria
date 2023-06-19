@@ -9,7 +9,36 @@ namespace APIPizzeria.DAO
 {
     public class UsuarioDAO
     {
-        public List<UsuarioDTO> Listar()
+		public UsuarioDTO Login(UsuarioDTO dadosLogin)
+		{
+			var conexao = ConnectionFactory.Build();
+			conexao.Open();
+
+			var query = "SELECT*FROM usuario WHERE Email = @email AND Senha = @senha";
+
+			var comando = new MySqlCommand(query, conexao);
+			comando.Parameters.AddWithValue("@email", dadosLogin.Email);
+			comando.Parameters.AddWithValue("@senha", dadosLogin.Senha);
+
+			var dataReader = comando.ExecuteReader();
+
+			var user = new UsuarioDTO();
+			while (dataReader.Read())
+			{
+				user.ID = int.Parse(dataReader["id"].ToString());
+				user.Nome = dataReader["nome"].ToString();
+				user.CPF = dataReader["cpf"].ToString();
+				user.DataNasc = DateTime.Parse(dataReader["dataNasc"].ToString());
+				user.Telefone = dataReader["telefone"].ToString();
+				user.Email = dataReader["email"].ToString();
+				user.Senha = dataReader["senha"].ToString();
+				user.Tipo = dataReader["tipo"].ToString();
+			}
+			conexao.Close();
+
+			return user;
+		}
+		public List<UsuarioDTO> Listar()
         {
             var conexao = ConnectionFactory.Build();
             conexao.Open();
@@ -24,6 +53,7 @@ namespace APIPizzeria.DAO
             while (dataReader.Read())
             {
                 var user = new UsuarioDTO();
+
                 user.ID = int.Parse(dataReader["id"].ToString());
                 user.Nome = dataReader["nome"].ToString();
                 user.CPF = dataReader["cpf"].ToString();

@@ -26,14 +26,14 @@ function WhereEat() {
       }}
     >
       <Text style={[styles.text, {marginVertical: PixelRatio.getPixelSizeForLayoutSize(10)}]}>where are you going to eat?</Text>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Payment", {pedido: pedido, local: "delivery"})}>
         <Image
           source={delivery}
           style={{ width: PixelRatio.getPixelSizeForLayoutSize(15), height: PixelRatio.getPixelSizeForLayoutSize(15) }}
         />
         <Text style={styles.text}>to delivery</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("EatHerePayment", {pedido: pedido})}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Payment", {pedido: pedido, local: "aqui"})}>
         <Image
           source={garfo}
           style={{ width: PixelRatio.getPixelSizeForLayoutSize(15), height: PixelRatio.getPixelSizeForLayoutSize(15) }}

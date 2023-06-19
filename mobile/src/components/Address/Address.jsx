@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, PixelRatio, Modal, TouchableOpacity, Alert, TextInput } from "react-native";
+import { Text, View, StyleSheet, PixelRatio, Modal, TouchableOpacity, TextInput } from "react-native";
 import { RadioButton } from "react-native-paper";
 import { useState } from "react";
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -24,7 +24,6 @@ function Address() {
                 transparent={true}
                 visible={modalEditVisible}
                 onRequestClose={() => {
-                    Alert.alert('Modal has been closed.');
                     setModalEditVisible(!modalEditVisible);
                 }}>
                 <View style={styles.modalcontainer} onPress={() => setModalEditVisible(!modalEditVisible)}>

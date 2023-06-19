@@ -20,49 +20,44 @@ import Alert from "../components/Alert/Alert";
 
 export default function Landing() {
   const [pesquisas, setPesquisas] = useState([]);
-  const [grandeChecked, setGrandeChecked] = useState(false);
-  const toggleGrandeChecked = () => {
-    setGrandeChecked(!grandeChecked);
-    setPesquisas([...pesquisas, " grande"]);
-  };
-  const [pequenaChecked, setPequenaChecked] = useState(false);
-  const togglePequenaChecked = () => {
-    setPequenaChecked(!pequenaChecked);
-    setPesquisas([...pesquisas, " pequena"]);
+  const [checkboxes, setCheckboxes] = useState({
+    grande: false,
+    pequena: false,
+    doce: false,
+    salgada: false,
+    bebida: false,
+    sobremesa: false,
+  });
+  const [pesquisasFormatadas, setPesquisasFormatadas] = useState("");
+
+  const handleCheckboxPress = (checkboxName) => {
+    setCheckboxes((prevState) => ({
+      ...prevState,
+      [checkboxName]: !prevState[checkboxName],
+    }));
   };
 
-  const [doceChecked, setDoceChecked] = useState(false);
-  const toggleDoceChecked = () => {
-    setDoceChecked(!doceChecked);
-    setPesquisas([...pesquisas, " doce"]);
-  };
-
-  const [salgadaChecked, setSalgadaChecked] = useState(false);
-  const toggleSalgadaChecked = () => {
-    setSalgadaChecked(!salgadaChecked);
-    setPesquisas([...pesquisas, " salgada"]);
-  };
-
-  const [bebidaChecked, setBebidaChecked] = useState(false);
-  const toggleBebidaChecked = () => {
-    setBebidaChecked(!bebidaChecked);
-    setPesquisas([...pesquisas, " bebida"]);
-  };
-
-  const [sobremesaChecked, setSobremesaChecked] = useState(false);
-  const toggleSobremesaChecked = () => {
-    setSobremesaChecked(!sobremesaChecked);
-    setPesquisas([...pesquisas, " sobremesa"]);
-  };
-
-  const handleCheckboxPress = (value) => {
-    if (pesquisas.includes(value)) {
-      setPesquisas(pesquisas.filter(item => item !== value));
-    } else {
-      setPesquisas([...pesquisas, value]);
+  useEffect(() => {
+    let atLeastOneCheckboxChecked = false;
+    for (const checkboxName in checkboxes) {
+      if (checkboxes[checkboxName]) {
+        atLeastOneCheckboxChecked = true;
+        break;
+      }
     }
-    this
-  };
+    const updatedPesquisas = Object.keys(checkboxes).filter(
+      (checkboxName) => checkboxes[checkboxName]
+    );
+    setPesquisas(updatedPesquisas);
+
+    let pesquisasFormatadas = "";
+    if (updatedPesquisas.length === 1) {
+      pesquisasFormatadas = updatedPesquisas[0];
+    } else {
+      pesquisasFormatadas = updatedPesquisas.join(", ");
+    }
+    setPesquisasFormatadas(pesquisasFormatadas);
+  }, [checkboxes]);
 
   const [isLoading, setIsLoading] = useState(true);
   const [open, setOpen] = useState(false);
@@ -220,7 +215,7 @@ export default function Landing() {
                 </View>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                   <CheckBox
-                    checked={grandeChecked}
+                    checked={checkboxes.grande}
                     onPress={() => handleCheckboxPress('grande')}
                     iconType="material-icons-outlined"
                     checkedIcon="check-box"
@@ -228,13 +223,12 @@ export default function Landing() {
                     checkedColor="#8e1e1a"
                     uncheckedColor="#8e1e1a"
                     containerStyle={{ backgroundColor: "#efefef" }}
-                    value={pesquisas.includes('grande')}
                   />
                   <Text style={styles.checkText}>pizzas grandes</Text>
                 </View>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                   <CheckBox
-                    checked={pequenaChecked}
+                    checked={checkboxes.pequena}
                     onPress={() => handleCheckboxPress('pequena')}
                     iconType="material-icons-outlined"
                     checkedIcon="check-box"
@@ -242,13 +236,12 @@ export default function Landing() {
                     checkedColor="#8e1e1a"
                     uncheckedColor="#8e1e1a"
                     containerStyle={{ backgroundColor: "#efefef" }}
-                    value={pesquisas.includes('pequena')}
                   />
                   <Text style={styles.checkText}>pizzas pequenas</Text>
                 </View>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                   <CheckBox
-                    checked={salgadaChecked}
+                    checked={checkboxes.salgada}
                     onPress={() => handleCheckboxPress('salgada')}
                     iconType="material-icons-outlined"
                     checkedIcon="check-box"
@@ -256,13 +249,12 @@ export default function Landing() {
                     checkedColor="#8e1e1a"
                     uncheckedColor="#8e1e1a"
                     containerStyle={{ backgroundColor: "#efefef" }}
-                    value={pesquisas.includes('salgada')}
                   />
                   <Text style={styles.checkText}>pizzas salgadas</Text>
                 </View>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                   <CheckBox
-                    checked={doceChecked}
+                    checked={checkboxes.doce}
                     onPress={() => handleCheckboxPress('doce')}
                     iconType="material-icons-outlined"
                     checkedIcon="check-box"
@@ -270,13 +262,12 @@ export default function Landing() {
                     checkedColor="#8e1e1a"
                     uncheckedColor="#8e1e1a"
                     containerStyle={{ backgroundColor: "#efefef" }}
-                    value={pesquisas.includes('doce')}
                   />
                   <Text style={styles.checkText}>pizzas doces</Text>
                 </View>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                   <CheckBox
-                    checked={bebidaChecked}
+                    checked={checkboxes.bebida}
                     onPress={() => handleCheckboxPress('bebida')}
                     iconType="material-icons-outlined"
                     checkedIcon="check-box"
@@ -284,13 +275,12 @@ export default function Landing() {
                     checkedColor="#8e1e1a"
                     uncheckedColor="#8e1e1a"
                     containerStyle={{ backgroundColor: "#efefef" }}
-                    value={pesquisas.includes('bebida')}
                   />
                   <Text style={styles.checkText}>bebidas</Text>
                 </View>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                   <CheckBox
-                    checked={sobremesaChecked}
+                    checked={checkboxes.sobremesa}
                     onPress={() => handleCheckboxPress('sobremesa')}
                     iconType="material-icons-outlined"
                     checkedIcon="check-box"
@@ -298,7 +288,6 @@ export default function Landing() {
                     checkedColor="#8e1e1a"
                     uncheckedColor="#8e1e1a"
                     containerStyle={{ backgroundColor: "#efefef" }}
-                    value={pesquisas.includes('sobremesa')}
                   />
                   <Text style={styles.checkText}>sobremesas</Text>
                 </View>
