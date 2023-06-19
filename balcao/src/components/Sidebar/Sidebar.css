@@ -2,7 +2,7 @@
 
 .imagePizza {
   min-width: auto;
-  max-width: 220px;
+  max-width: 360px;
   min-height: auto;
   max-height: 220px;
   position: relative;
@@ -13,10 +13,6 @@
 .ContainerPizzas {
   width: 250px;
   height: 500px;
-}
-
-.Textos{
-  color: white;
 }
 .buttonContainer {
   display: flex;
@@ -46,7 +42,6 @@
   position: fixed;
   max-width: 260px;
   width: 100%;
-  background: #8e1c1a;
   top: 0;
   left: 0;
   height: 100%;

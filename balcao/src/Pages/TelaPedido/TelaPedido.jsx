@@ -9,8 +9,7 @@ import logo from '../../assets/logo.png';
 
 export default function TelaPedido() {
     const navigate = useNavigate();
-    const iconStyle = { color: 'white' };
-    const [pedidoOpen, setPedidoOpen] = useState(true);
+    const iconStyle = { color: 'white'};
     function Home() {
         navigate("/");
     }
@@ -41,7 +40,7 @@ export default function TelaPedido() {
                 </div>
             </div>
             <div className="conteudoPedido">
-                
+                <Pedido></Pedido>
             </div>
         </div>
     );

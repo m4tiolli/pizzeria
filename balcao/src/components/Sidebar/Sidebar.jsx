@@ -8,8 +8,6 @@ import "./Sidebar.css";
 
 export default function SidebarPizza({ carrinho, setSidebarOpen, atualizarCarrinho, isSidebarOpen }) {
 
-    const iconStyle = { color: 'white' };
-
     function LimparCarrinho() {
         localStorage.removeItem("carrinho");
         atualizarCarrinho();
@@ -33,13 +31,13 @@ export default function SidebarPizza({ carrinho, setSidebarOpen, atualizarCarrin
             <div className='sidebar'>
                 <div className="buttonContainer">
                     <button className="limparCarrinho" onClick={LimparCarrinho }>
-                        <RiDeleteBin5Line size={30} style={iconStyle}/>
+                        <RiDeleteBin5Line size={30} />
                     </button>
                     <button className="fecharCarrinho" onClick={FecharSidebar}>
-                        <AiFillCloseCircle size={30} style={iconStyle}/>
+                        <AiFillCloseCircle size={30} />
                     </button>
                     <button className="buttonFinalisarPedido">
-                        <BsCheckLg size={30} style={iconStyle}/>
+                        <BsCheckLg size={30} />
                     </button>
                 </div>
             </div>
@@ -55,11 +53,11 @@ export default function SidebarPizza({ carrinho, setSidebarOpen, atualizarCarrin
                             {item.observacao && <h3 className="observacao">{item.observacao}</h3>}
                             <div className="buttonContainer">
                             <button className="remover" onClick={() => RemoverItemCarrinho(index)}>
-                                    <MdRemove size={30} style={iconStyle}/>
+                                    <MdRemove size={30} />
                                 </button>
                                 <h3>1</h3>
                                 <button className="adicionar">
-                                    <GrAdd size={30} style={iconStyle}/>
+                                    <GrAdd size={30} />
                                 </button>
                             </div>
                         </div>

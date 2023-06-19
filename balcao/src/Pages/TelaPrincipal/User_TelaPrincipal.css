@@ -83,5 +83,5 @@
 }
 .centered-container {
   margin: 0 auto;
-  max-width: 800px; /* Defina o valor máximo desejado para a largura */
+  max-width: 1200px; /* Defina o valor máximo desejado para a largura */
 }
