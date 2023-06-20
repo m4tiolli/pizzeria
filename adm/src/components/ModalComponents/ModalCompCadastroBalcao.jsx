@@ -48,7 +48,6 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     if (Object.keys(dataEdit).length !== 0) {
       const newArray = data.map((item, index) => {
         if (index === dataEdit.index) {
@@ -82,6 +81,32 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
         JSON.stringify([...data, newItem])
       );
     }
+
+    const body = {
+      nome: name,
+      cpf: CPF,
+      email,
+      usuario: user_name,
+      telefone: phone_number,
+      senha: password,
+      dataNascimento: date,
+    };
+
+    fetch("https://pizzeria3.azurewebsites.net/api/usuario", {
+      method: "POST",
+      body: JSON.stringify(body),
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Balcão/Usuário cadastrado com sucesso");
+        } else {
+          throw new Error("Erro ao cadastrar o Balcão/Usuário");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Erro ao cadastrar o Balcão/Usuário");
+      });
 
     clearFields();
     onClose();

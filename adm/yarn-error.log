@@ -1,0 +1,61 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\tulio\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add chart.js
+
+PATH: 
+  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\MATLAB\R2022a\bin;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%SYSTEMROOT%\System32\OpenSSH\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\tulio\miniconda3;C:\Users\tulio\miniconda3\Library\mingw-w64\bin;C:\Users\tulio\miniconda3\Library\usr\bin;C:\Users\tulio\miniconda3\Library\bin;C:\Users\tulio\miniconda3\Scripts;C:\Users\tulio\AppData\Local\Microsoft\WindowsApps;C:\Users\tulio\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\tulio\AppData\Roaming\npm;C:\Users\tulio\AppData\Local\GitHubDesktop\bin;C:\Users\tulio\.dotnet\tools;
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.17.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'C:\Users\tulio\OneDrive\Área de Trabalho\Jonathan\tcc\novo\pizzeria-1\adm\node_modules\@esbuild\win32-x64\esbuild.exe'
+
+npm manifest: 
+  {
+    "name": "adm",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+      "dev": "vite",
+      "build": "vite build",
+      "preview": "vite preview",
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "@chakra-ui/icons": "^2.0.18",
+      "@chakra-ui/react": "^2.5.2",
+      "@emotion/react": "^11.10.6",
+      "@emotion/styled": "^11.10.6",
+      "@fortawesome/fontawesome-free": "^6.3.0",
+      "@fortawesome/fontawesome-svg-core": "^6.3.0",
+      "@fortawesome/free-solid-svg-icons": "^6.3.0",
+      "@fortawesome/react-fontawesome": "^0.2.0",
+      "chart.js": "^3.5.1",
+      "framer-motion": "^10.8.4",
+      "next": "^13.3.1",
+      "react": "^18.2.0",
+      "react-chartjs-2": "^3.3.0",
+      "react-dom": "^18.2.0",
+      "react-hamburger-menu": "^1.2.1",
+      "react-router-dom": "^6.9.0"
+    },
+    "devDependencies": {
+      "@types/react": "^18.0.28",
+      "@types/react-dom": "^18.0.11",
+      "@vitejs/plugin-react": "^3.1.0",
+      "vite": "^4.2.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

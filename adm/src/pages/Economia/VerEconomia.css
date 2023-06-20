@@ -332,4 +332,9 @@ main .content-data .chart::-webkit-scrollbar {
 	width: 80px;
 	text-align: center;
   }
-  
+
+.input_economia{
+		border: 1px solid #ccc;
+		color: #333;
+		border-radius: 2px;
+}

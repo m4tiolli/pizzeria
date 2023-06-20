@@ -46,7 +46,6 @@ const VerBalcoes = () => {
   const handleRemove = (CPF) => {
     fetch(`https://pizzeria3.azurewebsites.net/api/usuario/?CPF=${CPF}`, {
       method: "DELETE",
-      headers: { "Content-Type": "application/json" },
     })
       .then((response) => {
         if (response.ok) {

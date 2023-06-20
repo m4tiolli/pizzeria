@@ -1,28 +1,75 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const ProgressBarExample = () => {
-  const [valorAtual, setValorAtual] = useState(0);
-  const [valorTotal, setValorTotal] = useState(0);
-  const [percentage, setPercentage] = useState(0);
+const ProgressBar = ({ totalIncomes, totalExpenses, progressIncomes, progressExpenses }) => {
+  const calculateProgress = () => {
+    const totalValue = parseFloat(totalIncomes) - parseFloat(totalExpenses);
+    const totalIncomesValue = parseFloat(totalIncomes);
+    const totalExpensesValue = parseFloat(totalExpenses);
 
-  // Função para calcular a porcentagem
-  const calcularPorcentagem = () => {
-    const porcentagem = (valorAtual / valorTotal) * 100;
-    setPercentage(porcentagem);
+    if (totalIncomesValue === 0 && totalExpensesValue === 0) {
+      return 0;
+    }
+
+    const progress = (totalValue / (totalIncomesValue + totalExpensesValue)) * 100;
+    return progress.toFixed(2);
   };
 
-  // Exemplo de uso: chame a função calcularPorcentagem sempre que houver uma atualização nos valores
-
   return (
-    <div>
-      <h2>Progress Bar Example</h2>
-      <div className="progress-bar">
-        <div className="progress-bar-inner" style={{ width: `${percentage}%` }}></div>
+    <div className="info-data">
+      <div className="card">
+        <div className="head">
+          <div>
+            <h2 className="incomes">
+              <span className="incomes">{totalIncomes}</span>
+            </h2>
+            <p>Entradas: R$</p>
+          </div>
+          <i className="bx bx-trending-up icon"></i>
+        </div>
+        <span
+          className="progress"
+          style={{ '--value': `${progressIncomes}%` }}
+          data-value={progressIncomes}
+        ></span>
+        <span className="label">{`${progressIncomes}%`}</span>
       </div>
-      <p>{percentage}%</p>
+      <div className="card">
+        <div className="head">
+          <div>
+            <h2 className="expenses">
+              <span className="expenses">{totalExpenses}</span>
+            </h2>
+            <p>Saídas: R$</p>
+          </div>
+          <i className="bx bx-trending-down icon down"></i>
+        </div>
+        <span
+          className="progress"
+          style={{ '--value': `${progressExpenses}%` }}
+          data-value={progressExpenses}
+        ></span>
+        <span className="label">{`${progressExpenses}%`}</span>
+      </div>
+      <div className="card">
+        <div className="head">
+          <div>
+            <h2 className="incomes">
+              <span className="total">{totalIncomes - totalExpenses}</span>
+            </h2>
+            <p>Total: R$</p>
+          </div>
+        </div>
+        <span
+          className="progress"
+          style={{
+            '--value': `${calculateProgress()}%`,
+          }}
+          data-value={calculateProgress()}
+        ></span>
+        <span className="label">{`${calculateProgress()}%`}</span>
+      </div>
     </div>
   );
 };
 
-export default ProgressBarExample;
-
+export default ProgressBar;
