@@ -25,7 +25,6 @@
 }
 
 .divTextCarrinho{
-    padding-top: 120px;
     text-align: center;
 }
 
@@ -50,3 +49,10 @@
     font-weight: 600;
 }
 
+.apagarItem{
+    color: #8e1c1e;
+    margin-left: 15vw;
+    margin-bottom: 8vw;
+    position: relative;
+
+}

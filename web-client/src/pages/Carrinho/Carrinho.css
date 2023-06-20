@@ -3,10 +3,10 @@
 #container {
     width: 100%;
     height: fit-content;
-
+    overflow: scroll;
 }
 
-.txtSeusItens{
+.txtSeusItens1{
     font-family: "Poppis";
     font-weight: 600;
     color: #8e1c1e;
@@ -18,11 +18,13 @@
     font-family: "Poppis";
     font-weight: 600;
     color: #8e1c1e;
-    font-size: 2vw;
+    font-size: 3vw;
 }
 
 .fundoItens{
-    display: inherit;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 150%;
 }
 
 .btnFinalizar{
@@ -55,15 +57,19 @@
 }
 
 .containerCarrinho1{
-    justify-content: flex;
-    align-items: center;
-    padding-top: 10vh;
+    background-color: #efefef;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
+    padding-top: 10vw;
+    padding-bottom: 20vw;
+    gap: 2.5vw;
+    padding-left: 2.5vw;
 }
 
 .juncao{
     background-color: #efefef;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
+    align-items: center;
     padding-top: 10vw;
     padding-bottom: 32vh;
     gap: 2.5vw;
@@ -72,4 +78,14 @@
 
 .teste{
     width: 100vw;
+}
+
+.esvaziar{
+    color: #8e1c1e;
+}
+
+.divTextAndClear{
+    display: inline-flex;
+    justify-content: space-between;
+    width: 90%;
 }

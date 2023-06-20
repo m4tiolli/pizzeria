@@ -40,8 +40,10 @@ function Carrinho() {
         <div id='container'>
             <Header />
             <div className='juncao'>
-            <h1 className='txtSeusItens'>Seus itens</h1>
-            <RiDeleteBinLine size={20} onClick={cleanCart}/>
+                <div className='divTextAndClear'>
+            <h1 className='txtSeusItens1'>Seus itens</h1>
+            <RiDeleteBinLine className='esvaziar' size={40} onClick={cleanCart}/>
+                </div> 
                 <div className='containerCarrinho1'>
                     {
                         carrinho?.map((produto, key) => (
