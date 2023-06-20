@@ -5,7 +5,6 @@ import {
   PixelRatio,
   Modal,
   TouchableOpacity,
-  Alert,
   TextInput,
 } from "react-native";
 import { RadioButton } from "react-native-paper";
@@ -70,7 +69,6 @@ function Payment() {
         transparent={true}
         visible={modalEditVisible}
         onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
           setModalEditVisible(!modalEditVisible);
         }}
       >

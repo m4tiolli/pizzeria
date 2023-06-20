@@ -5,11 +5,12 @@ import Home from "../../screens/Home";
 import Produto from "../../screens/Produto";
 import WhereEat from "../../screens/WhereEat";
 import Search from "../../screens/Search";
-import EatHerePayment from "../../screens/EatHerePayment";
 import Pix from "../../screens/Pix"
 import Success from "../../screens/Success";
 import PaymentMethods from "../../screens/PaymentMethods";
 import AddressMethods from "../../screens/AddressMethods";
+import Payment from "../../screens/Payment";
+import PaymentCredit from "../../screens/PaymentCredit";
 
 const Stack = createNativeStackNavigator();
 
@@ -39,7 +40,7 @@ export default function Routes() {
         title=""
       />
       <Stack.Screen
-        name="WhereEat"
+        name="where eat?"
         component={WhereEat}
         options={{ headerShown: true }}
         title=""
@@ -51,8 +52,8 @@ export default function Routes() {
         title=""
       />
       <Stack.Screen
-        name="EatHerePayment"
-        component={EatHerePayment}
+        name="Payment"
+        component={Payment}
         options={{ headerShown: true }}
         title=""
       />
@@ -60,7 +61,7 @@ export default function Routes() {
         name="Pix"
         component={Pix}
         options={{ headerShown: true,  }}
-        title=""
+        title="confirm payment"
       />
       <Stack.Screen
         name="Success"
@@ -75,6 +76,11 @@ export default function Routes() {
       <Stack.Screen
         name="AddressMethods"
         component={AddressMethods}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="PaymentCredit"
+        component={PaymentCredit}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

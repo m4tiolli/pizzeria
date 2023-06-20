@@ -12,17 +12,12 @@ create table produto(
 );
 
 insert into produto values(default, 'calabresinha', 'calabresa e queijo', 45.00, 
-'https://e7.pngegg.com/pngimages/935/770/png-clipart-pizza-pizza.png', 'pizza salgada');
-insert into produto values(default, 'portuguesa', 'calabresa e queijo', 45.00, 
-'https://w7.pngwing.com/pngs/56/985/png-transparent-pizza-margherita-sushi-pizza-pizza-delivery-pizza-thumbnail.png', 'pizza salgada');
-insert into produto values(default, '4 queijos', 'calabresa e queijo', 45.00, 
-'https://www.designi.com.br/images/preview/10000490.jpg', 'pizza salgada');
-insert into produto values(default, 'frango', 'calabresa e queijo', 45.00, 
-'https://www.designi.com.br/images/preview/10005763.jpg', 'pizza salgada');
+null, 'pizza salgada');
 
 create table pedido(
 	id int not null auto_increment primary key,
-	valorTotal decimal(8,2) not null
+	valorTotal decimal(8,2) not null,
+    situacao varchar(50)
 );
 
 create table ProdutosPedido(
@@ -75,15 +70,21 @@ create table enderecos (
     foreign key (idusuario) references usuario(id)
 );
 
+insert into enderecos values (default, 1, 'sp', 'santana', 'fazendinha', 'teodoro', '1', '0000000');
+
+insert into enderecos values (default, 1, 'sp', 'sim', 'fazendinha', 'teodoro', '1', '0000000');
+
 create table cartoes (
     id int primary key not null auto_increment,
     id_usuario int,
+    nome varchar(100),
     numero varchar(16),
     cvc varchar(3),
     datavalidade date,
+	tipo varchar(32),
     foreign key (id_usuario) references usuario(id)
 );
-
+insert into cartoes values (default, 1, 'juju', '12323131435', '123', '2022-04-20', 'credito');
 create table infopedido(
     id int primary key not null auto_increment,
     idproduto int,
@@ -94,20 +95,20 @@ create table infopedido(
     foreign key (idpedido) references pedido(id)
 );
 
-insert into pedido values (default, 50);
-insert into pedido values (default, 100);
+insert into pedido values (default, 50, 'aberto');
+-- insert into pedido values (default, 100, 'encerrado');
 -- INSERT INTO pedido values (default, 40);
 -- INSERT INTO pedido values (default, 80 );
 -- INSERT INTO pedido values (default, 10); 
 
 insert into ProdutosPedido values (1, 1, 5, 50, 'sem queijo, sem queijo');
-insert into ProdutosPedido values (2, 2, 1, 40, null); 
+-- insert into ProdutosPedido values (2, 2, 1, 40, null); 
 -- INSERT INTO ProdutosPedido values (1, 3, 10, 100);
 -- INSERT INTO ProdutosPedido values (2, 4, 2, 80);
 -- INSERT INTO ProdutosPedido values (1, 5, 1, 10); 
 
-select PP.Pedido, PP.Produto, PROD.Nome, PP.Quantidade, PP.Observacao from ProdutosPedido PP
-inner join Produto PROD
-on PP.Produto = PROD.ID
-inner join Pedido PED
-on PP.Pedido = PED.ID;
+SELECT PP.pedido, PP.produto, PROD.nome, PP.quantidade, PP.observacao, PED.situacao
+FROM ProdutosPedido PP
+INNER JOIN produto PROD ON PP.produto = PROD.id
+INNER JOIN pedido PED ON PP.pedido = PED.id
+WHERE PED.situacao = 'aberto';

@@ -1,9 +1,31 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Text, View, PixelRatio, StyleSheet, TouchableOpacity } from "react-native";
 import QRCode from 'react-native-qrcode-svg';
+import Success from "./Success";
+import { useState, useEffect } from "react";
+import Alert from "../components/Alert/Alert";
+import {useClipboard} from '@react-native-clipboard/clipboard';
 
 
 function Pix() {
+
+
+    const [primeiroComponente, setPrimeiroComponente] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setPrimeiroComponente(!primeiroComponente);
+        }, 8000); // Define o tempo em milissegundos, neste caso 3 segundos
+
+        return () => clearTimeout(timer); // Limpa o timer se o componente for desmontado antes do tempo definido
+
+    }, []); // O array vazio [] indica que esse efeito só será executado uma vez, equivalente ao componentDidMount
+
+    if (primeiroComponente) {
+        return (
+            <Success />
+        );
+    }
 
     const navigation = useNavigation();
     const route = useRoute();
@@ -15,6 +37,11 @@ function Pix() {
 
     const payload = `PIX:02|${chavePix}*|${nomeRecebedor}|${valor}|`;
 
+    const [data, setString] = useClipboard();
+
+    const copiarTexto = useEffect(() => {
+        setString(payload);
+    }, []);
     return (
         <View style={{
             width: "100%",
@@ -30,7 +57,7 @@ function Pix() {
                 backgroundColor="#efefef"
                 color="#8e1c1c"
             />
-            <TouchableOpacity style={styles.copy} onPress={() => navigation.navigate("Success")}>
+            <TouchableOpacity style={styles.copy} onPress={copiarTexto}>
                 <Text style={{ fontFamily: 'Poppins_500Medium', color: '#efefef' }}>copy pix code</Text>
             </TouchableOpacity>
             <View style={{ alignItems: 'center', width: '100%' }}>
