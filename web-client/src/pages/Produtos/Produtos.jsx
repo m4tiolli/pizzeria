@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Header from '../../components/Header/Header';
 import Produto from '../../components/Item/CompProdutos';
 import "./Produtos.css";
+import SideBar from '../../components/SideBar/SideBar';
 
 export default function Produtos() {
     useEffect(() => {
@@ -23,6 +24,7 @@ export default function Produtos() {
     return (
         <div id="root">
             <Header />
+            <SideBar />
             <div className="Produtos-Container">
                 {
                     produtos.map((produto, index) => (
