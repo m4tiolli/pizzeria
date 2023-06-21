@@ -83,6 +83,20 @@
 
 #filterbtn {
     position: absolute;
-    top: 80vh;
+    top: 90vh;
     background-color: #8e1c1c;
+    width: 50%;
+    height: 5vh;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-family: "Poppins";
+    font-weight: 500;
+    font-size: 1.2vw
+}
+
+span {
+  color: #8e1c1c;
+  font-family: "Poppins" !important;
+  font-weight: 300 !important;
 }
