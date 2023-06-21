@@ -26,7 +26,6 @@ export default function HeaderInicial() {
     const [pizza, setPizza] = useState([]);
 
     const handleInputChange = (e) => {
-        debugger;
         e.preventDefault();
         const { value } = e.target;
 

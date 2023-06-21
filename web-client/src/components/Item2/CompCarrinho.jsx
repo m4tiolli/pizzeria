@@ -5,6 +5,13 @@ import { TiDeleteOutline } from 'react-icons/ti';
 
 function ProdutosCarrinho({ produto }) {
 
+    const [cart, setCart] = useState([]);
+
+    const deleteItem = () => {
+        setCart(cart.filter((item) => item.id !== id));
+        localStorage.setItem("carrinho", JSON.stringify(cart));
+    };
+
     const navigate = useNavigate();
 
     function navAlterar() {
@@ -15,7 +22,7 @@ function ProdutosCarrinho({ produto }) {
         <div className="tudo">
             <div className='divProdutosCarrinhos' onClick={navAlterar}>
                 <img className='imgProduto' src={`data:image/png;base64,${produto?.imagem}`} alt="imagem" />
-                <TiDeleteOutline className="apagarItem" size={30}/>
+                <TiDeleteOutline className="apagarItem" onClick={deleteItem} size={30}/>
                 <div className="divTextCarrinho">
                     <h1 className='txtNomeProduto' >{produto.nome}</h1>
                     <h1 className="txtDescricaoProduto" >{produto.descricao}</h1>

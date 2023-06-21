@@ -3,12 +3,13 @@
     height: fit-content;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
-    padding-top: 10vw;
+    padding-top: 15vw;
     padding-bottom: 20vw;
-    gap: 2.5vw;
-    padding-left: 2.5vw;
+    margin: auto;
+    width: 90%;
 }
 #root {
     width: 100%;
     height: fit-content;
+    
 }

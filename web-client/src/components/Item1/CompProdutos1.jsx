@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useState } from "react";
 
 function Produto1() {
+    const navigate = useNavigate();
     
     function AdicionarAoCarrinho() {
         let carrinho = JSON.parse(localStorage.getItem("carrinho"));
@@ -13,13 +14,9 @@ function Produto1() {
         carrinho = JSON.stringify([...carrinho, produto])
 
         localStorage.setItem("carrinho", carrinho);
-
-        alert("teste");
-
-        console.log(carrinho);
+        
     }
 
-    const navigate = useNavigate();
 
     const {state} = useLocation();
 
@@ -66,7 +63,7 @@ function Produto1() {
                 </div>
                 <br />
                 <div className="divAdicionar">
-                    <button className='btnAdicionar1' onClick={() => {AdicionarAoCarrinho();navCarrinho();}}>Adicionar</button>
+                    <button className='btnAdicionar1' onClick={() => {AdicionarAoCarrinho();navCarrinho();console.log(produto)}}>Adicionar</button>
                     <h3 className='precoPizza1'>R${produto.valor * quantidade},00</h3>
                 </div>
             </div>
