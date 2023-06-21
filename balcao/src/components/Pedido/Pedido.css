@@ -19,7 +19,7 @@
     font-size: 20px;
 }
 
-#sidebar {
+#sidebarPedido {
     position: fixed;
     max-width: 260px;
     width: 100%;
@@ -33,7 +33,7 @@
     z-index: 200;
   }
   
-  #sidebar::-webkit-scrollbar {
+  #sidebarPedido::-webkit-scrollbar {
     display: none;
   }
   

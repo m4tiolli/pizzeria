@@ -93,6 +93,8 @@ export default function TelaPrincipal() {
           <button className="buttonTitle" onClick={User}> <FaRegUser size={30} style={iconStyle} /> </button>
         </div>
 
+        {sidebarOpen && <Sidebar carrinho={carrinho} setSidebarOpen={setSidebarOpen} atualizarCarrinho={atualizarCarrinho}>Sidebar</Sidebar>}
+
         <main align="center">
           <input className="input" type="text" placeholder="Pesquisar item" />
           <div className="pizza-area"></div>
@@ -105,7 +107,6 @@ export default function TelaPrincipal() {
           <button className='buttonFiltro'>Promoções</button>
         </div>
 
-        {sidebarOpen && <Sidebar carrinho={carrinho} setSidebarOpen={setSidebarOpen} atualizarCarrinho={atualizarCarrinho}>Sidebar</Sidebar>}
 
         <div className={`Produtos-Container ${className}`}>
           {produtos.map((pizza, index) => (
