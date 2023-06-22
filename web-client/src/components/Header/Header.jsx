@@ -28,11 +28,7 @@ export default function HeaderInicial({ pizza }) {
         setTexto((prevFilters) => [...prevFilters, value]);
     };
 
-    const [usuarioLogado, setUsuarioLogado] = useState(!true)
-
-    const toggleUsuarioLogado = () => {
-        setUsuarioLogado(!usuarioLogado)
-    }
+    const [usuarioLogado] = useState(!true)
     return (
 
         <div className='header'>
