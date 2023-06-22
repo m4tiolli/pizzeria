@@ -95,11 +95,6 @@ export default function TelaPrincipal() {
 
         {sidebarOpen && <Sidebar carrinho={carrinho} setSidebarOpen={setSidebarOpen} atualizarCarrinho={atualizarCarrinho}>Sidebar</Sidebar>}
 
-        <main align="center">
-          <input className="input" type="text" placeholder="Pesquisar item" />
-          <div className="pizza-area"></div>
-        </main>
-
         <div style={{ textAlign: 'center' }}>
           <button className='buttonFiltro'>Pizzas</button>
           <button className='buttonFiltro'>Bebidas</button>

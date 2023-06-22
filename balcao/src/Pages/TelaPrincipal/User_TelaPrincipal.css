@@ -4,7 +4,7 @@
   width: 100vw;
   height: 10vh;
   display: flex;
-  justify-content: center;
+  justify-content: center;  
   align-items: center;
   text-align: center;
   background-color: #8E1C1A;
@@ -58,12 +58,6 @@
   justify-content: flex-end;
 }
 
-.buttonMenuHamburger {
-  background-color: transparent;
-  border: 1px solid transparent;
-  float: left;
-}
-
 .buttonFiltro {
   top: auto;
   margin-left: 10px;
@@ -83,5 +77,5 @@
 }
 .centered-container {
   margin: 0 auto;
-  max-width: 1200px; /* Defina o valor máximo desejado para a largura */
+  max-width: 640px; /* Defina o valor máximo desejado para a largura */
 }
