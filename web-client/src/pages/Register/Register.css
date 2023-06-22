@@ -84,3 +84,12 @@
 .inputdiv{
   margin-top: 2vh;
 }
+
+.eye {
+  position: absolute;
+  right: .5vw;
+  color: #8e1c1e;
+}
+.eye:hover {
+  cursor: pointer;
+}
