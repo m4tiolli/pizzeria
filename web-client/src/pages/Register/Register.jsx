@@ -3,14 +3,6 @@ import Header from "../../components/Header/Header";
 import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 
-function validateForm() {
-  var validar = document.forms["inputdiv"]["name", "email", "password", "cpf"].value;
-  if (validar == "") {
-    alert("Por favor, preencha todos os campos");
-    return false;
-  }
-}
-
 function Register() {
 
   const navigate = useNavigate();
@@ -23,7 +15,7 @@ function Register() {
   const cadastrarUsuario = (e) => {
     e.preventDefault();
 
-    if (nome == "" || cpf == "" || email == "" || senha == "") {
+    if (nome === "" || cpf === "" || email === "" || senha === "") {
       alert("Por favor, preencha todos os campos.")
       return;
     }

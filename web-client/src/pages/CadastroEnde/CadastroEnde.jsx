@@ -23,7 +23,7 @@ function CadastroEnde() {
   const cadastrarEndereco = (e) => {
     e.preventDefault();
 
-    if (bairro == "" || ruaAvenida == "" || numero == "" || cep == "" || estado == "" || cidade == "" || casaTrabalho == ""){
+    if (bairro === "" || ruaAvenida === "" || numero === "" || cep === "" || estado === "" || cidade === "" || casaTrabalho === ""){
       alert("Por favor, preencha todos os campos.")
       return;
     }

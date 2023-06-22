@@ -4,9 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { FiSearch } from 'react-icons/fi'
 import { useState } from 'react';
 import { BsCartPlus } from "react-icons/bs";
-//import Header from '../../components/Header/Header'
 
-export default function HeaderInicial() {
+export default function HeaderInicial({ pizza }) {
     const navigate = useNavigate();
 
     function mudarDePagina1() {
@@ -22,31 +21,18 @@ export default function HeaderInicial() {
         navigate("/Carrinho")
     }
 
-    const [pizza, setPizza] = useState([]);
+    const [texto, setTexto] = useState([]);
 
-    const handleInputChange = (e) => {
-        e.preventDefault();
-        const { value } = e.target;
-
-        if (!value) return;
-
-        const url = `https://pizzeria3.azurewebsites.net/api/produto${value}`
-
-        fetch(url)
-            .then((response) => response.json())
-            .then((pizza) => setPizza(pizza));
-
-    }
+    const handleTextChange = (event) => {
+        const value = event.target.value;
+        setTexto((prevFilters) => [...prevFilters, value]);
+    };
 
     const [usuarioLogado, setUsuarioLogado] = useState(true)
-
-    
 
     const toggleUsuarioLogado = () => {
         setUsuarioLogado(!usuarioLogado)
     }
-
-    console.log('Pizza', pizza)
     return (
 
         <div className='header'>
@@ -56,7 +42,7 @@ export default function HeaderInicial() {
                     <FiSearch
                         color='#8e1c1a'
                         className='img'
-                        onClick={toggleUsuarioLogado}
+                        onClick={() => navigate("/Search", { state: { filters: texto, pizza: pizza } })}
                     />
                     <input
                         className="inputPesquisa"
@@ -64,17 +50,17 @@ export default function HeaderInicial() {
                         placeholder="search for some pizza..."
                         name='search'
                         id='search'
-                        onChange={handleInputChange}
+                        onBlur={handleTextChange}
                     />
                 </div>
-            {usuarioLogado ? (<div className='divCarrinho' onClick={mudarDePagina4}>
-                <button className='carrinho'>carrinho</button>
-               
-                <BsCartPlus
-                    className='imgCarrinho'                                                                     
-                />
-            </div>) : (<div className='buttonsLogin'><button className='signup1' onClick={mudarDePagina2}>sign up</button>
-                <button className='signin1' onClick={mudarDePagina1}>sign in</button></div>)}
+                {usuarioLogado ? (<div className='divCarrinho' onClick={mudarDePagina4}>
+                    <button className='carrinho'>carrinho</button>
+
+                    <BsCartPlus
+                        className='imgCarrinho'
+                    />
+                </div>) : (<div className='buttonsLogin'><button className='signup1' onClick={mudarDePagina2}>sign up</button>
+                    <button className='signin1' onClick={mudarDePagina1}>sign in</button></div>)}
             </div>
         </div>
     )
