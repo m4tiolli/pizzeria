@@ -29,7 +29,7 @@ export default function Produtos() {
   return (
     <div id="root">
       <Header />
-      <SideBar />
+      <SideBar pizza={produtos} />
       {isLoading ? (
         <Loading />
       ) : (

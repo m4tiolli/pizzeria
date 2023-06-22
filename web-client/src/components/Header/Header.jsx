@@ -3,7 +3,6 @@ import './Header.css';
 import { useNavigate } from 'react-router-dom';
 import { FiSearch } from 'react-icons/fi'
 import { useState } from 'react';
-import SearchResults from '../SearchResults/SearchResults';
 import { BsCartPlus } from "react-icons/bs";
 //import Header from '../../components/Header/Header'
 
@@ -67,7 +66,6 @@ export default function HeaderInicial() {
                         id='search'
                         onChange={handleInputChange}
                     />
-                    <SearchResults pizza={pizza} />
                 </div>
             {usuarioLogado ? (<div className='divCarrinho' onClick={mudarDePagina4}>
                 <button className='carrinho'>carrinho</button>
