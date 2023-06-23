@@ -6,7 +6,9 @@
   max-width: 100%;
   max-height: 220px;
 }
+.observacao{
 
+}
 .ContainerPizzas {
   width: auto;
   height: 500px;
@@ -21,8 +23,8 @@
 .numeroMesa{
   display: block;
   margin-bottom: 5px;
-  border-bottom: 1px solid black; /* Estilo da linha separadora */
-  padding-bottom: 5px; /* Espaçamento opcional abaixo da linha */ 
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
 }
 
 .numero{
@@ -31,11 +33,10 @@
   float: right;
   margin-right: 20px;
 }
-/* Estilos dos itens da tela principal */
+
+
 .itemContainer.moveItems {
-  /* Adicione aqui os estilos de movimento desejados */
-  /* Por exemplo, para mover os itens para a direita em 200 pixels: */
-  transform: translateX(200px);
+  transform: translateX(calc(100% - 360px));
 }
 
 .adicionar,

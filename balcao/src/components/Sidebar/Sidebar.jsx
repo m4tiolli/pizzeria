@@ -17,6 +17,13 @@ export default function SidebarPizza({
     atualizarCarrinho();
   }
 
+  // function NumeroMesa() {
+  //   fetch("https://pizzeria3.azurewebsites.net/api/Mesa", {
+  //     method: "GET",
+  //    })
+  //    if(mesa.id ===)
+  // }
+  
   function FecharSidebar() {
     setSidebarOpen(false);
   }
@@ -32,9 +39,9 @@ export default function SidebarPizza({
       itens.push({
         ProdutoID: item.id,
         Nome: item.nome,
-        Observacao: "",
-        Valor: item.valor,
-        Quantidade: 1,
+        Observacao: item.observacao ?? "",
+        Valor: item.valor * item.quantidade,
+        Quantidade: item.quantidade,
       });
     });
 
@@ -58,10 +65,37 @@ export default function SidebarPizza({
       });
   }
 
-  function RemoverItemCarrinho(index) {
-    const novoCarrinho = [...carrinho];
-    novoCarrinho.splice(index, 1);
-    localStorage.setItem("carrinho", JSON.stringify(novoCarrinho));
+  function AdicionarItemCarrinho(id){
+    const carrinhoAtualizado = carrinho.map(item => {
+
+      if (item.id === id) {
+        return { ...item, quantidade: item.quantidade + 1  };
+      }
+      return item;
+    });
+
+    carrinho = carrinhoAtualizado;
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+    atualizarCarrinho();
+  }
+
+  function RemoverItemCarrinho(id) {
+
+    const carrinhoAtualizado = carrinho.map(item => {
+
+      if (item.quantidade === 1) {
+        return undefined;
+      }
+      if (item.id === id) {
+        return { ...item, quantidade: item.quantidade - 1 };
+      }
+      return item;
+    }).filter(item => item !== undefined);;
+
+    carrinho = carrinhoAtualizado;
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
     atualizarCarrinho();
   }
 
@@ -80,10 +114,10 @@ export default function SidebarPizza({
           </button>
         </div>
         <span className="numeroPedido">
-          Número do pedido <span className="numero"> 1</span>
+          Número do pedido <span className="numero"> {/*{pedido.id}*/}</span>
         </span>
         <span className="numeroMesa">
-          Mesa <span className="numero">5</span>
+          Mesa <span className="numero"> {/*{mesa.numero}*/} </span>
         </span>
       </div>
       <div className={`itemContainer ${isSidebarOpen ? "moveItems" : ""}`}>
@@ -105,12 +139,14 @@ export default function SidebarPizza({
               <div className="buttonContainer">
                 <button
                   className="remover"
-                  onClick={() => RemoverItemCarrinho(index)}
+                  onClick={() => RemoverItemCarrinho(item.id)}
                 >
                   <MdRemove size={30} />
                 </button>
-                <h3>1</h3>
-                <button className="adicionar">
+                <h3>{item.quantidade}</h3>
+                <button className="adicionar"
+                
+                onClick={() => AdicionarItemCarrinho(item.id)}>
                   <GrAdd size={30} />
                 </button>
               </div>
