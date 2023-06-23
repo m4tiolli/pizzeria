@@ -98,9 +98,6 @@ const VerBalcoes = () => {
                   Email
                 </Th>
                 <Th maxW={isMobile ? 5 : 100} fontSize="20px">
-                  Usuário
-                </Th>
-                <Th maxW={isMobile ? 5 : 100} fontSize="20px">
                   Celular
                 </Th>
                 <Th maxW={isMobile ? 5 : 100} fontSize="20px">
@@ -115,12 +112,11 @@ const VerBalcoes = () => {
               </Tr>
             </Thead>
             <Tbody>
-              {data.map(({ name, email, CPF, phone_number, password, user_name, date}, index) => (
+              {data.map(({ name, email, CPF, phone_number, password, date}, index) => (
                 <Tr key={index} cursor="pointer" _hover={{ bg: "gray.100" }}>
                   <Td maxW={isMobile ? 5 : 100}>{name}</Td>
                   <Td maxW={isMobile ? 5 : 100}>{CPF}</Td>
                   <Td maxW={isMobile ? 5 : 100}>{email}</Td> 
-                  <Td maxW={isMobile ? 5 : 100}>{user_name}</Td>
                   <Td maxW={isMobile ? 5 : 100}>{phone_number}</Td> 
                   <Td maxW={isMobile ? 5 : 100}>{password}</Td>
                   <Td maxW={isMobile ? 5 : 100}>{date}</Td>
@@ -128,7 +124,7 @@ const VerBalcoes = () => {
                     <EditIcon
                       fontSize={20}
                       onClick={() => [
-                        setDataEdit({ name, CPF, email, user_name, phone_number, password, date, index }),
+                        setDataEdit({ name, CPF, email, phone_number, password, date, index }),
                         onOpen(),
                       ]}
                     />

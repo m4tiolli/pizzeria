@@ -17,7 +17,6 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
   const [name, setName] = useState("");
   const [CPF, setCPF] = useState("");
   const [email, setEmail] = useState("");
-  const [user_name, setUser_name] = useState("");
   const [phone_number, setPhone_number] = useState("");
   const [password, setPassword] = useState("");
   const [date, setDate] = useState("");
@@ -27,7 +26,6 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
       setName(dataEdit.name);
       setCPF(dataEdit.CPF);
       setEmail(dataEdit.email);
-      setUser_name(dataEdit.user_name);
       setPhone_number(dataEdit.phone_number);
       setPassword(dataEdit.password);
       setDate(dataEdit.date);
@@ -40,7 +38,6 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
     setName("");
     setCPF("");
     setEmail("");
-    setUser_name("");
     setPhone_number("");
     setPassword("");
     setDate("");
@@ -55,7 +52,6 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
             name,
             CPF,
             email,
-            user_name,
             phone_number,
             password,
             date,
@@ -70,7 +66,6 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
         name,
         CPF,
         email,
-        user_name,
         phone_number,
         password,
         date,
@@ -86,13 +81,12 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
       nome: name,
       cpf: CPF,
       email,
-      usuario: user_name,
       telefone: phone_number,
       senha: password,
-      dataNascimento: date,
+      dataNasc: date,
     };
-
-    fetch("https://pizzeria3.azurewebsites.net/api/usuario", {
+    console.log(body);
+    fetch("https://pizzeria3.azurewebsites.net/api/auth/cadastrar", {
       method: "POST",
       body: JSON.stringify(body),
     })
@@ -100,12 +94,12 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
         if (response.ok) {
           alert("Balcão/Usuário cadastrado com sucesso");
         } else {
-          throw new Error("Erro ao cadastrar o Balcão/Usuário");
+          throw new Error("Erro ao cadastrar o Balcão/Usuário 1");
         }
       })
       .catch((error) => {
         console.log(error);
-        alert("Erro ao cadastrar o Balcão/Usuário");
+        alert("Erro ao cadastrar o Balcão/Usuário 2");
       });
 
     clearFields();
@@ -147,16 +141,6 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
                 placeholder="Digite o email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-              />
-            </FormControl>
-
-            <FormControl isRequired>
-              <FormLabel>Usuário</FormLabel>
-              <Input
-                type="text"
-                placeholder="Digite o usuário"
-                value={user_name}
-                onChange={(event) => setUser_name(event.target.value)}
               />
             </FormControl>
 
