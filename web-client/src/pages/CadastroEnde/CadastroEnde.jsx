@@ -5,12 +5,8 @@ import axios from 'axios';
 import "./CadastroEnde.css";
 
 function CadastroEnde() {
-  
+
   const navigate = useNavigate();
-  const [selectedOption, setSelectedOption] = useState(null);
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
-  }
 
   const [bairro, setBairro] = useState("");
   const [ruaAvenida, setRuaAvenida] = useState("");
@@ -18,19 +14,18 @@ function CadastroEnde() {
   const [cep, setCEP] = useState("");
   const [estado, setEstado] = useState("");
   const [cidade, setCidade] = useState("");
-  const [casaTrabalho, setCasaTrabalho] = useState("");
 
   const cadastrarEndereco = (e) => {
     e.preventDefault();
 
-    if (bairro == "" || ruaAvenida == "" || numero == "" || cep == "" || estado == "" || cidade == "" || casaTrabalho == ""){
+    if (bairro === "" || ruaAvenida === "" || numero === "" || cep === "" || estado === "" || cidade === "") {
       alert("Por favor, preencha todos os campos.")
       return;
     }
     else {
 
-      const body = { bairro, ruaAvenida, numero, cep, estado, cidade, casaTrabalho };
-      fetch("https://pizzeria3.azurewebsites.net/api/enderecos", {
+      const body = { bairro, ruaAvenida, numero, cep, estado, cidade };
+      fetch("https://pizzeria3.azurewebsites.net/api/enderecos", { 
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
@@ -44,7 +39,7 @@ function CadastroEnde() {
           alert("Erro ao cadastrar endereço")
         });
 
-          navigate("/SelectEnde")
+      navigate("/SelectEnde")
     }
   }
 
@@ -68,107 +63,95 @@ function CadastroEnde() {
       <Header />
       <div className="conteudoCadastroEnde">
         <div className="blocoLoginCadastroEnde">
-          <div className="fundoCadastroEnde">
-            <h1 className="title">Cadastrar Endereço</h1>
-            <div className="inputpai">
-              <label className="labelinput" htmlFor="CEP" >CEP</label>
-              <div className="inputdiv">
-                <input
-                  className="inputtext"
-                  type="text"
-                  name=""
-                  id="CEP"
-                  value={cep}
-                  onChange={(e) => setCEP(e.target.value)}
-                  onBlur={buscarEndereco}
+          <h1 className="title">Cadastrar Endereço</h1>
+          <div className="inputpai">
+            <label className="labelinput" htmlFor="CEP" >CEP</label>
+            <div className="inputdiv">
+              <input
+                className="inputtext"
+                type="text"
+                name=""
+                id="CEP"
+                value={cep}
+                onChange={(e) => setCEP(e.target.value)}
+                onBlur={buscarEndereco}
 
-                />
-              </div>
-              <br />
-              <div className="inputpai">
-                <label className="labelinput" htmlFor="Bairro">Bairro</label>
-                <div className="inputdiv">
-                  <input
-                    className="inputtext"
-                    type="text"
-                    name=""
-                    id="Bairro"
-                    value={bairro}
-                    readOnly
-                    onChange={(e) => setBairro(e.target.value)}
-
-                  />
-                </div>
-              </div>
-              <br />
-              <div className="inputpai">
-                <label className="labelinput" htmlFor="Rua/Avenida">Rua/Avenida</label>
-                <div className="inputdiv">
-                  <input
-                    className="inputtext"
-                    type="text"
-                    name=""
-                    id="Rua/Avenida"
-                    value={ruaAvenida}
-                    readOnly
-                    onChange={(e) => setRuaAvenida(e.target.value)}
-
-                  />
-                </div>
-              </div>
-              <br />
-              <div className="inputpai">
-                <label className="labelinput" htmlFor="Número">Número</label>
-                <div className="inputdiv">
-                  <input
-                    className="inputtext"
-                    type="number"
-                    name=""
-                    id="Número"
-                    onChange={(e) => setNumero(e.target.value)}
-
-                  />
-                </div>
-              </div>
-              <br />
+              />
             </div>
-            <br />
-            <div className="inputpai">
-              <label className="labelinput" htmlFor="Estado">Estado</label>
-              <div className="inputdiv">
-                <input
-                  className="inputtext"
-                  type="text"
-                  name=""
-                  id="Estado"
-                  value={estado}
-                  readOnly
-                  onChange={(e) => setEstado(e.target.value)}
-                />
-              </div>
-            </div>
-            <br />
-            <div className="inputpai">
-              <label className="labelinput" htmlFor="Cidade">Cidade</label>
-              <div className="inputdiv">
-                <input
-                  className="inputtext"
-                  type="text"
-                  name=""
-                  id="Cidade"
-                  value={cidade}
-                  readOnly
-                  onChange={(e) => setCidade(e.target.value)}
-
-                />
-              </div>
-            </div>
-            <div>
-              <input type='radio' name='option' value='Casa' className='casa' checked={selectedOption === "Casa"} onChange={(e) => { handleOptionChange(e); setCasaTrabalho(e.target.value) }} />Casa
-              <input type='radio' name='option' value='Trabalho' className='trabalho' checked={selectedOption === "Trabalho"} onChange={(e) => { handleOptionChange(e); setCasaTrabalho(e.target.value) }} />Trabalho
-            </div>
-            <button className="esqueci" alt='' onClick={(e) => { cadastrarEndereco(e) }}>Cadastrar</button>
           </div>
+          <div className="inputpai">
+            <label className="labelinput" htmlFor="Bairro">Bairro</label>
+            <div className="inputdiv">
+              <input
+                className="inputtext"
+                type="text"
+                name=""
+                id="Bairro"
+                value={bairro}
+                readOnly
+                onChange={(e) => setBairro(e.target.value)}
+
+              />
+            </div>
+          </div>
+          <div className="inputpai">
+            <label className="labelinput" htmlFor="Rua/Avenida">Rua/Avenida</label>
+            <div className="inputdiv">
+              <input
+                className="inputtext"
+                type="text"
+                name=""
+                id="Rua/Avenida"
+                value={ruaAvenida}
+                readOnly
+                onChange={(e) => setRuaAvenida(e.target.value)}
+
+              />
+            </div>
+          </div>
+          <div className="inputpai">
+            <label className="labelinput" htmlFor="Número">Número</label>
+            <div className="inputdiv">
+              <input
+                className="inputtext"
+                type="number"
+                name=""
+                id="Número"
+                onChange={(e) => setNumero(e.target.value)}
+
+              />
+            </div>
+          </div>
+          <div className="inputpai">
+            <label className="labelinput" htmlFor="Estado">Estado</label>
+            <div className="inputdiv">
+              <input
+                className="inputtext"
+                type="text"
+                name=""
+                id="Estado"
+                value={estado}
+                readOnly
+                onChange={(e) => setEstado(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="inputpai">
+            <label className="labelinput" htmlFor="Cidade">Cidade</label>
+            <div className="inputdiv">
+              <input
+                className="inputtext"
+                type="text"
+                name=""
+                id="Cidade"
+                value={cidade}
+                readOnly
+                onChange={(e) => setCidade(e.target.value)}
+
+              />
+            </div>
+          </div>
+          <button className="buttonlogin" alt='' onClick={(e) => { cadastrarEndereco(e) }}>Cadastrar</button>
         </div>
       </div>
     </div>

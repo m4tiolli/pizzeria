@@ -1,10 +1,11 @@
-import "./SideBar.css";
+import './SideBar.css'
+import React, { useState } from "react";
 import { slide as Menu } from "react-burger-menu";
-import { useState, useEffect } from "react";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme({
   palette: {
@@ -14,46 +15,29 @@ const theme = createTheme({
   },
 });
 
-function SideBar() {
-  const [pesquisas, setPesquisas] = useState([]);
-  const [checkboxes, setCheckboxes] = useState({
-    grande: false,
-    pequena: false,
-    doce: false,
-    salgada: false,
-    bebida: false,
-    sobremesa: false,
-  });
-  const [pesquisasFormatadas, setPesquisasFormatadas] = useState("");
+function SideBar({ pizza }) {
+  const [selectedFilters, setSelectedFilters] = useState([]);
 
-  const handleCheckboxPress = (checkboxName) => {
-    setCheckboxes((prevState) => ({
-      ...prevState,
-      [checkboxName]: !prevState[checkboxName],
-    }));
+  const handleCheckboxChange = (event) => {
+    const value = event.target.value;
+    const isChecked = event.target.checked;
+
+    if (isChecked) {
+      setSelectedFilters((prevFilters) => [...prevFilters, value]);
+    } else {
+      setSelectedFilters((prevFilters) =>
+        prevFilters.filter((filter) => filter !== value)
+      );
+    }
   };
 
-  useEffect(() => {
-    let atLeastOneCheckboxChecked = false;
-    for (const checkboxName in checkboxes) {
-      if (checkboxes[checkboxName]) {
-        atLeastOneCheckboxChecked = true;
-        break;
-      }
-    }
-    const updatedPesquisas = Object.keys(checkboxes).filter(
-      (checkboxName) => checkboxes[checkboxName]
-    );
-    setPesquisas(updatedPesquisas);
+  const navigate = useNavigate();
 
-    let pesquisasFormatadas = "";
-    if (updatedPesquisas.length === 1) {
-      pesquisasFormatadas = updatedPesquisas[0];
-    } else {
-      pesquisasFormatadas = updatedPesquisas.join(", ");
-    }
-    setPesquisasFormatadas(pesquisasFormatadas);
-  }, [checkboxes]);
+  const handleFilterButtonClick = () => {
+    navigate("/Search", {
+      state: { filters: selectedFilters, pizza: pizza },
+    });
+  };
 
   return (
     <Menu width={"20%"} isOpen={false} menuClassName="meumenu">
@@ -61,34 +45,71 @@ function SideBar() {
       <ThemeProvider theme={theme}>
         <FormGroup>
           <FormControlLabel
-            control={<Checkbox color="primary" />}
+            control={
+              <Checkbox
+                color="primary"
+                onChange={handleCheckboxChange}
+                value="salgada"
+              />
+            }
             label="pizzas salgadas"
           />
           <FormControlLabel
-            control={<Checkbox color="primary" />}
+            control={
+              <Checkbox
+                color="primary"
+                onChange={handleCheckboxChange}
+                value="doce"
+              />
+            }
             label="pizzas doces"
-            onChange={() => handleCheckboxPress("grande")}
           />
           <FormControlLabel
-            control={<Checkbox color="primary" />}
+            control={
+              <Checkbox
+                color="primary"
+                onChange={handleCheckboxChange}
+                value="grande"
+              />
+            }
             label="pizzas grandes"
           />
           <FormControlLabel
-            control={<Checkbox color="primary" />}
+            control={
+              <Checkbox
+                color="primary"
+                onChange={handleCheckboxChange}
+                value="pequena"
+              />
+            }
             label="pizzas pequenas"
           />
           <FormControlLabel
-            control={<Checkbox color="primary" />}
+            control={
+              <Checkbox
+                color="primary"
+                onChange={handleCheckboxChange}
+                value="sobremesa"
+              />
+            }
             label="sobremesas"
           />
           <FormControlLabel
-            control={<Checkbox color="primary" />}
+            control={
+              <Checkbox
+                color="primary"
+                onChange={handleCheckboxChange}
+                value="bebida"
+              />
+            }
             label="bebidas"
           />
         </FormGroup>
       </ThemeProvider>
 
-      <button id="filterbtn">filter</button>
+      <button id="filterbtn" onClick={handleFilterButtonClick}>
+        filter
+      </button>
     </Menu>
   );
 }

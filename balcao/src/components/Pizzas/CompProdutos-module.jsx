@@ -26,7 +26,24 @@ function Produto({ pizza, abrirSidebar, atualizarCarrinho }) {
         }
 
         carrinho = JSON.parse(carrinho);
-        carrinho.push(pizza);
+
+        const produtoJaExiste = carrinho.some(produto => produto.id === pizza.id);
+        if (produtoJaExiste) {
+            const carrinhoAtualizado = carrinho.map(item => {
+                if (item.id === pizza.id) {
+
+                    return { ...item, quantidade: item.quantidade + 1 };
+                }
+                return item;
+            });
+
+            carrinho = carrinhoAtualizado;
+
+        }
+        else {
+            pizza.quantidade = 1;
+            carrinho.push(pizza);
+        }
 
         localStorage.setItem("carrinho", JSON.stringify(carrinho));
 

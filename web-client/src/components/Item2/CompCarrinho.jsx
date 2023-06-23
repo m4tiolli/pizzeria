@@ -8,7 +8,7 @@ function ProdutosCarrinho({ produto }) {
     const [cart, setCart] = useState([]);
 
     const deleteItem = () => {
-        setCart(cart.filter((item) => item.id !== id));
+        setCart(cart.filter((item) => item.id !== produto.id));
         localStorage.setItem("carrinho", JSON.stringify(cart));
     };
 

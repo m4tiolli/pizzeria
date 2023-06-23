@@ -25,11 +25,11 @@ export default function Produtos() {
       });
   }, []);
 
-  const [produtos, setProdutos] = useState([]);
+  const [produtos, setProdutos] = useState([]); 
   return (
     <div id="root">
-      <Header />
-      <SideBar />
+      <Header pizza={produtos} />
+      <SideBar pizza={produtos} />
       {isLoading ? (
         <Loading />
       ) : (

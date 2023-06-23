@@ -8,13 +8,11 @@ import { BsCartX } from 'react-icons/bs';
 
 function Carrinho() {
 
-    const [cart, setCart] = useState([]);
-
     const cleanCart = () => {
-        setCart([]);
+        setCarrinho([]);
         localStorage.removeItem("carrinho")
         alert("Carrinho esvaziado!")
-        location.reload()
+        window.location.reload()
     }
 
 
