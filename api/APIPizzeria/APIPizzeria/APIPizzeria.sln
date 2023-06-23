@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.916
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIPizzeria", "APIPizzeria\APIPizzeria.csproj", "{C0E4F345-7589-4AD8-AB15-48D8C8F6A957}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0E4F345-7589-4AD8-AB15-48D8C8F6A957}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0E4F345-7589-4AD8-AB15-48D8C8F6A957}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0E4F345-7589-4AD8-AB15-48D8C8F6A957}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0E4F345-7589-4AD8-AB15-48D8C8F6A957}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55EB8698-FA6A-4C46-9CF8-9D4A48864FD0}
+	EndGlobalSection
+EndGlobal
