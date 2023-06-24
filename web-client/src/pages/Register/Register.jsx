@@ -1,8 +1,8 @@
 import "./Register.css";
 import Header from "../../components/Header/Header";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 function Register() {
   const navigate = useNavigate();
@@ -18,7 +18,13 @@ function Register() {
   const cadastrarUsuario = (e) => {
     e.preventDefault();
 
-    if (nome === "" || cpf === "" || email === "" || senha === "" || confirmarSenha === "") {
+    if (
+      nome === "" ||
+      cpf === "" ||
+      email === "" ||
+      senha === "" ||
+      confirmarSenha === ""
+    ) {
       alert("Por favor, preencha todos os campos.");
       return;
     }
@@ -32,17 +38,19 @@ function Register() {
     fetch("https://pizzeria3.azurewebsites.net/api/usuario", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     })
-      .then((response) => { alert("Usuário cadastrado com sucesso."); })
+      .then((response) => {
+        alert("Usuário cadastrado com sucesso.");
+      })
       .then(() => {
-        navigate('/');
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
         alert("Erro ao cadastrar usuário.");
       });
-  }
+  };
 
   const toggleMostrarSenha = () => {
     setMostrarSenha(!mostrarSenha);
@@ -57,10 +65,12 @@ function Register() {
       <Header />
       <div onSubmit={cadastrarUsuario} className="conteudoregister">
         <div className="blocoregister">
-          <div className="fundoRegister">
-            <h1 className="titleregister">register</h1>
+          <h1 className=" titleregister">register</h1>
+          <div id="inputs">
             <div className="inputpai">
-              <label className="labelinput" htmlFor="name">name</label>
+              <label className="labelinput" htmlFor="name">
+                name
+              </label>
               <div className="inputdiv">
                 <input
                   className="inputtext1"
@@ -74,7 +84,9 @@ function Register() {
               </div>
             </div>
             <div className="inputpai">
-              <label className="labelinput" htmlFor="CPF">CPF</label>
+              <label className="labelinput" htmlFor="CPF">
+                CPF
+              </label>
               <div className="inputdiv">
                 <input
                   className="inputtext1"
@@ -88,7 +100,9 @@ function Register() {
               </div>
             </div>
             <div className="inputpai">
-              <label className="labelinput" htmlFor="Email">e-mail</label>
+              <label className="labelinput" htmlFor="Email">
+                e-mail
+              </label>
               <div name="inputdiv" className="inputdiv">
                 <input
                   className="inputtext1"
@@ -102,7 +116,9 @@ function Register() {
               </div>
             </div>
             <div className="inputpai">
-              <label className="labelinput" htmlFor="Password">password</label>
+              <label className="labelinput" htmlFor="Password">
+                password
+              </label>
               <div className="inputdiv">
                 <input
                   className="inputtext1"
@@ -113,11 +129,25 @@ function Register() {
                   id="Password"
                   required
                 />
-                {mostrarSenha ? <AiOutlineEyeInvisible className="eye" size={25} onClick={toggleMostrarSenha} /> : <AiOutlineEye className="eye" size={25} onClick={toggleMostrarSenha} />}
+                {mostrarSenha ? (
+                  <AiOutlineEyeInvisible
+                    className="eye"
+                    size={25}
+                    onClick={toggleMostrarSenha}
+                  />
+                ) : (
+                  <AiOutlineEye
+                    className="eye"
+                    size={25}
+                    onClick={toggleMostrarSenha}
+                  />
+                )}
               </div>
             </div>
             <div className="inputpai">
-              <label className="labelinput" htmlFor="ConfirmPassword">confirm password</label>
+              <label className="labelinput" htmlFor="ConfirmPassword">
+                confirm password
+              </label>
               <div className="inputdiv">
                 <input
                   className="inputtext1"
@@ -128,11 +158,25 @@ function Register() {
                   id="ConfirmPassword"
                   required
                 />
-                {mostrarConfirmarSenha ? <AiOutlineEyeInvisible className="eye" size={25} onClick={toggleMostrarConfirmarSenha} /> : <AiOutlineEye className="eye" size={25} onClick={toggleMostrarConfirmarSenha} />}
+                {mostrarConfirmarSenha ? (
+                  <AiOutlineEyeInvisible
+                    className="eye"
+                    size={25}
+                    onClick={toggleMostrarConfirmarSenha}
+                  />
+                ) : (
+                  <AiOutlineEye
+                    className="eye"
+                    size={25}
+                    onClick={toggleMostrarConfirmarSenha}
+                  />
+                )}
               </div>
             </div>
-            <button className="buttonregister" onClick={cadastrarUsuario}>register</button>
           </div>
+          <button className="buttonregister" onClick={cadastrarUsuario}>
+            register
+          </button>
         </div>
       </div>
     </div>
