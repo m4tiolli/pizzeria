@@ -50,7 +50,7 @@ export default function Login() {
       formData.append("email", email);
       formData.append("senha", senha);
       axios.post(
-        "https://pizzeria3.azurewebsites.net/api/auth/login",
+        "https://localhost:44383/api/auth/login",
         formData.toString(),
         {
           headers: { "Content-type": "application/x-www-form-urlencoded" },

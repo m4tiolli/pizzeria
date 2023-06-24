@@ -17,6 +17,17 @@ export default function AddressMethods() {
     const [cidade, setCidade] = useState("");
     const [tipo, setTipo] = useState("");
 
+    const [usuario, setUsuario] = useState("");
+
+    async function PreencherDados() {
+        const jwt = await DadosUsuario();
+        setUsuario(jwt);
+    }
+
+    useEffect(() => {
+        PreencherDados();
+    }, []);
+
     function Cadastrar() {
 
     }
@@ -25,7 +36,6 @@ export default function AddressMethods() {
             const response = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
             const data = response.data;
             setRua(data.logradouro);
-            //   setBairro(data.bairro);
             setCidade(data.localidade);
             setUF(data.uf);
         } catch (error) {
@@ -74,7 +84,7 @@ export default function AddressMethods() {
                             <TextInput
                                 value={cep}
                                 onChangeText={(texto) => setCEP(texto)}
-                                onBlur={buscarEndereco}
+                                onSubmitEditing={buscarEndereco}
                                 style={styles.input}
                                 placeholder="Ex: 12345-678"
                                 underlineColorAndroid="transparent"
