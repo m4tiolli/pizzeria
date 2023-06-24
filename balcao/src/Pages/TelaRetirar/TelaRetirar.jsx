@@ -17,9 +17,7 @@ export default function TelaRetirar( pizza) {
     function Delivery() {
       navigate("/delivery");
     }
-    function Mesas() {
-      navigate("/mesas");
-    }
+
     function Retirar() {
       navigate("/retirar");
     }
@@ -35,7 +33,6 @@ return (
           <button className='buttonTitle' onClick={Home}><AiFillHome size={30} style={iconStyle}/></button>
           <button className="buttonTitle" onClick={Delivery}> <MdOutlineDeliveryDining size={30} style={iconStyle} /> </button>
           <button className="buttonTitle" onClick={Retirar}> <BsFillBagCheckFill size={30} style={iconStyle} /> </button>
-          <button className="buttonTitle" onClick={Mesas}> <MdOutlineTableRestaurant size={30} style={iconStyle} /> </button>
           <button className="buttonTitle" onClick={User}> <FaRegUser size={30} style={iconStyle} /> </button>
         </div>
         <div style={{ textAlign: 'center' }}>
