@@ -25,6 +25,16 @@ namespace APIPizzeria.Controllers
             return Ok(users);
         }
 
+        [HttpGet]
+		[Route("{id}")]
+		public IActionResult ListarPorID(int id)
+		{
+			UsuarioDAO usuarioDAO = new UsuarioDAO();
+			var users = usuarioDAO.ListarPorID(id);
+
+			return Ok(users);
+		}
+
 		[HttpPut]
         public IActionResult Alterar(UsuarioDTO user)
         {

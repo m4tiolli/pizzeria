@@ -11,6 +11,8 @@ import CadastroEnde from "./pages/CadastroEnde/CadastroEnde";
 import Alterar from "./pages/Alterar/Alterar";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Search from "./pages/Search/Search";
+import Pix from "./pages/Pix/Pix";
+import Cartao from "./pages/Cartao/Cartao";
 
 function App() {
   const router = createBrowserRouter([
@@ -61,6 +63,14 @@ function App() {
     {
       path: "/Search",
       element: <Search />,
+    },
+    {
+      path: "/Pix",
+      element: <Pix />,
+    },
+    {
+      path: "/Cartao",
+      element: <Cartao/>,
     },
   ]);
 

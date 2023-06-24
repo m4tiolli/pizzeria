@@ -28,7 +28,7 @@ export default function HeaderInicial({ pizza }) {
         setTexto((prevFilters) => [...prevFilters, value]);
     };
 
-    const [usuarioLogado] = useState(!true)
+    const [usuarioLogado] = useState(true)
     return (
 
         <div className='header'>

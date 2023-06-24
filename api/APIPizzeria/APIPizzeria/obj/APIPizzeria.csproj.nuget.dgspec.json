@@ -1,26 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "E:\\TCC187\\APIPizzeria\\APIPizzeria\\APIPizzeria.csproj": {}
+    "C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\tcc\\pizzeria\\pizzeria\\api\\APIPizzeria\\APIPizzeria\\APIPizzeria.csproj": {}
   },
   "projects": {
-    "E:\\TCC187\\APIPizzeria\\APIPizzeria\\APIPizzeria.csproj": {
+    "C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\tcc\\pizzeria\\pizzeria\\api\\APIPizzeria\\APIPizzeria\\APIPizzeria.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\TCC187\\APIPizzeria\\APIPizzeria\\APIPizzeria.csproj",
+        "projectUniqueName": "C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\tcc\\pizzeria\\pizzeria\\api\\APIPizzeria\\APIPizzeria\\APIPizzeria.csproj",
         "projectName": "APIPizzeria",
-        "projectPath": "E:\\TCC187\\APIPizzeria\\APIPizzeria\\APIPizzeria.csproj",
-        "packagesPath": "D:\\home\\aluno\\.nuget\\packages\\",
-        "outputPath": "E:\\TCC187\\APIPizzeria\\APIPizzeria\\obj\\",
+        "projectPath": "C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\tcc\\pizzeria\\pizzeria\\api\\APIPizzeria\\APIPizzeria\\APIPizzeria.csproj",
+        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\tcc\\pizzeria\\pizzeria\\api\\APIPizzeria\\APIPizzeria\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\ProgramData\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "D:\\home\\aluno\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.1"
@@ -31,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp2.1": {
+            "targetAlias": "netcoreapp2.1",
             "projectReferences": {}
           }
         },
@@ -42,6 +38,7 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
+          "targetAlias": "netcoreapp2.1",
           "dependencies": {
             "Microsoft.AspNetCore.App": {
               "suppressParent": "All",
@@ -55,6 +52,7 @@
               "version": "[2.1.2, )"
             },
             "Microsoft.NETCore.App": {
+              "suppressParent": "All",
               "target": "Package",
               "version": "[2.1.0, )",
               "autoReferenced": true
@@ -69,10 +67,17 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

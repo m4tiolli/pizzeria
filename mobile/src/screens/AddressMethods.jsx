@@ -9,56 +9,39 @@ import { RadioButton } from "react-native-paper";
 export default function AddressMethods() {
     const [modalNewVisible, setModalNewVisible] = useState(false);
     const [checked, setChecked] = useState(false);
-
-    // const [bairro, setBairro] = useState("");
+    const navigation = useNavigation();
     const [rua, setRua] = useState("");
     const [num, setNum] = useState("");
     const [cep, setCEP] = useState("");
     const [uf, setUF] = useState("");
     const [cidade, setCidade] = useState("");
     const [tipo, setTipo] = useState("");
-  
+
+    const [usuario, setUsuario] = useState("");
+
+    async function PreencherDados() {
+        const jwt = await DadosUsuario();
+        setUsuario(jwt);
+    }
+
+    useEffect(() => {
+        PreencherDados();
+    }, []);
+
     function Cadastrar() {
-        if (rua == "" || num == "" || cep == "" || uf == "" || cidade == "" || tipo == ""){
-            alert("Por favor, preencha todos os campos.")
-            return;
-          }
-          else {
-      
-            const body = {rua, num, cep, uf, cidade, tipo };
-            fetch("https://pizzeria3.azurewebsites.net/api/endereco", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(body)
-            })
-              .then((response) => { 
-                alert("Endereço cadastrado com sucesso"); 
-            })
-              .then(() => {
-                navigate('/');
-              })
-              .catch((error) => {
-                console.log(error);
-                alert("Erro ao cadastrar endereço")
-              });
-      
-                navigate("/Settings")
-          }
 
-    const navigation = useNavigation();
-
+    }
     async function buscarEndereco() {
         try {
-          const response = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
-          const data = response.data;
-          setRua(data.logradouro);
-        //   setBairro(data.bairro);
-          setCidade(data.localidade);
-          setUF(data.uf);
+            const response = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
+            const data = response.data;
+            setRua(data.logradouro);
+            setCidade(data.localidade);
+            setUF(data.uf);
         } catch (error) {
-          console.log(error);
+            console.log(error);
         }
-      }
+    }
 
     return (
         <View style={{
@@ -101,7 +84,7 @@ export default function AddressMethods() {
                             <TextInput
                                 value={cep}
                                 onChangeText={(texto) => setCEP(texto)}
-                                onBlur={buscarEndereco}
+                                onSubmitEditing={buscarEndereco}
                                 style={styles.input}
                                 placeholder="Ex: 12345-678"
                                 underlineColorAndroid="transparent"
@@ -252,4 +235,3 @@ const styles = StyleSheet.create({
         elevation: 4
     }
 });
-}

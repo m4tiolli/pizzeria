@@ -7,57 +7,25 @@ import {
   PixelRatio,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import {
-  useFonts,
-  Poppins_100Thin,
-  Poppins_100Thin_Italic,
-  Poppins_200ExtraLight,
-  Poppins_200ExtraLight_Italic,
-  Poppins_300Light,
-  Poppins_300Light_Italic,
-  Poppins_400Regular,
-  Poppins_400Regular_Italic,
-  Poppins_500Medium,
-  Poppins_500Medium_Italic,
-  Poppins_600SemiBold,
-  Poppins_600SemiBold_Italic,
-  Poppins_700Bold,
-  Poppins_700Bold_Italic,
-  Poppins_800ExtraBold,
-  Poppins_800ExtraBold_Italic,
-  Poppins_900Black,
-  Poppins_900Black_Italic,
-} from "@expo-google-fonts/poppins";
-
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import Loading from "../components/Loading";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import { useEffect } from "react";
+import { ChecarLoginUsuario } from "../components/AuthContext";
 
 export default function Initial() {
   const navigation = useNavigation();
 
-  const [fontsLoaded] = useFonts({
-    Poppins_100Thin,
-    Poppins_100Thin_Italic,
-    Poppins_200ExtraLight,
-    Poppins_200ExtraLight_Italic,
-    Poppins_300Light,
-    Poppins_300Light_Italic,
-    Poppins_400Regular,
-    Poppins_400Regular_Italic,
-    Poppins_500Medium,
-    Poppins_500Medium_Italic,
-    Poppins_600SemiBold,
-    Poppins_600SemiBold_Italic,
-    Poppins_700Bold,
-    Poppins_700Bold_Italic,
-    Poppins_800ExtraBold,
-    Poppins_800ExtraBold_Italic,
-    Poppins_900Black,
-    Poppins_900Black_Italic,
-  });
+  async function ValidarLogin() {
+    const login = await ChecarLoginUsuario();
+    if (login == false) {
+      navigation.navigate("Home");
+    }
+  }
 
-  if (!fontsLoaded) return <Loading />;
+  useEffect(() => {
+    ValidarLogin();
+  }, []);
 
   return (
     <View style={styles.docker} gap={30}>

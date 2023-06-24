@@ -69,7 +69,37 @@ namespace APIPizzeria.DAO
             return users;
         }
 
-        public void Cadastrar(UsuarioDTO user)
+		public UsuarioDTO ListarPorID(int id)
+		{
+			var conexao = ConnectionFactory.Build();
+			conexao.Open();
+
+			var query = "SELECT * FROM usuario WHERE id = @id;";
+
+			MySqlCommand comando = new MySqlCommand(query, conexao);
+            comando.Parameters.AddWithValue("@id", id);
+			var dataReader = comando.ExecuteReader();
+
+			var user = new UsuarioDTO();
+
+			while (dataReader.Read())
+			{
+
+				user.ID = int.Parse(dataReader["id"].ToString());
+				user.Nome = dataReader["nome"].ToString();
+				user.CPF = dataReader["cpf"].ToString();
+				user.DataNasc = DateTime.Parse(dataReader["dataNasc"].ToString());
+				user.Telefone = dataReader["telefone"].ToString();
+				user.Email = dataReader["email"].ToString();
+				user.Senha = dataReader["senha"].ToString();
+				user.Tipo = dataReader["tipo"].ToString();
+
+			}
+			conexao.Close();
+			return user;
+		}
+
+		public void Cadastrar(UsuarioDTO user)
         {
             var conexao = ConnectionFactory.Build();
             conexao.Open();
