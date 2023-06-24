@@ -9,36 +9,36 @@ namespace APIPizzeria.DAO
 {
     public class UsuarioDAO
     {
-		public UsuarioDTO Login(UsuarioDTO dadosLogin)
-		{
-			var conexao = ConnectionFactory.Build();
-			conexao.Open();
+        public UsuarioDTO Login(UsuarioDTO dadosLogin)
+        {
+            var conexao = ConnectionFactory.Build();
+            conexao.Open();
 
-			var query = "SELECT*FROM usuario WHERE Email = @email AND Senha = @senha";
+            var query = "SELECT*FROM usuario WHERE Email = @email AND Senha = @senha";
 
-			var comando = new MySqlCommand(query, conexao);
-			comando.Parameters.AddWithValue("@email", dadosLogin.Email);
-			comando.Parameters.AddWithValue("@senha", dadosLogin.Senha);
+            var comando = new MySqlCommand(query, conexao);
+            comando.Parameters.AddWithValue("@email", dadosLogin.Email);
+            comando.Parameters.AddWithValue("@senha", dadosLogin.Senha);
 
-			var dataReader = comando.ExecuteReader();
+            var dataReader = comando.ExecuteReader();
 
-			var user = new UsuarioDTO();
-			while (dataReader.Read())
-			{
-				user.ID = int.Parse(dataReader["id"].ToString());
-				user.Nome = dataReader["nome"].ToString();
-				user.CPF = dataReader["cpf"].ToString();
-				user.DataNasc = DateTime.Parse(dataReader["dataNasc"].ToString());
-				user.Telefone = dataReader["telefone"].ToString();
-				user.Email = dataReader["email"].ToString();
-				user.Senha = dataReader["senha"].ToString();
-				user.Tipo = dataReader["tipo"].ToString();
-			}
-			conexao.Close();
+            var user = new UsuarioDTO();
+            while (dataReader.Read())
+            {
+                user.ID = int.Parse(dataReader["id"].ToString());
+                user.Nome = dataReader["nome"].ToString();
+                user.CPF = dataReader["cpf"].ToString();
+                user.DataNasc = DateTime.Parse(dataReader["dataNasc"].ToString());
+                user.Telefone = dataReader["telefone"].ToString();
+                user.Email = dataReader["email"].ToString();
+                user.Senha = dataReader["senha"].ToString();
+                user.Tipo = dataReader["tipo"].ToString();
+            }
+            conexao.Close();
 
-			return user;
-		}
-		public List<UsuarioDTO> Listar()
+            return user;
+        }
+        public List<UsuarioDTO> Listar()
         {
             var conexao = ConnectionFactory.Build();
             conexao.Open();
@@ -69,37 +69,37 @@ namespace APIPizzeria.DAO
             return users;
         }
 
-		public UsuarioDTO ListarPorID(int id)
-		{
-			var conexao = ConnectionFactory.Build();
-			conexao.Open();
+        public UsuarioDTO ListarPorID(int id)
+        {
+            var conexao = ConnectionFactory.Build();
+            conexao.Open();
 
-			var query = "SELECT * FROM usuario WHERE id = @id;";
+            var query = "SELECT * FROM usuario WHERE id = @id;";
 
-			MySqlCommand comando = new MySqlCommand(query, conexao);
+            MySqlCommand comando = new MySqlCommand(query, conexao);
             comando.Parameters.AddWithValue("@id", id);
-			var dataReader = comando.ExecuteReader();
+            var dataReader = comando.ExecuteReader();
 
-			var user = new UsuarioDTO();
+            var user = new UsuarioDTO();
 
-			while (dataReader.Read())
-			{
+            while (dataReader.Read())
+            {
 
-				user.ID = int.Parse(dataReader["id"].ToString());
-				user.Nome = dataReader["nome"].ToString();
-				user.CPF = dataReader["cpf"].ToString();
-				user.DataNasc = DateTime.Parse(dataReader["dataNasc"].ToString());
-				user.Telefone = dataReader["telefone"].ToString();
-				user.Email = dataReader["email"].ToString();
-				user.Senha = dataReader["senha"].ToString();
-				user.Tipo = dataReader["tipo"].ToString();
+                user.ID = int.Parse(dataReader["id"].ToString());
+                user.Nome = dataReader["nome"].ToString();
+                user.CPF = dataReader["cpf"].ToString();
+                user.DataNasc = DateTime.Parse(dataReader["dataNasc"].ToString());
+                user.Telefone = dataReader["telefone"].ToString();
+                user.Email = dataReader["email"].ToString();
+                user.Senha = dataReader["senha"].ToString();
+                user.Tipo = dataReader["tipo"].ToString();
 
-			}
-			conexao.Close();
-			return user;
-		}
+            }
+            conexao.Close();
+            return user;
+        }
 
-		public void Cadastrar(UsuarioDTO user)
+        public void Cadastrar(UsuarioDTO user)
         {
             var conexao = ConnectionFactory.Build();
             conexao.Open();
