@@ -6,13 +6,10 @@ import { Doughnut, Bar, Line } from 'react-chartjs-2';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import BalanceChart from '../../components/Chart/BalanceChart';
 
-
-
-
 const VerEconomia = () => {
   const [descItem, setDescItem] = useState('');
   const [amount, setAmount] = useState('');
-  const [type, setType] = useState(''); 
+  const [type, setType] = useState('');
   const [items, setItems] = useState([]);
   const [totalIncomes, setTotalIncomes] = useState('0.00');
   const [totalExpenses, setTotalExpenses] = useState('0.00');
@@ -128,9 +125,89 @@ const VerEconomia = () => {
     ],
   };
   
+  const optionsBar = {
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: function (tooltipItem) {
+            const label = tooltipItem.dataset.label || '';
+            if (label) {
+              return label + ': R$' + tooltipItem.parsed.y.toFixed(2);
+            }
+            return 'R$' + tooltipItem.parsed.y.toFixed(2);
+          },
+        },
+      },
+    },
+  };
+  
+  // const chartDataBar = {
+  //   labels: [],
+  //   datasets: [],
+  // };
+  
+  // items.forEach((item, index) => {
+  //   const label = item.desc;
+  //   const data = [];
+    
+  //   items.forEach((item, i) => {
+  //     if (i === index) {
+  //       data.push(Number(item.amount));
+  //     } else {
+  //       data.push(0);
+  //     }
+  //   });
+  //   const dataset = {
+  //     label: label,
+  //     backgroundColor: getColorType(item.type),
+  //     borderColor: getColorType(item.type),
+  //     borderWidth: 1,
+  //     data: data,
+  //   };
+  
+  //   chartDataBar.labels.push(label);
+  //   chartDataBar.datasets.push(dataset);
+  // });
+  
+  // function getColorType(type) {
+  //   return type === 'Entrada' ? 'rgba(54, 162, 235, 0.5)' : 'rgba(255, 99, 132, 0.5)';
+  // }
+  
+  // const optionsBar = {
+  //   plugins: {
+  //     tooltip: {
+  //       callbacks: {
+  //         label: function (tooltipItem) {
+  //           const label = tooltipItem.dataset.label || '';
+  //           if (label) {
+  //             return label + ': R$' + tooltipItem.parsed.y.toFixed(2);
+  //           }
+  //           return 'R$' + tooltipItem.parsed.y.toFixed(2);
+  //         },
+  //       },
+  //     },
+  //   },
+  // };
+
+  const chartDataLine = {
+    labels: items.map((item) => item.desc),
+    datasets: [
+      {
+        label: 'Saldo',
+        fill: false,
+        lineTension: 0.5,
+        backgroundColor: 'rgba(75,192,192,1)',
+        borderColor: 'rgba(0,0,0,1)',
+        borderWidth: 2,
+        data: items.map((item) => {
+          const amount = Number(item.amount);
+          return item.type === 'Entrada' ? amount : -amount;
+        }),
+      },
+    ],
+  };
 
   const options = {
-   
     plugins: {
       tooltip: {
         callbacks: {
@@ -145,8 +222,6 @@ const VerEconomia = () => {
       },
     },
   };
-  
-  
 
   return (
     <div>
@@ -205,20 +280,36 @@ const VerEconomia = () => {
               <div className="newItem">
                 <div className="divDesc">
                   <label htmlFor="desc">Descrição</label>
-                  <input className='input_economia' type="text" id="desc" value={descItem} onChange={(e) => setDescItem(e.target.value)} />
+                  <input
+                    className="input_economia"
+                    type="text"
+                    id="desc"
+                    value={descItem}
+                    onChange={(e) => setDescItem(e.target.value)}
+                  />
                 </div>
 
                 <div className="divAmount">
                   <label htmlFor="amount">Valor</label>
-                  <input className='input_economia' type="number" id="amount" value={amount} onChange={(e) => setAmount(e.target.value)} />
+                  <input
+                    className="input_economia"
+                    type="number"
+                    id="amount"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                  />
                 </div>
                 <div className="divType">
-                <label htmlFor="type">Tipo</label>
-                <select id="type" value={type} onChange={(e) => setType(e.target.value)}>
-                <option value="">Selecione</option>
-                <option value="Entrada">Entrada</option>
-                <option value="Saída">Saída</option>
-                </select>
+                  <label htmlFor="type">Tipo</label>
+                  <select
+                    id="type"
+                    value={type}
+                    onChange={(e) => setType(e.target.value)}
+                  >
+                    <option value="">Selecione</option>
+                    <option value="Entrada">Entrada</option>
+                    <option value="Saída">Saída</option>
+                  </select>
                 </div>
 
                 <button id="btnNew" onClick={addNewItem}>
@@ -262,19 +353,21 @@ const VerEconomia = () => {
             <div className="content-data">
               <div className="chart-container">
                 <h2>Gráficos</h2>
-                <Bar data={chartDataBar} options={options} />
+                <Bar data={chartDataBar} options={optionsBar} />
               </div>
             </div>
             <div className="content-data">
-            <BalanceChart items={items} />
-
+              <BalanceChart items={items} />
             </div>
-            
+            <div className="content-data">
+              <div className="chart-container">
+                <h2>Gráfico de Linha</h2>
+                <Line data={chartDataLine} options={options} />
+              </div>
+            </div>
           </div>
         </main>
-        {/* MAIN */}
       </section>
-      {/* NAVBAR */}
     </div>
   );
 };

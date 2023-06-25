@@ -51,7 +51,7 @@ function CadastroBalcao() {
           <FormControl display="flex" flexDir="column" gap="4">
             <HStack spacing="4">
               <Box w="100%">
-                <FormLabel htmlFor="nome">Nome do Responsável</FormLabel>
+                <FormLabel htmlFor="nome">Nome Completo</FormLabel>
                 <Input id="nome" placeholder="Nome do Responsável" />
               </Box>
             </HStack>
@@ -62,15 +62,15 @@ function CadastroBalcao() {
                 <Input id="nome" placeholder="CPF" />
               </Box>
               <Box w="100%">
-                <FormLabel htmlFor="email">Celular</FormLabel>
-                <Input id="email" type="email" placeholder="Celular" />
+                <FormLabel htmlFor="celular">Celular</FormLabel>
+                <Input id="phone number" placeholder="Celular" />
               </Box>
             </HStack>
 
             <HStack spacing="4">
               <Box w="100%">
-                <FormLabel htmlFor="nome">Nome do Usuário</FormLabel>
-                <Input id="nome" placeholder="Nome do usuário" />
+                <FormLabel htmlFor="email">Email</FormLabel>
+                <Input type="email" id="nome" placeholder="Nome do usuário" />
               </Box>
             </HStack>
 

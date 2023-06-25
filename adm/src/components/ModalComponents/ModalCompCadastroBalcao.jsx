@@ -23,12 +23,12 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
 
   useEffect(() => {
     if (Object.keys(dataEdit).length !== 0) {
-      setName(dataEdit.name);
-      setCPF(dataEdit.CPF);
+      setName(dataEdit.nome);
+      setCPF(dataEdit.cpf);
       setEmail(dataEdit.email);
-      setPhone_number(dataEdit.phone_number);
-      setPassword(dataEdit.password);
-      setDate(dataEdit.date);
+      setPhone_number(dataEdit.telefone);
+      setPassword(dataEdit.senha);
+      setDate(dataEdit.dataNasc);
     } else {
       clearFields();
     }
@@ -86,8 +86,10 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
       dataNasc: date,
     };
     console.log(body);
+    debugger;
     fetch("https://pizzeria3.azurewebsites.net/api/auth/cadastrar", {
       method: "POST",
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     })
       .then((response) => {
@@ -114,7 +116,7 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
         <ModalCloseButton />
         <form onSubmit={handleSubmit}>
           <ModalBody>
-            <FormControl isRequired>
+            <FormControl>
               <FormLabel>Nome</FormLabel>
               <Input
                 type="text"
@@ -124,7 +126,7 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
               />
             </FormControl>
 
-            <FormControl isRequired>
+            <FormControl>
               <FormLabel>CPF</FormLabel>
               <Input
                 type="text"
@@ -134,7 +136,7 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
               />
             </FormControl>
 
-            <FormControl isRequired>
+            <FormControl>
               <FormLabel>Email</FormLabel>
               <Input
                 type="email"
@@ -144,7 +146,7 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
               />
             </FormControl>
 
-            <FormControl isRequired>
+            <FormControl>
               <FormLabel>Celular</FormLabel>
               <Input
                 type="tel"
@@ -154,7 +156,7 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
               />
             </FormControl>
 
-            <FormControl isRequired>
+            <FormControl>
               <FormLabel>Senha</FormLabel>
               <Input
                 type="password"
@@ -164,7 +166,7 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
               />
             </FormControl>
 
-            <FormControl isRequired>
+            <FormControl>
               <FormLabel>Data de Nascimento</FormLabel>
               <Input
                 type="date"

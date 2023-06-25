@@ -24,7 +24,6 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
   const [image, setImage] = useState(null);
 
   const handleFileChange = async (e) => {
-    debugger;
     setImagePreview(URL.createObjectURL(e.target.files[0]));
     const image = await getBase64(e.target.files[0]);
     setImage(image);
