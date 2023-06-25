@@ -31,7 +31,6 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
         };
 
 
-
         fetch("https://pizzeria3.azurewebsites.net/api/mesa", {
           method: "POST",
           headers: { "Content-Type": "application/json" },

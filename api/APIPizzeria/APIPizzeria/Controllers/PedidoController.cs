@@ -8,6 +8,15 @@ namespace APIPizzeria.Controllers
     [ApiController]
     public class PedidoController : ControllerBase
     {
+        [HttpGet]
+        public IActionResult Listar()
+        {
+            PedidoDAO PedidoDAO = new PedidoDAO();
+            var pedidos = PedidoDAO.Listar();
+
+            return Ok(pedidos);
+        }
+
         [HttpPost]
         public IActionResult Cadastrar([FromBody] PedidoDTO pedido)
         {
@@ -16,13 +25,13 @@ namespace APIPizzeria.Controllers
             return Ok();
         }
 
-		[HttpPut]
-		[Route("Encerrar")]
-		public IActionResult Encerrar(int id)
-		{
-			PedidoDAO dao = new PedidoDAO();
-			dao.Alterar(id);
-			return Ok();
-		}
-	}
+        [HttpPut]
+        [Route("Encerrar")]
+        public IActionResult Encerrar(int id)
+        {
+            PedidoDAO dao = new PedidoDAO();
+            dao.Alterar(id);
+            return Ok();
+        }
+    }
 }

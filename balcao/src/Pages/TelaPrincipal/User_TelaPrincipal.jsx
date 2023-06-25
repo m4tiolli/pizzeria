@@ -19,7 +19,7 @@ export default function TelaPrincipal() {
 
   useEffect(() => {
     moverItens();
-  }, [sidebarOpen]);  
+  }, [sidebarOpen]);
 
   useEffect(() => {
     fetch("https://pizzeria3.azurewebsites.net/api/produto", {
@@ -34,21 +34,27 @@ export default function TelaPrincipal() {
         alert("Erro ao buscar Produto");
       })
   }, []);
+
   function Home() {
     navigate("/");
   }
+
   function Delivery() {
     navigate("/delivery");
   }
+
   function Mesas() {
     navigate("/mesas");
   }
+
   function Retirar() {
     navigate("/retirar");
   }
+
   function User() {
     navigate("/user");
   }
+
   function atualizarCarrinho() {
     const storage = JSON.parse(localStorage.getItem("carrinho"));
 
@@ -58,18 +64,18 @@ export default function TelaPrincipal() {
 
     setCarrinho(storage);
   }
+
   function abrirCarrinho() {
     const storage = JSON.parse(localStorage.getItem("carrinho"));
-  
+
     if (!storage || storage === []) {
       alert("Carrinho vazio");
     } else {
       setSidebarOpen(!sidebarOpen);
     }
-  
+
     setCarrinho(storage);
   }
-  
 
   function moverItens() {
     if (sidebarOpen) {
@@ -78,35 +84,36 @@ export default function TelaPrincipal() {
       setClassName("");
     }
   }
-  
+
   return (
     <div>
       <div id="root">
         <div className="header">
           <img src={logo} alt="" className="logo" />
           <h1 className="title">Pizzeria Balcão</h1>
-          <button className='buttonTitle' onClick={Home}><AiFillHome size={30} style={iconStyle}/></button>
+          <button className='buttonTitle' onClick={Home}><AiFillHome size={30} style={iconStyle} /></button>
           <button className="buttonTitle" onClick={Delivery}> <MdOutlineDeliveryDining size={30} style={iconStyle} /> </button>
           <button className="buttonTitle" onClick={Retirar}> <BsFillBagCheckFill size={30} style={iconStyle} /> </button>
           <button className="buttonTitle" onClick={Mesas}> <MdOutlineTableRestaurant size={30} style={iconStyle} /> </button>
           <button className='buttonTitle' onClick={abrirCarrinho}><MdShoppingCart size={30} style={iconStyle} /></button>
           <button className="buttonTitle" onClick={User}> <FaRegUser size={30} style={iconStyle} /> </button>
         </div>
+        <div className='containerGeral'>
+          {sidebarOpen && <Sidebar carrinho={carrinho} setSidebarOpen={setSidebarOpen} atualizarCarrinho={atualizarCarrinho}>Sidebar</Sidebar>}
+          <div className='containerItens'>
+          <div className={`buttonFiltroContainer ${className}`}>
+            <button className='buttonFiltro'>Pizzas</button>
+            <button className='buttonFiltro'>Bebidas</button>
+            <button className='buttonFiltro'>Aperitivos</button>
+            <button className='buttonFiltro'>Promoções</button>
+          </div>
 
-        {sidebarOpen && <Sidebar carrinho={carrinho} setSidebarOpen={setSidebarOpen} atualizarCarrinho={atualizarCarrinho}>Sidebar</Sidebar>}
-
-        <div style={{ textAlign: 'center' }} className= {className}>
-          <button className='buttonFiltro'>Pizzas</button>
-          <button className='buttonFiltro'>Bebidas</button>
-          <button className='buttonFiltro'>Aperitivos</button>
-          <button className='buttonFiltro'>Promoções</button>
-        </div>
-
-
-        <div className={`Produtos-Container ${className}`}>
-          {produtos.map((pizza, index) => (
-            <Produto pizza={pizza} key={index} abrirSidebar={setSidebarOpen} atualizarCarrinho={atualizarCarrinho} />
-          ))}
+            <div className={`Produtos-Container ${className}`}>
+              {produtos.map((pizza, index) => (
+                <Produto pizza={pizza} key={index} abrirSidebar={setSidebarOpen} atualizarCarrinho={atualizarCarrinho} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

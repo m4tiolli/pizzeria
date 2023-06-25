@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using APIPizzeria.DAO;
 using APIPizzeria.DTO;
@@ -11,8 +9,8 @@ namespace APIPizzeria.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-	// [Authorize]
-	public class UsuarioController : Controller
+    // [Authorize]
+    public class UsuarioController : Controller
     {
         //Método, rota e status
         [HttpGet]
@@ -26,16 +24,16 @@ namespace APIPizzeria.Controllers
         }
 
         [HttpGet]
-		[Route("{id}")]
-		public IActionResult ListarPorID(int id)
-		{
-			UsuarioDAO usuarioDAO = new UsuarioDAO();
-			var users = usuarioDAO.ListarPorID(id);
+        [Route("{id}")]
+        public IActionResult ListarPorID(int id)
+        {
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            var users = usuarioDAO.ListarPorID(id);
 
-			return Ok(users);
-		}
+            return Ok(users);
+        }
 
-		[HttpPut]
+        [HttpPut]
         public IActionResult Alterar(UsuarioDTO user)
         {
             UsuarioDAO dao = new UsuarioDAO();

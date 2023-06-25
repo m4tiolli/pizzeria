@@ -1,0 +1,7 @@
+.itemEQtdPedido {
+    display: flex;
+    justify-content: center;
+}
+.itemEQtdPedido h2{
+    margin-right: 0.5em;
+}

@@ -17,13 +17,17 @@ export default function SidebarPizza({
     atualizarCarrinho();
   }
 
-  // function NumeroMesa() {
-  //   fetch("https://pizzeria3.azurewebsites.net/api/Mesa", {
-  //     method: "GET",
-  //    })
-  //    if(mesa.id ===)
-  // }
-  
+//  function NumeroMesa() {
+//    fetch("https://pizzeria3.azurewebsites.net/api/Mesa", {
+//     method: "GET",
+//   })
+
+//  }
+//   function NumeroPedido(){
+//     fetch ("https://pizzeria3.azurewebsites.net/api/pedido/pedidoApi",{
+//      method: "GET",
+//     })
+//   }
   function FecharSidebar() {
     setSidebarOpen(false);
   }
@@ -113,9 +117,6 @@ export default function SidebarPizza({
             <BsCheckLg size={30} />
           </button>
         </div>
-        <span className="numeroPedido">
-          Número do pedido <span className="numero"> {/*{pedido.id}*/}</span>
-        </span>
         <span className="numeroMesa">
           Mesa <span className="numero"> {/*{mesa.numero}*/} </span>
         </span>

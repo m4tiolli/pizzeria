@@ -17,20 +17,18 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
   const [name, setName] = useState("");
   const [CPF, setCPF] = useState("");
   const [email, setEmail] = useState("");
-  const [user_name, setUser_name] = useState("");
   const [phone_number, setPhone_number] = useState("");
   const [password, setPassword] = useState("");
   const [date, setDate] = useState("");
 
   useEffect(() => {
     if (Object.keys(dataEdit).length !== 0) {
-      setName(dataEdit.name);
-      setCPF(dataEdit.CPF);
+      setName(dataEdit.nome);
+      setCPF(dataEdit.cpf);
       setEmail(dataEdit.email);
-      setUser_name(dataEdit.user_name);
-      setPhone_number(dataEdit.phone_number);
-      setPassword(dataEdit.password);
-      setDate(dataEdit.date);
+      setPhone_number(dataEdit.telefone);
+      setPassword(dataEdit.senha);
+      setDate(dataEdit.dataNasc);
     } else {
       clearFields();
     }
@@ -40,7 +38,6 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
     setName("");
     setCPF("");
     setEmail("");
-    setUser_name("");
     setPhone_number("");
     setPassword("");
     setDate("");
@@ -55,7 +52,6 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
             name,
             CPF,
             email,
-            user_name,
             phone_number,
             password,
             date,
@@ -70,7 +66,6 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
         name,
         CPF,
         email,
-        user_name,
         phone_number,
         password,
         date,
@@ -86,26 +81,27 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
       nome: name,
       cpf: CPF,
       email,
-      usuario: user_name,
       telefone: phone_number,
       senha: password,
-      dataNascimento: date,
+      dataNasc: date,
     };
-
-    fetch("https://pizzeria3.azurewebsites.net/api/usuario", {
+    console.log(body);
+    debugger;
+    fetch("https://pizzeria3.azurewebsites.net/api/auth/cadastrar", {
       method: "POST",
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     })
       .then((response) => {
         if (response.ok) {
           alert("Balcão/Usuário cadastrado com sucesso");
         } else {
-          throw new Error("Erro ao cadastrar o Balcão/Usuário");
+          throw new Error("Erro ao cadastrar o Balcão/Usuário 1");
         }
       })
       .catch((error) => {
         console.log(error);
-        alert("Erro ao cadastrar o Balcão/Usuário");
+        alert("Erro ao cadastrar o Balcão/Usuário 2");
       });
 
     clearFields();
@@ -120,7 +116,7 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
         <ModalCloseButton />
         <form onSubmit={handleSubmit}>
           <ModalBody>
-            <FormControl isRequired>
+            <FormControl>
               <FormLabel>Nome</FormLabel>
               <Input
                 type="text"
@@ -130,7 +126,7 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
               />
             </FormControl>
 
-            <FormControl isRequired>
+            <FormControl>
               <FormLabel>CPF</FormLabel>
               <Input
                 type="text"
@@ -140,7 +136,7 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
               />
             </FormControl>
 
-            <FormControl isRequired>
+            <FormControl>
               <FormLabel>Email</FormLabel>
               <Input
                 type="email"
@@ -150,17 +146,7 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
               />
             </FormControl>
 
-            <FormControl isRequired>
-              <FormLabel>Usuário</FormLabel>
-              <Input
-                type="text"
-                placeholder="Digite o usuário"
-                value={user_name}
-                onChange={(event) => setUser_name(event.target.value)}
-              />
-            </FormControl>
-
-            <FormControl isRequired>
+            <FormControl>
               <FormLabel>Celular</FormLabel>
               <Input
                 type="tel"
@@ -170,7 +156,7 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
               />
             </FormControl>
 
-            <FormControl isRequired>
+            <FormControl>
               <FormLabel>Senha</FormLabel>
               <Input
                 type="password"
@@ -180,7 +166,7 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
               />
             </FormControl>
 
-            <FormControl isRequired>
+            <FormControl>
               <FormLabel>Data de Nascimento</FormLabel>
               <Input
                 type="date"
