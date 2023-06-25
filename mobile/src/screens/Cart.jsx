@@ -16,19 +16,41 @@ import ItemCart from "../components/ItemCart/ItemCart";
 import Feather from "react-native-vector-icons/Feather";
 import { ChecarLoginUsuario } from "../components/AuthContext";
 
+
+const pedido = {
+  "id": 1,
+  "itens": [
+    {
+      "id": 0,
+      "produtoID": 0,
+      "nome": "Pizza",
+      "observacao": "",
+      "valor": 0.0,
+      "quantidade": 1
+    }
+  ],
+  "valorTotal": 0,
+  "situacao": "",
+  "tipo": "delivery",
+  "endereco": {
+    "id": 0
+  }
+}
+
+
+
 function Cart() {
   const navigation = useNavigation();
 
   async function ValidarLogin() {
     const login = await ChecarLoginUsuario();
-    if (login == true) {
-      navigation.navigate("where eat?", {pedido: pedido})
+    if (login == false) {
+      return false
+    } else {
+      navigation.navigate("where eat?", { pedido: pedido })
     }
   }
 
-  useEffect(() => {
-    ValidarLogin()
-  }, [])
 
   const [cart, setCart] = useState([]);
 
@@ -95,7 +117,7 @@ function Cart() {
               flexDirection: "row",
               justifyContent: "space-evenly",
               alignItems: "center",
-            }}  
+            }}
           >
             <TouchableOpacity style={styles.clear} onPress={clearCart}>
               <Icon
