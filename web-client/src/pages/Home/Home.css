@@ -25,8 +25,9 @@
   width: 50%;
   margin-top: 15vw;
   text-align: center;
-  color: #fff;
+  color: #fff !important;
   font-weight: 400;
+  cursor: context-menu;
 }
 
 /* div da pesquisa, 6% de altura e 65% de largura da tela, display flex e a distribuição de espaço será entre os objetos, ficará centralizado na tela com margin auto */
@@ -88,6 +89,7 @@
 .delivery {
   width: 40%;
   height: 20vh;
+  cursor: pointer;
 }
 
 /* o elemento div que estará dentro da div cardapio e delivery vai ocupar 100% da largura dessas div, itens centralizados verticalmente, display flex e o espaço será distribuido entre os elements, no caso a imagem e o botão em si */
@@ -100,6 +102,7 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
+ 
 }
 
 /* no caso o botão é somente o texto, a cor de fundo é usada nas divs cardapio e delivery, vai ocupar 55% do espaço das divs cardapio e delivery, o icone vai ocupar os outros 45% e o texto vai ser alinhado à esquera */
@@ -110,6 +113,7 @@
   background: none;
   width: 55%;
   text-align: left;
+  cursor: pointer;
 }
 /* os icones terao largura de 4% da tela e o espaçamento entre os lados horizontalmente vai ser distribuido automaticamente */
 .iconCarda {

@@ -8,10 +8,9 @@
     justify-content: space-between;
 }
 
-body{
-    overflow: hidden;
+body {
+    overflow-x: hidden;
 }
-
 
 .imgPizza1{
     align-items: center;

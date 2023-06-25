@@ -1,17 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 .imagePizza {
-  min-width: auto;
-  max-width: 360px;
-  min-height: auto;
+  display: block;
+  margin: 0 auto; /* Adicionado para alinhar a imagem ao centro */
+  max-width: 100%;
   max-height: 220px;
-  position: relative;
-  display: flex;
-  align-self: center;
 }
+.observacao{
 
+}
 .ContainerPizzas {
-  width: 250px;
+  width: auto;
   height: 500px;
 }
 .buttonContainer {
@@ -20,11 +19,24 @@
   align-items: center;
   margin-top: 10px;
 }
-/* Estilos dos itens da tela principal */
+.numeroPedido,
+.numeroMesa{
+  display: block;
+  margin-bottom: 5px;
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
+}
+
+.numero{
+  font-weight: bold;
+  font-size: 20px;
+  float: right;
+  margin-right: 20px;
+}
+
+
 .itemContainer.moveItems {
-  /* Adicione aqui os estilos de movimento desejados */
-  /* Por exemplo, para mover os itens para a direita em 200 pixels: */
-  transform: translateX(200px);
+  transform: translateX(calc(100% - 360px));
 }
 
 .adicionar,
@@ -39,8 +51,8 @@
 }
 
 #sidebar {
-  position: fixed;
-  max-width: 260px;
+  position: sticky;
+  max-width: 360px;
   width: 100%;
   top: 0;
   left: 0;

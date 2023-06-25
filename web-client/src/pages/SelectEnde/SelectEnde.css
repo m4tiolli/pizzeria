@@ -1,24 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap");
 
 .fundoEndereco {
-    
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 80vh;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 80vh;
 }
 
 .fundoEndereco {
-    height: 26vw;
-  }
-
-#enderecoprincipal {
-    width: 100vw;
-    height: 100%;
+  height: 26vw;
 }
 
-.conteudoEndereco{
-    display: flex;
+#enderecoprincipal {
+  width: 100vw;
+  height: 100%;
+}
+
+.conteudoEndereco {
+  display: flex;
   justify-content: center;
   align-items: center;
   background: #efefef;
@@ -26,9 +25,10 @@
   height: 100vh;
 }
 
-.blocoEndereco{
-    width: 30%;
-  height: 70%;
+.blocoEndereco {
+  width: 40%;
+  height: fit-content;
+  padding-block: 1vh;
   border-radius: 20px;
   background-color: #fff;
   text-align: center;
@@ -36,10 +36,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
-.btnAvancar{
-    font-family: "Poppins";
+.btnAvancar {
+  font-family: "Poppins";
   padding: 0.03em 2em;
   width: 19vw;
   border-radius: 10px;
@@ -50,48 +51,48 @@
   align-items: center;
   justify-content: center;
   display: flex;
-  margin: .5em auto;
+  margin: 0.5em auto;
 }
 
-.btnAdd:hover, .btnAvancar:hover{
-    transition: .2s linear;
-    opacity: .8;
+.btnAdd:hover,
+.btnAvancar:hover {
+  transition: 0.2s linear;
+  opacity: 0.8;
 }
 
-.btnAdd:not(hover), .btnAvancar:not(hover){
-    transition: .2s linear;
+.btnAdd:not(hover),
+.btnAvancar:not(hover) {
+  transition: 0.2s linear;
 }
 
-.btnAdd:active, .btnAvancar:active{
-    transition: .1s linear;
-    transform: translateY(2px);
-    opacity: .9;
-    box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
+.btnAdd:active,
+.btnAvancar:active {
+  transition: 0.1s linear;
+  transform: translateY(2px);
+  opacity: 0.9;
+  box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
 }
 
-.txtSeleEnd{
-    font-family: "Poppins";
-    font-size: 3.5vw;
-    color: #8e1c1e;
-    margin: .5em 0;
-    margin: auto;
-
+.txtSeleEnd {
+  font-family: "Poppins";
+  font-size: 3.5vw;
+  color: #8e1c1e;
+  margin: 0.5em 0;
+  margin: auto;
+  font-weight: 600;
 }
 
-.divRadio{
 
-}
-
-.btnAdd{
-    font-family: "Poppins";
-    padding: 0.03em 2em;
-    width: 19vw;
-    font-size: 1.5vw;
-    border: none;
-    background-color: #fff;
-    color: #8e1c1e;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    margin: .5em auto;
+.btnAdd {
+  font-family: "Poppins";
+  padding: 0.03em 2em;
+  width: 19vw;
+  font-size: 1.5vw;
+  border: none;
+  background-color: #fff;
+  color: #8e1c1e;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin: 0.5em auto;
 }

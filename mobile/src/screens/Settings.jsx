@@ -14,9 +14,23 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import Header from './../components/Header/Header';
 import { useNavigation } from "@react-navigation/native";
 import Alert from "../components/Alert/Alert";
+import { useState, useEffect } from "react";
+import {DadosUsuario} from "../components/AuthContext"
 
 function Settings() {
   const navigation = useNavigation()
+
+  const [usuario, setUsuario] = useState("");
+
+  async function PreencherDados() {
+      const jwt = await DadosUsuario();
+      setUsuario(jwt);
+  }
+
+  useEffect(() => {
+      PreencherDados();
+  }, []);
+
   return (
     <View style={{ width: "100%", height: "100%", backgroundColor: "#efefef" }}>
       <Header/>
@@ -34,8 +48,11 @@ function Settings() {
         color={"#8e1c1c"}
         size={PixelRatio.getPixelSizeForLayoutSize(35)}
         />
-        <Text style={styles.name}>Gabriel Matiolli</Text>
-        <TouchableOpacity style={styles.button}>
+        <Text style={styles.name}>{usuario?.Email}</Text>
+        <TouchableOpacity 
+          style={styles.button}
+          onPress={() => navigation.navigate('EditUser')}
+        >
           <Text style={styles.textbtn}>editar perfil</Text>
           <AntDesign
             name="user"
@@ -87,7 +104,7 @@ const styles = StyleSheet.create({
     fontSize: PixelRatio.getPixelSizeForLayoutSize(5),
     color: '#8e1c1a'
   },
-  name: {
+    name: {
     fontFamily: "Poppins_500Medium",
     margin: PixelRatio.getPixelSizeForLayoutSize(9),
     fontSize: PixelRatio.getPixelSizeForLayoutSize(7),

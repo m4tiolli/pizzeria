@@ -7,7 +7,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+
     z-index: 1;
     position: fixed;
 }
@@ -16,6 +16,7 @@
     height: 70%;
     width: auto;
     margin: 0 1em;
+    cursor: pointer;
 }
 
 .buttons1 {
@@ -31,6 +32,7 @@
     color: #8e1c1e;
     background-color: transparent;
     margin-right: 0px;
+    cursor: pointer;
     
 }
 
@@ -38,6 +40,7 @@
     background-color: #8e1c1e;
     color: white;
     margin-right: 0px;
+    cursor: pointer;
    
 }
 
@@ -80,6 +83,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    cursor: pointer;
 }
 
 .carrinho{
@@ -93,6 +97,7 @@
     text-align: center;
     align-items: center;
     display: flex;
+    cursor: pointer;
 }
 
 .imgCarrinho{

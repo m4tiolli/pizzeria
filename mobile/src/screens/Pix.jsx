@@ -3,9 +3,6 @@ import { Text, View, PixelRatio, StyleSheet, TouchableOpacity } from "react-nati
 import QRCode from 'react-native-qrcode-svg';
 import Success from "./Success";
 import { useState, useEffect } from "react";
-import Alert from "../components/Alert/Alert";
-import {useClipboard} from '@react-native-clipboard/clipboard';
-
 
 function Pix() {
 
@@ -37,11 +34,6 @@ function Pix() {
 
     const payload = `PIX:02|${chavePix}*|${nomeRecebedor}|${valor}|`;
 
-    const [data, setString] = useClipboard();
-
-    const copiarTexto = useEffect(() => {
-        setString(payload);
-    }, []);
     return (
         <View style={{
             width: "100%",
@@ -57,7 +49,7 @@ function Pix() {
                 backgroundColor="#efefef"
                 color="#8e1c1c"
             />
-            <TouchableOpacity style={styles.copy} onPress={copiarTexto}>
+            <TouchableOpacity style={styles.copy}>
                 <Text style={{ fontFamily: 'Poppins_500Medium', color: '#efefef' }}>copy pix code</Text>
             </TouchableOpacity>
             <View style={{ alignItems: 'center', width: '100%' }}>

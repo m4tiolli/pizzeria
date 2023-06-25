@@ -11,6 +11,8 @@ import React, { useRef, useState, useEffect } from "react";
 import Feather from "react-native-vector-icons/Feather";
 import { ChecarLoginUsuario, SalvarJWT } from "../AuthContext";
 import jwtDecode from "jwt-decode";
+import axios from "axios";
+import Alert from "./../Alert/Alert";
 
 export default function Login() {
   const navigation = useNavigation();
@@ -36,30 +38,33 @@ export default function Login() {
   async function verificarLogin() {
     const usuarioLogado = await ChecarLoginUsuario();
     if (usuarioLogado) {
-      navigation.navigate("Home")
+      navigation.navigate("Home");
     }
   }
 
   function Login() {
-    fetch("https://pizzeria3.azurewebsites.net/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams({
-        email,
-        senha,
-      }),
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        SalvarJWT(json.token);
-      })
-      .then(() => navigation.navigate("Home"))
-      .catch((error) => {
-        console.log(error);
-        alert("Erro ao cadastrar resultado");
-      });
+    if (email == "" || senha == "") {
+      <Alert message={"Preencha todos os campos."} />;
+    } else {
+      const formData = new URLSearchParams();
+      formData.append("email", email);
+      formData.append("senha", senha);
+      axios.post(
+        "https://localhost:44383/api/auth/login",
+        formData.toString(),
+        {
+          headers: { "Content-type": "application/x-www-form-urlencoded" },
+        }
+      )
+        .then((response) => {
+          SalvarJWT(response.data.token)
+        })
+        .then(() => navigation.navigate("Home"))
+        .catch((err) => {
+          <Alert message={"Usuário ou senha inválidos."} />
+          console.log(err)
+        })
+    }
   }
 
   return (
@@ -106,12 +111,8 @@ export default function Login() {
           </TouchableOpacity>
         </View>
       </View>
-      <TouchableOpacity style={styles.next} onPress={Login}>
-        <Text
-          style={styles.nexttext}
-        >
-          login
-        </Text>
+      <TouchableOpacity style={styles.next} onPress={() => Login()}>
+        <Text style={styles.nexttext}>login</Text>
       </TouchableOpacity>
     </View>
   );

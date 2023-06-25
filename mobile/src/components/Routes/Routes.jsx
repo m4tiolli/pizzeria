@@ -11,6 +11,7 @@ import PaymentMethods from "../../screens/PaymentMethods";
 import AddressMethods from "../../screens/AddressMethods";
 import Payment from "../../screens/Payment";
 import PaymentCredit from "../../screens/PaymentCredit";
+import EditUser from "../../screens/EditUser";
 
 const Stack = createNativeStackNavigator();
 
@@ -81,6 +82,11 @@ export default function Routes() {
       <Stack.Screen
         name="PaymentCredit"
         component={PaymentCredit}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name='EditUser'
+        component={EditUser}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

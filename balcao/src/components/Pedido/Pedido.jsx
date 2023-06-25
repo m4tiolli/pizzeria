@@ -3,8 +3,8 @@ import "./Pedido.css"
 
 export default function Pedido() {
     return (
-        <section className="sidebar">
-            <div children="sidebar">
+        <section className="sidebarPedido">
+            <div children="sidebarPedido">
                 <div className="containerInfo">
                     <span className="infoItem">Número pedido: <span className="secundario">2</span></span>
                     <span className="infoItem">Nome do Cliente: <span className="secundario">Lourival Cícero</span></span>  

@@ -20,6 +20,13 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    cursor: pointer;
+    transition: .2s linear;
+}
+
+.fundoPizza:hover {
+    box-shadow:  0px 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px
 }
 
 .imgPizza{
@@ -31,7 +38,7 @@
 
 .nomePizza{
     font-family: "Poppins";
-    font-size: 1.5vw;
+    font-size: 1.5vw !important;
     font-weight: 600;
 }
 
@@ -63,15 +70,6 @@
     display: flex;
     margin: .5em auto;
 }
-
-.btnAddCart{
-    margin-right: 0.9em; 
-}
-
-.btnAlterar{
-    margin-left: 0.9em;
-}
-
 .btnAddCart:hover, .btnAlterar:hover {
     transition: .2s linear;
     opacity: .8;
@@ -89,7 +87,5 @@
   }
 
 .buttonsPro{
-    justify-content: space-evenly;
-    display: flex;
     width: 80%;
 }
