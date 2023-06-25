@@ -16,7 +16,7 @@ namespace APIPizzeria.Controllers
     {
 			//Método, rota e status
 			[HttpGet]
-			[Route("{id}")]
+			[Route("listarenderecos")]
 			public IActionResult Listar(int id)
 			{
 				EnderecoDAO EnderecoDAO = new EnderecoDAO();
@@ -24,7 +24,19 @@ namespace APIPizzeria.Controllers
 
 				return Ok(endereco);
 			}
-			[HttpPost]
+
+
+		[HttpGet]
+		[Route("{id}")]
+		public IActionResult ListarPorID(int id)
+		{
+			EnderecoDAO EnderecoDAO = new EnderecoDAO();
+			var endereco = EnderecoDAO.ListarPorIDUnico(id);
+
+			return Ok(endereco);
+		}
+
+		[HttpPost]
 			public IActionResult Cadastrar([FromBody] EnderecoDTO endereco)
 			{
 				EnderecoDAO dao = new EnderecoDAO();

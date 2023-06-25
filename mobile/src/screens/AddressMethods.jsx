@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Address from "../components/Address/Address";
 import axios from 'axios';
 import { DadosUsuario } from "../components/AuthContext";
+import BackButton from "../components/BackButton/BackButton";
 
 export default function AddressMethods() {
     const [modalNewVisible, setModalNewVisible] = useState(false);
@@ -15,9 +16,10 @@ export default function AddressMethods() {
     const [cep, setCEP] = useState("");
     const [uf, setUF] = useState("");
     const [cidade, setCidade] = useState("");
+    const [bairro, setBairro] = useState("");
     const [tipo, setTipo] = useState("");
 
-    const [enderecos, setEnderecos] = useState([])
+    const [enderecos, setEnderecos] = useState([]);
 
     const [usuario, setUsuario] = useState();
 
@@ -38,6 +40,7 @@ export default function AddressMethods() {
             const data = response.data;
             setRua(data.logradouro);
             setCidade(data.localidade);
+            setBairro(data.bairro);
             setUF(data.uf);
         } catch (error) {
             console.log(error);
@@ -45,23 +48,35 @@ export default function AddressMethods() {
     }
 
     function ListarEndereco(id) {
-        fetch("https://localhost:44383/api/endereco/" + id, {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
+        fetch("https://pizzeria3.azurewebsites.net/api/endereco/listarenderecos?id=" + id, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
         })
-          .then((response) => response.json())
-          .then((data) => {
-            if (Array.isArray(data)) {
-              setEnderecos(data);
-            } else {
-              setEnderecos([]);
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-            alert("Erro ao buscar endereços.");
-          });
-      }
+            .then((response) => response.json())
+            .then((data) => {
+                if (Array.isArray(data)) {
+                    setEnderecos(data);
+                } else {
+                    setEnderecos([]);
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                alert("Erro ao buscar endereços.");
+            });
+    }
+
+
+    const body = { idusuario: usuario?.ID, uf, cidade, bairro, rua, num }
+    function CadastrarEndereco() {
+        fetch("https://pizzeria3.azurewebsites.net/api/endereco", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body),
+        })
+            .then((response) => alert("Endereço cadastrado com sucesso."))
+            .then(() => navigation.navigate("AdressMethods"))
+    }
 
     return (
         <View style={{
@@ -71,6 +86,7 @@ export default function AddressMethods() {
             alignItems: 'center',
             paddingTop: "20%"
         }}>
+            <BackButton />
             <Text style={{
                 fontFamily: 'Poppins_500Medium',
                 fontSize: PixelRatio.getPixelSizeForLayoutSize(7),
@@ -166,7 +182,7 @@ export default function AddressMethods() {
                                 placeholderTextColor={"#898989"}
                             />
                         </View>
-                        <TouchableOpacity style={styles.button}>
+                        <TouchableOpacity style={styles.button} onPress={CadastrarEndereco}>
                             <Text style={{ fontFamily: 'Poppins_500Medium', color: '#efefef', fontSize: PixelRatio.getPixelSizeForLayoutSize(9) }}>confirm</Text>
                         </TouchableOpacity>
                     </View>

@@ -69,6 +69,7 @@ namespace APIPizzeria
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
+                .AllowCredentials()
             );
 
 			app.UseAuthentication();

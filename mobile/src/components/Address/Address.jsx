@@ -1,24 +1,106 @@
-import { Text, View, StyleSheet, PixelRatio, Modal, TouchableOpacity, TextInput } from "react-native";
+import {
+    Text,
+    View,
+    StyleSheet,
+    PixelRatio,
+    Modal,
+    TouchableOpacity,
+    TextInput,
+} from "react-native";
 import { RadioButton } from "react-native-paper";
-import { useState } from "react";
-import AntDesign from 'react-native-vector-icons/AntDesign';
-function Address({endereco}) {
-    
+import { useState, useEffect } from "react";
+import AntDesign from "react-native-vector-icons/AntDesign";
+import { DadosUsuario } from "../AuthContext";
+import { useNavigation } from "@react-navigation/native";
+
+function Address({ endereco }) {
+    //Navegação
+    const navigation = useNavigation();
+    //Checar
     const [checked, setChecked] = useState(false);
     const [modalEditVisible, setModalEditVisible] = useState(false);
 
+    //Dados do endereço
+    const [address, setAddress] = useState("");
+
+    //Campos para editar
+    const [uf, setUF] = useState("");
+    const [cidade, setCidade] = useState("");
+    const [bairro, setBairro] = useState("");
+    const [rua, setRua] = useState("");
+    const [numCasa, setNumCasa] = useState("");
+
+    //Dados do usuario
+    const [usuario, setUsuario] = useState("");
+
+    async function Dados() {
+        const jwt = await DadosUsuario();
+        setUsuario(jwt);
+    }
+
+    useEffect(() => {
+        Dados();
+    }, []);
+
+    useEffect(() => {
+        fetch("https://pizzeria3.azurewebsites.net/api/endereco/" + endereco?.id, {
+            method: "GET",
+        })
+            .then((response) => response.json())
+            .then((json) => setAddress(json))
+            .catch((err) => {
+                console.log(err);
+                alert("Erro ao buscar");
+            });
+    }, []);
+
+    useEffect(() => {
+        if (address) {
+            setUF(address?.uf);
+            setCidade(address?.cidade);
+            setBairro(address?.bairro);
+            setRua(address?.rua);
+            setNumCasa(address?.numCasa);
+        }
+    }, [address]);
+
+    //Corpo para edição de dados
+    const body = { idusuario: usuario?.ID, uf, cidade, bairro, rua, numCasa };
+
+    function AlterarEndereco() {
+        fetch("https://pizzeria3.azurewebsites.net/api/endereco", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json", 'Access-Control-Allow-Origin': 'true' },
+            body: JSON.stringify(body),
+        })
+            .then((response) => {
+                alert("Dados editados com sucesso");
+            })
+            .then(() => navigation.navigate("Settings"))
+            .catch((err) => {
+                console.log(err);
+                alert("Erro ao editar os usuarios");
+            });
+    }
+
     return (
         <View style={styles.container}>
-            <RadioButton value="apple"
+            <RadioButton
+                value="apple"
                 status={"checked"}
                 onPress={() => setChecked(!checked)}
                 color="#8e1c1a"
             />
-            <View style={{ flexDirection: 'column' }}>
+            <View style={{ flexDirection: "column" }}>
                 <Text style={styles.text1}>{endereco.rua}</Text>
                 <Text style={styles.text2}>{endereco.cep}</Text>
-            </View><TouchableOpacity onPress={() => setModalEditVisible(true)}>
-                <AntDesign name="edit" color="#8e1c1a" size={PixelRatio.getPixelSizeForLayoutSize(8)} />
+            </View>
+            <TouchableOpacity onPress={() => setModalEditVisible(true)}>
+                <AntDesign
+                    name="edit"
+                    color="#8e1c1a"
+                    size={PixelRatio.getPixelSizeForLayoutSize(8)}
+                />
             </TouchableOpacity>
             <Modal
                 animationType="slide"
@@ -26,21 +108,28 @@ function Address({endereco}) {
                 visible={modalEditVisible}
                 onRequestClose={() => {
                     setModalEditVisible(!modalEditVisible);
-                }}>
-                <View style={styles.modalcontainer} onPress={() => setModalEditVisible(!modalEditVisible)}>
+                }}
+            >
+                <View
+                    style={styles.modalcontainer}
+                    onPress={() => setModalEditVisible(!modalEditVisible)}
+                >
                     <View style={styles.modalView}>
-                        <TouchableOpacity onPress={() => setModalEditVisible(!modalEditVisible)} style={{ position: 'absolute', top: PixelRatio.getPixelSizeForLayoutSize(2), right: PixelRatio.getPixelSizeForLayoutSize(2) }} >
-                            <AntDesign name="close" color="#8e1c1a" size={PixelRatio.getPixelSizeForLayoutSize(15)} /></TouchableOpacity>
-                        <Text style={styles.text1}>edit an address</Text>
-                        <View style={styles.boxinput}>
-                            <Text style={styles.textinput}>name</Text>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Ex: home"
-                                underlineColorAndroid="transparent"
-                                placeholderTextColor={"#898989"}
+                        <TouchableOpacity
+                            onPress={() => setModalEditVisible(!modalEditVisible)}
+                            style={{
+                                position: "absolute",
+                                top: PixelRatio.getPixelSizeForLayoutSize(2),
+                                right: PixelRatio.getPixelSizeForLayoutSize(2),
+                            }}
+                        >
+                            <AntDesign
+                                name="close"
+                                color="#8e1c1a"
+                                size={PixelRatio.getPixelSizeForLayoutSize(15)}
                             />
-                        </View>
+                        </TouchableOpacity>
+                        <Text style={styles.text1}>edit an address</Text>
                         <View style={styles.boxinput}>
                             <Text style={styles.textinput}>uf</Text>
                             <TextInput
@@ -48,15 +137,8 @@ function Address({endereco}) {
                                 placeholder="Ex: SP"
                                 underlineColorAndroid="transparent"
                                 placeholderTextColor={"#898989"}
-                            />
-                        </View>
-                        <View style={styles.boxinput}>
-                            <Text style={styles.textinput}>postal code</Text>
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Ex: 12345-678"
-                                underlineColorAndroid="transparent"
-                                placeholderTextColor={"#898989"}
+                                onChangeText={setUF}
+                                value={uf}
                             />
                         </View>
                         <View style={styles.boxinput}>
@@ -66,6 +148,8 @@ function Address({endereco}) {
                                 placeholder="Ex: Santana de Parnaiba"
                                 underlineColorAndroid="transparent"
                                 placeholderTextColor={"#898989"}
+                                onChangeText={setCidade}
+                                value={cidade}
                             />
                         </View>
                         <View style={styles.boxinput}>
@@ -75,6 +159,19 @@ function Address({endereco}) {
                                 placeholder="Ex: Rua Ermelinda"
                                 underlineColorAndroid="transparent"
                                 placeholderTextColor={"#898989"}
+                                onChangeText={setRua}
+                                value={rua}
+                            />
+                        </View>
+                        <View style={styles.boxinput}>
+                            <Text style={styles.textinput}>neighborhood</Text>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="Ex: Jardim Flores"
+                                underlineColorAndroid="transparent"
+                                placeholderTextColor={"#898989"}
+                                onChangeText={setBairro}
+                                value={bairro}
                             />
                         </View>
                         <View style={styles.boxinput}>
@@ -84,13 +181,27 @@ function Address({endereco}) {
                                 placeholder="Ex: 0123"
                                 underlineColorAndroid="transparent"
                                 placeholderTextColor={"#898989"}
+                                onChangeText={setNumCasa}
+                                value={numCasa}
                             />
                         </View>
-                        <TouchableOpacity style={styles.button}>
-                            <Text style={{ fontFamily: 'Poppins_500Medium', color: '#efefef', fontSize: PixelRatio.getPixelSizeForLayoutSize(9) }}>save</Text>
+                        <TouchableOpacity
+                            style={styles.button}
+                            onPress={() => AlterarEndereco()}
+                        >
+                            <Text
+                                style={{
+                                    fontFamily: "Poppins_500Medium",
+                                    color: "#efefef",
+                                    fontSize: PixelRatio.getPixelSizeForLayoutSize(9),
+                                }}
+                            >
+                                save
+                            </Text>
                         </TouchableOpacity>
                     </View>
-                </View></Modal>
+                </View>
+            </Modal>
         </View>
     );
 }
@@ -98,11 +209,11 @@ function Address({endereco}) {
 const styles = StyleSheet.create({
     container: {
         height: PixelRatio.getPixelSizeForLayoutSize(25),
-        width: '70%',
-        justifyContent: 'space-evenly',
-        flexDirection: 'row',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        width: "70%",
+        justifyContent: "space-evenly",
+        flexDirection: "row",
+        alignItems: "center",
+        backgroundColor: "#F5FCFF",
         borderRadius: 10,
         elevation: 10,
         shadowColor: "#171717",
@@ -112,25 +223,25 @@ const styles = StyleSheet.create({
         marginVertical: PixelRatio.getPixelSizeForLayoutSize(10),
     },
     text1: {
-        fontFamily: 'Poppins_500Medium',
+        fontFamily: "Poppins_500Medium",
         fontSize: PixelRatio.getPixelSizeForLayoutSize(6),
         color: "#8e1c1a",
     },
     text2: {
-        fontFamily: 'Poppins_300Light_Italic',
+        fontFamily: "Poppins_300Light_Italic",
         fontSize: PixelRatio.getPixelSizeForLayoutSize(5),
         color: "#898989",
     },
     modalcontainer: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'none'
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "none",
     },
     modalView: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#fff',
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#fff",
         padding: PixelRatio.getPixelSizeForLayoutSize(20),
         width: PixelRatio.getPixelSizeForLayoutSize(150),
         borderRadius: 10,
@@ -169,16 +280,16 @@ const styles = StyleSheet.create({
         fontFamily: "Poppins_400Regular",
     },
     button: {
-        backgroundColor: '#8e1c1c',
+        backgroundColor: "#8e1c1c",
         borderRadius: 5,
         marginVertical: PixelRatio.getPixelSizeForLayoutSize(10),
-        width: '80%',
+        width: "80%",
         height: PixelRatio.getPixelSizeForLayoutSize(25),
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        elevation: 4
-    }
-})
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        elevation: 4,
+    },
+});
 
 export default Address;

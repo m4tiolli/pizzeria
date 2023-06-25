@@ -38,6 +38,36 @@ namespace APIPizzeria.DAO
 			}
 			Conexao.Close();
 			return Lista;
+		}	
+
+		public EnderecoDTO ListarPorIDUnico(int id)
+		{
+			var conexao = ConnectionFactory.Build();
+			conexao.Open();
+
+			var query = "SELECT * FROM enderecos WHERE idendereco = @id;";
+
+			MySqlCommand comando = new MySqlCommand(query, conexao);
+			comando.Parameters.AddWithValue("@id", id);
+			var dataReader = comando.ExecuteReader();
+
+			var endereco = new EnderecoDTO();
+
+			while (dataReader.Read())
+			{
+
+				endereco.ID = int.Parse(dataReader["idendereco"].ToString());
+				endereco.IDUsuario = int.Parse(dataReader["idusuario"].ToString());
+				endereco.UF = dataReader["uf"].ToString();
+				endereco.Cidade = dataReader["cidade"].ToString();
+				endereco.Bairro = dataReader["bairro"].ToString();
+				endereco.Rua = dataReader["rua"].ToString();
+				endereco.NumCasa = dataReader["numcasa"].ToString();
+				endereco.CEP = dataReader["cep"].ToString();
+
+			}
+			conexao.Close();
+			return endereco;
 		}
 
 
@@ -66,7 +96,7 @@ namespace APIPizzeria.DAO
 			var conexao = ConnectionFactory.Build();
 			conexao.Open();
 
-			var query = @"UPDATE enderecos SET idusuario = @idusuario, uf = @uf, cidade = @cidade, bairro = @bairro, rua = @rua, numCasa = @numCasa WHERE id = @id";
+			var query = @"UPDATE enderecos SET uf = @uf, cidade = @cidade, bairro = @bairro, rua = @rua, numCasa = @numCasa WHERE idusuario = @id";
 
 			var comando = new MySqlCommand(query, conexao);
 			comando.Parameters.AddWithValue("@idusuario", enderecos.IDUsuario);

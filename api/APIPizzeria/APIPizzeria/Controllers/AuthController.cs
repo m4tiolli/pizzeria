@@ -61,7 +61,7 @@ namespace APIPizzeria.Controllers
 				"APIUsuarios",
 				"APIUsuarios",
 				claims,
-				expires: DateTime.UtcNow.AddMinutes(5),
+				expires: DateTime.UtcNow.AddDays(7),
 				signingCredentials: credentials
 			);
 

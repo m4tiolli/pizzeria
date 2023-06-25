@@ -20,7 +20,6 @@ export default function EditUser() {
     const jwt = await DadosUsuario();
     setUsuario(jwt);
     BuscarDados(jwt);
-
   }
 
   useEffect(() => {
@@ -29,7 +28,7 @@ export default function EditUser() {
 
   async function BuscarDados(jwt) {
     if (jwt?.ID) {
-      const response = await fetch(`https://localhost:44383/api/usuario/${jwt.ID}`, {
+      const response = await fetch(`https://pizzeria3.azurewebsites.net/api/usuario/${jwt.ID}`, {
         method: "GET",
       });
       if (response.ok) {
@@ -57,7 +56,7 @@ export default function EditUser() {
 
   function AlterarDados() {
     if (senha === usuarioPorID?.senha) {
-      fetch(`https://localhost:44383/api/usuario/${usuarioPorID?.ID}`, {
+      fetch(`https://pizzeria3.azurewebsites.net/api/usuario/${usuarioPorID?.ID}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
