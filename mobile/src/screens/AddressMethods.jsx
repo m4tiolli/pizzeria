@@ -1,10 +1,12 @@
 import { View, Text, TextInput, Modal, PixelRatio, StyleSheet, TouchableOpacity } from "react-native";
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Address from "../components/Address/Address";
 import axios from 'axios';
 import { RadioButton } from "react-native-paper";
+import Alert from "../components/Alert/Alert";
+import { DadosUsuario } from "../components/AuthContext";
 
 export default function AddressMethods() {
     const [modalNewVisible, setModalNewVisible] = useState(false);
@@ -17,20 +19,21 @@ export default function AddressMethods() {
     const [cidade, setCidade] = useState("");
     const [tipo, setTipo] = useState("");
 
+    const [enderecos, setEnderecos] = useState([])
+
     const [usuario, setUsuario] = useState("");
 
     async function PreencherDados() {
         const jwt = await DadosUsuario();
         setUsuario(jwt);
+        ListarEndereco(jwt)
+        console.log(enderecos)
     }
 
     useEffect(() => {
         PreencherDados();
     }, []);
 
-    function Cadastrar() {
-
-    }
     async function buscarEndereco() {
         try {
             const response = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
@@ -41,6 +44,24 @@ export default function AddressMethods() {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    function ListarEndereco(jwt) {
+        const id = jwt.id
+
+        fetch("https://localhost:44383/api/endereco/" + id, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+        })
+            .then((response) => {
+                const json = response.json()
+                setEnderecos(json)
+            })
+
+            .catch((error) => {
+                console.log(error);
+                <Alert message={"Erro ao buscar endereços."} />
+            });
     }
 
     return (
@@ -58,9 +79,9 @@ export default function AddressMethods() {
                 marginVertical: PixelRatio.getPixelSizeForLayoutSize(7)
             }}>your saved address</Text>
 
-            <Address />
-            <Address />
-            <Address />
+            {enderecos.map((enderecos, index) => (
+                <Address key={index} endereco={enderecos} />
+            ))}
 
             <TouchableOpacity style={styles.addnew1} onPress={() => setModalNewVisible(!modalNewVisible)}>
                 <AntDesign name="plus" size={PixelRatio.getPixelSizeForLayoutSize(7)} color={"#8e1c1a"} />

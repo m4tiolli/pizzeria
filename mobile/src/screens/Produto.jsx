@@ -11,6 +11,7 @@ import { useRoute, useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { TextInput } from "react-native-gesture-handler";
 import { useState } from "react";
+import BackButton from "../components/BackButton/BackButton";
 
 export default function Produto() {
   const route = useRoute();
@@ -55,6 +56,7 @@ export default function Produto() {
 
   return (
     <ScrollView>
+      <BackButton />
       <View
         style={{
           width: "100%",

@@ -14,7 +14,7 @@ namespace APIPizzeria.DAO
 			var conexao = ConnectionFactory.Build();
 			conexao.Open();
 
-			var query = "SELECT*FROM usuario WHERE Email = @email AND Senha = @senha";
+			var query = "SELECT * FROM usuario WHERE usuario.email = @email AND senha = @senha";
 
 			var comando = new MySqlCommand(query, conexao);
 			comando.Parameters.AddWithValue("@email", dadosLogin.Email);

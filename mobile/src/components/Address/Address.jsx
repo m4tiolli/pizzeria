@@ -2,7 +2,7 @@ import { Text, View, StyleSheet, PixelRatio, Modal, TouchableOpacity, TextInput 
 import { RadioButton } from "react-native-paper";
 import { useState } from "react";
 import AntDesign from 'react-native-vector-icons/AntDesign';
-function Address() {
+function Address({endereco}) {
     const [checked, setChecked] = useState(false);
     const [modalEditVisible, setModalEditVisible] = useState(false);
 
@@ -14,8 +14,8 @@ function Address() {
                 color="#8e1c1a"
             />
             <View style={{ flexDirection: 'column' }}>
-                <Text style={styles.text1}>casa</Text>
-                <Text style={styles.text2}>rua ermelinda, nº2</Text>
+                <Text style={styles.text1}>{endereco.rua}</Text>
+                <Text style={styles.text2}>{endereco.cep}</Text>
             </View><TouchableOpacity onPress={() => setModalEditVisible(true)}>
                 <AntDesign name="edit" color="#8e1c1a" size={PixelRatio.getPixelSizeForLayoutSize(8)} />
             </TouchableOpacity>

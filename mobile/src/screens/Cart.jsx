@@ -55,10 +55,9 @@ function Cart({item}) {
   };
 
   const pedido = {
+    cart,
     valor: calculateTotal(),
-    observacao: cart.observacao,
-    quantidade: cart.quantidade,
-    cart
+    situacao: "aberto"
   }
 
   return (
@@ -91,7 +90,7 @@ function Cart({item}) {
               flexDirection: "row",
               justifyContent: "space-evenly",
               alignItems: "center",
-            }}
+            }}  
           >
             <TouchableOpacity style={styles.clear} onPress={clearCart}>
               <Icon

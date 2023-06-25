@@ -9,7 +9,7 @@ namespace APIPizzeria.DAO
 {
 	public class EnderecoDAO
 	{
-		public List<EnderecoDTO> Listar(int idusuario)
+		public EnderecoDTO Listar(int idusuario)
 		{
 			var conexao = ConnectionFactory.Build();
 			conexao.Open();
@@ -22,12 +22,10 @@ namespace APIPizzeria.DAO
 
 			
 
-			var enderecoss = new List<EnderecoDTO>();
+			var enderecos = new EnderecoDTO();
 
 			while (dataReader.Read())
 			{
-				var enderecos = new EnderecoDTO();
-
 				enderecos.ID = int.Parse(dataReader["id"].ToString());
 				enderecos.IDUsuario = int.Parse(dataReader["idusuario"].ToString());
 				enderecos.UF = dataReader["uf"].ToString();
@@ -36,11 +34,9 @@ namespace APIPizzeria.DAO
 				enderecos.Rua = dataReader["rua"].ToString();
 				enderecos.NumCasa = dataReader["numCasa"].ToString();
 				enderecos.CEP = dataReader["cep"].ToString();
-
-				enderecoss.Add(enderecos);
 			}
 			conexao.Close();
-			return enderecoss;
+			return enderecos;
 		}
 
 		public void Cadastrar(EnderecoDTO enderecos)

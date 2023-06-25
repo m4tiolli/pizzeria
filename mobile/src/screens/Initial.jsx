@@ -7,6 +7,14 @@ import {
   PixelRatio,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import {
+  useFonts,
+  Poppins_300Light,
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_600SemiBold,
+} from "@expo-google-fonts/poppins";
+
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
 import Loading from "../components/Loading";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
@@ -15,17 +23,26 @@ import { ChecarLoginUsuario } from "../components/AuthContext";
 
 export default function Initial() {
   const navigation = useNavigation();
-
   async function ValidarLogin() {
     const login = await ChecarLoginUsuario();
-    if (login == false) {
-      navigation.navigate("Home");
+    if (login == true) {
+      navigation.navigate("Home")
     }
   }
 
   useEffect(() => {
-    ValidarLogin();
-  }, []);
+    ValidarLogin()
+  }, [])
+
+  const [fontsLoaded] = useFonts({
+    Poppins_300Light,
+    Poppins_400Regular,
+    Poppins_500Medium,
+    Poppins_600SemiBold
+  });
+
+  if (!fontsLoaded) return <Loading />;
+
 
   return (
     <View style={styles.docker} gap={30}>

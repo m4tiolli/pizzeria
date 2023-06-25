@@ -7,7 +7,6 @@ import {
   PixelRatio,
   StyleSheet,
 } from "react-native";
-
 import FontAwesome from "react-native-vector-icons/FontAwesome"
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import AntDesign from "react-native-vector-icons/AntDesign";
@@ -77,7 +76,6 @@ function Settings() {
           />
         </TouchableOpacity>
       </View>
-      <Alert message={"Seu pedido está pronto!"}/> 
     </View>
   );
 }

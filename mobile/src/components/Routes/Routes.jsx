@@ -26,7 +26,7 @@ export default function Routes() {
       <Stack.Screen
         name="Autentication"
         component={Autentication}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
         title=""
       />
       <Stack.Screen
@@ -37,31 +37,31 @@ export default function Routes() {
       <Stack.Screen
         name="Produto"
         component={Produto}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
         title=""
       />
       <Stack.Screen
         name="where eat?"
         component={WhereEat}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
         title=""
       />
       <Stack.Screen
         name="Search"
         component={Search}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
         title=""
       />
       <Stack.Screen
         name="Payment"
         component={Payment}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
         title=""
       />
       <Stack.Screen
         name="Pix"
         component={Pix}
-        options={{ headerShown: true,  }}
+        options={{ headerShown: false,  }}
         title="confirm payment"
       />
       <Stack.Screen
