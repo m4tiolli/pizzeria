@@ -17,10 +17,10 @@ namespace APIPizzeria.Controllers
 			//Método, rota e status
 			[HttpGet]
 			[Route("{id}")]
-			public IActionResult Listar(int idusuario)
+			public IActionResult Listar(int id)
 			{
 				EnderecoDAO EnderecoDAO = new EnderecoDAO();
-				var endereco = EnderecoDAO.ListarPorID(idusuario);
+				var endereco = EnderecoDAO.ListarPorID(id);
 
 				return Ok(endereco);
 			}

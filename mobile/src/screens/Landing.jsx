@@ -16,7 +16,6 @@ import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/AntDesign";
 import { Drawer } from "react-native-drawer-layout";
 import { CheckBox } from "@rneui/themed";
-import Alert from "../components/Alert/Alert";
 
 export default function Landing() {
   const [pesquisas, setPesquisas] = useState([]);

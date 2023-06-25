@@ -4,8 +4,6 @@ import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import Address from "../components/Address/Address";
 import axios from 'axios';
-import { RadioButton } from "react-native-paper";
-import Alert from "../components/Alert/Alert";
 import { DadosUsuario } from "../components/AuthContext";
 
 export default function AddressMethods() {
@@ -21,13 +19,13 @@ export default function AddressMethods() {
 
     const [enderecos, setEnderecos] = useState([])
 
-    const [usuario, setUsuario] = useState("");
+    const [usuario, setUsuario] = useState();
 
     async function PreencherDados() {
         const jwt = await DadosUsuario();
         setUsuario(jwt);
-        ListarEndereco(jwt)
-        console.log(enderecos)
+        ListarEndereco(jwt.ID);
+        console.log(jwt.ID);
     }
 
     useEffect(() => {
@@ -46,23 +44,24 @@ export default function AddressMethods() {
         }
     }
 
-    function ListarEndereco(jwt) {
-        const id = jwt.id
-
+    function ListarEndereco(id) {
         fetch("https://localhost:44383/api/endereco/" + id, {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
         })
-            .then((response) => {
-                const json = response.json()
-                setEnderecos(json)
-            })
-
-            .catch((error) => {
-                console.log(error);
-                alert("Erro ao buscar endereços.")
-            });
-    }
+          .then((response) => response.json())
+          .then((data) => {
+            if (Array.isArray(data)) {
+              setEnderecos(data);
+            } else {
+              setEnderecos([]);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+            alert("Erro ao buscar endereços.");
+          });
+      }
 
     return (
         <View style={{
@@ -79,8 +78,8 @@ export default function AddressMethods() {
                 marginVertical: PixelRatio.getPixelSizeForLayoutSize(7)
             }}>your saved address</Text>
 
-            {enderecos.map((enderecos, index) => (
-                <Address key={index} endereco={enderecos} />
+            {enderecos.map((endereco, index) => (
+                <Address key={index} endereco={endereco} />
             ))}
 
             <TouchableOpacity style={styles.addnew1} onPress={() => setModalNewVisible(!modalNewVisible)}>

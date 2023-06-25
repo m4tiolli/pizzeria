@@ -9,7 +9,7 @@ namespace APIPizzeria.DAO
 {
 	public class EnderecoDAO
 	{
-		public EnderecoDTO ListarPorID(int id)
+		public List<EnderecoDTO> ListarPorID(int id)
 		{
 			var Conexao = ConnectionFactory.Build();
 			Conexao.Open();
@@ -18,13 +18,15 @@ namespace APIPizzeria.DAO
 			var comando = new MySqlCommand(query, Conexao);
 
 			comando.Parameters.AddWithValue("@idusuario", id);
+			comando.ExecuteNonQuery();
 
-			var reader = comando.ExecuteReader();
-			var endereco = new EnderecoDTO();
+			MySqlDataReader reader = comando.ExecuteReader();
+			var Lista = new List<EnderecoDTO>();
 
-			while( reader.Read() )
+			while( reader.Read() == true )
 			{
-				endereco.ID = int.Parse(reader["id"].ToString());
+				var endereco = new EnderecoDTO();
+				endereco.ID = int.Parse(reader["idendereco"].ToString());
 				endereco.IDUsuario = int.Parse(reader["idusuario"].ToString());
 				endereco.UF = reader["uf"].ToString();
 				endereco.Cidade = reader["cidade"].ToString();
@@ -32,9 +34,10 @@ namespace APIPizzeria.DAO
 				endereco.Rua = reader["rua"].ToString();
 				endereco.NumCasa = reader["numcasa"].ToString();
 				endereco.CEP = reader["cep"].ToString();
+				Lista.Add(endereco);
 			}
 			Conexao.Close();
-			return endereco;
+			return Lista;
 		}
 
 

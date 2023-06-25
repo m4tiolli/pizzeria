@@ -3,6 +3,7 @@ import { RadioButton } from "react-native-paper";
 import { useState } from "react";
 import AntDesign from 'react-native-vector-icons/AntDesign';
 function Address({endereco}) {
+    
     const [checked, setChecked] = useState(false);
     const [modalEditVisible, setModalEditVisible] = useState(false);
 

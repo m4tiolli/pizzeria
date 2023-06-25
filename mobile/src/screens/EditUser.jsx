@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, TextInput, StyleSheet, PixelRatio } from "react-native";
 import { DadosUsuario } from "../components/AuthContext";
 import { useNavigation } from "@react-navigation/native";
-import Alert from "../components/Alert/Alert";
 
 export default function EditUser() {
   const navigation = useNavigation();
