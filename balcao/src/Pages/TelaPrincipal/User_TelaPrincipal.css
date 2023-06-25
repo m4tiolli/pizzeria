@@ -81,16 +81,22 @@
   margin-right: 10px;
   padding: 10px;
   border-radius: 8px;
-  padding: 5px;
   font-size: 15pt;
   border: 2px solid #000;
-  width: calc(16% - 2em);
+  width: 150px; /* Defina uma largura fixa que funcione para o seu layout */
   font-family: "Poppins";
   position: relative;
   text-align: center;
   background-color: #8e1c1a;
   color: #fff;
 }
+@media (max-width: 768px) {
+  .buttonFiltro {
+    width: 100%; /* Ocupar toda a largura disponível */
+    margin-bottom: 10px; /* Adicionar um espaçamento inferior */
+  }
+}
+
 
 
 
