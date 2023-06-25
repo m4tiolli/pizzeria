@@ -60,7 +60,7 @@ export default function AddressMethods() {
 
             .catch((error) => {
                 console.log(error);
-                <Alert message={"Erro ao buscar endereços."} />
+                alert("Erro ao buscar endereços.")
             });
     }
 

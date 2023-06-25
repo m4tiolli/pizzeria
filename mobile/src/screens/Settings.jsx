@@ -1,8 +1,6 @@
 import {
   View,
   Text,
-  Image,
-  ScrollView,
   TouchableOpacity,
   PixelRatio,
   StyleSheet,
@@ -12,12 +10,22 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Header from './../components/Header/Header';
 import { useNavigation } from "@react-navigation/native";
-import Alert from "../components/Alert/Alert";
 import { useState, useEffect } from "react";
-import {DadosUsuario} from "../components/AuthContext"
+import {DadosUsuario, ChecarLoginUsuario} from "../components/AuthContext"
 
 function Settings() {
   const navigation = useNavigation()
+
+  async function ValidarLogin() {
+    const login = await ChecarLoginUsuario();
+    if (login == false) {
+      navigation.navigate("Autentication")
+    }
+  }
+
+  useEffect(() => {
+    ValidarLogin()
+  }, [])
 
   const [usuario, setUsuario] = useState("");
 
@@ -47,7 +55,7 @@ function Settings() {
         color={"#8e1c1c"}
         size={PixelRatio.getPixelSizeForLayoutSize(35)}
         />
-        <Text style={styles.name}>{usuario?.Email}</Text>
+        <Text style={styles.name}>{usuario?.Nome}</Text>
         <TouchableOpacity 
           style={styles.button}
           onPress={() => navigation.navigate('EditUser')}
@@ -106,7 +114,8 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins_500Medium",
     margin: PixelRatio.getPixelSizeForLayoutSize(9),
     fontSize: PixelRatio.getPixelSizeForLayoutSize(7),
-    color: '#8e1c1a'
+    color: '#8e1c1a',
+    textAlign: "center"
   },
 });
 export default Settings;

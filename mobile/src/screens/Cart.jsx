@@ -1,12 +1,10 @@
 import {
   View,
   Text,
-  Image,
   ScrollView,
   TouchableOpacity,
   PixelRatio,
   StyleSheet,
-  TextInput,
 } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -16,9 +14,21 @@ import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import React from "react";
 import ItemCart from "../components/ItemCart/ItemCart";
 import Feather from "react-native-vector-icons/Feather";
+import { ChecarLoginUsuario } from "../components/AuthContext";
 
-function Cart({item}) {
+function Cart() {
   const navigation = useNavigation();
+
+  async function ValidarLogin() {
+    const login = await ChecarLoginUsuario();
+    if (login == true) {
+      navigation.navigate("where eat?", {pedido: pedido})
+    }
+  }
+
+  useEffect(() => {
+    ValidarLogin()
+  }, [])
 
   const [cart, setCart] = useState([]);
 
@@ -39,11 +49,6 @@ function Cart({item}) {
   const clearCart = () => {
     setCart([]);
     AsyncStorage.removeItem("carrinho");
-  };
-
-  const deleteItem = () => {
-    setCart(cart.filter((item) => item.id !== id));
-    AsyncStorage.setItem("carrinho", JSON.stringify(cart));
   };
 
   const calculateTotal = () => {
@@ -101,7 +106,7 @@ function Cart({item}) {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.price}
-              onPress={() => navigation.navigate("where eat?", {pedido: pedido})}
+              onPress={ValidarLogin}
             >
               <Text style={styles.text}>go to checkout</Text>
               <Text style={styles.text}>R${calculateTotal()}</Text>

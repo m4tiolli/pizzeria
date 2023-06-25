@@ -9,35 +9,34 @@ namespace APIPizzeria.DAO
 {
 	public class EnderecoDAO
 	{
-		public EnderecoDTO Listar(int idusuario)
+		public EnderecoDTO ListarPorID(int id)
 		{
-			var conexao = ConnectionFactory.Build();
-			conexao.Open();
+			var Conexao = ConnectionFactory.Build();
+			Conexao.Open();
 
-			var query = "SELECT * FROM enderecos WHERE idusuario = @idusuario;";
+			var query = "SELECT * FROM enderecos WHERE idusuario = @idusuario";
+			var comando = new MySqlCommand(query, Conexao);
 
-			MySqlCommand comando = new MySqlCommand(query, conexao);
-			comando.Parameters.AddWithValue("@idusuario", idusuario);
-			var dataReader = comando.ExecuteReader();
+			comando.Parameters.AddWithValue("@idusuario", id);
 
-			
+			var reader = comando.ExecuteReader();
+			var endereco = new EnderecoDTO();
 
-			var enderecos = new EnderecoDTO();
-
-			while (dataReader.Read())
+			while( reader.Read() )
 			{
-				enderecos.ID = int.Parse(dataReader["id"].ToString());
-				enderecos.IDUsuario = int.Parse(dataReader["idusuario"].ToString());
-				enderecos.UF = dataReader["uf"].ToString();
-				enderecos.Cidade = dataReader["cidade"].ToString();
-				enderecos.Bairro = dataReader["bairro"].ToString();
-				enderecos.Rua = dataReader["rua"].ToString();
-				enderecos.NumCasa = dataReader["numCasa"].ToString();
-				enderecos.CEP = dataReader["cep"].ToString();
+				endereco.ID = int.Parse(reader["id"].ToString());
+				endereco.IDUsuario = int.Parse(reader["idusuario"].ToString());
+				endereco.UF = reader["uf"].ToString();
+				endereco.Cidade = reader["cidade"].ToString();
+				endereco.Bairro = reader["bairro"].ToString();
+				endereco.Rua = reader["rua"].ToString();
+				endereco.NumCasa = reader["numcasa"].ToString();
+				endereco.CEP = reader["cep"].ToString();
 			}
-			conexao.Close();
-			return enderecos;
+			Conexao.Close();
+			return endereco;
 		}
+
 
 		public void Cadastrar(EnderecoDTO enderecos)
 		{

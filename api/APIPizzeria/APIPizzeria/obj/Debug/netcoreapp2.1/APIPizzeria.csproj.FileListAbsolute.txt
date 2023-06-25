@@ -54,3 +54,21 @@ D:\TCC187\APIPizzeria\APIPizzeria\obj\Debug\netcoreapp2.1\APIPizzeria.AssemblyIn
 D:\TCC187\APIPizzeria\APIPizzeria\obj\Debug\netcoreapp2.1\APIPizzeria.RazorTargetAssemblyInfo.cache
 D:\TCC187\APIPizzeria\APIPizzeria\obj\Debug\netcoreapp2.1\APIPizzeria.dll
 D:\TCC187\APIPizzeria\APIPizzeria\obj\Debug\netcoreapp2.1\APIPizzeria.pdb
+C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\bin\Debug\netcoreapp2.1\APIPizzeria.deps.json
+C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\bin\Debug\netcoreapp2.1\APIPizzeria.runtimeconfig.json
+C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\bin\Debug\netcoreapp2.1\APIPizzeria.runtimeconfig.dev.json
+C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\bin\Debug\netcoreapp2.1\APIPizzeria.dll
+C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\bin\Debug\netcoreapp2.1\APIPizzeria.pdb
+C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\obj\Debug\netcoreapp2.1\APIPizzeria.csproj.AssemblyReference.cache
+C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\obj\Debug\netcoreapp2.1\APIPizzeria.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\obj\Debug\netcoreapp2.1\APIPizzeria.AssemblyInfoInputs.cache
+C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\obj\Debug\netcoreapp2.1\APIPizzeria.AssemblyInfo.cs
+C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\obj\Debug\netcoreapp2.1\APIPizzeria.csproj.CoreCompileInputs.cache
+C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\obj\Debug\netcoreapp2.1\APIPizzeria.RazorAssemblyInfo.cache
+C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\obj\Debug\netcoreapp2.1\APIPizzeria.RazorAssemblyInfo.cs
+C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\obj\Debug\netcoreapp2.1\APIPizzeria.RazorTargetAssemblyInfo.cache
+C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\obj\Debug\netcoreapp2.1\APIPizzeria.dll
+C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\obj\Debug\netcoreapp2.1\APIPizzeria.pdb
+C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\obj\Debug\netcoreapp2.1\APIPizzeria.genruntimeconfig.cache

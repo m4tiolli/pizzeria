@@ -75,7 +75,7 @@ export default function Landing() {
         setIsLoading(false);
       } catch (error) {
         console.log(error);
-        return <Alert message={"Erro ao buscar pizzas"} />
+       alert("Erro ao buscar pizzas")
       }
     };
     fetchData();

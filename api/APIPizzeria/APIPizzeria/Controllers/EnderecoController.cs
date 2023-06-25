@@ -12,7 +12,7 @@ namespace APIPizzeria.Controllers
 	[ApiController]
 	[Route("api/[controller]")]
 	// [Authorize]
-	public class EnderecoController : Controller
+	public class EnderecoController : ControllerBase
     {
 			//Método, rota e status
 			[HttpGet]
@@ -20,9 +20,9 @@ namespace APIPizzeria.Controllers
 			public IActionResult Listar(int idusuario)
 			{
 				EnderecoDAO EnderecoDAO = new EnderecoDAO();
-				var enderecos = EnderecoDAO.Listar(idusuario);
+				var endereco = EnderecoDAO.ListarPorID(idusuario);
 
-				return Ok(enderecos);
+				return Ok(endereco);
 			}
 			[HttpPost]
 			public IActionResult Cadastrar([FromBody] EnderecoDTO endereco)
