@@ -11,6 +11,7 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import Payment from "../components/Payment/Payment";
 import { useState } from "react";
 import { RadioButton } from "react-native-paper";
+import BackButton from "../components/BackButton/BackButton";
 
 function PaymentMethods() {
   const [modalNewVisible, setModalNewVisible] = useState(false);
@@ -52,6 +53,7 @@ function PaymentMethods() {
         paddingTop: "20%",
       }}
     >
+      <BackButton />
       <Text
         style={{
           fontFamily: "Poppins_500Medium",

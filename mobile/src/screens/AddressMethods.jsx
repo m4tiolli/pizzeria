@@ -7,12 +7,46 @@ import axios from 'axios';
 import { DadosUsuario } from "../components/AuthContext";
 import BackButton from "../components/BackButton/BackButton";
 
+const enderecoslist = [
+    {
+        id: 1,
+        idusuario: 1,
+        uf: "SP",
+        cidade: "Santana de Parnaíba",
+        bairro: "Centro",
+        rua: "Rua Fernão Dias Falcão",
+        numcasa: "196",
+        cep: "06501-120",
+    },
+    {
+        id: 2,
+        idusuario: 1,
+        uf: "SP",
+        cidade: "Cajamar",
+        bairro: "Portais",
+        rua: "Rua das Orquídeas",
+        numcasa: "108",
+        cep: "07790-815",
+    },
+    {
+        id: 3,
+        idusuario: 1,
+        uf: "SP",
+        cidade: "Santana de Parnaíba",
+        bairro: "Colinas do Anhanguera",
+        rua: "Rua Di Cavalcanti",
+        numcasa: "495",
+        cep: "06537-085",
+    },
+]
+
+
 export default function AddressMethods() {
     const [modalNewVisible, setModalNewVisible] = useState(false);
     const [checked, setChecked] = useState(false);
     const navigation = useNavigation();
     const [rua, setRua] = useState("");
-    const [num, setNum] = useState("");
+    const [numCasa, setNumCasa] = useState("");
     const [cep, setCEP] = useState("");
     const [uf, setUF] = useState("");
     const [cidade, setCidade] = useState("");
@@ -41,6 +75,7 @@ export default function AddressMethods() {
             setCidade(data.localidade);
             setBairro(data.bairro);
             setUF(data.uf);
+            setCEP(data.cep)
         } catch (error) {
             console.log(error);
         }
@@ -66,9 +101,8 @@ export default function AddressMethods() {
     }
 
     function CadastrarEndereco() {
-        const body = { idusuario: usuario?.ID, uf, cidade, rua, num }
-
-        fetch("https://pizzeria3.azurewebsites.net/api/endereco", {
+        const body = { idusuario: usuario?.ID, uf, cidade, bairro, rua, numCasa, cep }
+        fetch("https://localhost:44383/api/endereco", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -77,6 +111,7 @@ export default function AddressMethods() {
         })
             .then((response) => alert("Endereço cadastrado com sucesso."))
             .then(() => navigation.navigate("AddressMethods"))
+            .catch((erro) => console.log(erro))
     }
 
     return (
@@ -95,7 +130,7 @@ export default function AddressMethods() {
                 marginVertical: PixelRatio.getPixelSizeForLayoutSize(7)
             }}>your saved address</Text>
 
-            {enderecos.map((endereco, index) => (
+            {enderecoslist.map((endereco, index) => (
                 <Address key={index} endereco={endereco} />
             ))}
 
@@ -123,7 +158,9 @@ export default function AddressMethods() {
                                 onChangeText={(texto) => setCEP(texto)}
                                 onSubmitEditing={buscarEndereco}
                                 style={styles.input}
-                                editable={false}
+                                placeholder="Ex: 12345-678"
+                                underlineColorAndroid="transparent"
+                                placeholderTextColor={"#898989"}
                             />
                         </View>
                         <View style={styles.boxinput}>
@@ -132,6 +169,9 @@ export default function AddressMethods() {
                                 value={tipo}
                                 onChangeText={(texto) => setTipo(texto)}
                                 style={styles.input}
+                                placeholder="Ex: home"
+                                underlineColorAndroid="transparent"
+                                placeholderTextColor={"#898989"}
                             />
                         </View>
                         <View style={styles.boxinput}>
@@ -140,6 +180,9 @@ export default function AddressMethods() {
                                 value={uf}
                                 onChangeText={(texto) => setUF(texto)}
                                 style={styles.input}
+                                placeholder="Ex: SP"
+                                underlineColorAndroid="transparent"
+                                placeholderTextColor={"#898989"}
                             />
                         </View>
                         <View style={styles.boxinput}>
@@ -148,6 +191,9 @@ export default function AddressMethods() {
                                 value={cidade}
                                 onChangeText={(texto) => setCidade(texto)}
                                 style={styles.input}
+                                placeholder="Ex: Santana de Parnaiba"
+                                underlineColorAndroid="transparent"
+                                placeholderTextColor={"#898989"}
                             />
                         </View>
                         <View style={styles.boxinput}>
@@ -156,14 +202,20 @@ export default function AddressMethods() {
                                 value={rua}
                                 onChangeText={(texto) => setRua(texto)}
                                 style={styles.input}
+                                placeholder="Ex: Rua Ermelinda"
+                                underlineColorAndroid="transparent"
+                                placeholderTextColor={"#898989"}
                             />
                         </View>
                         <View style={styles.boxinput}>
                             <Text style={styles.textinput}>number</Text>
                             <TextInput
-                                value={num}
-                                onChangeText={(texto) => setNum(texto)}
+                                value={numCasa}
+                                onChangeText={(texto) => setNumCasa(texto)}
                                 style={styles.input}
+                                placeholder="Ex: 0123"
+                                underlineColorAndroid="transparent"
+                                placeholderTextColor={"#898989"}
                             />
                         </View>
                         <TouchableOpacity style={styles.button} onPress={CadastrarEndereco}>

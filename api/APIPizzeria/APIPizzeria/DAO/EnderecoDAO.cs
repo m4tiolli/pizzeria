@@ -86,7 +86,7 @@ namespace APIPizzeria.DAO
 			comando.Parameters.AddWithValue("@bairro", enderecos.Bairro);
 			comando.Parameters.AddWithValue("@rua", enderecos.Rua);
 			comando.Parameters.AddWithValue("@numCasa", enderecos.NumCasa);
-
+			comando.Parameters.AddWithValue("@cep", enderecos.CEP);
 			comando.ExecuteNonQuery();
 			conexao.Close();
 		}

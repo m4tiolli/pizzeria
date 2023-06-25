@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, TextInput, StyleSheet, PixelRatio } from "react-native";
 import { DadosUsuario } from "../components/AuthContext";
 import { useNavigation } from "@react-navigation/native";
+import BackButton from "../components/BackButton/BackButton";
 
 export default function EditUser() {
   const navigation = useNavigation();
@@ -82,6 +83,7 @@ export default function EditUser() {
         flex: 1,
       }}
     >
+      <BackButton />
       <Text style={styles.text1}>edit your data</Text>
 
       <View style={styles.boxinput}>

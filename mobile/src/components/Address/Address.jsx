@@ -56,14 +56,14 @@ function Address({ endereco }) {
 
     useEffect(() => {
         if (address) {
-            setUF(address?.uf);
-            setCidade(address?.cidade);
-            setBairro(address?.bairro);
-            setRua(address?.rua);
-            setNumCasa(address?.numCasa);
-            setCep(address?.cep);
+            setUF(endereco?.uf);
+            setCidade(endereco?.cidade);
+            setBairro(endereco?.bairro);
+            setRua(endereco?.rua);
+            setNumCasa(endereco?.numCasa);
+            setCep(endereco?.cep);
         }
-    }, [address]);
+    }, [endereco]);
 
     //Corpo para edição de dados
     const body = { idusuario: usuario?.ID, uf, cidade, bairro, rua, numCasa, cep };
@@ -133,7 +133,7 @@ function Address({ endereco }) {
                                 underlineColorAndroid="transparent"
                                 placeholderTextColor={"#898989"}
                                 onChangeText={setUF}
-                                value={uf}
+                                value={endereco.uf}
                             />
                         </View>
                         <View style={styles.boxinput}>
