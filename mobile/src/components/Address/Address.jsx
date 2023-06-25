@@ -7,7 +7,6 @@ import {
     TouchableOpacity,
     TextInput,
 } from "react-native";
-import { RadioButton } from "react-native-paper";
 import { useState, useEffect } from "react";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import { DadosUsuario } from "../AuthContext";
@@ -29,6 +28,7 @@ function Address({ endereco }) {
     const [bairro, setBairro] = useState("");
     const [rua, setRua] = useState("");
     const [numCasa, setNumCasa] = useState("");
+    const [cep, setCep] = useState("");
 
     //Dados do usuario
     const [usuario, setUsuario] = useState("");
@@ -61,16 +61,17 @@ function Address({ endereco }) {
             setBairro(address?.bairro);
             setRua(address?.rua);
             setNumCasa(address?.numCasa);
+            setCep(address?.cep);
         }
     }, [address]);
 
     //Corpo para edição de dados
-    const body = { idusuario: usuario?.ID, uf, cidade, bairro, rua, numCasa };
+    const body = { idusuario: usuario?.ID, uf, cidade, bairro, rua, numCasa, cep };
 
     function AlterarEndereco() {
         fetch("https://pizzeria3.azurewebsites.net/api/endereco", {
             method: "PUT",
-            headers: { "Content-Type": "application/json", 'Access-Control-Allow-Origin': 'true' },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body),
         })
             .then((response) => {
@@ -85,12 +86,6 @@ function Address({ endereco }) {
 
     return (
         <View style={styles.container}>
-            <RadioButton
-                value="apple"
-                status={"checked"}
-                onPress={() => setChecked(!checked)}
-                color="#8e1c1a"
-            />
             <View style={{ flexDirection: "column" }}>
                 <Text style={styles.text1}>{endereco.rua}</Text>
                 <Text style={styles.text2}>{endereco.cep}</Text>
@@ -187,7 +182,7 @@ function Address({ endereco }) {
                         </View>
                         <TouchableOpacity
                             style={styles.button}
-                            onPress={() => AlterarEndereco()}
+                            onPress={AlterarEndereco}
                         >
                             <Text
                                 style={{

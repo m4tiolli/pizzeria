@@ -10,6 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 import {
   useFonts,
   Poppins_300Light,
+  Poppins_300Light_Italic,
   Poppins_400Regular,
   Poppins_500Medium,
   Poppins_600SemiBold,
@@ -36,6 +37,7 @@ export default function Initial() {
 
   const [fontsLoaded] = useFonts({
     Poppins_300Light,
+    Poppins_300Light_Italic,
     Poppins_400Regular,
     Poppins_500Medium,
     Poppins_600SemiBold

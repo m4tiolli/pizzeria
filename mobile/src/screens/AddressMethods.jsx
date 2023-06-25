@@ -27,7 +27,6 @@ export default function AddressMethods() {
         const jwt = await DadosUsuario();
         setUsuario(jwt);
         ListarEndereco(jwt.ID);
-        console.log(jwt.ID);
     }
 
     useEffect(() => {
@@ -66,16 +65,18 @@ export default function AddressMethods() {
             });
     }
 
-
-    const body = { idusuario: usuario?.ID, uf, cidade, bairro, rua, num }
     function CadastrarEndereco() {
+        const body = { idusuario: usuario?.ID, uf, cidade, rua, num }
+
         fetch("https://pizzeria3.azurewebsites.net/api/endereco", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(body),
         })
             .then((response) => alert("Endereço cadastrado com sucesso."))
-            .then(() => navigation.navigate("AdressMethods"))
+            .then(() => navigation.navigate("AddressMethods"))
     }
 
     return (
@@ -122,9 +123,7 @@ export default function AddressMethods() {
                                 onChangeText={(texto) => setCEP(texto)}
                                 onSubmitEditing={buscarEndereco}
                                 style={styles.input}
-                                placeholder="Ex: 12345-678"
-                                underlineColorAndroid="transparent"
-                                placeholderTextColor={"#898989"}
+                                editable={false}
                             />
                         </View>
                         <View style={styles.boxinput}>
@@ -133,9 +132,6 @@ export default function AddressMethods() {
                                 value={tipo}
                                 onChangeText={(texto) => setTipo(texto)}
                                 style={styles.input}
-                                placeholder="Ex: home"
-                                underlineColorAndroid="transparent"
-                                placeholderTextColor={"#898989"}
                             />
                         </View>
                         <View style={styles.boxinput}>
@@ -144,9 +140,6 @@ export default function AddressMethods() {
                                 value={uf}
                                 onChangeText={(texto) => setUF(texto)}
                                 style={styles.input}
-                                placeholder="Ex: SP"
-                                underlineColorAndroid="transparent"
-                                placeholderTextColor={"#898989"}
                             />
                         </View>
                         <View style={styles.boxinput}>
@@ -155,9 +148,6 @@ export default function AddressMethods() {
                                 value={cidade}
                                 onChangeText={(texto) => setCidade(texto)}
                                 style={styles.input}
-                                placeholder="Ex: Santana de Parnaiba"
-                                underlineColorAndroid="transparent"
-                                placeholderTextColor={"#898989"}
                             />
                         </View>
                         <View style={styles.boxinput}>
@@ -166,9 +156,6 @@ export default function AddressMethods() {
                                 value={rua}
                                 onChangeText={(texto) => setRua(texto)}
                                 style={styles.input}
-                                placeholder="Ex: Rua Ermelinda"
-                                underlineColorAndroid="transparent"
-                                placeholderTextColor={"#898989"}
                             />
                         </View>
                         <View style={styles.boxinput}>
@@ -177,9 +164,6 @@ export default function AddressMethods() {
                                 value={num}
                                 onChangeText={(texto) => setNum(texto)}
                                 style={styles.input}
-                                placeholder="Ex: 0123"
-                                underlineColorAndroid="transparent"
-                                placeholderTextColor={"#898989"}
                             />
                         </View>
                         <TouchableOpacity style={styles.button} onPress={CadastrarEndereco}>
