@@ -1,13 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ItemPedido from "../ItemPedido/ItemPedido";
 
+
 export default function CardPedido({ pedido }) {
   const navigate = useNavigate();
+  const [pedidoFinalizado, setPedidoFinalizado] = useState(false);
+
   function Verpedido() {
     navigate("/pedido");
+   }
+   function FinalizarPedido() {
+    useEffect(() => {
+      fetch("https://pizzeria3.azurewebsites.net/api/pedido/encerrar", {
+        method: "SET",
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setPedidoFinalizado(true);
+        })
+        .catch((error) => {
+          console.error("Erro ao finalizar pedido:", error);
+        });
+    }, []);
+  
   }
-
+  
   return (
     <div className="containerPedido">
       <div className="containerTexto">
@@ -26,7 +44,10 @@ export default function CardPedido({ pedido }) {
         <button className="buttonPedido" onClick={Verpedido}>
           Ver Pedido
         </button>
-        <button className="buttonPedido">Finalizar pedido</button>
+        <button className="buttonPedido" onClick={FinalizarPedido} disabled={pedidoFinalizado}>
+          Finalizar Pedido
+        </button>
+
       </div>
     </div>
   );
