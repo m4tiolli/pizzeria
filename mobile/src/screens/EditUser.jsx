@@ -53,11 +53,11 @@ export default function EditUser() {
     }
   }, [usuarioPorID]);
 
-  const body = { nome, cpf, telefone, email };
 
   function AlterarDados() {
     if (senha === usuarioPorID?.senha) {
-      fetch(`https://pizzeria3.azurewebsites.net/api/usuario/${usuarioPorID?.ID}`, {
+      const body = { nome, cpf, telefone, email, id: usuarioPorID.id};
+      fetch(`https://pizzeria3.azurewebsites.net/api/usuario`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

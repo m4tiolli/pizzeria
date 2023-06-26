@@ -6,6 +6,7 @@ import Address from "../components/Address/Address";
 import axios from 'axios';
 import { DadosUsuario } from "../components/AuthContext";
 import BackButton from "../components/BackButton/BackButton";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const enderecoslist = [
     {
@@ -66,6 +67,8 @@ export default function AddressMethods() {
     useEffect(() => {
         PreencherDados();
     }, []);
+
+    AsyncStorage.setItem("enderecos", JSON.stringify(enderecoslist));
 
     async function buscarEndereco() {
         try {
@@ -130,7 +133,7 @@ export default function AddressMethods() {
                 marginVertical: PixelRatio.getPixelSizeForLayoutSize(7)
             }}>your saved address</Text>
 
-            {enderecoslist.map((endereco, index) => (
+            {enderecos.map((endereco, index) => (
                 <Address key={index} endereco={endereco} />
             ))}
 

@@ -66,10 +66,10 @@ function Address({ endereco }) {
     }, [endereco]);
 
     //Corpo para edição de dados
-    const body = { idusuario: usuario?.ID, uf, cidade, bairro, rua, numCasa, cep };
+    const body = { idendereco: endereco?.id, uf, cidade, bairro, rua, numCasa, cep };
 
     function AlterarEndereco() {
-        fetch("https://pizzeria3.azurewebsites.net/api/endereco", {
+        fetch("https://localhost:44383/api/endereco", {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body),

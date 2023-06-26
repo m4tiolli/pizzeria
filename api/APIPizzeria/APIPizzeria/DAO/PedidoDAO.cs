@@ -16,7 +16,7 @@ namespace APIPizzeria.DAO
                             FROM ProdutosPedido PP
                             INNER JOIN produto PROD ON PP.produto = PROD.id
                             INNER JOIN pedido PED ON PP.pedido = PED.id
-                            INNER JOIN enderecos END on PED.enderecoid = END.id
+                            LEFT JOIN enderecos END on PED.enderecoid = END.idendereco
                             WHERE PED.situacao = 'aberto'; ";
 
             MySqlCommand comando = new MySqlCommand(query, conexao);
@@ -85,7 +85,8 @@ namespace APIPizzeria.DAO
             comando.Parameters.AddWithValue("@valor", pedido.ValorTotal);
             comando.Parameters.AddWithValue("@situacao", pedido.Situacao);
             comando.Parameters.AddWithValue("@tipo", pedido.Tipo);
-            comando.Parameters.AddWithValue("@endreco", pedido.Endereco.ID);
+            comando.Parameters.AddWithValue("@endereco", pedido.Endereco?.ID);
+
             comando.ExecuteNonQuery();
 
             var idPedido = comando.LastInsertedId;

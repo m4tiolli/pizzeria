@@ -125,8 +125,7 @@ namespace APIPizzeria.DAO
             var conexao = ConnectionFactory.Build();
             conexao.Open();
 
-            var query = @"UPDATE usuario SET nome = @nome, cpf = @cpf, dataNasc = @dataNasc, telefone = @telefone, email = @email, senha = 
-                            @senha, tipo = @tipo WHERE id = @id";
+            var query = @"UPDATE usuario SET nome = @nome, cpf = @cpf, dataNasc = @dataNasc, telefone = @telefone, email = @email WHERE id = @id";
 
             var comando = new MySqlCommand(query, conexao);
             comando.Parameters.AddWithValue("@id", user.ID);
@@ -135,8 +134,6 @@ namespace APIPizzeria.DAO
             comando.Parameters.AddWithValue("@dataNasc", user.DataNasc);
             comando.Parameters.AddWithValue("@telefone", user.Telefone);
             comando.Parameters.AddWithValue("@email", user.Email);
-            comando.Parameters.AddWithValue("@senha", user.Senha);
-            comando.Parameters.AddWithValue("@tipo", user.Tipo);
 
             comando.ExecuteNonQuery();
             conexao.Close();
@@ -147,7 +144,8 @@ namespace APIPizzeria.DAO
             var conexao = ConnectionFactory.Build();
             conexao.Open();
 
-            var query = @"DELETE FROM usuario WHERE id = @id";
+            var query = @"DELETE FROM enderecos WHERE idusuario = @id;
+                          DELETE FROM usuario WHERE id = @id";
 
             var comando = new MySqlCommand(query, conexao);
             comando.Parameters.AddWithValue("@id", id);

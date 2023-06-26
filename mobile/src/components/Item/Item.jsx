@@ -17,12 +17,13 @@ export default function Item({ pizza }) {
   async function carrinho() {
     try {
       const item = {
-        id: pizza.id,
-        nome: pizza.nome,
+        ProdutoID: pizza.id,
+        Nome: pizza.nome,
+        Observacao: "",
+        Valor: pizza.valor,
+        Quantidade: 1,
         descricao: pizza.descricao,
-        valor: pizza.valor,
-        imagem: pizza.imagem,
-        quantidade: 1,
+        imagem: pizza.imagem
       };
       let carrinho = await AsyncStorage.getItem("carrinho");
       if (!carrinho || carrinho.length === 0) {
