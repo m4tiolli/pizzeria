@@ -11,6 +11,9 @@ export default function TelaRetirar( pizza) {
     const navigate = useNavigate();
     const iconStyle = { color: 'white' };
 
+    function Verpedido() {
+      navigate("/pedido");
+    }
     function Home() {
       navigate("/");
     }
@@ -51,7 +54,7 @@ return (
                 <p className='endereço'>Rua ambrosia número: 2213</p>
             </div>  
             <div className="buttons-containerPedido">
-                <button className='buttonPedido'>
+                <button className='buttonPedido' onClick={Verpedido}>
                     Ver Pedido
                 </button>
                 <button className='buttonPedido'>

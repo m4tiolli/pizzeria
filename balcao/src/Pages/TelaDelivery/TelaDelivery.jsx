@@ -31,6 +31,8 @@ export default function TelaDelivery(pizza) {
       });
   }, []);
 
+console.log(pedidos)
+
   function Verpedido() {
     navigate("/pedido");
   }

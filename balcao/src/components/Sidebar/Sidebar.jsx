@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { GrAdd } from "react-icons/gr";
 import { MdRemove } from "react-icons/md";
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -12,22 +12,26 @@ export default function SidebarPizza({
   atualizarCarrinho,
   isSidebarOpen,
 }) {
+  const [mesas, setMesas] = useState([]);
+  const [mesaSelecionada, setMesaSelecionada] = useState("");
+
+  useEffect(() => {
+    fetch("https://pizzeria3.azurewebsites.net/api/Mesa")
+      .then((response) => response.json())
+      .then((data) => {
+        setMesas(data);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Erro ao buscar as mesas");
+      });
+  }, []);
+
   function LimparCarrinho() {
     localStorage.removeItem("carrinho");
     atualizarCarrinho();
   }
 
-//  function NumeroMesa() {
-//    fetch("https://pizzeria3.azurewebsites.net/api/Mesa", {
-//     method: "GET",
-//   })
-
-//  }
-//   function NumeroPedido(){
-//     fetch ("https://pizzeria3.azurewebsites.net/api/pedido/pedidoApi",{
-//      method: "GET",
-//     })
-//   }
   function FecharSidebar() {
     setSidebarOpen(false);
   }
@@ -38,7 +42,7 @@ export default function SidebarPizza({
     let itens = [];
 
     carrinho.forEach((item) => {
-      valorTotal += item.valor; // * item.quantidade;
+      valorTotal += item.valor * item.quantidade;
 
       itens.push({
         ProdutoID: item.id,
@@ -69,11 +73,10 @@ export default function SidebarPizza({
       });
   }
 
-  function AdicionarItemCarrinho(id){
-    const carrinhoAtualizado = carrinho.map(item => {
-
+  function AdicionarItemCarrinho(id) {
+    const carrinhoAtualizado = carrinho.map((item) => {
       if (item.id === id) {
-        return { ...item, quantidade: item.quantidade + 1  };
+        return { ...item, quantidade: item.quantidade + 1 };
       }
       return item;
     });
@@ -85,22 +88,26 @@ export default function SidebarPizza({
   }
 
   function RemoverItemCarrinho(id) {
-
-    const carrinhoAtualizado = carrinho.map(item => {
-
-      if (item.quantidade === 1) {
-        return undefined;
-      }
-      if (item.id === id) {
-        return { ...item, quantidade: item.quantidade - 1 };
-      }
-      return item;
-    }).filter(item => item !== undefined);;
+    const carrinhoAtualizado = carrinho
+      .map((item) => {
+        if (item.quantidade === 1) {
+          return undefined;
+        }
+        if (item.id === id) {
+          return { ...item, quantidade: item.quantidade - 1 };
+        }
+        return item;
+      })
+      .filter((item) => item !== undefined);
 
     carrinho = carrinhoAtualizado;
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
     atualizarCarrinho();
+  }
+
+  function handleMesaSelecionada(event) {
+    setMesaSelecionada(event.target.value);
   }
 
   return (
@@ -117,9 +124,20 @@ export default function SidebarPizza({
             <BsCheckLg size={30} />
           </button>
         </div>
-        <span className="numeroMesa">
-          Mesa <span className="numero"> {/*{mesa.numero}*/} </span>
+        <span>
+          Nome do Cliente <input type="text" placeholder="Nome" />
         </span>
+        <div className="numeroMesa">
+          Mesa{" "}
+          <select value={mesaSelecionada} onChange={handleMesaSelecionada}>
+            <option value="">Selecione uma mesa</option>
+            {mesas.map((mesa) => (
+              <option value={mesa.numero} key={mesa.id}>
+                Mesa {mesa.numero}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
       <div className={`itemContainer ${isSidebarOpen ? "moveItems" : ""}`}>
         {carrinho?.map((item, index) => (
@@ -133,7 +151,7 @@ export default function SidebarPizza({
             <div className="Textos">
               <h1 className="nomePizza">{item.nome}</h1>
               <h3 className="descricaoPizza">{item.descricao}</h3>
-              <h3 className="precoPizza">{item.valor}</h3>
+              <h3 className="precoPizza">{item.valor * item.quantidade}</h3>
               {item.observacao && (
                 <h3 className="observacao">{item.observacao}</h3>
               )}
@@ -145,9 +163,10 @@ export default function SidebarPizza({
                   <MdRemove size={30} />
                 </button>
                 <h3>{item.quantidade}</h3>
-                <button className="adicionar"
-                
-                onClick={() => AdicionarItemCarrinho(item.id)}>
+                <button
+                  className="adicionar"
+                  onClick={() => AdicionarItemCarrinho(item.id)}
+                >
                   <GrAdd size={30} />
                 </button>
               </div>
