@@ -6,20 +6,38 @@ import {
   PixelRatio,
   StyleSheet,
   TouchableOpacity,
+  ActivityIndicator
 } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Payment from "../components/Payment/Payment";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { RadioButton } from "react-native-paper";
+import BackButton from "../components/BackButton/BackButton";
+import { DadosUsuario } from "../components/AuthContext";
 
 function PaymentMethods() {
   const [modalNewVisible, setModalNewVisible] = useState(false);
   const [checked, setChecked] = useState(false);
+  const[isLoading, setIsLoading] = useState(true)
 
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [cvc, setCvc] = useState("");
   const [data, setData] = useState("");
+
+  const [cartoes, setCartoes] = useState()
+
+  const [usuario, setUsuario] = useState();
+
+  async function PreencherDados() {
+    const jwt = await DadosUsuario();
+    setUsuario(jwt);
+    ListarCartoes(jwt.ID);
+  }
+
+  useEffect(() => {
+    PreencherDados();
+  }, []);
 
   const handleNumberChange = (text) => {
     if (text.length <= 16) {
@@ -42,6 +60,27 @@ function PaymentMethods() {
       setData(maskedText);
     }
   };
+
+  function ListarCartoes(id) {
+    fetch("https://pizzeria3.azurewebsites.net/api/cartoes/listarcartoes?id=" + id, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (Array.isArray(data)) {
+          setCartoes(data);
+          setIsLoading(false)
+        } else {
+          setCartoes([]);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Erro ao buscar cartões.");
+      });
+  }
+
   return (
     <View
       style={{
@@ -52,6 +91,7 @@ function PaymentMethods() {
         paddingTop: "20%",
       }}
     >
+      <BackButton />
       <Text
         style={{
           fontFamily: "Poppins_500Medium",
@@ -63,8 +103,11 @@ function PaymentMethods() {
         your payment methods
       </Text>
 
-      <Payment />
-      <Payment />
+      {isLoading ? <ActivityIndicator size={"large"} color={"#8e1c1a"} /> :
+        cartoes.map((cartao, index) => (
+          <Payment key={index} cartao={cartao} />
+        ))
+      }
 
       <TouchableOpacity
         style={styles.addnew1}

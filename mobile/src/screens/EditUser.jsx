@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, TextInput, StyleSheet, PixelRatio } from "react-native";
 import { DadosUsuario } from "../components/AuthContext";
 import { useNavigation } from "@react-navigation/native";
+import BackButton from "../components/BackButton/BackButton";
 
 export default function EditUser() {
   const navigation = useNavigation();
@@ -52,11 +53,11 @@ export default function EditUser() {
     }
   }, [usuarioPorID]);
 
-  const body = { nome, cpf, telefone, email };
 
   function AlterarDados() {
     if (senha === usuarioPorID?.senha) {
-      fetch(`https://pizzeria3.azurewebsites.net/api/usuario/${usuarioPorID?.ID}`, {
+      const body = { nome, cpf, telefone, email, id: usuarioPorID.id};
+      fetch(`https://pizzeria3.azurewebsites.net/api/usuario`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
@@ -82,6 +83,7 @@ export default function EditUser() {
         flex: 1,
       }}
     >
+      <BackButton />
       <Text style={styles.text1}>edit your data</Text>
 
       <View style={styles.boxinput}>

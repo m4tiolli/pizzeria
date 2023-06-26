@@ -12,7 +12,7 @@ import AddressMethods from "../../screens/AddressMethods";
 import Payment from "../../screens/Payment";
 import PaymentCredit from "../../screens/PaymentCredit";
 import EditUser from "../../screens/EditUser";
-
+import SelectAddress from "../../screens/SelectAddress";
 const Stack = createNativeStackNavigator();
 
 export default function Routes() {
@@ -87,6 +87,11 @@ export default function Routes() {
       <Stack.Screen
         name='EditUser'
         component={EditUser}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name='SelectAddress'
+        component={SelectAddress}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="IIS Web Application Name" description="" value="pizzeria3" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^E:\\TCC187\\APIPizzeria\\APIPizzeria\\obj\\Release\\netcoreapp2\.1\\PubTmp\\Out\\$" />
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\gabri\\OneDrive\\Área\ de\ Trabalho\\tcc\\pizzeria\\pizzeria\\api\\APIPizzeria\\APIPizzeria\\obj\\Release\\netcoreapp2\.1\\PubTmp\\Out\\$" />
   </parameter>
 </parameters>

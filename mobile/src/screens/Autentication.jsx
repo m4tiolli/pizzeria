@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
+import BackButton from "../components/BackButton/BackButton";
 
 const Autentication = () => {
   const [isLoginFormVisible, setIsLoginFormVisible] = useState(true);
@@ -18,6 +19,7 @@ const Autentication = () => {
 
   return (
     <View style={styles.docker}>
+      <BackButton />
       <View
         style={{
           justifyContent: "center",

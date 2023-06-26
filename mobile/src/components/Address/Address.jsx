@@ -20,7 +20,7 @@ function Address({ endereco }) {
     const [modalEditVisible, setModalEditVisible] = useState(false);
 
     //Dados do endereço
-    const [address, setAddress] = useState("");
+    const [address, setAddress] = useState();
 
     //Campos para editar
     const [uf, setUF] = useState("");
@@ -66,10 +66,10 @@ function Address({ endereco }) {
     }, [address]);
 
     //Corpo para edição de dados
-    const body = { idusuario: usuario?.ID, uf, cidade, bairro, rua, numCasa, cep };
+    const body = { idendereco: endereco?.id, uf, cidade, bairro, rua, numCasa, cep };
 
     function AlterarEndereco() {
-        fetch("https://pizzeria3.azurewebsites.net/api/endereco", {
+        fetch("https://localhost:44383/api/endereco", {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body),
@@ -77,7 +77,7 @@ function Address({ endereco }) {
             .then((response) => {
                 alert("Dados editados com sucesso");
             })
-            .then(() => navigation.navigate("Settings"))
+            .then(() => setModalEditVisible(!modalEditVisible))
             .catch((err) => {
                 console.log(err);
                 alert("Erro ao editar os usuarios");
@@ -133,7 +133,7 @@ function Address({ endereco }) {
                                 underlineColorAndroid="transparent"
                                 placeholderTextColor={"#898989"}
                                 onChangeText={setUF}
-                                value={uf}
+                                value={endereco.uf}
                             />
                         </View>
                         <View style={styles.boxinput}>

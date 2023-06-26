@@ -16,19 +16,41 @@ import ItemCart from "../components/ItemCart/ItemCart";
 import Feather from "react-native-vector-icons/Feather";
 import { ChecarLoginUsuario } from "../components/AuthContext";
 
+
+// const pedido = {
+//   "id": 1,
+//   "itens": [
+//     {
+//       "id": 0,
+//       "produtoID": 0,
+//       "nome": "Pizza",
+//       "observacao": "",
+//       "valor": 0.0,
+//       "quantidade": 1
+//     }
+//   ],
+//   "valorTotal": 0,
+//   "situacao": "",
+//   "tipo": "delivery",
+//   "endereco": {
+//     "id": 0
+//   }
+// }
+
+
+
 function Cart() {
   const navigation = useNavigation();
 
   async function ValidarLogin() {
     const login = await ChecarLoginUsuario();
-    if (login == true) {
-      navigation.navigate("where eat?", {pedido: pedido})
+    if (login == false) {
+      return false
+    } else {
+      navigation.navigate("where eat?", { pedido: pedido })
     }
   }
 
-  useEffect(() => {
-    ValidarLogin()
-  }, [])
 
   const [cart, setCart] = useState([]);
 
@@ -54,16 +76,24 @@ function Cart() {
   const calculateTotal = () => {
     let total = 0;
     cart.forEach((item) => {
-      total += item.valor * item.quantidade;
+      total += item.Valor * item.Quantidade;
     });
     return total.toFixed(2);
   };
 
   const pedido = {
-    cart,
-    valor: calculateTotal(),
-    situacao: "aberto"
-  }
+    itens: cart.map((item) => ({
+      ProdutoID: item.ProdutoID,
+      Nome: item.Nome,
+      Observacao: item.Observacao,
+      Valor: item.Valor,
+      Quantidade: item.Quantidade,
+    })),
+    valorTotal: parseFloat(calculateTotal()),
+    situacao: "aberto",
+  };
+
+  console.log(pedido)
 
   return (
     <View
@@ -95,7 +125,7 @@ function Cart() {
               flexDirection: "row",
               justifyContent: "space-evenly",
               alignItems: "center",
-            }}  
+            }}
           >
             <TouchableOpacity style={styles.clear} onPress={clearCart}>
               <Icon

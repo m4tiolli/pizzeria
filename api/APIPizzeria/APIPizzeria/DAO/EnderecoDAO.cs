@@ -73,41 +73,57 @@ namespace APIPizzeria.DAO
 
 		public void Cadastrar(EnderecoDTO enderecos)
 		{
-			var conexao = ConnectionFactory.Build();
-			conexao.Open();
+			try
+			{
+				var conexao = ConnectionFactory.Build();
+				conexao.Open();
 
-			var query = @"INSERT INTO enderecos (idusuario, uf, cidade, bairro, rua, numCasa, cep) VALUES
+				var query = @"INSERT INTO enderecos (idusuario, uf, cidade, bairro, rua, numCasa, cep) VALUES
 						(@idusuario,@uf,@cidade,@bairro,@rua,@numCasa,@cep)";
 
-			var comando = new MySqlCommand(query, conexao);
-			comando.Parameters.AddWithValue("@idusuario", enderecos.IDUsuario);
-			comando.Parameters.AddWithValue("@uf", enderecos.UF);
-			comando.Parameters.AddWithValue("@cidade", enderecos.Cidade);
-			comando.Parameters.AddWithValue("@bairro", enderecos.Bairro);
-			comando.Parameters.AddWithValue("@rua", enderecos.Rua);
-			comando.Parameters.AddWithValue("@numCasa", enderecos.NumCasa);
+				var comando = new MySqlCommand(query, conexao);
+				comando.Parameters.AddWithValue("@idusuario", enderecos.IDUsuario);
+				comando.Parameters.AddWithValue("@uf", enderecos.UF);
+				comando.Parameters.AddWithValue("@cidade", enderecos.Cidade);
+				comando.Parameters.AddWithValue("@bairro", enderecos.Bairro);
+				comando.Parameters.AddWithValue("@rua", enderecos.Rua);
+				comando.Parameters.AddWithValue("@numCasa", enderecos.NumCasa);
+				comando.Parameters.AddWithValue("@cep", enderecos.CEP);
+				comando.ExecuteNonQuery();
+				conexao.Close();
+			}
+			catch (Exception)
+			{
 
-			comando.ExecuteNonQuery();
-			conexao.Close();
+				throw;
+			}
 		}
 
 		public void Alterar(EnderecoDTO enderecos)
 		{
-			var conexao = ConnectionFactory.Build();
-			conexao.Open();
+			try
+			{
+				var conexao = ConnectionFactory.Build();
+				conexao.Open();
 
-			var query = @"UPDATE enderecos SET uf = @uf, cidade = @cidade, bairro = @bairro, rua = @rua, numCasa = @numCasa WHERE idusuario = @id";
+				var query = @"UPDATE enderecos SET uf = @uf, cidade = @cidade, bairro = @bairro, rua = @rua, numCasa = @numCasa WHERE idendereco = @idendereco";
 
-			var comando = new MySqlCommand(query, conexao);
-			comando.Parameters.AddWithValue("@idusuario", enderecos.IDUsuario);
-			comando.Parameters.AddWithValue("@uf", enderecos.UF);
-			comando.Parameters.AddWithValue("@cidade", enderecos.Cidade);
-			comando.Parameters.AddWithValue("@bairro", enderecos.Bairro);
-			comando.Parameters.AddWithValue("@rua", enderecos.Rua);
-			comando.Parameters.AddWithValue("@numCasa", enderecos.NumCasa);
+				var comando = new MySqlCommand(query, conexao);
+				comando.Parameters.AddWithValue("@idendereco", enderecos.ID);
+				comando.Parameters.AddWithValue("@uf", enderecos.UF);
+				comando.Parameters.AddWithValue("@cidade", enderecos.Cidade);
+				comando.Parameters.AddWithValue("@bairro", enderecos.Bairro);
+				comando.Parameters.AddWithValue("@rua", enderecos.Rua);
+				comando.Parameters.AddWithValue("@numCasa", enderecos.NumCasa);
 
-			comando.ExecuteNonQuery();
-			conexao.Close();
+				comando.ExecuteNonQuery();
+				conexao.Close();
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
 		}
 
 		public void Remover(int id)

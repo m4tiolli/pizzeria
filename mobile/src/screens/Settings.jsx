@@ -11,7 +11,8 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import Header from './../components/Header/Header';
 import { useNavigation } from "@react-navigation/native";
 import { useState, useEffect } from "react";
-import {DadosUsuario, ChecarLoginUsuario} from "../components/AuthContext"
+import { DadosUsuario, ChecarLoginUsuario } from "../components/AuthContext"
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function Settings() {
   const navigation = useNavigation()
@@ -30,17 +31,23 @@ function Settings() {
   const [usuario, setUsuario] = useState("");
 
   async function PreencherDados() {
-      const jwt = await DadosUsuario();
-      setUsuario(jwt);
+    const jwt = await DadosUsuario();
+    setUsuario(jwt);
   }
 
   useEffect(() => {
-      PreencherDados();
+    PreencherDados();
   }, []);
+
+  function deslogar() {
+    AsyncStorage.removeItem('@jwt')
+    alert("Você saiu da sua conta!")
+    navigation.goBack()
+  }
 
   return (
     <View style={{ width: "100%", height: "100%", backgroundColor: "#efefef" }}>
-      <Header/>
+      <Header />
       <View
         style={{
           width: "100%",
@@ -51,12 +58,12 @@ function Settings() {
         }}
       >
         <FontAwesome
-        name="user-circle-o"
-        color={"#8e1c1c"}
-        size={PixelRatio.getPixelSizeForLayoutSize(35)}
+          name="user-circle-o"
+          color={"#8e1c1c"}
+          size={PixelRatio.getPixelSizeForLayoutSize(35)}
         />
         <Text style={styles.name}>{usuario?.Nome}</Text>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate('EditUser')}
         >
@@ -82,6 +89,9 @@ function Settings() {
             size={PixelRatio.getPixelSizeForLayoutSize(10)}
             color={"#8e1c1a"}
           />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={deslogar}>
+          <Text style={{color: "#8e1c1c"}}>log out</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -110,7 +120,7 @@ const styles = StyleSheet.create({
     fontSize: PixelRatio.getPixelSizeForLayoutSize(5),
     color: '#8e1c1a'
   },
-    name: {
+  name: {
     fontFamily: "Poppins_500Medium",
     margin: PixelRatio.getPixelSizeForLayoutSize(9),
     fontSize: PixelRatio.getPixelSizeForLayoutSize(7),
