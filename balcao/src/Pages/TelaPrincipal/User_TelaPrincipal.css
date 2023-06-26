@@ -102,5 +102,5 @@
 
 .centered-container {
   margin: 0 auto;
-  max-width: calc(100% - 360px);
+  max-width: calc(100% - 260px);
 }

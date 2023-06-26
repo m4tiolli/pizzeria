@@ -32,3 +32,8 @@
     background-color: #698C3D;
     color: #fff;
   }
+  .listaPedidos {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
