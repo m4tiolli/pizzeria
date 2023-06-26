@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import ItemPedido from "../ItemPedido/ItemPedido";
 import "./CardPedido.css";
 
+/**
+ * A fazer CardPedido.jsx
+ */
+
 export default function CardPedido({ pedido }) {
   const navigate = useNavigate();
   const [pedidoFinalizado, setPedidoFinalizado] = useState(false);
@@ -13,12 +17,12 @@ export default function CardPedido({ pedido }) {
 
   function FinalizarPedido() {
     // Chamada à API para alterar a situação do pedido para "encerrado"
-    fetch(`https://pizzeria3.azurewebsites.net/api/pedido/${pedido.id}`, {
+    fetch(`https://pizzeria3.azurewebsites.net/api/pedido/encerrar?id=${pedido.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ situacao: "encerrado" })
+      body: JSON.stringify({ id: pedido })
     })
       .then(response => response.json())
       .then(data => {
@@ -34,9 +38,9 @@ export default function CardPedido({ pedido }) {
       <div className="containerTexto">
         <h2 className="nomeCliente">Alan Santana leão</h2>
         {pedido.itens.map((item, key) => (
-          <ItemPedido key={key} item={item}></ItemPedido>
+          <ItemPedido key={key} item={item}/>
         ))}
-        <p className="numeroPedido">pedido Número: {pedido.id}</p>
+        <p className="numeroPedido">pedido número: {pedido.id}</p>
         <div className="endereço">
           <p>{pedido.endereco.id}</p>
           <p>{pedido.endereco.rua}, {pedido.endereco.numCasa}</p>

@@ -21,29 +21,41 @@ export default function Produto() {
   const [observacao, setObservacao] = useState("");
 
   async function carrinho() {
-    const item = {
-      id: pizzas.id,
-      nome: pizzas.nome,
-      descricao: pizzas.descricao,
-      valor: pizzas.valor,
-      imagem: pizzas.imagem,
-      quantidade: quantidade,
-      observacao: observacao
-    };
-    let carrinho = await AsyncStorage.getItem("carrinho");
-    if (!carrinho || carrinho.length === 0) {
-      await AsyncStorage.setItem("carrinho", JSON.stringify([item]));
+    try {
+      const item = {
+        ProdutoID: pizzas.id,
+        Nome: pizzas.nome,
+        Observacao: observacao,
+        Valor: pizzas.valor,
+        Quantidade: quantidade, // Utilizar a quantidade atual do estado
+        descricao: pizzas.descricao,
+        imagem: pizzas.imagem
+      };
+      let carrinho = await AsyncStorage.getItem("carrinho");
+      if (!carrinho || carrinho.length === 0) {
+        await AsyncStorage.setItem("carrinho", JSON.stringify([item]));
+        navigation.navigate("Cart");
+        return;
+      }
+  
+      carrinho = JSON.parse(carrinho);
+  
+      // Verificar se o produto já existe no carrinho
+      const existingItemIndex = carrinho.findIndex((i) => i.ProdutoID === pizzas.id);
+      if (existingItemIndex !== -1) {
+        // O produto já existe no carrinho, então apenas atualize a quantidade
+        carrinho[existingItemIndex].Quantidade += quantidade;
+      } else {
+        // O produto não existe no carrinho, adicione-o
+        carrinho.push(item);
+      }
+  
+      await AsyncStorage.setItem("carrinho", JSON.stringify(carrinho));
       navigation.navigate("Cart");
-      return;
+    } catch (err) {
+      console.log(err);
     }
-
-    carrinho = JSON.parse(carrinho);
-
-    carrinho = carrinho.concat([item]);
-    await AsyncStorage.setItem("carrinho", JSON.stringify(carrinho));
-    navigation.navigate("Cart");
   }
-
   const [quantidade, setQuantidade] = useState(1);
 
   const QuantAdd = () => {

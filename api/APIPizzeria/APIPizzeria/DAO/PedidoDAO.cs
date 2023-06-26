@@ -76,23 +76,31 @@ namespace APIPizzeria.DAO
         }
         public void Cadastrar(PedidoDTO pedido)
         {
-            var conexao = ConnectionFactory.Build();
-            conexao.Open();
+            try
+            {
+                var conexao = ConnectionFactory.Build();
+                conexao.Open();
 
-            var query = @"insert into pedido values (default, @valor, @situacao, @tipo, @endereco);";
+                var query = @"insert into pedido values (default, @valor, @situacao, @tipo, @endereco);";
 
-            var comando = new MySqlCommand(query, conexao);
-            comando.Parameters.AddWithValue("@valor", pedido.ValorTotal);
-            comando.Parameters.AddWithValue("@situacao", pedido.Situacao);
-            comando.Parameters.AddWithValue("@tipo", pedido.Tipo);
-            comando.Parameters.AddWithValue("@endereco", pedido.Endereco.ID);
+                var comando = new MySqlCommand(query, conexao);
+                comando.Parameters.AddWithValue("@valor", pedido.ValorTotal);
+                comando.Parameters.AddWithValue("@situacao", pedido.Situacao);
+                comando.Parameters.AddWithValue("@tipo", pedido.Tipo);
+                comando.Parameters.AddWithValue("@endereco", pedido.Endereco.ID);
 
-            comando.ExecuteNonQuery();
+                comando.ExecuteNonQuery();
 
-            var idPedido = comando.LastInsertedId;
-            conexao.Close();
+                var idPedido = comando.LastInsertedId;
+                conexao.Close();
 
-            CadastrarItensPedido(pedido.Itens, idPedido);
+                CadastrarItensPedido(pedido.Itens, idPedido);
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
         }
 
         private void CadastrarItensPedido(List<ItemPedidoDTO> items, long idPedido)

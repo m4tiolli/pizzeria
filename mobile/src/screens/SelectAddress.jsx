@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet, PixelRatio } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation, useRoute, useFocusEffect } from "@react-navigation/native";
 import AddressButton from "../components/AddressButton/AddressButton";
@@ -29,28 +29,16 @@ function SelectAddress() {
         const updatedPedido = { ...pedido, endereco };
         // Atualizar o estado do pedido com o ID do endereço selecionado    
         setPedido(updatedPedido);
-        fetch("https://pizzeria3.azurewebsites.net/api/pedido", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(updatedPedido),
-        })
-            .then((response) => {
-                alert("Pedido criado com sucesso");
-            })
-            .catch((error) => {
-                console.log(error);  
-                alert("Erro ao criar pedido");
-            });
-        navigation.navigate("Payment")
+        navigation.navigate("Payment", { pedido: updatedPedido })
     };
 
     console.log(upPedido)
 
 
     return (
-        <View>
+        <View style={styles.container}>
             <BackButton />
-            <Text>Selecione o seu endereço</Text>
+            <Text style={[styles.text, { marginVertical: PixelRatio.getPixelSizeForLayoutSize(10) }]}>select your address</Text>
 
             {
                 enderecos.map((endereco, index) => (
@@ -64,5 +52,19 @@ function SelectAddress() {
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    text: {
+        fontFamily: 'Poppins_500Medium',
+        fontSize: PixelRatio.getPixelSizeForLayoutSize(7),
+        color: "#8e1c1a",
+        textAlign: 'left',
+    },
+    container: {
+        width: '100%',
+        height: '100%',
+        alignItems: 'center',
+    }
+})
 
 export default SelectAddress;

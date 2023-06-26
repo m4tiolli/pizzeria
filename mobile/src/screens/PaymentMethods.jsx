@@ -15,6 +15,7 @@ import { RadioButton } from "react-native-paper";
 import BackButton from "../components/BackButton/BackButton";
 import { DadosUsuario } from "../components/AuthContext";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function PaymentMethods() {
   const navigation = useNavigation()
@@ -63,6 +64,8 @@ function PaymentMethods() {
       setData(maskedText);
     }
   };
+
+  AsyncStorage.setItem("cartoes", JSON.stringify(cartoes));
 
   function ListarCartoes(id) {
     fetch("https://pizzeria3.azurewebsites.net/api/cartao/listarcartoes?id=" + id, {

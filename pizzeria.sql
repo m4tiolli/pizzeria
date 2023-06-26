@@ -28,7 +28,7 @@ create table ProdutosPedido(
 create table usuario(
     id int primary key not null auto_increment,
     nome varchar(100),
-    cpf varchar(13),
+    cpf varchar(15),
     datanasc date,
     telefone varchar(20),
     email varchar(32),
@@ -52,18 +52,18 @@ create table enderecos (
     bairro varchar(30),
     rua varchar(30),
     numcasa varchar(10),
-    cep varchar(8),
+    cep varchar(15),
     foreign key (idusuario) references usuario(id)
 );
-create table cartoes (
+drop table if exists cartoes;create table cartoes (
     id int primary key not null auto_increment,
     id_usuario int,
     nome varchar(100),
-    numero varchar(16),
+    numero varchar(25),
     cvc varchar(3),
-    datavalidade date,
+    datavalidade varchar(10),
 	tipo varchar(32),
-    foreign key (id_usuario) references usuario(id)
+    foreign key (id_usuario) references usuario(id)	
 );
 create table infopedido(
     id int primary key not null auto_increment,
@@ -75,3 +75,5 @@ create table infopedido(
     foreign key (idpedido) references pedido(id)
 );
 
+alter table pizzeria.pedido add column tipo varchar(200);
+alter table pizzeria.pedido add column enderecoId int;

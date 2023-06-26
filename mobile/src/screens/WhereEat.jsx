@@ -27,22 +27,7 @@ function WhereEat() {
       ...pedido,
       tipo: "local"
     }
-    navigation.navigate("SelectAddress", { pedido: pedido })
-  }
-
-  const EnviarPedido = () => {
-    fetch("https://pizzeria3.azurewebsites.net/api/pedido", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(pedido),
-    })
-      .then((response) => {
-        alert("Pedido criado com sucesso");
-      })
-      .catch((error) => {
-        console.log(error);
-        alert("Erro ao criar pedido");
-      });
+    navigation.navigate("Payment", { pedido: pedido })
   }
 
   return (
@@ -64,7 +49,7 @@ function WhereEat() {
         />
         <Text style={styles.text}>to delivery</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={EnviarPedido}>
+      <TouchableOpacity style={styles.button} onPress={navigateLocal}>
         <Image
           source={garfo}
           style={{ width: PixelRatio.getPixelSizeForLayoutSize(15), height: PixelRatio.getPixelSizeForLayoutSize(15) }}

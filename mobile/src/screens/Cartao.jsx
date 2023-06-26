@@ -1,22 +1,15 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Text, View, PixelRatio, StyleSheet, TouchableOpacity } from "react-native";
-import QRCode from 'react-native-qrcode-svg';
-import Success from "./Success";
-import { useState, useEffect } from "react";
-function Pix() {
-    const [primeiroComponente, setPrimeiroComponente] = useState(false);
+import AntDesign from 'react-native-vector-icons/AntDesign'
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setPrimeiroComponente(!primeiroComponente);
-        }, 8000); // Define o tempo em milissegundos, neste caso 3 segundos
+function Cartao() {
+    const navigation = useNavigation();
+    const route = useRoute();
+    const { pedido } = route.params;
 
-        return () => clearTimeout(timer); // Limpa o timer se o componente for desmontado antes do tempo definido
+    const nomesItens = pedido.itens.map(item => item.Nome);
 
-    }, []); // O array vazio [] indica que esse efeito só será executado uma vez, equivalente ao componentDidMount
-
-    if (primeiroComponente) {
-        fetch("https://pizzeria3.azurewebsites.net/api/pedido", {
+    fetch("https://pizzeria3.azurewebsites.net/api/pedido", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(pedido),
@@ -28,22 +21,6 @@ function Pix() {
             console.log(error);
             alert("Erro ao criar pedido");
         });
-        return (
-            <Success />
-        );
-    }
-
-    const navigation = useNavigation();
-    const route = useRoute();
-    const { pedido } = route.params;
-
-    const chavePix = '83e125e3-2db6-4b6b-9e96-c265a61c3a3a';
-    const nomeRecebedor = 'Pizzzeria';
-    const valor = pedido.valorTotal;
-
-    const payload = `PIX:02|${chavePix}*|${nomeRecebedor}|${valor}|`;
-
-    const nomesItens = pedido.itens.map(item => item.Nome);
 
     return (
         <View style={{
@@ -53,15 +30,11 @@ function Pix() {
             alignItems: 'center',
             justifyContent: 'center',
         }}>
-            <Text style={styles.text}>confirm payment</Text>
-            <QRCode
-                value={payload}
-                size={PixelRatio.getPixelSizeForLayoutSize(80)}
-                backgroundColor="#efefef"
-                color="#8e1c1c"
-            />
-            <TouchableOpacity style={styles.copy}>
-                <Text style={{ fontFamily: 'Poppins_500Medium', color: '#efefef' }}>copy pix code</Text>
+            <AntDesign name="checkcircle" size={PixelRatio.getPixelSizeForLayoutSize(40)} color={'#698C3D'} />
+            <Text style={{ fontFamily: 'Poppins_400Regular', color: '#698C3D', marginVertical: PixelRatio.getPixelSizeForLayoutSize(10), fontSize: PixelRatio.getPixelSizeForLayoutSize(8) }}>successful payment</Text>
+            <Text style={{ fontFamily: 'Poppins_400Regular', color: '#8e1c1c', marginVertical: PixelRatio.getPixelSizeForLayoutSize(10), fontSize: PixelRatio.getPixelSizeForLayoutSize(5), width: '70%', textAlign: 'center' }}>we will let you know when your order is complete.</Text>
+            <TouchableOpacity style={styles.copy} onPress={() => navigation.navigate("Home")}>
+                <Text style={{ fontFamily: 'Poppins_500Medium', color: '#efefef' }}>back home</Text>
             </TouchableOpacity>
             <View style={{ alignItems: 'center', width: '100%' }}>
                 <View style={styles.linha}>
@@ -114,4 +87,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Pix;
+export default Cartao;

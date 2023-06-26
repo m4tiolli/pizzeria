@@ -13,6 +13,8 @@ import Payment from "../../screens/Payment";
 import PaymentCredit from "../../screens/PaymentCredit";
 import EditUser from "../../screens/EditUser";
 import SelectAddress from "../../screens/SelectAddress";
+import SelectPayment from "../../screens/SelectPayment";
+import Cartao from "../../screens/Cartao";
 const Stack = createNativeStackNavigator();
 
 export default function Routes() {
@@ -92,6 +94,16 @@ export default function Routes() {
       <Stack.Screen
         name='SelectAddress'
         component={SelectAddress}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name='SelectPayment'
+        component={SelectPayment}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name='Cartao'
+        component={Cartao}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
