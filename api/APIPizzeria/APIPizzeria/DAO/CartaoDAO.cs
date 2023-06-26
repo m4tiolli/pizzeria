@@ -27,11 +27,11 @@ namespace APIPizzeria.DAO
 			{
 				var cartao = new CartaoDTO();
 				cartao.ID = int.Parse(reader["id"].ToString());
-				cartao.IDUsuario = int.Parse(reader["id_usuario"].ToString());
+				cartao.ID_Usuario = int.Parse(reader["id_usuario"].ToString());
 				cartao.Numero = reader["numero"].ToString();
 				cartao.Nome = reader["nome"].ToString();
 				cartao.CVC = reader["cvc"].ToString();
-				cartao.DataValidade = DateTime.Parse(reader["datavalidade"].ToString());
+				cartao.DataValidade = reader["datavalidade"].ToString();
 				cartao.Tipo = reader["tipo"].ToString();
 				Lista.Add(cartao);
 			}
@@ -55,11 +55,11 @@ namespace APIPizzeria.DAO
 			while (dataReader.Read())
 			{
 				cartao.ID = int.Parse(dataReader["id"].ToString());
-				cartao.IDUsuario = int.Parse(dataReader["id_usuario"].ToString());
+				cartao.ID_Usuario = int.Parse(dataReader["id_usuario"].ToString());
 				cartao.Numero = dataReader["numero"].ToString();
 				cartao.Nome = dataReader["nome"].ToString();
 				cartao.CVC = dataReader["cvc"].ToString();
-				cartao.DataValidade = DateTime.Parse(dataReader["datavalidade"].ToString());
+				cartao.DataValidade = dataReader["datavalidade"].ToString();
 				cartao.Tipo = dataReader["tipo"].ToString();
 			}
 			conexao.Close();
@@ -72,10 +72,10 @@ namespace APIPizzeria.DAO
 			conexao.Open();
 
 			var query = @"INSERT INTO cartoes (id_usuario, nome, numero, cvc, datavalidade, tipo) VALUES
-						(@id_usuario,@nome,@numero,@cvc,@imagem,@tipo)";
+						(@id_usuario,@nome,@numero,@cvc,@datavalidade,@tipo)";
 
 			var comando = new MySqlCommand(query, conexao);
-			comando.Parameters.AddWithValue("@id_usuario", cartao.IDUsuario);
+			comando.Parameters.AddWithValue("@id_usuario", cartao.ID_Usuario);
 			comando.Parameters.AddWithValue("@nome", cartao.Nome);
 			comando.Parameters.AddWithValue("@numero", cartao.Numero);
 			comando.Parameters.AddWithValue("@cvc", cartao.CVC);
@@ -95,7 +95,7 @@ namespace APIPizzeria.DAO
 						datavalidade = @datavalidade, tipo = @tipo WHERE id = @id";
 
 			var comando = new MySqlCommand(query, conexao);
-			comando.Parameters.AddWithValue("@id_usuario", cartao.IDUsuario);
+			comando.Parameters.AddWithValue("@id_usuario", cartao.ID_Usuario);
 			comando.Parameters.AddWithValue("@nome", cartao.Nome);
 			comando.Parameters.AddWithValue("@numero", cartao.Numero);
 			comando.Parameters.AddWithValue("@cvc", cartao.CVC);

@@ -36,7 +36,7 @@ export default function AddressMethods() {
         PreencherDados();
     }, []);
 
-    AsyncStorage.setItem("enderecos", JSON.stringify(enderecoslist));
+    AsyncStorage.setItem("enderecos", JSON.stringify(enderecos));
 
     async function buscarEndereco() {
         try {
@@ -74,7 +74,7 @@ export default function AddressMethods() {
 
     function CadastrarEndereco() {
         const body = { idusuario: usuario?.ID, uf, cidade, bairro, rua, numCasa, cep }
-        fetch("https://localhost:44383/api/endereco", {
+        fetch("https://pizzeria3.azurewebsites.net/api/endereco", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

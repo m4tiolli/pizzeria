@@ -69,7 +69,7 @@ function Address({ endereco }) {
     const body = { idendereco: endereco?.id, uf, cidade, bairro, rua, numCasa, cep };
 
     function AlterarEndereco() {
-        fetch("https://localhost:44383/api/endereco", {
+        fetch("https://pizzeria3.azurewebsites.net/api/endereco", {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body),

@@ -34,6 +34,14 @@ namespace APIPizzeria.Controllers
 			return Ok(cartoes);
 		}
 
+		[HttpPost]
+		public IActionResult Cadastrar([FromBody] CartaoDTO cartao)
+		{
+			CartaoDAO dao = new CartaoDAO();
+			dao.Cadastrar(cartao);
+			return Ok(dao);
+		}
+
 		[HttpPut]
 		public IActionResult Alterar(CartaoDTO cartao)
 		{
