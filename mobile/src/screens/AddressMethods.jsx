@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Modal, PixelRatio, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, Modal, PixelRatio, StyleSheet, TouchableOpacity, ActivityIndicator } from "react-native";
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
@@ -7,40 +7,6 @@ import axios from 'axios';
 import { DadosUsuario } from "../components/AuthContext";
 import BackButton from "../components/BackButton/BackButton";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
-const enderecoslist = [
-    {
-        id: 1,
-        idusuario: 1,
-        uf: "SP",
-        cidade: "Santana de Parnaíba",
-        bairro: "Centro",
-        rua: "Rua Fernão Dias Falcão",
-        numcasa: "196",
-        cep: "06501-120",
-    },
-    {
-        id: 2,
-        idusuario: 1,
-        uf: "SP",
-        cidade: "Cajamar",
-        bairro: "Portais",
-        rua: "Rua das Orquídeas",
-        numcasa: "108",
-        cep: "07790-815",
-    },
-    {
-        id: 3,
-        idusuario: 1,
-        uf: "SP",
-        cidade: "Santana de Parnaíba",
-        bairro: "Colinas do Anhanguera",
-        rua: "Rua Di Cavalcanti",
-        numcasa: "495",
-        cep: "06537-085",
-    },
-]
-
 
 export default function AddressMethods() {
     const [modalNewVisible, setModalNewVisible] = useState(false);
@@ -53,6 +19,8 @@ export default function AddressMethods() {
     const [cidade, setCidade] = useState("");
     const [bairro, setBairro] = useState("");
     const [tipo, setTipo] = useState("");
+
+    const [isLoading, setIsLoading] = useState(true)
 
     const [enderecos, setEnderecos] = useState([]);
 
@@ -93,6 +61,7 @@ export default function AddressMethods() {
             .then((data) => {
                 if (Array.isArray(data)) {
                     setEnderecos(data);
+                    setIsLoading(false)
                 } else {
                     setEnderecos([]);
                 }
@@ -113,7 +82,7 @@ export default function AddressMethods() {
             body: JSON.stringify(body),
         })
             .then((response) => alert("Endereço cadastrado com sucesso."))
-            .then(() => navigation.navigate("AddressMethods"))
+            .then(() => navigation.goBack())
             .catch((erro) => console.log(erro))
     }
 
@@ -132,10 +101,11 @@ export default function AddressMethods() {
                 color: "#8e1c1a",
                 marginVertical: PixelRatio.getPixelSizeForLayoutSize(7)
             }}>your saved address</Text>
-
-            {enderecos.map((endereco, index) => (
-                <Address key={index} endereco={endereco} />
-            ))}
+            {isLoading ? <ActivityIndicator size={"large"} color={"#8e1c1a"} /> :
+                enderecos.map((endereco, index) => (
+                    <Address key={index} endereco={endereco} />
+                ))
+            }
 
             <TouchableOpacity style={styles.addnew1} onPress={() => setModalNewVisible(!modalNewVisible)}>
                 <AntDesign name="plus" size={PixelRatio.getPixelSizeForLayoutSize(7)} color={"#8e1c1a"} />

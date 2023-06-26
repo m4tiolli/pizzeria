@@ -20,7 +20,7 @@ function Address({ endereco }) {
     const [modalEditVisible, setModalEditVisible] = useState(false);
 
     //Dados do endereço
-    const [address, setAddress] = useState("");
+    const [address, setAddress] = useState();
 
     //Campos para editar
     const [uf, setUF] = useState("");
@@ -56,14 +56,14 @@ function Address({ endereco }) {
 
     useEffect(() => {
         if (address) {
-            setUF(endereco?.uf);
-            setCidade(endereco?.cidade);
-            setBairro(endereco?.bairro);
-            setRua(endereco?.rua);
-            setNumCasa(endereco?.numCasa);
-            setCep(endereco?.cep);
+            setUF(address?.uf);
+            setCidade(address?.cidade);
+            setBairro(address?.bairro);
+            setRua(address?.rua);
+            setNumCasa(address?.numCasa);
+            setCep(address?.cep);
         }
-    }, [endereco]);
+    }, [address]);
 
     //Corpo para edição de dados
     const body = { idendereco: endereco?.id, uf, cidade, bairro, rua, numCasa, cep };
@@ -77,7 +77,7 @@ function Address({ endereco }) {
             .then((response) => {
                 alert("Dados editados com sucesso");
             })
-            .then(() => navigation.navigate("Settings"))
+            .then(() => setModalEditVisible(!modalEditVisible))
             .catch((err) => {
                 console.log(err);
                 alert("Erro ao editar os usuarios");

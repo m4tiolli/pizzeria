@@ -85,7 +85,7 @@ function AddressButton({ endereco, onSelectAddress }) {
     }
 
     return (
-        <TouchableOpacity onPress={() => onSelectAddress(endereco.id)}>
+        <TouchableOpacity onPress={() => onSelectAddress(endereco)}>
             <View style={styles.container}>
                 <View style={{ flexDirection: "column" }}>
                     <Text style={styles.text1}>{endereco.rua}</Text>

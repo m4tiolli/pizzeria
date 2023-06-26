@@ -121,7 +121,7 @@ namespace APIPizzeria.DAO
         }
 
         public void Alterar(UsuarioDTO user)
-        {
+        {  
             var conexao = ConnectionFactory.Build();
             conexao.Open();
 

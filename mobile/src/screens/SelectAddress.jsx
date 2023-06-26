@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation, useRoute, useFocusEffect } from "@react-navigation/native";
 import AddressButton from "../components/AddressButton/AddressButton";
+import BackButton from './../components/BackButton/BackButton';
 
 function SelectAddress() {
     const navigation = useNavigation();
@@ -24,22 +25,23 @@ function SelectAddress() {
         }, [])
     );
 
-    const handleSelectAddress = (enderecoId) => {
-        const updatedPedido = { ...pedido, endereco:{id:enderecoId} };
-        // Atualizar o estado do pedido com o ID do endereço selecionado
+    const handleSelectAddress = (endereco) => {
+        const updatedPedido = { ...pedido, endereco };
+        // Atualizar o estado do pedido com o ID do endereço selecionado    
         setPedido(updatedPedido);
         fetch("https://pizzeria3.azurewebsites.net/api/pedido", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(upPedido),
+            body: JSON.stringify(updatedPedido),
         })
             .then((response) => {
                 alert("Pedido criado com sucesso");
             })
             .catch((error) => {
-                console.log(error);
+                console.log(error);  
                 alert("Erro ao criar pedido");
             });
+        navigation.navigate("Payment")
     };
 
     console.log(upPedido)
@@ -47,6 +49,7 @@ function SelectAddress() {
 
     return (
         <View>
+            <BackButton />
             <Text>Selecione o seu endereço</Text>
 
             {
