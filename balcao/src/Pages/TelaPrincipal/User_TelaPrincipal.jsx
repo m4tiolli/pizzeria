@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { MdShoppingCart, MdOutlineTableRestaurant, MdOutlineDeliveryDining } from 'react-icons/md';
-import { BsFillBagCheckFill } from 'react-icons/bs';
+import { MdShoppingCart, } from 'react-icons/md';/*MdOutlineDeliveryDining*/
+// import { BsFillBagCheckFill } from 'react-icons/bs';
+import { BiReceipt } from "react-icons/bi"
 import { FaRegUser } from 'react-icons/fa';
 import { AiFillHome } from 'react-icons/ai'
 import Produto from '../../components/Pizzas/CompProdutos-module';
@@ -41,10 +42,6 @@ export default function TelaPrincipal() {
 
   function Delivery() {
     navigate("/delivery");
-  }
-
-  function Mesas() {
-    navigate("/mesas");
   }
 
   function Retirar() {
@@ -92,21 +89,20 @@ export default function TelaPrincipal() {
           <img src={logo} alt="" className="logo" />
           <h1 className="title">Pizzeria Balcão</h1>
           <button className='buttonTitle' onClick={Home}><AiFillHome size={30} style={iconStyle} /></button>
-          <button className="buttonTitle" onClick={Delivery}> <MdOutlineDeliveryDining size={30} style={iconStyle} /> </button>
-          <button className="buttonTitle" onClick={Retirar}> <BsFillBagCheckFill size={30} style={iconStyle} /> </button>
-          <button className="buttonTitle" onClick={Mesas}> <MdOutlineTableRestaurant size={30} style={iconStyle} /> </button>
+          <button className="buttonTitle" onClick={Delivery}> <BiReceipt size={30} style={iconStyle} /> </button>
+          {/* <button className="buttonTitle" onClick={Retirar}> <BsFillBagCheckFill size={30} style={iconStyle} /> </button> */}
           <button className='buttonTitle' onClick={abrirCarrinho}><MdShoppingCart size={30} style={iconStyle} /></button>
           <button className="buttonTitle" onClick={User}> <FaRegUser size={30} style={iconStyle} /> </button>
-        </div>
+        </div>  
         <div className='containerGeral'>
           {sidebarOpen && <Sidebar carrinho={carrinho} setSidebarOpen={setSidebarOpen} atualizarCarrinho={atualizarCarrinho}>Sidebar</Sidebar>}
           <div className='containerItens'>
-          <div className={`buttonFiltroContainer ${className}`}>
-            <button className='buttonFiltro'>Pizzas</button>
-            <button className='buttonFiltro'>Bebidas</button>
-            <button className='buttonFiltro'>Aperitivos</button>
-            <button className='buttonFiltro'>Promoções</button>
-          </div>
+            <div className={`buttonFiltroContainer ${className}`}>
+              <button className='buttonFiltro'>Pizzas</button>
+              <button className='buttonFiltro'>Bebidas</button>
+              <button className='buttonFiltro'>Aperitivos</button>
+              <button className='buttonFiltro'>Promoções</button>
+            </div>
 
             <div className={`Produtos-Container ${className}`}>
               {produtos.map((pizza, index) => (

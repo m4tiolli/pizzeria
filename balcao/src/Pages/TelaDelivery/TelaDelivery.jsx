@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import {
-  MdOutlineTableRestaurant,
-  MdOutlineDeliveryDining,
-} from "react-icons/md";
+// import {
+//   MdOutlineDeliveryDining,
+// } from "react-icons/md";
 import { BsFillBagCheckFill } from "react-icons/bs";
 import { FaRegUser } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
+import { BiReceipt } from "react-icons/bi"
 import "./TelaDelivery.css";
 import CardPedido from "../../components/CardPedido/CardPedido";
 
@@ -31,7 +31,7 @@ export default function TelaDelivery(pizza) {
       });
   }, []);
 
-console.log(pedidos)
+  console.log(pedidos)
 
   function Verpedido() {
     navigate("/pedido");
@@ -57,10 +57,8 @@ console.log(pedidos)
           <button className="buttonTitle" onClick={Home}>
             <AiFillHome size={30} style={iconStyle} />
           </button>
-          <button className="buttonTitle" onClick={Delivery}>
-            {" "}
-            <MdOutlineDeliveryDining size={30} style={iconStyle} />{" "}
-          </button>
+          <button className="buttonTitle" onClick={Delivery}> <BiReceipt size={30} style={iconStyle} /> </button>
+
           <button className="buttonTitle" onClick={Retirar}>
             {" "}
             <BsFillBagCheckFill size={30} style={iconStyle} />{" "}
@@ -71,7 +69,7 @@ console.log(pedidos)
           </button>
         </div>
         <div style={{ textAlign: "center" }}>
-          <h1>DELIVERY</h1>
+          <h1>PEDIDOS</h1>
           <button className="buttonFiltro">Não Visto</button>
           <button className="buttonFiltro">Pendentes</button>
           <button className="buttonFiltro">Prontos</button>

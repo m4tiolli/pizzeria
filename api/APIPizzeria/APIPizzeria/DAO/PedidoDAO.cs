@@ -87,7 +87,16 @@ namespace APIPizzeria.DAO
                 comando.Parameters.AddWithValue("@valor", pedido.ValorTotal);
                 comando.Parameters.AddWithValue("@situacao", pedido.Situacao);
                 comando.Parameters.AddWithValue("@tipo", pedido.Tipo);
-                comando.Parameters.AddWithValue("@endereco", pedido.Endereco.ID);
+
+                if (pedido.Endereco is null)
+                {
+                    comando.Parameters.AddWithValue("@endereco", 0);
+                }
+                else
+                {
+                    comando.Parameters.AddWithValue("@endereco", pedido.Endereco.ID);
+                }
+
 
                 comando.ExecuteNonQuery();
 
