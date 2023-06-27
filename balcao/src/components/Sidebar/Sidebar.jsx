@@ -14,6 +14,7 @@ export default function SidebarPizza({
 }) {
   const [mesas, setMesas] = useState([]);
   const [mesaSelecionada, setMesaSelecionada] = useState("");
+  const iconStyle = { color: 'white' };
 
   useEffect(() => {
     fetch("https://pizzeria3.azurewebsites.net/api/Mesa")
@@ -81,8 +82,7 @@ export default function SidebarPizza({
       return item;
     });
 
-    carrinho = carrinhoAtualizado;
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    localStorage.setItem("carrinho", JSON.stringify(carrinhoAtualizado));
 
     atualizarCarrinho();
   }
@@ -100,8 +100,7 @@ export default function SidebarPizza({
       })
       .filter((item) => item !== undefined);
 
-    carrinho = carrinhoAtualizado;
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    localStorage.setItem("carrinho", JSON.stringify(carrinhoAtualizado));
 
     atualizarCarrinho();
   }
@@ -113,33 +112,36 @@ export default function SidebarPizza({
   return (
     <section id="sidebar">
       <div className="sidebar">
-        <div className="buttonContainer">
-          <button className="limparCarrinho" onClick={LimparCarrinho}>
-            <RiDeleteBin5Line size={30} />
-          </button>
-          <button className="fecharCarrinho" onClick={FecharSidebar}>
-            <AiFillCloseCircle size={30} />
-          </button>
-          <button className="buttonFinalisarPedido" onClick={FinalizarPedido}>
-            <BsCheckLg size={30} />
-          </button>
-        </div>
-        <span>
-          Nome do Cliente <input type="text" placeholder="Nome" />
-        </span>
-        <div className="numeroMesa">
-          Mesa{" "}
-          <select value={mesaSelecionada} onChange={handleMesaSelecionada}>
-            <option value="">Selecione uma mesa</option>
-            {mesas.map((mesa) => (
-              <option value={mesa.numero} key={mesa.id}>
-                Mesa {mesa.numero}
-              </option>
-            ))}
-          </select>
+        <div className="informacoes">
+          <div className="buttonContainer">
+            <button className="limparCarrinho" onClick={LimparCarrinho}>
+              <RiDeleteBin5Line size={30} style={iconStyle} />
+            </button>
+            <button className="fecharCarrinho" onClick={FecharSidebar}>
+              <AiFillCloseCircle size={30} style={iconStyle}  />
+            </button>
+            <button className="buttonFinalizarPedido" onClick={FinalizarPedido}>
+              <BsCheckLg size={30} style={iconStyle} />
+            </button>
+          </div>
+          <span>
+            Nome do Cliente <input type="text" placeholder="Nome" />
+          </span>
+          <div className="numeroMesa">
+            Mesa{" "}
+            <select value={mesaSelecionada} onChange={handleMesaSelecionada}>
+              <option value="">Selecione uma mesa</option>
+              {mesas.map((mesa) => (
+                <option value={mesa.numero} key={mesa.id}>
+                  Mesa {mesa.numero}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
-      <div className={`itemContainer ${isSidebarOpen ? "moveItems" : ""}`}>
+      <div className="produtos flexContainer">
+      <div className={`itemContainer ${carrinho?.length === 0 ? "emptyContainer" : ""} ${isSidebarOpen ? "moveItems" : ""} contentContainer`}>
         {carrinho?.map((item, index) => (
           <div className="ContainerPizzas" key={index}>
             <img
@@ -173,6 +175,7 @@ export default function SidebarPizza({
             </div>
           </div>
         ))}
+      </div>
       </div>
     </section>
   );

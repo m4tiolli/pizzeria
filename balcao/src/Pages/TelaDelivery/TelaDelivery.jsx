@@ -1,13 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/logo.png";
+import Header from '../../components/CompHeader/CompHeader';
 // import {
 //   MdOutlineDeliveryDining,
 // } from "react-icons/md";
-import { BsFillBagCheckFill } from "react-icons/bs";
-import { FaRegUser } from "react-icons/fa";
-import { AiFillHome } from "react-icons/ai";
-import { BiReceipt } from "react-icons/bi"
 import "./TelaDelivery.css";
 import CardPedido from "../../components/CardPedido/CardPedido";
 
@@ -36,38 +32,31 @@ export default function TelaDelivery(pizza) {
   function Verpedido() {
     navigate("/pedido");
   }
-  function Home() {
-    navigate("/");
+  function handleHomeClick() {
+    navigate('/');
   }
-  function Delivery() {
-    navigate("/delivery");
+
+  function handleDeliveryClick() {
+    navigate('/delivery');
   }
-  function Retirar() {
-    navigate("/retirar");
+
+  function handleRetirarClick() {
+    navigate('/retirar');
   }
-  function User() {
-    navigate("/user");
+
+  function handleUserClick() {
+    navigate('/user');
   }
   return (
     <div>
       <div id="root">
-        <div className="header">
-          <img src={logo} alt="" className="logo" />
-          <h1 className="title">Pizzeria Balcão</h1>
-          <button className="buttonTitle" onClick={Home}>
-            <AiFillHome size={30} style={iconStyle} />
-          </button>
-          <button className="buttonTitle" onClick={Delivery}> <BiReceipt size={30} style={iconStyle} /> </button>
+      <Header
+        onHomeClick={handleHomeClick}
+        onDeliveryClick={handleDeliveryClick}
+        showCartButton={false}
+        onUserClick={handleUserClick}
+      />
 
-          <button className="buttonTitle" onClick={Retirar}>
-            {" "}
-            <BsFillBagCheckFill size={30} style={iconStyle} />{" "}
-          </button>
-          <button className="buttonTitle" onClick={User}>
-            {" "}
-            <FaRegUser size={30} style={iconStyle} />{" "}
-          </button>
-        </div>
         <div style={{ textAlign: "center" }}>
           <h1>PEDIDOS</h1>
           <button className="buttonFiltro">Não Visto</button>
