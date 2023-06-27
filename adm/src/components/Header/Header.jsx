@@ -17,7 +17,7 @@ export default function Header() {
         <div className="profile">
           <img src={logo} alt="" />
           <ul className="profile-link">
-            <li>
+            {/* <li>
               <a href="#">
                 <i className="bx bxs-user-circle icon"></i> Profile
               </a>
@@ -31,7 +31,7 @@ export default function Header() {
               <a href="#">
                 <i className="bx bxs-log-out-circle"></i> Logout
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </nav>

@@ -120,7 +120,7 @@ function CadastroBalcao() {
               <Box w="100%">
                 <FormLabel htmlFor="email">Email</FormLabel>
                 <Input type="email" id="nome"
-                 placeholder="example@gmail.com" 
+                 placeholder="exemplo@gmail.com" 
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 />

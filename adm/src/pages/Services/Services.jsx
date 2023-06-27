@@ -37,7 +37,7 @@ export default function Services() {
       <Sidebar></Sidebar>
 <section id="content">
       <div className="buttoncontainer">
-        <h1 className="services-title">Services</h1>
+        <h1 className="services-title">Serviços</h1>
         <div className="button-row">
           <button className="button red-button" onClick={MudarParaPaginaCadastroBalcao}>
             Cadastrar Balcão
@@ -56,11 +56,8 @@ export default function Services() {
           <button className="button yellow-button" onClick={MudarParaPaginaVerProdutos}>
             Ver Produtos
           </button>
-          
         </div>
         <div className="button-row">
-         
-          
           <button className="button green-button" onClick={MudarParaPaginaVerEconomia}>
             Economia
           </button> 
