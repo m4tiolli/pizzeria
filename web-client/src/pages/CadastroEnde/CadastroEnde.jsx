@@ -6,6 +6,8 @@ import "./CadastroEnde.css";
 
 function CadastroEnde() {
 
+
+
   const navigate = useNavigate();
 
   const [bairro, setBairro] = useState("");
@@ -18,30 +20,26 @@ function CadastroEnde() {
   const cadastrarEndereco = (e) => {
     e.preventDefault();
 
-    if (bairro === "" || ruaAvenida === "" || numero === "" || cep === "" || estado === "" || cidade === "") {
-      alert("Por favor, preencha todos os campos.")
+    if (bairro === '' || ruaAvenida === '' || numero === '' || cep === '' || estado === '' || cidade === '') {
+      alert('Por favor, preencha todos os campos.');
       return;
-    }
-    else {
-
+    } else {
       const body = { bairro, ruaAvenida, numero, cep, estado, cidade };
-      fetch("https://pizzeria3.azurewebsites.net/api/enderecos", { 
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      fetch('https://pizzeria3.azurewebsites.net/api/enderecos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
       })
-        .then((response) => { alert("Endereço cadastrado com sucesso"); })
-        .then(() => {
-          navigate('/');
+        .then((response) => {
+          alert('Endereço cadastrado com sucesso');
+          navigate('/SelectEnde', { state: { enderecoCadastrado: body } });
         })
         .catch((error) => {
           console.log(error);
-          alert("Erro ao cadastrar endereço")
+          alert('Erro ao cadastrar endereço');
         });
-
-      navigate("/SelectEnde")
     }
-  }
+  };
 
 
   async function buscarEndereco() {

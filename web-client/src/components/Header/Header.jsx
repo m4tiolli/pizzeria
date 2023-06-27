@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { FiSearch } from 'react-icons/fi'
 import { useState } from 'react';
 import { BsCartPlus } from "react-icons/bs";
+import { FaUserCircle } from 'react-icons/fa';
+import { ChecarLoginUsuario, DadosUsuario } from '../../pages/AuthContext';
+import { useEffect } from 'react';
 
 export default function HeaderInicial({ pizza }) {
     const navigate = useNavigate();
@@ -20,6 +23,9 @@ export default function HeaderInicial({ pizza }) {
     function mudarDePagina4() {
         navigate("/Carrinho")
     }
+    function mudarDePagina5() {
+        navigate("/InfoUser")
+    }
 
     const [texto, setTexto] = useState([]);
 
@@ -28,7 +34,20 @@ export default function HeaderInicial({ pizza }) {
         setTexto((prevFilters) => [...prevFilters, value]);
     };
 
-    const [usuarioLogado] = useState(true)
+    const [ usuario, setUsuario ] = useState()
+
+    async function ValidarLogin(){
+        const login = await ChecarLoginUsuario();
+        if(login == true){
+            setUsuarioLogado(true)
+        } else {
+            setUsuarioLogado(false)
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", ValidarLogin());
+
+    const [usuarioLogado, setUsuarioLogado] = useState()
     return (
 
         <div className='header'>
@@ -49,14 +68,22 @@ export default function HeaderInicial({ pizza }) {
                         onBlur={handleTextChange}
                     />
                 </div>
-                {usuarioLogado ? (<div className='divCarrinho' onClick={mudarDePagina4}>
-                    <button className='carrinho'>carrinho</button>
+                {usuarioLogado ? (
+                    <div className='divCarrinhoAndUSer'>
+                        <div className='divCarrinho' onClick={mudarDePagina4}>
+                            <button className='carrinho'>carrinho</button>
+                            <BsCartPlus className='imgCarrinho' />
+                        </div>
+                        <div className='divImgUser'>
+                            <FaUserCircle onClick={mudarDePagina5} className='imgUser' size={50} />
+                        </div>
+                    </div>
+                ) : (
 
-                    <BsCartPlus
-                        className='imgCarrinho'
-                    />
-                </div>) : (<div className='buttonsLogin'><button className='signup1' onClick={mudarDePagina2}>sign up</button>
-                    <button className='signin1' onClick={mudarDePagina1}>sign in</button></div>)}
+                    <div className='buttonsLogin'><button className='signup1' onClick={mudarDePagina2}>sign up</button>
+                        <button className='signin1' onClick={mudarDePagina1}>sign in</button></div>
+                )}
+
             </div>
         </div>
     )

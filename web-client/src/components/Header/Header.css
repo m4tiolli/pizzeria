@@ -75,7 +75,7 @@
 .divCarrinho{
     background-color: #8e1c1e;
     color: white;
-    width: 14%;
+    width: auto;
     border-radius: 10px;
     padding: 0.3vw;
     height: 60%; 
@@ -103,6 +103,8 @@
 .imgCarrinho{
     width: 1.5vw;
     height: 1.5vw;
+    margin-left: 2vw;
+
 }
 
 .blockpesquisa{
@@ -123,4 +125,23 @@
 
 .buttonsLogin {
     width: 30%;
+}
+
+.imgUser{
+    color: #8e1c1e;
+    cursor: pointer;
+}
+
+.divImgUser{
+    margin-left: auto;
+    
+}
+
+.divCarrinhoAndUSer{
+    margin-left: auto;
+    width: auto;
+    height: auto;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
 }

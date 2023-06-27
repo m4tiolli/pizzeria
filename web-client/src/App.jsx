@@ -13,6 +13,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Search from "./pages/Search/Search";
 import Pix from "./pages/Pix/Pix";
 import Cartao from "./pages/Cartao/Cartao";
+import PagamentoRealizado from "./pages/PagamentoRealizado/PagamentoRealizado";
+import EditarUser from "./pages/EditarUser/EditarUser";
+import EditarCartao from "./pages/EditarCartao/EditarCartao";
+import EditarEnde from "./pages/EditarEnde/EditarEnde";
+import InfoUser from "./pages/InfoUser/InfoUser";
 
 function App() {
   const router = createBrowserRouter([
@@ -71,6 +76,26 @@ function App() {
     {
       path: "/Cartao",
       element: <Cartao/>,
+    },
+    {
+      path: "/PagamentoRealizado",
+      element: <PagamentoRealizado/>,
+    },
+    {
+      path: "/EditarUser",
+      element: <EditarUser/>,
+    },
+    {
+      path: "/EditarEnde",
+      element: <EditarEnde/>,
+    },
+    {
+      path: "/EditarCartao",
+      element: <EditarCartao/>,
+    },
+    {
+      path: "/InfoUser",
+      element: <InfoUser/>,
     },
   ]);
 

@@ -34,8 +34,8 @@ function Register() {
       return;
     }
 
-    const body = { nome, cpf, email, senha };
-    fetch("https://pizzeria3.azurewebsites.net/api/usuario", {
+    const body = { tipo: "usuario", nome, cpf, email, senha };
+    fetch("https://pizzeria3.azurewebsites.net/api/auth/cadastrar", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
@@ -44,7 +44,7 @@ function Register() {
         alert("Usuário cadastrado com sucesso.");
       })
       .then(() => {
-        navigate("/");
+        navigate("/Login");
       })
       .catch((error) => {
         console.log(error);
@@ -79,7 +79,9 @@ function Register() {
                   id="name"
                   value={nome}
                   onChange={(e) => setNome(e.target.value)}
+                  maxLength={50}
                   required
+
                 />
               </div>
             </div>
@@ -90,11 +92,12 @@ function Register() {
               <div className="inputdiv">
                 <input
                   className="inputtext1"
-                  type="text"
+                  type="number"
                   name="cpf"
                   value={cpf}
                   onChange={(e) => setCPF(e.target.value)}
                   id="CPF"
+                  maxLength={11}
                   required
                 />
               </div>
@@ -110,6 +113,7 @@ function Register() {
                   name="email"
                   value={email}
                   id="Email"
+                  maxLength={50}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
@@ -127,6 +131,7 @@ function Register() {
                   value={senha}
                   onChange={(e) => setSenha(e.target.value)}
                   id="Password"
+                  maxLength={30}
                   required
                 />
                 {mostrarSenha ? (
@@ -156,6 +161,7 @@ function Register() {
                   value={confirmarSenha}
                   onChange={(e) => setConfirmarSenha(e.target.value)}
                   id="ConfirmPassword"
+                  maxLength={30}
                   required
                 />
                 {mostrarConfirmarSenha ? (
@@ -181,6 +187,6 @@ function Register() {
       </div>
     </div>
   );
-}
+};
 
 export default Register;
