@@ -6,6 +6,7 @@ import { Doughnut, Bar, Line } from 'react-chartjs-2';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import BalanceChart from '../../components/Chart/BalanceChart';
 
+
 const VerEconomia = () => {
   const [descItem, setDescItem] = useState('');
   const [amount, setAmount] = useState('');
@@ -95,99 +96,59 @@ const VerEconomia = () => {
     datasets: [
       {
         data: [progressIncomes, progressExpenses],
-        backgroundColor: ['#36A2EB', '#FF6384'],
-        hoverBackgroundColor: ['#36A2EB', '#FF6384'],
+        backgroundColor: ['#00C9A7', '#e83845'],
+        hoverBackgroundColor: ['#00C9A7', '#e83845'],
       },
     ],
   };
-
+  
   const chartDataBar = {
-    labels: items.map((item) => item.desc),
-    datasets: [
-      {
-        label: 'Entradas',
-        backgroundColor: 'rgba(54, 162, 235, 0.5)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1,
-        data: items
-          .filter((item) => item.type === 'Entrada')
-          .map((item) => Number(item.amount)),
-      },
-      {
-        label: 'Saídas',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        borderColor: 'rgba(255, 99, 132, 1)',
-        borderWidth: 1,
-        data: items
-          .filter((item) => item.type === 'Saída')
-          .map((item) => Math.abs(Number(item.amount))),
-      },
-    ],
-  };
+     labels: [],
+     datasets: [],
+   };
   
-  const optionsBar = {
-    plugins: {
-      tooltip: {
-        callbacks: {
-          label: function (tooltipItem) {
-            const label = tooltipItem.dataset.label || '';
-            if (label) {
-              return label + ': R$' + tooltipItem.parsed.y.toFixed(2);
-            }
-            return 'R$' + tooltipItem.parsed.y.toFixed(2);
-          },
-        },
-      },
-    },
-  };
-  
-  // const chartDataBar = {
-  //   labels: [],
-  //   datasets: [],
-  // };
-  
-  // items.forEach((item, index) => {
-  //   const label = item.desc;
-  //   const data = [];
+   items.forEach((item, index) => {
+     const label = item.desc;
+     const data = [];
     
-  //   items.forEach((item, i) => {
-  //     if (i === index) {
-  //       data.push(Number(item.amount));
-  //     } else {
-  //       data.push(0);
-  //     }
-  //   });
-  //   const dataset = {
-  //     label: label,
-  //     backgroundColor: getColorType(item.type),
-  //     borderColor: getColorType(item.type),
-  //     borderWidth: 1,
-  //     data: data,
-  //   };
+     items.forEach((item, i) => {
+       if (i === index) {
+         data.push(Number(item.amount));
+       } else {
+         data.push(0);
+       }
+    });
+     const dataset = {
+       label: label,
+       backgroundColor: getColorType(item.type),
+       borderColor: getColorType(item.type),
+       borderWidth: 1,
+       data: data,
+     };
   
-  //   chartDataBar.labels.push(label);
-  //   chartDataBar.datasets.push(dataset);
-  // });
+     chartDataBar.labels.push(label);
+     chartDataBar.datasets.push(dataset);
+   });
   
-  // function getColorType(type) {
-  //   return type === 'Entrada' ? 'rgba(54, 162, 235, 0.5)' : 'rgba(255, 99, 132, 0.5)';
-  // }
+   function getColorType(type) {
+    return type === 'Entrada' ? '#00C9A7' : 'rgba(255, 99, 132, 0.5)';
+   }
   
-  // const optionsBar = {
-  //   plugins: {
-  //     tooltip: {
-  //       callbacks: {
-  //         label: function (tooltipItem) {
-  //           const label = tooltipItem.dataset.label || '';
-  //           if (label) {
-  //             return label + ': R$' + tooltipItem.parsed.y.toFixed(2);
-  //           }
-  //           return 'R$' + tooltipItem.parsed.y.toFixed(2);
-  //         },
-  //       },
-  //     },
-  //   },
-  // };
+ const optionsBar = {
+     plugins: {
+       tooltip: {
+         callbacks: {
+           label: function (tooltipItem) {
+             const label = tooltipItem.dataset.label || '';
+             if (label) {
+               return label + ': R$' + tooltipItem.parsed.y.toFixed(2);
+             }
+             return 'R$' + tooltipItem.parsed.y.toFixed(2);
+           },
+         },
+       },
+     },
+   };
 
   const chartDataLine = {
     labels: items.map((item) => item.desc),
@@ -196,7 +157,7 @@ const VerEconomia = () => {
         label: 'Saldo',
         fill: false,
         lineTension: 0.5,
-        backgroundColor: 'rgba(75,192,192,1)',
+        backgroundColor: '#00C9A7',
         borderColor: 'rgba(0,0,0,1)',
         borderWidth: 2,
         data: items.map((item) => {
@@ -352,7 +313,7 @@ const VerEconomia = () => {
             </div>
             <div className="content-data">
               <div className="chart-container">
-                <h2>Gráficos</h2>
+                <h2>Gráfico de Barras</h2>
                 <Bar data={chartDataBar} options={optionsBar} />
               </div>
             </div>

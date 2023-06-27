@@ -12,14 +12,48 @@ import {
 } from "@chakra-ui/react";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import React, { useState } from "react";
 
 function CadastroBalcao() {
+  const [nome, setNome] = useState();
+  const [senha, setSenha] = useState();
+  const [telefone, setTelefone] = useState();
+  const [email, setEmail] = useState();
+  const [cpf, setCPF] = useState();
+  const [DataNasc, setDataNasc] = useState();
+
+  const cadastrarBalcao = (e) => {
+    e.preventDefault();
+
+    const body = { 
+      tipo:"balcao",
+      nome, senha, telefone, email, cpf, DataNasc };
+
+    fetch("https://pizzeria3.azurewebsites.net/api/auth/cadastrar", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    })
+      .then((response) => {
+        alert("Produto cadastrado com sucesso");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Erro ao buscar resultado");
+      });
+  };
+
   return (
     <div>
       <Header></Header>
       <Sidebar></Sidebar>
       <div id="content">
     <Box h="130vh">
+      <form
+       onSubmit={(e) => {
+        cadastrarBalcao(e);
+      }}
+      >
       {/*Div com conteúdo centralizado*/}
       <Center
         as="header"
@@ -52,67 +86,67 @@ function CadastroBalcao() {
             <HStack spacing="4">
               <Box w="100%">
                 <FormLabel htmlFor="nome">Nome Completo</FormLabel>
-                <Input id="nome" placeholder="Nome do Responsável" />
+                <Input 
+                  id="nome" 
+                  placeholder="Nome do Responsável" 
+                  value={nome}
+                  onChange={(event) => setNome(event.target.value)}
+                />
               </Box>
             </HStack>
 
             <HStack spacing="4">
               <Box w="100%">
                 <FormLabel htmlFor="nome">CPF</FormLabel>
-                <Input id="nome" placeholder="CPF" />
+                <Input
+                id="nome" 
+                placeholder="CPF" 
+                value={cpf}
+                onChange={(event) => setCPF(event.target.value)}
+                 />
               </Box>
               <Box w="100%">
                 <FormLabel htmlFor="celular">Celular</FormLabel>
-                <Input id="phone number" placeholder="Celular" />
+                <Input 
+                id="phone number" 
+                placeholder="Celular" 
+                value={telefone}
+                onChange={(event) => setTelefone(event.target.value)}
+                />
               </Box>
             </HStack>
 
             <HStack spacing="4">
               <Box w="100%">
                 <FormLabel htmlFor="email">Email</FormLabel>
-                <Input type="email" id="nome" placeholder="Nome do usuário" />
+                <Input type="email" id="nome"
+                 placeholder="example@gmail.com" 
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                />
               </Box>
             </HStack>
 
             <HStack spacing="4">
               <Box w="100%">
                 <FormLabel htmlFor="nome">Senha</FormLabel>
-                <Input id="nome" placeholder="Senha" />
+                <Input id="nome" 
+                placeholder="Senha"
+                value={senha}
+                onChange={(event) => setSenha(event.target.value)}/>
               </Box>
             </HStack>
-
             <HStack spacing="4">
-              <Box w="100%">
-                <FormLabel htmlFor="nome">Endereço</FormLabel>
-                <Input id="nome" placeholder="Endereço" />
-              </Box>
-            </HStack>
-
-            <HStack spacing="4">
-              <Box w="100%">
-                <FormLabel htmlFor="nome">CEP</FormLabel>
-                <Input id="nome" placeholder="CEP" />
-              </Box>
-            </HStack>
-
-            <HStack spacing="4">
-              <Box w="100%">
-                <FormLabel htmlFor="nome">Bairro</FormLabel>
-                <Input id="nome" placeholder="Bairro" />
-              </Box>
-    
-            </HStack>
-
-            <HStack spacing="4">
-              <Box w="100%">
-                <FormLabel htmlFor="nome">Cidade</FormLabel>
-                <Input id="nome" placeholder="Cidade" />
-              </Box>
-              <Box w="100%">
-                <FormLabel htmlFor="email">Estado</FormLabel>
-                <Input id="email" type="email" placeholder="Estado" />
-              </Box>
-            </HStack>
+                    <Box w="100%">
+                      <FormLabel htmlFor="dataNasc">Data de Nascimento</FormLabel>
+                      <Input
+                        id="dataNasc"
+                        type="date"
+                        // value={DataNasc}
+                        onChange={(event) => setDataNasc(event.target.value)}
+                      />
+                    </Box>
+                  </HStack>
 
             <HStack justify="center">
               <Button
@@ -129,9 +163,13 @@ function CadastroBalcao() {
                 Cadastrar
               </Button>
             </HStack>
+
+
+            
           </FormControl>
         </Center>
       </Flex>
+      </form>
     </Box>
     </div>
     </div>
@@ -139,3 +177,9 @@ function CadastroBalcao() {
 }
 
 export default CadastroBalcao
+
+
+
+
+
+            

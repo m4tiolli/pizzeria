@@ -30,7 +30,9 @@ const VerBalcoes = () => {
     fetch("https://pizzeria3.azurewebsites.net/api/usuario")
       .then((response) => response.json())
       .then((dataFromDB) => {
-        setData(dataFromDB);
+        // Filtrar usuários do tipo "balcao"
+        const balcaoData = dataFromDB.filter((user) => user.tipo === "balcao");
+        setData(balcaoData);
       })
       .catch((error) => {
         console.log(error);
@@ -38,15 +40,14 @@ const VerBalcoes = () => {
       });
   }, []);
 
-  const handleRemove = (cpf) => {
-    fetch(`https://pizzeria3.azurewebsites.net/api/usuario`, {
+  const handleRemove = (id) => {
+    fetch(`https://pizzeria3.azurewebsites.net/api/usuario?id=` + id, {
       method: "DELETE",
     })
       .then((response) => {
         if (response.ok) {
-          const updatedData = data.filter((item) => item.cpf !== cpf);
-          setData(updatedData);
           alert("Balcão removido com sucesso");
+          // window.location.reload();
         } else {
           throw new Error("Erro ao remover balcão");
         }
@@ -56,6 +57,38 @@ const VerBalcoes = () => {
         alert("Erro ao remover balcão");
       });
   };
+
+  const handleEdit = (id, newData) => {
+    handleRemove(id); // Remove o usuário antigo
+  
+    fetch(`https://pizzeria3.azurewebsites.net/api/usuario/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Usuário atualizado com sucesso");
+          const updatedData = data.map((user) => {
+            if (user.id === id) {
+              return { ...user, ...newData };
+            }
+            return user;
+          });
+          setData(updatedData);
+          onClose();
+        } else {
+          throw new Error("Erro ao atualizar usuário");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Erro ao atualizar usuário");
+      });
+  };
+  
 
   return (
     <div>
@@ -111,7 +144,7 @@ const VerBalcoes = () => {
                 <Tbody>
                   {data.map(
                     (
-                      { nome, email, cpf, telefone, senha, dataNasc },
+                      { id, nome, email, cpf, telefone, senha, dataNasc },
                       index
                     ) => (
                       <Tr
@@ -145,7 +178,7 @@ const VerBalcoes = () => {
                         <Td p={0}>
                           <DeleteIcon
                             fontSize={20}
-                            onClick={() => handleRemove(cpf)}
+                            onClick={() => handleRemove(id)}
                           />
                         </Td>
                       </Tr>

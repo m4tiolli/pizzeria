@@ -78,13 +78,15 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
     }
 
     const body = {
-      nome: name,
-      cpf: CPF,
-      email,
-      telefone: phone_number,
-      senha: password,
-      dataNasc: date,
-    };
+  tipo: "balcao",
+  nome: name,
+  cpf: CPF,
+  email,
+  telefone: phone_number,
+  senha: password,
+  dataNasc: date,
+};
+
     console.log(body);
     debugger;
     fetch("https://pizzeria3.azurewebsites.net/api/auth/cadastrar", {
@@ -112,7 +114,11 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Cadastro de Balcão</ModalHeader>
+        <ModalHeader
+           background="#1d1d1f"
+           color="#fff"
+           text-align="center"
+        >Cadastro de Balcão</ModalHeader>
         <ModalCloseButton />
         <form onSubmit={handleSubmit}>
           <ModalBody>
@@ -177,11 +183,11 @@ const ModalCompCadastroBalcao = ({ isOpen, onClose, data, setData, dataEdit }) =
             </FormControl>
           </ModalBody>
 
-          <ModalFooter>
-            <Button variant="ghost" mr={3} onClick={onClose}>
+          <ModalFooter justifyContent="start">
+            <Button colorScheme="red" mr={3} onClick={onClose}>
               Cancelar
             </Button>
-            <Button colorScheme="blue" type="submit">
+            <Button colorScheme="green" type="submit">
               Salvar
             </Button>
           </ModalFooter>
