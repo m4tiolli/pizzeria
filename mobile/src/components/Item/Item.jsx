@@ -17,12 +17,13 @@ export default function Item({ pizza }) {
   async function carrinho() {
     try {
       const item = {
-        id: pizza.id,
-        nome: pizza.nome,
+        ProdutoID: pizza.id,
+        Nome: pizza.nome,
+        Observacao: "",
+        Valor: pizza.valor,
+        Quantidade: 1, // Utilizar a quantidade atual do estado
         descricao: pizza.descricao,
-        valor: pizza.valor,
-        imagem: pizza.imagem,
-        quantidade: 1,
+        imagem: pizza.imagem
       };
       let carrinho = await AsyncStorage.getItem("carrinho");
       if (!carrinho || carrinho.length === 0) {
@@ -30,10 +31,19 @@ export default function Item({ pizza }) {
         navigation.navigate("Cart");
         return;
       }
-
+  
       carrinho = JSON.parse(carrinho);
-
-      carrinho = carrinho.concat([item]);
+  
+      // Verificar se o produto já existe no carrinho
+      const existingItemIndex = carrinho.findIndex((i) => i.ProdutoID === pizza.id);
+      if (existingItemIndex !== -1) {
+        // O produto já existe no carrinho, então apenas atualize a quantidade  
+        carrinho[existingItemIndex].Quantidade += quantidade;
+      } else {
+        // O produto não existe no carrinho, adicione-o
+        carrinho.push(item);
+      }
+  
       await AsyncStorage.setItem("carrinho", JSON.stringify(carrinho));
       navigation.navigate("Cart");
     } catch (err) {

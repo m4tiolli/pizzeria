@@ -51,15 +51,17 @@ namespace APIPizzeria.Controllers
 			var claims = new List<Claim>
 			{
 				new Claim("ID", usuario.ID.ToString()),
+				new Claim("Nome", usuario.Nome),
 				new Claim("Email", usuario.Email),
-				new Claim("CPF", usuario.CPF)
+				new Claim("CPF", usuario.CPF),
+				new Claim("IDEndereço", usuario.IDEndereco.ToString())
 			};
 
 			var token = new JwtSecurityToken(
 				"APIUsuarios",
 				"APIUsuarios",
 				claims,
-				expires: DateTime.UtcNow.AddMinutes(5),
+				expires: DateTime.UtcNow.AddMinutes(2),
 				signingCredentials: credentials
 			);
 

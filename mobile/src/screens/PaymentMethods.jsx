@@ -6,20 +6,42 @@ import {
   PixelRatio,
   StyleSheet,
   TouchableOpacity,
+  ActivityIndicator
 } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Payment from "../components/Payment/Payment";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { RadioButton } from "react-native-paper";
+import BackButton from "../components/BackButton/BackButton";
+import { DadosUsuario } from "../components/AuthContext";
+import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function PaymentMethods() {
+  const navigation = useNavigation()
   const [modalNewVisible, setModalNewVisible] = useState(false);
   const [checked, setChecked] = useState(false);
+  const[isLoading, setIsLoading] = useState(true)
 
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
+  const [nome, setName] = useState("");
+  const [numero, setNumber] = useState("");
   const [cvc, setCvc] = useState("");
-  const [data, setData] = useState("");
+  const [datavalidade, setData] = useState("");
+  const [tipo, setTipo] = useState("");
+
+  const [cartoes, setCartoes] = useState()
+
+  const [usuario, setUsuario] = useState();
+
+  async function PreencherDados() {
+    const jwt = await DadosUsuario();
+    setUsuario(jwt);
+    ListarCartoes(jwt.ID);
+  }
+
+  useEffect(() => {
+    PreencherDados();
+  }, []);
 
   const handleNumberChange = (text) => {
     if (text.length <= 16) {
@@ -42,6 +64,43 @@ function PaymentMethods() {
       setData(maskedText);
     }
   };
+
+  AsyncStorage.setItem("cartoes", JSON.stringify(cartoes));
+
+  function ListarCartoes(id) {
+    fetch("https://pizzeria3.azurewebsites.net/api/cartao/listarcartoes?id=" + id, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (Array.isArray(data)) {
+          setCartoes(data);
+          setIsLoading(false)
+        } else {
+          setCartoes([]);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Erro ao buscar cartões.");
+      });
+  }
+
+  function CadastrarCartao(){
+    const body = { id_usuario: Number(usuario?.ID), numero, nome, cvc, datavalidade, tipo }
+        fetch("https://pizzeria3.azurewebsites.net/api/cartao", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body),
+        })
+            .then((response) => alert("Cartão cadastrado com sucesso."))
+            .then(() => navigation.goBack())
+            .catch((erro) => console.log(erro))
+  }
+
   return (
     <View
       style={{
@@ -52,6 +111,7 @@ function PaymentMethods() {
         paddingTop: "20%",
       }}
     >
+      <BackButton />
       <Text
         style={{
           fontFamily: "Poppins_500Medium",
@@ -63,8 +123,11 @@ function PaymentMethods() {
         your payment methods
       </Text>
 
-      <Payment />
-      <Payment />
+      {isLoading ? <ActivityIndicator size={"large"} color={"#8e1c1a"} /> :
+        cartoes.map((cartao, index) => (
+          <Payment key={index} cartao={cartao} />
+        ))
+      }
 
       <TouchableOpacity
         style={styles.addnew1}
@@ -125,7 +188,7 @@ function PaymentMethods() {
                 <RadioButton
                   value={checked ? "checked" : "unchecked"}
                   status={checked ? "checked" : "unchecked"}
-                  onPress={() => setChecked(!checked)}
+                  onPress={() => {setChecked(!checked); setTipo("debito")}}
                   color="#8e1c1a"
                 />
                 <Text
@@ -148,7 +211,7 @@ function PaymentMethods() {
                 <RadioButton
                   value={checked ? "unchecked" : "checked"}
                   status={checked ? "unchecked" : "checked"}
-                  onPress={() => setChecked(!checked)}
+                  onPress={() => {setChecked(!checked); setTipo("credito")}}
                   color="#8e1c1a"
                 />
                 <Text
@@ -169,6 +232,8 @@ function PaymentMethods() {
                 placeholder="Ex: my credit card"
                 underlineColorAndroid="transparent"
                 placeholderTextColor={"#898989"}
+                value={nome}
+                onChangeText={setName}
               />
             </View>
             <View style={styles.boxinput}>
@@ -179,7 +244,7 @@ function PaymentMethods() {
                 underlineColorAndroid="transparent"
                 placeholderTextColor={"#898989"}
                 onChangeText={handleNumberChange}
-                value={number}
+                value={numero}
               />
             </View>
             <View style={styles.boxinput}>
@@ -201,10 +266,10 @@ function PaymentMethods() {
                 underlineColorAndroid="transparent"
                 placeholderTextColor={"#898989"}
                 onChangeText={handleDataChange}
-                value={data}
+                value={datavalidade}
               />
             </View>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={CadastrarCartao}>
               <Text
                 style={{
                   fontFamily: "Poppins_500Medium",

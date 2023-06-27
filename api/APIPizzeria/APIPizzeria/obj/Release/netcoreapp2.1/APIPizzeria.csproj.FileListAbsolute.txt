@@ -48,3 +48,21 @@ C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\
 C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\obj\Release\netcoreapp2.1\APIPizzeria.dll
 C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\obj\Release\netcoreapp2.1\APIPizzeria.pdb
 C:\Users\gabri\OneDrive\Área de Trabalho\tcc\pizzeria\pizzeria\api\APIPizzeria\APIPizzeria\obj\Release\netcoreapp2.1\APIPizzeria.genruntimeconfig.cache
+D:\pizzeria\api\APIPizzeria\APIPizzeria\bin\Release\netcoreapp2.1\appsettings.Development.json
+D:\pizzeria\api\APIPizzeria\APIPizzeria\bin\Release\netcoreapp2.1\appsettings.json
+D:\pizzeria\api\APIPizzeria\APIPizzeria\bin\Release\netcoreapp2.1\APIPizzeria.deps.json
+D:\pizzeria\api\APIPizzeria\APIPizzeria\bin\Release\netcoreapp2.1\APIPizzeria.runtimeconfig.json
+D:\pizzeria\api\APIPizzeria\APIPizzeria\bin\Release\netcoreapp2.1\APIPizzeria.runtimeconfig.dev.json
+D:\pizzeria\api\APIPizzeria\APIPizzeria\bin\Release\netcoreapp2.1\APIPizzeria.dll
+D:\pizzeria\api\APIPizzeria\APIPizzeria\bin\Release\netcoreapp2.1\APIPizzeria.pdb
+D:\pizzeria\api\APIPizzeria\APIPizzeria\obj\Release\netcoreapp2.1\APIPizzeria.csproj.AssemblyReference.cache
+D:\pizzeria\api\APIPizzeria\APIPizzeria\obj\Release\netcoreapp2.1\APIPizzeria.GeneratedMSBuildEditorConfig.editorconfig
+D:\pizzeria\api\APIPizzeria\APIPizzeria\obj\Release\netcoreapp2.1\APIPizzeria.AssemblyInfoInputs.cache
+D:\pizzeria\api\APIPizzeria\APIPizzeria\obj\Release\netcoreapp2.1\APIPizzeria.AssemblyInfo.cs
+D:\pizzeria\api\APIPizzeria\APIPizzeria\obj\Release\netcoreapp2.1\APIPizzeria.csproj.CoreCompileInputs.cache
+D:\pizzeria\api\APIPizzeria\APIPizzeria\obj\Release\netcoreapp2.1\APIPizzeria.RazorAssemblyInfo.cache
+D:\pizzeria\api\APIPizzeria\APIPizzeria\obj\Release\netcoreapp2.1\APIPizzeria.RazorAssemblyInfo.cs
+D:\pizzeria\api\APIPizzeria\APIPizzeria\obj\Release\netcoreapp2.1\APIPizzeria.RazorTargetAssemblyInfo.cache
+D:\pizzeria\api\APIPizzeria\APIPizzeria\obj\Release\netcoreapp2.1\APIPizzeria.dll
+D:\pizzeria\api\APIPizzeria\APIPizzeria\obj\Release\netcoreapp2.1\APIPizzeria.pdb
+D:\pizzeria\api\APIPizzeria\APIPizzeria\obj\Release\netcoreapp2.1\APIPizzeria.genruntimeconfig.cache

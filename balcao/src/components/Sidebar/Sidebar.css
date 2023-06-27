@@ -66,3 +66,6 @@
 #sidebar::-webkit-scrollbar {
   display: none;
 }
+.selectContainer {
+  margin-bottom: 5px;
+}

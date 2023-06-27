@@ -10,7 +10,7 @@ namespace APIPizzeria.DAO
     {
         public static MySqlConnection Build()
         {
-            return new MySqlConnection("Server=pizzeria.mysql.database.azure.com;Database=pizzeria;Uid=matiolli;Pwd=01100111gA@;");
+            return new MySqlConnection("Server=localhost;Database=pizzeria;Uid=root;Pwd=root;");
 		}
     }
 }

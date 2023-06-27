@@ -12,7 +12,9 @@ import AddressMethods from "../../screens/AddressMethods";
 import Payment from "../../screens/Payment";
 import PaymentCredit from "../../screens/PaymentCredit";
 import EditUser from "../../screens/EditUser";
-
+import SelectAddress from "../../screens/SelectAddress";
+import SelectPayment from "../../screens/SelectPayment";
+import Cartao from "../../screens/Cartao";
 const Stack = createNativeStackNavigator();
 
 export default function Routes() {
@@ -26,7 +28,7 @@ export default function Routes() {
       <Stack.Screen
         name="Autentication"
         component={Autentication}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
         title=""
       />
       <Stack.Screen
@@ -37,31 +39,31 @@ export default function Routes() {
       <Stack.Screen
         name="Produto"
         component={Produto}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
         title=""
       />
       <Stack.Screen
         name="where eat?"
         component={WhereEat}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
         title=""
       />
       <Stack.Screen
         name="Search"
         component={Search}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
         title=""
       />
       <Stack.Screen
         name="Payment"
         component={Payment}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
         title=""
       />
       <Stack.Screen
         name="Pix"
         component={Pix}
-        options={{ headerShown: true,  }}
+        options={{ headerShown: false,  }}
         title="confirm payment"
       />
       <Stack.Screen
@@ -87,6 +89,21 @@ export default function Routes() {
       <Stack.Screen
         name='EditUser'
         component={EditUser}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name='SelectAddress'
+        component={SelectAddress}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name='SelectPayment'
+        component={SelectPayment}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name='Cartao'
+        component={Cartao}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

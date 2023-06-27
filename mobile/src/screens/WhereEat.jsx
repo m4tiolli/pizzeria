@@ -11,11 +11,25 @@ import {
 import delivery from '../assets/delivery.png';
 import garfo from '../assets/garfo.png';
 import { useNavigation, useRoute } from "@react-navigation/native";
+import BackButton from "../components/BackButton/BackButton";
 
 function WhereEat() {
   const navigation = useNavigation();
   const route = useRoute();
-  const { pedido } = route.params;
+  let { pedido } = route.params;
+
+  const navigateDelivery = () => {
+    pedido = { ...pedido, tipo: "delivery" }
+    navigation.navigate("SelectAddress", { pedido: pedido })
+  }
+  const navigateLocal = () => {
+    pedido = {
+      ...pedido,
+      tipo: "local"
+    }
+    navigation.navigate("Payment", { pedido: pedido })
+  }
+
   return (
     <View
       style={{
@@ -25,15 +39,17 @@ function WhereEat() {
         alignItems: 'center'
       }}
     >
-      <Text style={[styles.text, {marginVertical: PixelRatio.getPixelSizeForLayoutSize(10)}]}>where are you going to eat?</Text>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Payment", {pedido: pedido, local: "delivery"})}>
+
+      <BackButton />
+      <Text style={[styles.text, { marginVertical: PixelRatio.getPixelSizeForLayoutSize(10) }]}>where are you going to eat?</Text>
+      <TouchableOpacity style={styles.button} onPress={navigateDelivery}>
         <Image
           source={delivery}
           style={{ width: PixelRatio.getPixelSizeForLayoutSize(15), height: PixelRatio.getPixelSizeForLayoutSize(15) }}
         />
         <Text style={styles.text}>to delivery</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Payment", {pedido: pedido, local: "aqui"})}>
+      <TouchableOpacity style={styles.button} onPress={navigateLocal}>
         <Image
           source={garfo}
           style={{ width: PixelRatio.getPixelSizeForLayoutSize(15), height: PixelRatio.getPixelSizeForLayoutSize(15) }}

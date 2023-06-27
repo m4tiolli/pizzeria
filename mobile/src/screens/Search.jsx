@@ -1,6 +1,7 @@
 import { View, Text, ScrollView, StyleSheet, PixelRatio } from "react-native";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import Item from "../components/Item/Item";
+import BackButton from './../components/BackButton/BackButton';
 
 export default function Search() {
   const route = useRoute();
@@ -24,6 +25,7 @@ export default function Search() {
 
   return (
     <View style={{ width: "100%", height: "100%" }}>
+      <BackButton />
       <Text style={styles.text}>mostrando resultados para: {pesquisa}</Text>
       <ScrollView>
         {objetosFiltrados.map((pizza, index) => (

@@ -1,12 +1,10 @@
 import {
   View,
   Text,
-  Image,
   ScrollView,
   TouchableOpacity,
   PixelRatio,
   StyleSheet,
-  TextInput,
 } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -16,9 +14,43 @@ import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import React from "react";
 import ItemCart from "../components/ItemCart/ItemCart";
 import Feather from "react-native-vector-icons/Feather";
+import { ChecarLoginUsuario } from "../components/AuthContext";
 
-function Cart({item}) {
+
+// const pedido = {
+//   "id": 1,
+//   "itens": [
+//     {
+//       "id": 0,
+//       "produtoID": 0,
+//       "nome": "Pizza",
+//       "observacao": "",
+//       "valor": 0.0,
+//       "quantidade": 1
+//     }
+//   ],
+//   "valorTotal": 0,
+//   "situacao": "",
+//   "tipo": "delivery",
+//   "endereco": {
+//     "id": 0
+//   }
+// }
+
+
+
+function Cart() {
   const navigation = useNavigation();
+
+  async function ValidarLogin() {
+    const login = await ChecarLoginUsuario();
+    if (login == false) {
+      return false
+    } else {
+      navigation.navigate("where eat?", { pedido: pedido })
+    }
+  }
+
 
   const [cart, setCart] = useState([]);
 
@@ -41,25 +73,27 @@ function Cart({item}) {
     AsyncStorage.removeItem("carrinho");
   };
 
-  const deleteItem = () => {
-    setCart(cart.filter((item) => item.id !== id));
-    AsyncStorage.setItem("carrinho", JSON.stringify(cart));
-  };
-
   const calculateTotal = () => {
     let total = 0;
     cart.forEach((item) => {
-      total += item.valor * item.quantidade;
+      total += item.Valor * item.Quantidade;
     });
     return total.toFixed(2);
   };
 
   const pedido = {
-    valor: calculateTotal(),
-    observacao: cart.observacao,
-    quantidade: cart.quantidade,
-    cart
-  }
+    itens: cart.map((item) => ({
+      ProdutoID: item.ProdutoID,
+      Nome: item.Nome,
+      Observacao: item.Observacao,
+      Valor: item.Valor,
+      Quantidade: item.Quantidade,
+    })),
+    valorTotal: parseFloat(calculateTotal()),
+    situacao: "aberto",
+  };
+
+  console.log(pedido)
 
   return (
     <View
@@ -102,7 +136,7 @@ function Cart({item}) {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.price}
-              onPress={() => navigation.navigate("where eat?", {pedido: pedido})}
+              onPress={ValidarLogin}
             >
               <Text style={styles.text}>go to checkout</Text>
               <Text style={styles.text}>R${calculateTotal()}</Text>

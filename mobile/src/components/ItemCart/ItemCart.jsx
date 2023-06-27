@@ -38,7 +38,7 @@ function ItemCart({ item }) {
           />
           <View style={styles.box}>
 
-            <Text style={styles.title}>{item.nome}</Text>
+            <Text style={styles.title}>{item.Nome}</Text>
             <Text style={styles.infos}>{shortDesc}</Text>
 
             <View
@@ -54,7 +54,7 @@ function ItemCart({ item }) {
               >
                 <Text style={styles.carttext}>show info</Text>
               </TouchableOpacity>
-              <Text style={styles.price}>x{item.quantidade}</Text>
+              <Text style={styles.price}>x{item.Quantidade}</Text>
             </View>
           </View>
         </View>

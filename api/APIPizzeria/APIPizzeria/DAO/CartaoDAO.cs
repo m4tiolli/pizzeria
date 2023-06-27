@@ -9,34 +9,61 @@ namespace APIPizzeria.DAO
 {
 	public class CartaoDAO
 	{
-		public List<CartaoDTO> Listar()
+		public List<CartaoDTO> ListarPorID(int id)
 		{
 			var conexao = ConnectionFactory.Build();
 			conexao.Open();
 
-			var query = "SELECT * FROM cartoes;";
+			var query = "SELECT * FROM cartoes WHERE id_usuario = @idusuario;";
+			var comando = new MySqlCommand(query, conexao);
+
+			comando.Parameters.AddWithValue("@idusuario", id);
+			comando.ExecuteNonQuery();
+
+			MySqlDataReader reader = comando.ExecuteReader();
+			var Lista = new List<CartaoDTO>();
+
+			while (reader.Read() == true)
+			{
+				var cartao = new CartaoDTO();
+				cartao.ID = int.Parse(reader["id"].ToString());
+				cartao.ID_Usuario = int.Parse(reader["id_usuario"].ToString());
+				cartao.Numero = reader["numero"].ToString();
+				cartao.Nome = reader["nome"].ToString();
+				cartao.CVC = reader["cvc"].ToString();
+				cartao.DataValidade = reader["datavalidade"].ToString();
+				cartao.Tipo = reader["tipo"].ToString();
+				Lista.Add(cartao);
+			}
+			conexao.Close();
+			return Lista;
+		}
+
+		public CartaoDTO ListarPorIDUnico(int id)
+		{
+			var conexao = ConnectionFactory.Build();
+			conexao.Open();
+
+			var query = "SELECT * FROM cartoes WHERE id = @id;";
 
 			MySqlCommand comando = new MySqlCommand(query, conexao);
+			comando.Parameters.AddWithValue("@id", id);
 			var dataReader = comando.ExecuteReader();
 
-			var cartoes = new List<CartaoDTO>();
+			var cartao = new CartaoDTO();
 
 			while (dataReader.Read())
 			{
-				var cartao = new CartaoDTO();
-
 				cartao.ID = int.Parse(dataReader["id"].ToString());
-				cartao.IDUsuario = int.Parse(dataReader["id_usuario"].ToString());
+				cartao.ID_Usuario = int.Parse(dataReader["id_usuario"].ToString());
 				cartao.Numero = dataReader["numero"].ToString();
 				cartao.Nome = dataReader["nome"].ToString();
 				cartao.CVC = dataReader["cvc"].ToString();
-				cartao.DataValidade = DateTime.Parse(dataReader["datavalidade"].ToString());
+				cartao.DataValidade = dataReader["datavalidade"].ToString();
 				cartao.Tipo = dataReader["tipo"].ToString();
-
-				cartoes.Add(cartao);
 			}
 			conexao.Close();
-			return cartoes;
+			return cartao;
 		}
 
 		public void Cadastrar(CartaoDTO cartao)
@@ -45,10 +72,10 @@ namespace APIPizzeria.DAO
 			conexao.Open();
 
 			var query = @"INSERT INTO cartoes (id_usuario, nome, numero, cvc, datavalidade, tipo) VALUES
-						(@id_usuario,@nome,@numero,@cvc,@imagem,@tipo)";
+						(@id_usuario,@nome,@numero,@cvc,@datavalidade,@tipo)";
 
 			var comando = new MySqlCommand(query, conexao);
-			comando.Parameters.AddWithValue("@id_usuario", cartao.IDUsuario);
+			comando.Parameters.AddWithValue("@id_usuario", cartao.ID_Usuario);
 			comando.Parameters.AddWithValue("@nome", cartao.Nome);
 			comando.Parameters.AddWithValue("@numero", cartao.Numero);
 			comando.Parameters.AddWithValue("@cvc", cartao.CVC);
@@ -68,7 +95,7 @@ namespace APIPizzeria.DAO
 						datavalidade = @datavalidade, tipo = @tipo WHERE id = @id";
 
 			var comando = new MySqlCommand(query, conexao);
-			comando.Parameters.AddWithValue("@id_usuario", cartao.IDUsuario);
+			comando.Parameters.AddWithValue("@id_usuario", cartao.ID_Usuario);
 			comando.Parameters.AddWithValue("@nome", cartao.Nome);
 			comando.Parameters.AddWithValue("@numero", cartao.Numero);
 			comando.Parameters.AddWithValue("@cvc", cartao.CVC);

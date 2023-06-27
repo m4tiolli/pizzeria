@@ -29,7 +29,7 @@ export default function Register() {
         alert("Usuário cadastrado com sucesso");
       })
       .then(() => {
-        navigation.navigate("Home");
+        navigation.goBack()
       })
       .catch((error) => {
         console.log(error);

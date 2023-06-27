@@ -16,7 +16,7 @@ namespace APIPizzeria.DAO
                             FROM ProdutosPedido PP
                             INNER JOIN produto PROD ON PP.produto = PROD.id
                             INNER JOIN pedido PED ON PP.pedido = PED.id
-                            INNER JOIN enderecos END on PED.enderecoid = END.id
+                            LEFT JOIN enderecos END on PED.enderecoid = END.idendereco
                             WHERE PED.situacao = 'aberto'; ";
 
             MySqlCommand comando = new MySqlCommand(query, conexao);
@@ -76,22 +76,40 @@ namespace APIPizzeria.DAO
         }
         public void Cadastrar(PedidoDTO pedido)
         {
-            var conexao = ConnectionFactory.Build();
-            conexao.Open();
+            try
+            {
+                var conexao = ConnectionFactory.Build();
+                conexao.Open();
 
-            var query = @"insert into pedido values (default, @valor, @situacao, @tipo, @endereco);";
+                var query = @"insert into pedido values (default, @valor, @situacao, @tipo, @endereco);";
 
-            var comando = new MySqlCommand(query, conexao);
-            comando.Parameters.AddWithValue("@valor", pedido.ValorTotal);
-            comando.Parameters.AddWithValue("@situacao", pedido.Situacao);
-            comando.Parameters.AddWithValue("@tipo", pedido.Tipo);
-            comando.Parameters.AddWithValue("@endreco", pedido.Endereco.ID);
-            comando.ExecuteNonQuery();
+                var comando = new MySqlCommand(query, conexao);
+                comando.Parameters.AddWithValue("@valor", pedido.ValorTotal);
+                comando.Parameters.AddWithValue("@situacao", pedido.Situacao);
+                comando.Parameters.AddWithValue("@tipo", pedido.Tipo);
 
-            var idPedido = comando.LastInsertedId;
-            conexao.Close();
+                if (pedido.Endereco is null)
+                {
+                    comando.Parameters.AddWithValue("@endereco", 0);
+                }
+                else
+                {
+                    comando.Parameters.AddWithValue("@endereco", pedido.Endereco.ID);
+                }
 
-            CadastrarItensPedido(pedido.Itens, idPedido);
+
+                comando.ExecuteNonQuery();
+
+                var idPedido = comando.LastInsertedId;
+                conexao.Close();
+
+                CadastrarItensPedido(pedido.Itens, idPedido);
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
         }
 
         private void CadastrarItensPedido(List<ItemPedidoDTO> items, long idPedido)

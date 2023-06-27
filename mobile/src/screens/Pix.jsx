@@ -3,10 +3,7 @@ import { Text, View, PixelRatio, StyleSheet, TouchableOpacity } from "react-nati
 import QRCode from 'react-native-qrcode-svg';
 import Success from "./Success";
 import { useState, useEffect } from "react";
-
 function Pix() {
-
-
     const [primeiroComponente, setPrimeiroComponente] = useState(false);
 
     useEffect(() => {
@@ -19,6 +16,18 @@ function Pix() {
     }, []); // O array vazio [] indica que esse efeito só será executado uma vez, equivalente ao componentDidMount
 
     if (primeiroComponente) {
+        fetch("https://pizzeria3.azurewebsites.net/api/pedido", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(pedido),
+    })
+        .then((response) => {
+            alert("Pedido criado com sucesso");
+        })
+        .catch((error) => {
+            console.log(error);
+            alert("Erro ao criar pedido");
+        });
         return (
             <Success />
         );
@@ -29,10 +38,12 @@ function Pix() {
     const { pedido } = route.params;
 
     const chavePix = '83e125e3-2db6-4b6b-9e96-c265a61c3a3a';
-    const nomeRecebedor = 'gabriel';
-    const valor = pedido.valor;
+    const nomeRecebedor = 'Pizzzeria';
+    const valor = pedido.valorTotal;
 
     const payload = `PIX:02|${chavePix}*|${nomeRecebedor}|${valor}|`;
+
+    const nomesItens = pedido.itens.map(item => item.Nome);
 
     return (
         <View style={{
@@ -55,15 +66,17 @@ function Pix() {
             <View style={{ alignItems: 'center', width: '100%' }}>
                 <View style={styles.linha}>
                     <Text style={styles.text1}>address</Text>
-                    <Text style={styles.text1}>{pedido.valor}</Text>
+                    <Text style={styles.text1}>{pedido.endereco ? pedido.endereco.rua + ", " + pedido.endereco.numCasa : pedido.tipo}</Text>
                 </View>
                 <View style={styles.linha}>
                     <Text style={styles.text1}>products</Text>
-                    <Text style={styles.text1}>1x coca, 1x pizza</Text>
+                    <Text style={styles.text1}>{nomesItens.map((nome) => (
+                        nome + ", "
+                    ))}</Text>
                 </View>
                 <View style={styles.linha}>
                     <Text style={styles.text1}>total</Text>
-                    <Text style={styles.text1}>R${pedido.valor}</Text>
+                    <Text style={styles.text1}>R${pedido.valorTotal}</Text>
                 </View>
 
             </View>

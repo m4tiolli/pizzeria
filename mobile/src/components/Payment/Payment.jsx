@@ -7,17 +7,14 @@ import {
   TouchableOpacity,
   TextInput,
 } from "react-native";
-import { RadioButton } from "react-native-paper";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AntDesign from "react-native-vector-icons/AntDesign";
-function Payment() {
-  const [checked, setChecked] = useState(false);
+function Payment({ cartao }) {
   const [modalEditVisible, setModalEditVisible] = useState(false);
 
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
-  const [cvc, setCvc] = useState("");
-  const [data, setData] = useState("");
+  const [nome, setName] = useState("");
+  const [numero, setNumber] = useState("");
+  const [datavalidade, setData] = useState("");
 
   const handleNumberChange = (text) => {
     if (text.length <= 16) {
@@ -30,32 +27,49 @@ function Payment() {
   };
   const handleCVCChange = (text) => {
     if (text.length <= 3) {
-      let maskedText = text.replace(
-        /\d/g, '*'
-      );
+      let maskedText = text.replace(/\d/g, "*");
       setCvc(maskedText);
     }
   };
   const handleDataChange = (text) => {
     if (text.length <= 4) {
-      let maskedText = text.replace(
-        /^(\d{2})(\d{2})$/, '$1/$2'
-      );
+      let maskedText = text.replace(/^(\d{2})(\d{2})$/, "$1/$2");
       setData(maskedText);
     }
   };
 
+  useEffect(() => {
+    if (cartao) {
+      setName(cartao.nome);
+      setNumber(cartao.numero);
+      setData(cartao.datavalidade);
+    }
+  }, [cartao])
+
+  //Corpo para edição de dados
+  const body = { id_usuario: Number(cartao?.id_usuario), numero, nome, datavalidade };
+
+  function AlterarCartão() {
+    fetch("https://pizzeria3.azurewebsites.net/api/endereco", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    })
+      .then((response) => {
+        alert("Cartão editado com sucesso");
+      })
+      .then(() => setModalEditVisible(!modalEditVisible))
+      .catch((err) => {
+        console.log(err);
+        alert("Erro ao editar o cartão");
+      });
+  }
+
   return (
     <View style={styles.container}>
-      <RadioButton
-        value="apple"
-        status={"checked"}
-        onPress={() => setChecked(!checked)}
-        color="#8e1c1a"
-      />
       <View style={{ flexDirection: "column" }}>
-        <Text style={styles.text1}>credit card 1</Text>
-        <Text style={styles.text2}>58** **** **** **92 07/28</Text>
+        <Text style={styles.text1}>{cartao.nome}</Text>
+        <Text style={styles.text2}>{cartao.numero + " " + cartao.cvc}</Text>
       </View>
       <TouchableOpacity onPress={() => setModalEditVisible(true)}>
         <AntDesign
@@ -92,62 +106,6 @@ function Payment() {
               />
             </TouchableOpacity>
             <Text style={styles.text1}>edit payment info</Text>
-            <View
-              style={{
-                flexDirection: "row",
-                width: "80%",
-                justifyContent: "space-between",
-              }}
-            >
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  marginVertical: 5,
-                }}
-              >
-                <RadioButton
-                  value={checked ? "checked" : "unchecked"}
-                  status={checked ? "checked" : "unchecked"}
-                  onPress={() => setChecked(!checked)}
-                  color="#8e1c1a"
-                  disabled={true}
-                />
-                <Text
-                  style={{
-                    fontFamily: "Poppins_500Medium",
-                    fontSize: PixelRatio.getPixelSizeForLayoutSize(8),
-                    color: "#8e1c1c",
-                  }}
-                >
-                  debit
-                </Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  marginVertical: 5,
-                }}
-              >
-                <RadioButton
-                  value={checked ? "unchecked" : "checked"}
-                  status={checked ? "unchecked" : "checked"}
-                  onPress={() => setChecked(!checked)}
-                  color="#8e1c1a"
-                  disabled={true}
-                />
-                <Text
-                  style={{
-                    fontFamily: "Poppins_500Medium",
-                    fontSize: PixelRatio.getPixelSizeForLayoutSize(8),
-                    color: "#8e1c1c",
-                  }}
-                >
-                  credit
-                </Text>
-              </View>
-            </View>
             <View style={styles.boxinput}>
               <Text style={styles.textinput}>name</Text>
               <TextInput
@@ -155,6 +113,9 @@ function Payment() {
                 placeholder="Ex: home"
                 underlineColorAndroid="transparent"
                 placeholderTextColor={"#898989"}
+                value={nome}
+                onChangeText={setName}
+                selectTextOnFocus={true}
               />
             </View>
             <View style={styles.boxinput}>
@@ -165,18 +126,8 @@ function Payment() {
                 underlineColorAndroid="transparent"
                 placeholderTextColor={"#898989"}
                 onChangeText={handleNumberChange}
-                value={number}
-              />
-            </View>
-            <View style={styles.boxinput}>
-              <Text style={styles.textinput}>cvc</Text>
-              <TextInput
-                style={styles.input}
-                placeholder="123"
-                underlineColorAndroid="transparent"
-                placeholderTextColor={"#898989"}
-                onChangeText={handleCVCChange}
-                value={cvc}
+                value={numero}
+                selectTextOnFocus={true}
               />
             </View>
             <View style={styles.boxinput}>
@@ -187,10 +138,11 @@ function Payment() {
                 underlineColorAndroid="transparent"
                 placeholderTextColor={"#898989"}
                 onChangeText={handleDataChange}
-                value={data}
+                value={datavalidade}
+                selectTextOnFocus={true}
               />
             </View>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={AlterarCartão}>
               <Text
                 style={{
                   fontFamily: "Poppins_500Medium",

@@ -12,7 +12,6 @@ import Feather from "react-native-vector-icons/Feather";
 import { ChecarLoginUsuario, SalvarJWT } from "../AuthContext";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
-import Alert from "./../Alert/Alert";
 
 export default function Login() {
   const navigation = useNavigation();
@@ -31,6 +30,8 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
+
+
   useEffect(() => {
     verificarLogin();
   });
@@ -44,13 +45,13 @@ export default function Login() {
 
   function Login() {
     if (email == "" || senha == "") {
-      <Alert message={"Preencha todos os campos."} />;
+      alert("Preencha todos os campos.");
     } else {
       const formData = new URLSearchParams();
       formData.append("email", email);
       formData.append("senha", senha);
       axios.post(
-        "https://localhost:44383/api/auth/login",
+        "https://pizzeria3.azurewebsites.net/api/auth/login",
         formData.toString(),
         {
           headers: { "Content-type": "application/x-www-form-urlencoded" },
@@ -61,7 +62,7 @@ export default function Login() {
         })
         .then(() => navigation.navigate("Home"))
         .catch((err) => {
-          <Alert message={"Usuário ou senha inválidos."} />
+          alert("Usuário ou senha inválidos.");
           console.log(err)
         })
     }

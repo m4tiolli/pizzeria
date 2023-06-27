@@ -15,13 +15,31 @@ namespace APIPizzeria.Controllers
     {
 		//Método, rota e status
 		[HttpGet]
-		// [Route("List")]
-		public IActionResult Listar()
+		[Route("listarcartoes")]
+		public IActionResult Listar(int id)
 		{
 			CartaoDAO cartaoDAO = new CartaoDAO();
-			var cartoes = cartaoDAO.Listar();
+			var cartoes = cartaoDAO.ListarPorID(id);
 
 			return Ok(cartoes);
+		}
+
+		[HttpGet]
+		[Route("{id}")]
+		public IActionResult ListarPorID(int id)
+		{
+			CartaoDAO cartaoDAO = new CartaoDAO();
+			var cartoes = cartaoDAO.ListarPorIDUnico(id);
+
+			return Ok(cartoes);
+		}
+
+		[HttpPost]
+		public IActionResult Cadastrar([FromBody] CartaoDTO cartao)
+		{
+			CartaoDAO dao = new CartaoDAO();
+			dao.Cadastrar(cartao);
+			return Ok(dao);
 		}
 
 		[HttpPut]
