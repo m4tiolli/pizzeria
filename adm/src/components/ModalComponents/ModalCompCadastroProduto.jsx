@@ -120,6 +120,7 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
               <Box>
                 <FormLabel><br />Nome</FormLabel>
                 <Input
+                  placeholder="Digite o nome"
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -128,6 +129,7 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
               <Box>
                 <FormLabel>Preço</FormLabel>
                 <Input
+                  placeholder="Digite o preço"
                   type="number"
                   value={valor}
                   onChange={(e) => setValor(e.target.value)}
@@ -136,6 +138,7 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
               <Box>
                 <FormLabel>Categoria</FormLabel>
                 <Input
+                  placeholder="Digite a categoria"
                   type="text"
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
@@ -144,6 +147,7 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
               <Box>
                 <FormLabel>Descrição</FormLabel>
                 <Input
+                  placeholder="Digite a descrição"
                   type="text"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}

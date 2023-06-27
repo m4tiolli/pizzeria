@@ -34,9 +34,6 @@ const Sidebar = ({ isOpen }) => {
   function MudarParaPaginaVerMesas() {
     navigate("/VerMesas");
   }
-  function MudarParaPaginaVerEstoque() {
-    navigate("/VerEstoque");
-  }
 function MudarParaPaginaServices(){
   navigate("/Services");
 }
@@ -53,11 +50,11 @@ function MudarParaPaginaServices(){
       <ul className="side-menu">
         <li>
           <a href="#" className="active" onClick={MudarParaPaginaServices}>
-            <i className="bx bxs-dashboard icon" /> Services
+            <i className="bx bxs-dashboard icon" /> Serviços
           </a>
         </li>
         <li className="divider" data-text="main">
-          Main
+          Principal
         </li>
         <li>
           <a
@@ -65,7 +62,7 @@ function MudarParaPaginaServices(){
             className={activeDropdown === 1 ? 'active' : ''}
             onClick={(e) => handleDropdownClick(e, 1)}
           >
-            <i className="bx bxs-inbox icon" /> Services{' '}
+            <i className="bx bxs-inbox icon" /> Serviços{' '}
             <i className="bx bx-chevron-right icon-right" />
           </a>
           <ul className={`side-dropdown ${activeDropdown === 1 ? 'show' : ''}`}>
@@ -85,13 +82,8 @@ function MudarParaPaginaServices(){
             <i className="bx bxs-chart icon" /> Economia
           </a>
         </li>
-        {/* <li>
-          <a onClick={MudarParaPaginaVerEstoque}>
-            <i className="bx bxs-widget icon" /> Estoque
-          </a>
-        </li> */}
         <li className="divider" data-text="table and forms">
-          Table and forms
+          Formulários
         </li>
         <li>
           <a
@@ -99,7 +91,7 @@ function MudarParaPaginaServices(){
             className={activeDropdown === 2 ? 'active' : ''}
             onClick={(e) => handleDropdownClick(e, 2)}
           >
-            <i className="bx bxs-notepad icon" /> Forms{' '}
+            <i className="bx bxs-notepad icon" /> Formulários{' '}
             <i className="bx bx-chevron-right icon-right" />
           </a>
           <ul className={`side-dropdown ${activeDropdown === 2 ? 'show' : ''}`}>
