@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { DadosUsuario } from "../../components/AuthContext";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
-function EditarUser() {
+function EditarUser() { 
 
 const navigate = useNavigate();
 
