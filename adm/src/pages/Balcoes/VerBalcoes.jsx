@@ -58,36 +58,36 @@ const VerBalcoes = () => {
       });
   };
 
-  const handleEdit = (id, newData) => {
-    handleRemove(id); // Remove o usuário antigo
+  // const handleEdit = (id, newData) => {
+  //   handleRemove(id); // Remove o usuário antigo
   
-    fetch(`https://pizzeria3.azurewebsites.net/api/usuario/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newData),
-    })
-      .then((response) => {
-        if (response.ok) {
-          alert("Usuário atualizado com sucesso");
-          const updatedData = data.map((user) => {
-            if (user.id === id) {
-              return { ...user, ...newData };
-            }
-            return user;
-          });
-          setData(updatedData);
-          onClose();
-        } else {
-          throw new Error("Erro ao atualizar usuário");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        alert("Erro ao atualizar usuário");
-      });
-  };
+  //   fetch(`https://pizzeria3.azurewebsites.net/api/usuario/${id}`, {
+  //     method: "PUT",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(newData),
+  //   })
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         alert("Usuário atualizado com sucesso");
+  //         const updatedData = data.map((user) => {
+  //           if (user.id === id) {
+  //             return { ...user, ...newData };
+  //           }
+  //           return user;
+  //         });
+  //         setData(updatedData);
+  //         onClose();
+  //       } else {
+  //         throw new Error("Erro ao atualizar usuário");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       alert("Erro ao atualizar usuário");
+  //     });
+  // };
   
 
   return (
@@ -159,7 +159,7 @@ const VerBalcoes = () => {
                         <Td maxW={isMobile ? 5 : 100}>{senha}</Td>
                         <Td maxW={isMobile ? 5 : 100}>{dataNasc}</Td>
                         <Td p={0}>
-                          <EditIcon
+                          {/* <EditIcon
                             fontSize={20}
                             onClick={() => [
                               setDataEdit({
@@ -173,7 +173,7 @@ const VerBalcoes = () => {
                               }),
                               onOpen(),
                             ]}
-                          />
+                          /> */}
                         </Td>
                         <Td p={0}>
                           <DeleteIcon
