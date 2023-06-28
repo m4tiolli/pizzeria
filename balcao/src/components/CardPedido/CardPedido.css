@@ -1,15 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-.containerPedido{
+.containerPedido {
     display: flex;
     flex-direction: column;
-}
-.containerPedido .buttonPedido {
-    font-size: 16px; /* Tamanho da fonte aumentado */
-    padding: 12px 24px; /* Espaçamento interno aumentado */
-    background-color: #c14325;
+    overflow: hidden; /* Adicionado para ocultar conteúdo que excede as dimensões */
   }
   
-.containerTexto h2{
+  .containerPedido .buttonPedido {
+    font-size: 16px;
+    padding: 12px 24px;
+    background-color: #c14325;
+    margin-bottom: 8px;
+  }
+  
+  .buttonPedido {
+    border: 0px;
+  }
+  
+  .containerTexto h2 {
     margin-top: 20px;
-}
+  }
+      
