@@ -5,6 +5,7 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import { Doughnut, Bar, Line } from 'react-chartjs-2';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import BalanceChart from '../../components/Chart/BalanceChart';
+import Footer from '../../components/Footer/Footer';
 
 
 const VerEconomia = () => {
@@ -154,7 +155,7 @@ const VerEconomia = () => {
     labels: items.map((item) => item.desc),
     datasets: [
       {
-        label: 'Saldo',
+        label: 'Valor',
         fill: false,
         lineTension: 0.5,
         backgroundColor: '#00C9A7',
@@ -328,6 +329,7 @@ const VerEconomia = () => {
             </div>
           </div>
         </main>
+        <Footer></Footer>
       </section>
     </div>
   );

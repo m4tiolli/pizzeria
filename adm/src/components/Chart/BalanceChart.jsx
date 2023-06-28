@@ -18,7 +18,7 @@ const BalanceChart = ({ items }) => {
         data: getBalanceTrend(),
         fill: false,
         backgroundColor: '#00C9A7',
-        borderColor: '#007',
+        borderColor: '#000',
         borderWidth: 1,
       },
     ],

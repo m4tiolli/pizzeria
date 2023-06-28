@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import Footer from "../../components/Footer/Footer";
 
 function CadastroProduto() {
   const [nome, setNome] = useState();
@@ -193,6 +194,7 @@ function CadastroProduto() {
         </Flex>
       </form>
     </Box>
+    <Footer></Footer>
     </div>
     </div>
   );

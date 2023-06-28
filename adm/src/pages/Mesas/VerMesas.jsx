@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 import ModalComp from "../../components/ModalComponents/ModalCompCadastroMesa.jsx";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import Footer from "../../components/Footer/Footer";
 
 const VerMesas = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -130,6 +131,7 @@ const VerMesas = () => {
         />
       )}
     </Flex>
+    <Footer></Footer>
     </div>
     </div>
   );

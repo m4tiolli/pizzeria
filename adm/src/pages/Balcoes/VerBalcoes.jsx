@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import ModalComp from "../../components/ModalComponents/ModalCompCadastroBalcao";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 
 const VerBalcoes = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -199,6 +200,7 @@ const VerBalcoes = () => {
             />
           )}
         </Flex>
+        <Footer></Footer>
       </section>
     </div>
   );

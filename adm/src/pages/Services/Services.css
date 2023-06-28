@@ -74,7 +74,7 @@
 }
 
 .button:hover {
-  opacity: .9;
+  opacity: 0.9;
   transition: linear .2s;
   transform: scale(1.01);
 }
@@ -122,3 +122,28 @@
   flex-direction: column;
   justify-content: space-around;
 }
+
+.animation-container {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+
+.fade-in {
+  opacity: 1;
+}
+.fade-in {
+  animation: fade-in-animation 0.4s ease-in-out forwards;
+}
+
+@keyframes fade-in-animation {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+

@@ -13,6 +13,7 @@ import {
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import React, { useState } from "react";
+import Footer from "../../components/Footer/Footer";
 
 function CadastroBalcao() {
   const [nome, setNome] = useState();
@@ -48,7 +49,7 @@ function CadastroBalcao() {
       <Header></Header>
       <Sidebar></Sidebar>
       <div id="content">
-    <Box h="130vh">
+    <Box h="90vh">
       <form
        onSubmit={(e) => {
         cadastrarBalcao(e);
@@ -163,14 +164,12 @@ function CadastroBalcao() {
                 Cadastrar
               </Button>
             </HStack>
-
-
-            
           </FormControl>
         </Center>
       </Flex>
       </form>
     </Box>
+    <Footer></Footer>
     </div>
     </div>
   )

@@ -20,6 +20,7 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import Header from "../../components/Header/Header";
 import Lottie from "react-lottie";
 import pizzaAnimation from "../../assets/Pizzaloading.json";
+import Footer from "../../components/Footer/Footer";
 
 const VerProdutos = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -180,6 +181,7 @@ const VerProdutos = () => {
             />
           )}
         </Flex>
+        <Footer></Footer>
       </section>
     </div>
   );
