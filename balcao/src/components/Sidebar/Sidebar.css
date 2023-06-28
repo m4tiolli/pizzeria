@@ -2,52 +2,53 @@
 
 .imagePizza {
   display: block;
-  margin: 0 auto; /* Adicionado para alinhar a imagem ao centro */
+  margin: 0 auto;
   max-width: 100%;
   max-height: 220px;
 }
-.observacao{
 
-}
 .ContainerPizzas {
   width: auto;
   height: 500px;
+  background-color: #f7f7f7;
 }
+
 .buttonContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
 }
+
 .numeroPedido,
-.numeroMesa{
+.numeroMesa {
   display: block;
   margin-bottom: 5px;
   border-bottom: 1px solid black;
   padding-bottom: 5px;
 }
 
-.numero{
+.numero {
   font-weight: bold;
   font-size: 20px;
   float: right;
   margin-right: 20px;
 }
 
-
 .itemContainer.moveItems {
   transform: translateX(calc(100% - 360px));
+  background-color: #f2f2f4;
 }
 
 .adicionar,
 .fecharCarrinho,
 .limparCarrinho,
-.buttonFinalisarPedido,
+.buttonFinalizarPedido,
 .remover {
   margin-right: 30px;
   margin-left: 30px;
   background-color: transparent;
-  border: 1px solid transparent;
+  border: none;
 }
 
 #sidebar {
@@ -61,11 +62,39 @@
   scrollbar-width: none;
   transition: all 0.3s ease;
   z-index: 200;
+  background-color: #8E1C1A;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2); /* Adicione esta linha para adicionar a sombra nas laterais e na parte inferior */
 }
 
+#sidebar:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background-color: transparent;
+  box-shadow: none; /* Remova a sombra na parte superior */
+}
 #sidebar::-webkit-scrollbar {
   display: none;
 }
-.selectContainer {
-  margin-bottom: 5px;
+
+.contentContainer {
+  background-color: #f7f7f7;
+}
+
+.produtos{
+  background-color: #f7f7f7;
+}
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-grow: 1;
+}
+.informacoes span,
+.numeroMesa{
+  color: #f2f2f4;
 }

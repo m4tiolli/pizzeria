@@ -5,8 +5,8 @@ export default function ItemPedido({ item }) {
   return (
     <div>
       <div className="itemEQtdPedido">
-        <h2>{item.quantidade} X</h2>
-        <h2 className="itensPedidos">{item.nome}</h2>
+        <h3>{item.quantidade} X</h3>
+        <h3 className="itensPedidos">{item.nome}</h3>
       </div>
       <p className="observacaoPedido">{item.observacao}</p>
     </div>

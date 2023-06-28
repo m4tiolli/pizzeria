@@ -22,16 +22,6 @@
 .containerTexto{
     padding-left: 15px;
 }
-  .buttons-containerPedido {
-    display: flex;
-    align-items: center;
-  }
-  .buttons-containerPedido button{
-    margin: 0 10px;
-    border-radius: 7px;
-    background-color: #698C3D;
-    color: #fff;
-  }
   .listaPedidos {
     display: flex;
     flex-wrap: wrap;

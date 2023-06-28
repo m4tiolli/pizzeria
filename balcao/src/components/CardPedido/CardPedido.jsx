@@ -42,17 +42,14 @@ export default function CardPedido({ pedido }) {
         ))}
         <p className="numeroPedido">pedido número: {pedido.id}</p>
         <div className="endereço">
-          <p>{pedido.endereco.id}</p>
-          <p>{pedido.endereco.rua}, {pedido.endereco.numCasa}</p>
+          <p>{pedido.endereco.rua}
+          {pedido.endereco.numCasa}</p>
           <p>{pedido.endereco.bairro}</p>
           <p>{pedido.endereco.cidade}</p>
           <p>{pedido.tipoPagamento}</p>
         </div>
       </div>
       <div className="buttons-containerPedido">
-        <button className="buttonPedido" onClick={Verpedido}>
-          Ver Pedido
-        </button>
         <button
           className="buttonPedido"
           disabled={pedidoFinalizado}

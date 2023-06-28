@@ -1,31 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-.header {
-  width: 100vw;
-  height: 10vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: #8E1C1A;
-  gap: 50px;
-}
-
-.title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.logo {
-  height: 95%;
-}
-
-* {
-  box-sizing: border-box;
-}
-
 .body {
   background-color: #eee;
   font-family: "Poppins", Helvetica, Arial;
@@ -36,7 +10,7 @@
 }
 
 .Produtos-Container {
-  background-color: #ffffff;
+  background-color: #F2F2F4;
   height: fit-content;
   display: flex;
   flex-wrap: wrap;
@@ -53,13 +27,6 @@
   font-family: "Poppins";
 }
 
-.buttonTitle {
-  background-color: transparent;
-  border: none;
-  display: flex;
-  justify-content: flex-end;
-}
-
 .containerGeral {
   display: flex;
 }
@@ -67,40 +34,60 @@
 .containerItens {
   display: flex;
   flex-direction: column;
+  background-color: #F2F2F4;
 }
 
 .buttonFiltroContainer {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Centraliza horizontalmente */
   align-items: center;
+  background-color: #8e1c1a;
+  max-width: 850px; /* Defina uma largura máxima */
+  margin: 0 auto; /* Centraliza na horizontal */
+  height: 85px;
+  border-top-left-radius: 0; /* Mantém a borda superior reta */
+  border-top-right-radius: 0; /* Mantém a borda superior reta */
+  border-bottom-left-radius: 20px; /* Arredonda a borda inferior esquerda */
+  border-bottom-right-radius: 20px; 
+  padding: 5px;
 }
 
 .buttonFiltro {
-  margin-top: 20px;
-  margin-left: 10px;
-  margin-right: 10px;
   padding: 10px;
-  border-radius: 8px;
   font-size: 15pt;
-  border: none;
+  border: 1px solid transparent;
   width: 150px; /* Defina uma largura fixa que funcione para o seu layout */
   font-family: "Poppins";
   position: relative;
-  text-align: center;
-  background-color: #8e1c1a;
-  color: #fff;
-}
-@media (max-width: 768px) {
-  .buttonFiltro {
-    width: 100%; /* Ocupar toda a largura disponível */
-    margin-bottom: 10px; /* Adicionar um espaçamento inferior */
-  }
+  background-color: #ffffff;
+  color: #8e1c1a;
+  transition: transform 0.3s ease; /* Adicionamos uma transição */
 }
 
+.buttonPizzas,
+.buttonPromocoes {
+  padding: 10px;
+  font-size: 15pt;
+  border: 1px solid transparent;
+  width: 150px; /* Defina uma largura fixa que funcione para o seu layout */
+  font-family: "Poppins";
+  position: relative;
+  background-color: #ffffff;
+  color: #8e1c1a;
+}
 
+.buttonPizzas{
+  border-top-left-radius: 5px;   
+  border-bottom-left-radius: 15px; 
+}
 
+.buttonPromocoes{
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 15px; 
+}
 
-.centered-container {
-  margin: 0 auto;
-  max-width: calc(100% - 260px);
+.buttonPizzas:hover,
+.buttonFiltro:hover,
+.buttonPromocoes:hover {
+  transform: scale(1.1); /* Aumenta o tamanho em 10% */
 }

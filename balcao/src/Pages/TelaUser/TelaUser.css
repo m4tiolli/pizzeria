@@ -1,12 +1,13 @@
-.containerFaturamento,
 .containerBalcao {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
   width: 50%;
   height: 250px;
-  display: inline-block;
+  margin: 0 auto; /* Centraliza horizontalmente */
 }
+
 .descrição {
   text-align: center;
 }
@@ -27,8 +28,14 @@
 .container {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 10px); /* Substitua "80px" pela altura do seu header */
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 10px);
 }
+
 .logOut {
-  margin-top: 15em; /* Empurra o elemento para a parte inferior */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15em; /* Ajuste a margem conforme necessário para centralizar verticalmente */
 }

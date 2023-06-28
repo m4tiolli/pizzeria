@@ -1,30 +1,24 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
-import { MdShoppingCart, } from 'react-icons/md';/*MdOutlineDeliveryDining*/
-// import { BsFillBagCheckFill } from 'react-icons/bs';
-import { BiReceipt } from "react-icons/bi"
-import { FaRegUser } from 'react-icons/fa';
-import { AiFillHome } from 'react-icons/ai'
+import { useNavigate } from 'react-router-dom';
 import Produto from '../../components/Pizzas/CompProdutos-module';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import "./User_TelaPrincipal.css";
-import logo from '../../assets/logo.png';
+import './User_TelaPrincipal.css';
+import Header from '../../components/CompHeader/CompHeader';
 
 export default function TelaPrincipal() {
   const navigate = useNavigate();
   const [produtos, setProdutos] = useState([]);
   const [carrinho, setCarrinho] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [className, setClassName] = useState("");
-  const iconStyle = { color: 'white' };
+  const [className, setClassName] = useState('');
 
   useEffect(() => {
     moverItens();
   }, [sidebarOpen]);
 
   useEffect(() => {
-    fetch("https://pizzeria3.azurewebsites.net/api/produto", {
-      method: "GET",
+    fetch('https://pizzeria3.azurewebsites.net/api/produto', {
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((json) => {
@@ -32,41 +26,41 @@ export default function TelaPrincipal() {
       })
       .catch((error) => {
         console.log(error);
-        alert("Erro ao buscar Produto");
-      })
+        alert('Erro ao buscar Produto');
+      });
   }, []);
 
-  function Home() {
-    navigate("/");
+  function handleHomeClick() {
+    navigate('/');
   }
 
-  function Delivery() {
-    navigate("/delivery");
+  function handleDeliveryClick() {
+    navigate('/delivery');
   }
 
-  function Retirar() {
-    navigate("/retirar");
+  function handleRetirarClick() {
+    navigate('/retirar');
   }
 
-  function User() {
-    navigate("/user");
+  function handleUserClick() {
+    navigate('/user');
   }
 
   function atualizarCarrinho() {
-    const storage = JSON.parse(localStorage.getItem("carrinho"));
+    const storage = JSON.parse(localStorage.getItem('carrinho'));
 
     if (!storage || storage === []) {
-      alert("Carrinho vazio");
+      alert('Carrinho vazio');
     }
 
     setCarrinho(storage);
   }
 
-  function abrirCarrinho() {
-    const storage = JSON.parse(localStorage.getItem("carrinho"));
+  function handleCartClick() {
+    const storage = JSON.parse(localStorage.getItem('carrinho'));
 
     if (!storage || storage === []) {
-      alert("Carrinho vazio");
+      alert('Carrinho vazio');
     } else {
       setSidebarOpen(!sidebarOpen);
     }
@@ -76,34 +70,36 @@ export default function TelaPrincipal() {
 
   function moverItens() {
     if (sidebarOpen) {
-      setClassName("centered-container");
+      setClassName('centered-container');
     } else {
-      setClassName("");
+      setClassName('');
     }
   }
 
   return (
     <div>
       <div id="root">
-        <div className="header">
-          <img src={logo} alt="" className="logo" />
-          <h1 className="title">Pizzeria Balcão</h1>
-          <button className='buttonTitle' onClick={Home}><AiFillHome size={30} style={iconStyle} /></button>
-          <button className="buttonTitle" onClick={Delivery}> <BiReceipt size={30} style={iconStyle} /> </button>
-          {/* <button className="buttonTitle" onClick={Retirar}> <BsFillBagCheckFill size={30} style={iconStyle} /> </button> */}
-          <button className='buttonTitle' onClick={abrirCarrinho}><MdShoppingCart size={30} style={iconStyle} /></button>
-          <button className="buttonTitle" onClick={User}> <FaRegUser size={30} style={iconStyle} /> </button>
-        </div>  
-        <div className='containerGeral'>
-          {sidebarOpen && <Sidebar carrinho={carrinho} setSidebarOpen={setSidebarOpen} atualizarCarrinho={atualizarCarrinho}>Sidebar</Sidebar>}
-          <div className='containerItens'>
-            <div className={`buttonFiltroContainer ${className}`}>
-              <button className='buttonFiltro'>Pizzas</button>
-              <button className='buttonFiltro'>Bebidas</button>
-              <button className='buttonFiltro'>Aperitivos</button>
-              <button className='buttonFiltro'>Promoções</button>
-            </div>
+      <Header
+        onHomeClick={handleHomeClick}
+        onDeliveryClick={handleDeliveryClick}
+        showCartButton={true}  // Mostra o botão do carrinho
+        onCartClick={handleCartClick}
+        onUserClick={handleUserClick}
+      />
 
+        <div className="containerGeral">
+          {sidebarOpen && (
+            <Sidebar carrinho={carrinho} setSidebarOpen={setSidebarOpen} atualizarCarrinho={atualizarCarrinho}>
+              Sidebar
+            </Sidebar>
+          )}
+          <div className="containerItens">
+            <div className={`buttonFiltroContainer`}>
+              <button className="buttonPizzas">Pizzas</button>
+              <button className="buttonFiltro">Bebidas</button>
+              <button className="buttonFiltro">Aperitivos</button>
+              <button className="buttonPromocoes">Promoções</button>
+            </div>
             <div className={`Produtos-Container ${className}`}>
               {produtos.map((pizza, index) => (
                 <Produto pizza={pizza} key={index} abrirSidebar={setSidebarOpen} atualizarCarrinho={atualizarCarrinho} />
