@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap");
+
+.ConteudoRecuSenha1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #efefef;
+    width: 100vw;
+    height: 100vh;
+}
+
+.BlocoRecuSenha1{
+    width: 30%;
+    height: 70%;
+    border-radius: 20px;
+    background-color: #fff;
+    text-align: center;
+    box-shadow: 1vw 1vw 1vw rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fundoRecuSenha1{
+    height: 25vw;
+    width: 29vw;
+}
+
+
+
+.btnRecuperar1{
+    font-family: "Poppins";
+    padding: 0.03em 2em;
+    width: 13vw;
+    border-radius: 10px;
+    font-size: 2vw;
+    border: none;
+    background-color: #8e1c1e;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: .5em auto;
+}
+
+.titleRecuSenha1{
+    line-height: 60px;
+    display: flex;
+    color: #8e1c1e;
+    font-family: "Poppins";
+    font-size: 3.5vw;
+    margin:  auto;
+    padding-bottom: 20px;
+    font-weight: 600;
+}

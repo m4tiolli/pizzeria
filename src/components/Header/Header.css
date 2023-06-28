@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap");
+
+.header {
+    width: 100vw;
+    height: 12vh;
+    background-color: #efefef;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    z-index: 1;
+    position: fixed;
+}
+
+.img {
+    height: 70%;
+    width: auto;
+    margin: 0 1em;
+    cursor: pointer;
+}
+
+.buttons1 {
+    width: 80vw;
+    height: 4vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.signup1 {
+    color: #8e1c1e;
+    background-color: transparent;
+    margin-right: 0px;
+    cursor: pointer;
+    
+}
+
+.signin1 {
+    background-color: #8e1c1e;
+    color: white;
+    margin-right: 0px;
+    cursor: pointer;
+   
+}
+
+.signin1,
+.signup1 {
+    font-family: "Poppins";
+    width: 8vw;
+    height: 6vh;
+    border-radius: 10px;
+    font-size: 1.5vw;
+    border: none; 
+    margin-right: 2vw;
+}
+
+.signin1:hover,
+.signup1:hover {
+    opacity: .7;
+    transition: .2s;
+}
+
+.signin1:not(:hover),
+.signup1:not(:hover) {
+    transition: .2s;
+}
+
+.signin1:active,
+.signup1:active {
+    transform: translateY(1px);
+    box-shadow: 0px 5px 3px rgba(0, 0, 0, 0.2);
+}
+
+.divCarrinho{
+    background-color: #8e1c1e;
+    color: white;
+    width: auto;
+    border-radius: 10px;
+    padding: 0.3vw;
+    height: 60%; 
+    margin-right: 8vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+}
+
+.carrinho{
+    width: 40%;
+    height: 70%;
+    background-color: #8e1c1e;
+    font-family: "Poppins";
+    border: none;
+    color: white;
+    font-size: 1.5vw;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+}
+
+.imgCarrinho{
+    width: 1.5vw;
+    height: 1.5vw;
+    margin-left: 2vw;
+
+}
+
+.blockpesquisa{
+    width: 40%;
+    height: 70%;
+    margin-left: 17vw;
+}
+
+.inputPesquisa{
+    height: 70%;
+    border: none;
+    outline: none;
+    font-family: 'Poppins';
+    font-weight: 300;
+    font-size: .8vw;
+    width: 80%;
+}
+
+.buttonsLogin {
+    width: 30%;
+}
+
+.imgUser{
+    color: #8e1c1e;
+    cursor: pointer;
+}
+
+.divImgUser{
+    margin-left: auto;
+    
+}
+
+.divCarrinhoAndUSer{
+    margin-left: auto;
+    width: auto;
+    height: auto;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}

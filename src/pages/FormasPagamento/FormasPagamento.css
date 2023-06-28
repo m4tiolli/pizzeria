@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap");
+
+.fundoSelecMethod{
+    padding-top: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 3vh;
+}
+
+.titleSelecMethod{
+    color: #8e1c1e;
+    font-size: 2vw;
+    font-weight: 600;
+    font-family: "Poppins";
+}
+  
+.divPix, .divCartao{
+    background-color: white;
+    width: 15vw;
+    padding-inline: 3vw;
+    height: 8vh;
+    border-radius: 20px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+ 
+}
+
+.btnPix, .btnCartao{
+    border: none;
+    background-color: white;
+    color: #8e1c1e;
+    font-family: "Poppins";
+    font-size: 1vw;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.divPix:hover, .divCartao:hover{
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    transition: .2s linear;
+    opacity: .8;
+}
+
+.divPix:not(hover), .divCartao:not(hover) {
+    transition: .2s linear;
+  }
+
+.divPix:active, .divCartao:active {
+    transition: .1s linear;
+    transform: translateY(2px);
+    opacity: .9;
+    box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
+  }

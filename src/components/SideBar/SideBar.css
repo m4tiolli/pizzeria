@@ -1,0 +1,119 @@
+/* Position and sizing of burger button */
+.bm-burger-button {
+  width: 2vw;
+  height: 2vw;
+  position: fixed;
+  top: 15vh;
+  left: 5vw;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #8e1c1c;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  opacity: 0.7;
+  transition: 0.2s linear;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 100px;
+  width: 100px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #8e1c1c;
+  height: 100px;
+  width: 100px;
+}
+
+/*
+  Sidebar wrapper styles
+  Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+  */
+.bm-menu-wrap {
+  position: fixed;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #efefef;
+  overflow: hidden;
+  font-family: "Poppins";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #8e1c1c;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.checkbox {
+  display: inline-block;
+}
+
+#filterby {
+  font-weight: 500;
+  color: #8e1c1c;
+  font-size: 2vw;
+  padding-bottom: 4vh;
+}
+
+#filterbtn {
+    position: absolute;
+    top: 90vh;
+    background-color: #8e1c1c;
+    width: 50%;
+    height: 5vh;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-family: "Poppins";
+    font-weight: 400;
+    font-size: 1.2vw;
+    cursor: pointer;
+}
+
+
+#filterbtn:hover {
+    opacity: .7;
+    transition: .2s;
+}
+
+#filterbtn:not(:hover),
+.signup1:not(:hover) {
+    transition: .2s;
+}
+
+#filterbtn:active {
+    transform: translateY(1px);
+    box-shadow: 0px 5px 3px rgba(0, 0, 0, 0.2);
+}
+
+span {
+  color: #8e1c1c;
+  font-family: "Poppins" !important;
+  font-weight: 300 !important;
+}

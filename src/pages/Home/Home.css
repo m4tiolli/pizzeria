@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
+
+/* não vai ter barra de scroll e a tela não vai ter nenhum espaço em branco ao redor dela */
+* {
+  margin: 0;
+  padding: 0;
+}
+/* o fundo vai ocupar toda a tela, sem scroll, imagem de fundo, vai exibir tags de forma dinâmica com o flex, na direção de coluna */
+.screen {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("../../assets/bg-index.png");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* texto fonte poppins, fonte de tamanho de 3% da tela, seu espaço é de 50%, as margens horizontais serão centralizadas, texto centralizado e cor branca */
+.title1 {
+  font-family: "Poppins";
+  font-size: 3vw;
+  width: 50%;
+  margin-top: 15vw;
+  text-align: center;
+  color: #fff !important;
+  font-weight: 400;
+  cursor: context-menu;
+}
+
+/* div da pesquisa, 6% de altura e 65% de largura da tela, display flex e a distribuição de espaço será entre os objetos, ficará centralizado na tela com margin auto */
+.search {
+  height: 8vh;
+  width: 65%;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
+/* parte do input da pesquisa, vai ocupar 80% da div search, fundo branco, itens alinhados centralmente e com borda arredondada */
+.blockpesquisa {
+  display: flex;
+  width: 80%;
+  background: #fff;
+  align-items: center;
+  border-radius: 10px;
+}
+    
+
+/* icone da pesquisa, 2em de altura e espaçamento da borda verticalmente de 0 e horizontalmente de 1.2em */
+
+.imgpesquisa {
+  height: 2em;
+  padding: 0 1.2em;
+}
+/* caixa de texto vai ocupar 90% do elemento pai blockpesquisa, os outros 10% serão o icone */
+.inputpesquisa {
+  width: 90%;
+  border: none;
+  font-size: 1.5vw;
+  outline: none
+}
+
+/* botão de pesquisar */
+.btnSearch {
+  font-family: "Poppins";
+  padding: 1em 2em;
+  border-radius: 10px;
+  font-size: 1.5vw;
+  border: none;
+  background-color: #8e1c1e;
+  color: white;
+  align-items: center;
+  display: flex;
+}
+
+/* div que vai conter os dois botoes, altura vai ser definida pela altura dos elementos filhos, display flex e o espaçamento distribuido entre os elementos */
+.options {
+  height: fit-content;
+  width: 65%;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
+
+/* divs dos botoes vao ocupar 40% do espaço da div options cada */
+.cardapio,
+.delivery {
+  width: 40%;
+  height: 20vh;
+  cursor: pointer;
+}
+
+/* o elemento div que estará dentro da div cardapio e delivery vai ocupar 100% da largura dessas div, itens centralizados verticalmente, display flex e o espaço será distribuido entre os elements, no caso a imagem e o botão em si */
+.cardapio > div,
+.delivery > div {
+  height: 8vh;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #efefef;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+ 
+}
+
+/* no caso o botão é somente o texto, a cor de fundo é usada nas divs cardapio e delivery, vai ocupar 55% do espaço das divs cardapio e delivery, o icone vai ocupar os outros 45% e o texto vai ser alinhado à esquera */
+.button {
+  font-family: "Poppins";
+  border: none;
+  font-size: 1.5vw;
+  background: none;
+  width: 55%;
+  text-align: left;
+  cursor: pointer;
+}
+/* os icones terao largura de 4% da tela e o espaçamento entre os lados horizontalmente vai ser distribuido automaticamente */
+.iconCarda {
+  width: 10vw;
+  height: 3vw;
+  margin: auto;
+  color: #8e1c1e;
+
+}
+
+.iconDeli{
+  width: 10vw;
+  height: 4vw;
+  margin: auto;
+  color: #698C3D;
+}
+
+/* as cores do texto dos botoes */
+.btncardapio{
+  color: #8e1c1e;
+}
+.btndelivery{
+  color: #698C3D;
+}
+
+.cardapio > div:hover, .delivery > div:hover {
+  transition: .2s linear;
+  background-color: #d4d4d4;
+}
+.cardapio > div:not(hover), .delivery > div:not(:hover) {
+  transition: .2s linear;
+}
+.cardapio > div:active, .delivery > div:active {
+  transition: .2s linear;
+  transform: translateY(3px);
+  background-color: #dfdfdf;
+  box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+.btnSearch:hover {
+  transition: .2s linear;
+  opacity: .8;
+}
+.btnSearch:not(hover) {
+  transition: .2s linear;
+}
+.btnSearch:active {
+  transition: .2s linear;
+  transform: translateY(3px);
+  opacity: .9;
+  box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.2);
+}

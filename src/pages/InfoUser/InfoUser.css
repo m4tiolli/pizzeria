@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap");
+
+.titleName{
+    color: #8e1c1e;
+    font-size: 3vw;
+    font-weight: 600;
+    font-family: "Poppins";
+  
+}
+
+.titleEditarPerfil, .titleEditarEnde, .titleEditarCartao{
+    color: #8e1c1e;
+    font-size: 1vw;
+    font-weight: 600;
+    font-family: "Poppins";
+}
+
+.imgPerfil1, .imgEnde1, .imgCartao1{
+    color: #8e1c1e;
+
+}
+
+.divSelectEditar{
+    padding-top: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 3vh;
+    
+}
+
+.divEditarPerfil, .divEditarEnde, .divEditarCartao{
+    background-color: white;
+    width: 15vw;
+    padding-inline: 3vw;
+    height: 8vh;
+    border-radius: 20px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.divEditarPerfil:hover, .divEditarEnde:hover, .divEditarCartao:hover{
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    transition: .2s linear;
+    opacity: .8;
+
+}
+
+.divEditarPerfil:not(hover), .divEditarEnde:not(hover), .divEditarCartao:not(hover) {
+    transition: .2s linear;
+  }
+
+.divEditarPerfil:active, .divEditarEnde:active, .divEditarCartao:active {
+    transition: .1s linear;
+    transform: translateY(2px);
+    opacity: .9;
+    box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
+  }
+
+.linha{
+    display: flex;
+    background-color: #8e1c1e;
+    height: 0.5vh;
+}
+

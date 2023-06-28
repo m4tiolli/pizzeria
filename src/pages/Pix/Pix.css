@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;800&display=swap");
+
+.tudoPix {
+    padding-top: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 3vh;
+   
+}
+
+.titleConfirmPay {
+  font-family: "Poppins";
+  font-size: 3.5vw;
+  color: #8e1c1e;
+  margin: .5em 0;
+  font-weight: 600;
+}
+
+.btnCopyPix {
+  background-color: #8e1c1e;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  width: 15vw;
+  height: 5vh;
+  font-family: "Poppins";
+  font-size: 1vw;
+}
+
+.btnCopyPix:hover{
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+
+}
+
+.btnCopyPix:not(hover) {
+  transition: .2s linear;
+}
+
+.btnCopyPix:active {
+  transition: .1s linear;
+  transform: translateY(2px);
+  opacity: .9;
+  box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
+}
+
+
+.titleAdress {
+  font-family: "Poppins";
+  font-size: 1vw;
+  color: black;
+  margin: .5em 0;
+  font-weight: 600;
+}
+
+.titleProducts {
+  font-family: "Poppins";
+  font-size: 1vw;
+  color: black;
+  margin: .5em 0;
+  font-weight: 600;
+}
+
+.QRcode{
+  filter: invert(100%) sepia(100%) hue-rotate(180deg);
+}
+
+.imgQRCode{
+  width: 20vw;
+  height: 40vh;
+  color:#8e1c1e;;
+}
+

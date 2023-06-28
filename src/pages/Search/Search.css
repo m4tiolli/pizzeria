@@ -1,0 +1,26 @@
+#resultsearch {
+  width: 100%;
+  height: 85vh;
+  padding-top: 15vh;
+}
+
+#resultsearch p {
+  font-family: "Poppins";
+  font-weight: 400;
+  color: #8e1c1c;
+  text-align: center;
+  font-size: 1.2vw;
+}
+
+.backicon {
+    position: absolute;
+    left: 3vw;
+    cursor: pointer
+}
+
+#texticon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
