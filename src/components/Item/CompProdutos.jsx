@@ -48,7 +48,7 @@ function Produto({ produto }) {
                     <h3 className='precoPizza'>R${produto.valor},00</h3>
                 </div>
                 <div className="buttonsPro">
-                    <button className='btnAddCart' onClick={AdicionarAoCarrinho}>add to cart +</button>
+                    <button className='btnAddCart' onClick={AdicionarAoCarrinho}>adicionar +</button>
                 </div>
             </div>
         </div>

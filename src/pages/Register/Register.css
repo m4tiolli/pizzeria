@@ -75,10 +75,14 @@
   font-family: 'Poppins';
   font-size: .8vw;
   font-weight: 300;
+  width: 100%;
 }
 
 .inputdiv{
   margin-top: 2vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .eye {

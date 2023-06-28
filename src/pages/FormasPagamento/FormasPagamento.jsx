@@ -19,14 +19,14 @@ return(
     <div className="containerSelectMethod">
         <Header/>
         <div className="fundoSelecMethod" >
-            <h1 className="titleSelecMethod">select the payment method:</h1>
+            <h1 className="titleSelecMethod">selecionar forma de pagamento:</h1>
             <div className="divPix" onClick={navPix}>
                 <img className="imgPix" src={pix} alt="pix"></img>
                 <button className="btnPix">pix</button>
             </div>
             <div className="divCartao" onClick={navCartao}>
                 <img className="imgCartao" src={cartao} alt="cartao"></img>
-                <button className="btnCartao">credit card</button>
+                <button className="btnCartao">cartão</button>
             </div>
         </div>
     </div>

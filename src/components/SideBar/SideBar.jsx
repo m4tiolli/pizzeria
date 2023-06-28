@@ -41,7 +41,7 @@ function SideBar({ pizza }) {
 
   return (
     <Menu width={"20%"} isOpen={false} menuClassName="meumenu">
-      <h1 id="filterby">filter by: </h1>
+      <h1 id="filterby">filtrar por: </h1>
       <ThemeProvider theme={theme}>
         <FormGroup>
           <FormControlLabel
@@ -108,7 +108,7 @@ function SideBar({ pizza }) {
       </ThemeProvider>
 
       <button id="filterbtn" onClick={handleFilterButtonClick}>
-        filter
+        filtrar
       </button>
     </Menu>
   );

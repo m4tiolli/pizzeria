@@ -1,43 +1,20 @@
 import Header from "../../components/Header/Header";
-import React, { useState } from 'react';
+import "./EditarCartao.css";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { DadosUsuario } from "../../components/AuthContext";
 
-function Cartao(){
 
-  const [cartaoCadastrado, setCartaoCadastrado] = useState(null);
+function EditarCartao(){
 
-  const navigate = useNavigate();
+    const [numero, setNumero] = useState("");
+    const [nome, setNome] = useState("");
+    const [cvc, setCVC] = useState("");
+    const [datavalidade, setDataValidade] = useState("");
+    const [tipo, setTipo] = useState("");
 
-  const [numero, setNumero] = useState("");
-  const [nome, setNome] = useState("");
-  const [cvc, setCVC] = useState("");
-  const [datavalidade, setDataValidade] = useState("");
-  const [tipo, setTipo] = useState("");
-
-  const cadastrarCartao = (e) => {
-    e.preventDefault();
-
-    if (numero === '' || nome === '' || cvc === '' || datavalidade === '' || tipo === '') {
-      alert('Por favor, preencha todos os campos.');
-      return;
-    } else {
-      const body = { numero, nome, cvc, datavalidade, tipo };
-      fetch('https://pizzeria3.azurewebsites.net/api/cartao', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
-      })
-        .then((response) => {
-          alert('Cartão cadastrado com sucesso');
-          navigate('/PagamentoRealizado', { state: { cartaoCadastrado: body } });
-        })
-        .catch((error) => {
-          console.log(error);
-          alert('Erro ao cadastrar cartão');
-        });
-    }
-  };
-
+    const cadastrarCartao = (e) => {
+        e.preventDefault();
 
     return(
         <div>
@@ -113,7 +90,8 @@ function Cartao(){
         </div>
         </div>
         </div>
-    );    
+    );
 };
+}
 
-export default Cartao;
+export default EditarCartao;

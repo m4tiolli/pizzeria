@@ -1,58 +1,86 @@
-import "./Register.css";
+
 import Header from "../../components/Header/Header";
+import "./EditarUser.css";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { DadosUsuario } from "../../components/AuthContext";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
-function Register() {
-  const navigate = useNavigate();
+function EditarUser() {
 
-  const [nome, setNome] = useState("");
-  const [cpf, setCPF] = useState("");
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
-  const [confirmarSenha, setConfirmarSenha] = useState("");
-  const [mostrarSenha, setMostrarSenha] = useState(false);
-  const [mostrarConfirmarSenha, setMostrarConfirmarSenha] = useState(false);
+const navigate = useNavigate();
 
-  const cadastrarUsuario = (usuario) => {
-    usuario.preventDefault();
+const [nome, setNome] = useState("");
+const [cpf, setCPF] = useState("");
+const [email, setEmail] = useState("");
+const [senha, setSenha] = useState("");
+const [confirmarSenha, setConfirmarSenha] = useState("");
+const [mostrarSenha, setMostrarSenha] = useState(false);
+const [mostrarConfirmarSenha, setMostrarConfirmarSenha] = useState(false);
 
-    if (
-      nome === "" ||
-      cpf === "" ||
-      email === "" ||
-      senha === "" ||
-      confirmarSenha === ""
-    ) {
-      alert("Por favor, preencha todos os campos.");
-      return;
+const [usuario, setUsuario] = useState(null);
+
+const [usuarioPorID, setUsuarioID] = useState("");
+
+async function BuscarDados(jwt) {
+  if (jwt?.ID) {
+    const response = await fetch(`https://pizzeria3.azurewebsites.net/api/usuario/${jwt.ID}`, {
+      method: "GET",
+    });
+    if (response.ok) {
+      const json = await response.json();
+      setUsuarioID(json);
+      setSenha("");
+    } else {
+      throw new Error("Erro ao buscar usuário por ID");
     }
+  } else {
+    throw new Error("ID do usuário não definido");
+  }
+}
 
-    if (senha !== confirmarSenha) {
-      alert("As senhas não coincidem.");
-      return;
-    }
+async function Dados() {
+  const jwt = await DadosUsuario();
+  setUsuario(jwt);
+  BuscarDados(jwt);
+}
 
-    const body = { tipo: "usuario", nome, cpf, email, senha };
-    fetch("https://pizzeria3.azurewebsites.net/api/auth/cadastrar", {
-      method: "POST",
+useEffect(() => {
+  console.log("Entrei aqui")
+  Dados();
+}, []);
+
+useEffect(() => {
+  if (usuarioPorID) {
+    setNome(usuarioPorID.nome);
+    setCPF(usuarioPorID.cpf);
+    setEmail(usuarioPorID.email);
+  }
+}, [usuarioPorID]);
+
+
+function AlterarDados() {
+  if (senha === usuarioPorID?.senha) {
+    const body = { nome, cpf, email, id: usuarioPorID.id};
+    fetch(`https://pizzeria3.azurewebsites.net/api/usuario`, {
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     })
       .then((response) => {
-        alert("Usuário cadastrado com sucesso.");
+        alert("Dados alterados com sucesso")
       })
-      .then(() => {
-        navigate("/Login");
-      })
-      .catch((error) => {
-        console.log(error);
-        alert("Erro ao cadastrar usuário.");
+      .then(() => navigate("Settings"))
+      .catch((err) => {
+        console.log(err);
+        alert("Erro ao editar informações")
       });
-  };
+  } else {
+    alert("Senha incorreta");
+  }
+}
 
-  const toggleMostrarSenha = () => {
+const toggleMostrarSenha = () => {
     setMostrarSenha(!mostrarSenha);
   };
 
@@ -60,16 +88,16 @@ function Register() {
     setMostrarConfirmarSenha(!mostrarConfirmarSenha);
   };
 
-  return (
-    <div>
+    return(
+        <div>
       <Header />
-      <div onSubmit={cadastrarUsuario} className="conteudoregister">
+      <div className="conteudoregister">
         <div className="blocoregister">
-          <h1 className=" titleregister">cadastrar</h1>
+          <h1 className=" titleregister">Editar Dados</h1>
           <div id="inputs">
             <div className="inputpai">
               <label className="labelinput" htmlFor="name">
-                nome
+                name
               </label>
               <div className="inputdiv">
                 <input
@@ -78,7 +106,7 @@ function Register() {
                   name="name"
                   id="name"
                   value={nome}
-                  onChange={(usuario) => setNome(usuario.target.value)}
+                  onChange={(e) => setNome(e.target.value)}
                   maxLength={50}
                   required
 
@@ -95,7 +123,7 @@ function Register() {
                   type="number"
                   name="cpf"
                   value={cpf}
-                  onChange={(usuario) => setCPF(usuario.target.value)}
+                  onChange={(e) => setCPF(e.target.value)}
                   id="CPF"
                   maxLength={11}
                   required
@@ -114,14 +142,14 @@ function Register() {
                   value={email}
                   id="Email"
                   maxLength={50}
-                  onChange={(usuario) => setEmail(usuario.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </div>
             </div>
             <div className="inputpai">
               <label className="labelinput" htmlFor="Password">
-                senha
+                password
               </label>
               <div className="inputdiv">
                 <input
@@ -129,7 +157,7 @@ function Register() {
                   type={mostrarSenha ? "text" : "password"}
                   name="password"
                   value={senha}
-                  onChange={(usuario) => setSenha(usuario.target.value)}
+                  onChange={(e) => setSenha(e.target.value)}
                   id="Password"
                   maxLength={30}
                   required
@@ -151,7 +179,7 @@ function Register() {
             </div>
             <div className="inputpai">
               <label className="labelinput" htmlFor="ConfirmPassword">
-                confirmar senha
+                confirm password
               </label>
               <div className="inputdiv">
                 <input
@@ -159,7 +187,7 @@ function Register() {
                   type={mostrarConfirmarSenha ? "text" : "password"}
                   name="confirmpassword"
                   value={confirmarSenha}
-                  onChange={(usuario) => setConfirmarSenha(usuario.target.value)}
+                  onChange={(e) => setConfirmarSenha(e.target.value)}
                   id="ConfirmPassword"
                   maxLength={30}
                   required
@@ -180,13 +208,14 @@ function Register() {
               </div>
             </div>
           </div>
-          <button className="buttonregister" onClick={cadastrarUsuario}>
-            finalizar
+          <button className="buttonregister" onClick={AlterarDados}>
+            Alterar
           </button>
         </div>
       </div>
     </div>
-  );
-};
 
-export default Register;
+    )
+}
+
+export default EditarUser;

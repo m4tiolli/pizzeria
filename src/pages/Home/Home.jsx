@@ -17,19 +17,19 @@ function Home() {
     <div className="screen">
       <Header />
       <h1 className="title1">
-        welcome to our pizzeria. choose a pizza and be happy!
+        Seja bem vindo a nossa pizzaria. Escolha uma pizza e seja feliz!
       </h1>
       <div className="options">
         <div className="cardapio">
           <div onClick={navcardapio}>
             <BiFoodMenu className="iconCarda"/>
-            <button className="button btncardapio" >cardapio</button>
+            <button className="button btncardapio" >cardápio</button>
           </div>
         </div>
         <div className="delivery" onClick={navSelectEnde}>
           <div>
             <MdOutlineDeliveryDining className="iconDeli"/>
-            <button className="button btndelivery">delivery</button>
+            <button className="button btndelivery">entrega</button>
           </div>
         </div>
       </div>

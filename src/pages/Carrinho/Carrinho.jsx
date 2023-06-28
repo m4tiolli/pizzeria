@@ -45,7 +45,7 @@ function Carrinho() {
       {carrinho.length > 0 ? (
         <div className="juncao">
           <div className="divTextAndClear">
-            <h1 className="txtSeusItens1">your cart</h1>
+            <h1 className="txtSeusItens1">seu carrinho</h1>
             <RiDeleteBinLine
               className="esvaziar"
               size={40}
@@ -65,16 +65,16 @@ function Carrinho() {
           <div className="fundoItens">
             <h1 className="total">total: {calculateTotal()}</h1>
             <button className="btnFinalizar" onClick={navSelectEnde}>
-              go to checkout
+              finalizar pedido
             </button>
           </div>
         </div>
       ) : (
         <div className="carrinhovazio">
           <BsCartX className="empty" size={40} color="#8e1c1c" />
-          <h1 className="textempty">your cart is empty.</h1>
+          <h1 className="textempty">seu carrinho esta vazio.</h1>
           <button className="btnadd" onClick={() => navigate("/Produtos")}>
-            add itens to cart
+            adicionar produtos
           </button>
         </div>
       )}
