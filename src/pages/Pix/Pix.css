@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;800&display=swap");
+
+.tudoPix{
+    align-items: center;
+    display: grid;
+    align-items: center;
+    padding-top: 20vh;
+}
+
+.titleConfirmPay{
+    font-family: "Poppins";
+    font-size: 3.5vw;
+    color: #8e1c1e;
+    margin: .5em 0;
+    font-weight: 600;
+}
+
+.btnCopyPix{
+    background-color: #8e1c1e;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    width: 20px;
+    width: 10vw;
+    font-family: "Poppins";
+    font-size: 1vw;
+
+}
+
+.titleAdress{
+    font-family: "Poppins";
+    font-size: 1vw;
+    color: black;
+    margin: .5em 0;
+    font-weight: 600;
+}
+
+.titleProducts{
+    font-family: "Poppins";
+    font-size: 1vw;
+    color: black;
+    margin: .5em 0;
+    font-weight: 600;
+}
+

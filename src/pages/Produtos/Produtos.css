@@ -1,0 +1,15 @@
+.Produtos-Container{
+    background-color: #efefef;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
+    padding-top: 15vw;
+    padding-bottom: 20vw;
+    margin: auto;
+    width: 90%;
+}
+#root {
+    width: 100%;
+    height: fit-content;
+    
+}

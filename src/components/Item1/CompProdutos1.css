@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;800&display=swap");
+
+.containerPizza1{
+    width: 80%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.imgPizza1{
+    align-items: center;
+    width: 35%;
+}
+
+.nomePizza1{
+    font-family: "Poppins";
+    font-size: 3vw;
+    font-weight: 600;
+    text-align: center;    
+}
+
+.descricaoPizza1{
+    font-size: 2vw;
+    color: #898989;
+    font-family: "Poppins";
+    font-weight: 300;
+    
+}
+
+.precoPizza1{
+    font-size: 1.5vw;
+    font-family: "Poppins";
+    color: #fff;
+    font-weight: 600;
+}
+
+.textAlterar1{
+    color:  #8e1c1e;
+    font-weight: 800;
+    font-family: "Poppins";
+    font-size: 2vw;
+}
+
+.divTexts1{
+
+    
+}
+
+.btnAdicionar1{
+    background-color: #8e1c1e;
+    color: white;
+    font-family: "Poppins";
+    border-radius: 10px;
+    font-size: 1.5vw;
+    border: none; 
+}
+
+.buttonsPro1{
+    display: flex;
+    justify-content: space-between;
+}
+
+.textOBS{
+    font-family: "Poppins";
+    font-weight: 600;  
+    color: #8e1c1e;
+    font-size: 1.5vw;
+}
+
+.inputOBS{
+    background-color: #fff;
+    border: none;
+    font-family: "Poppins";
+    outline: none;
+    height: auto;
+    border-radius: 0.2vw;
+    height: 5vh;
+    display: flex;
+    width: 98%;
+    font-size: 1vw;
+    padding-left: 1vw;
+}
+
+.inputQuant{
+    background-color: #fff;
+    border: none;
+    font-family: "Poppins";
+    font-size: 1vw;
+    outline: none;
+    height: 1vh;
+    border-radius: 0.2vw;
+    width: 1.5vw;
+    padding: 1vw;
+    
+}
+
+.btnPlus{
+    background-color: #fff;
+    border: none; 
+    font-size: 2vw;
+    color: #8e1c1e;
+    height: auto;
+}
+
+.btnNotPlus{
+    background-color: #fff;
+    border: none; 
+    font-size: 2vw;
+    color: #8e1c1e;
+    height: auto;
+    margin-right: 1vw;
+}
+
+.containerMaisMenos{
+    background-color: #fff;
+    border-radius: 0.5vw;
+    display: flex;
+    align-items: center;
+    width: 6.5vw;
+    height: 3vh;
+    padding: 0.5vw;
+    justify-content: space-between;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+
+
+.ContainerSemImg{
+    width: 60%;
+
+}
+
+.divAdicionar{
+    background-color: #8e1c1e;
+    display: flex;
+    align-items: center;
+    border-radius: 0.5vw;
+    width: 17vw;
+    justify-content:space-evenly;
+}
+
+.divAdicionar:hover{
+    opacity: .7;
+    transition: .2s;
+}
+
+.divAdicionar:not(hover){
+    transition: .2s;
+}
+
+.divAdicionar:active{
+    transform: translateY(1px);
+    box-shadow: 0px 5px 3px rgba(0, 0, 0, 0.2);
+}
+
+.linha{
+    display: flex;
+    background-color: #8e1c1e;
+    height: 0.2vh;
+}
