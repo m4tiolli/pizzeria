@@ -50,9 +50,6 @@ export default function CardPedido({ pedido }) {
         </div>
       </div>
       <div className="buttons-containerPedido">
-        <button className="buttonPedido" onClick={Verpedido}>
-          Ver Pedido
-        </button>
         <button
           className="buttonPedido"
           disabled={pedidoFinalizado}

@@ -17,6 +17,7 @@
   
   .title {
     margin-left: 10px;
+    margin-right: 15%;
   }
   
   .logo {
@@ -37,7 +38,7 @@
   }
   
   .userButton {
-    margin-left: auto;
+    margin-left: 25%;
     padding-right: 30px;
   }
   

@@ -6,7 +6,7 @@ import { FaRegUser } from 'react-icons/fa';
 import logo from '../../assets/logo.png';
 import "./CompHeader.css"
 
-const Header = ({ onHomeClick, onDeliveryClick, onRetirarClick, onUserClick }) => {
+const Header = ({ onHomeClick, onDeliveryClick, showCartButton, onUserClick, onCartClick }) => {
   const iconStyle = { color: 'white' };
 
   return (
@@ -21,10 +21,11 @@ const Header = ({ onHomeClick, onDeliveryClick, onRetirarClick, onUserClick }) =
           <button className="buttonTitle" onClick={onDeliveryClick}>
             <BiReceipt size={40} style={iconStyle} />
           </button>
-          <button className="buttonTitle" onClick={onRetirarClick}>
-            {/* Renderizar o ícone desejado para Retirar */}
-            <MdShoppingCart size={40} style={iconStyle} />
-          </button>
+          {showCartButton && (
+            <button className="buttonTitle" onClick={onCartClick}>
+              <MdShoppingCart size={40} style={iconStyle} />
+            </button>
+          )}
         </div>
         <button className="buttonTitle userButton" onClick={onUserClick}>
           <FaRegUser size={40} style={iconStyle} />
