@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Sistema Pizzeria
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bem-vindo ao repositório do projeto Sistema Pizzeria, um sistema completo desenvolvido para pizzarias, proporcionando uma experiência integrada para clientes, administradores, balconistas e cozinheiros.
 
-## Available Scripts
+## Sobre o Sistema Pizzeria
 
-In the project directory, you can run:
+O Sistema Pizzeria foi criado com o objetivo de oferecer uma solução abrangente para pizzarias, abrangendo várias plataformas e funcionalidades:
 
-### `npm start`
+- **Plataforma Web para o Administrador:** O administrador pode cadastrar e editar produtos, balconistas e mesas, além de acessar relatórios de vendas. Desenvolvida em JavaScript com a biblioteca React.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Plataforma Web para o Balcão:** O balconista registra pedidos, gerencia pedidos de entrega, controla o status da cozinha e acessa relatórios de vendas. Desenvolvida em JavaScript com a biblioteca React.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Kitchen Display System (Monitor de Pedidos):** Um painel fixado na cozinha que permite ao cozinheiro acompanhar em tempo real os pedidos confirmados. Desenvolvido em C Sharp.
 
-### `npm test`
+- **Plataforma Web para o Cliente:** Os clientes podem verificar o cardápio, fazer pedidos e autenticar-se. Desenvolvida em JavaScript com a biblioteca React.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Plataforma Mobile para o Cliente:** Versão mobile para clientes, proporcionando acesso ao cardápio, pedidos e autenticação. Desenvolvida em JavaScript com a biblioteca React Native.
 
-### `npm run build`
+## Tecnologias Utilizadas
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Plataformas Web: JavaScript, React
+- Kitchen Display System: C Sharp
+- Plataforma Mobile: JavaScript, React Native
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Capturas de Tela
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Plataforma Web para o Administrador
+![Plataforma Web para o Administrador](link_da_imagem_figura1.png)
 
-### `npm run eject`
+### Plataforma Web para o Balcão
+![Plataforma Web para o Balcão](link_da_imagem_figura2.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Kitchen Display System (Monitor de Pedidos)
+![Kitchen Display System](link_da_imagem_figura3.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Plataforma Web para o Cliente
+![Plataforma Web para o Cliente](link_da_imagem_figura4.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Plataforma Mobile para o Cliente
+![Plataforma Mobile para o Cliente](link_da_imagem_figura5.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Como Utilizar
 
-## Learn More
+1. Clone este repositório para o seu ambiente local.
+2. Configure os ambientes de desenvolvimento adequados para cada plataforma, conforme descrito nas seções anteriores.
+3. Execute cada plataforma para interagir com o Sistema Pizzeria.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contribuições
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Atualmente, não estamos aceitando contribuições externas. No entanto, valorizamos o feedback e sugestões para melhorar o projeto.
 
-### Code Splitting
+## Autores
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- [Nome do Autor 1]
+- [Nome do Autor 2]
+- [Nome do Autor 3]
 
-### Analyzing the Bundle Size
+## Contato
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Para mais informações, entre em contato com os autores do projeto.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Este projeto foi desenvolvido com o intuito de criar um sistema completo para pizzarias, incluindo plataformas para clientes, administradores, balconistas e cozinheiros.
