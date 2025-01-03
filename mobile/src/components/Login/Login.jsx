@@ -5,13 +5,13 @@ import {
   TouchableOpacity,
   StyleSheet,
   PixelRatio,
-} from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import React, { useRef, useState, useEffect } from "react";
-import Feather from "react-native-vector-icons/Feather";
-import { ChecarLoginUsuario, SalvarJWT } from "../AuthContext";
-import jwtDecode from "jwt-decode";
-import axios from "axios";
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import React, { useRef, useState, useEffect } from 'react';
+import Feather from 'react-native-vector-icons/Feather';
+import { ChecarLoginUsuario, SalvarJWT } from '../AuthContext';
+import jwtDecode from 'jwt-decode';
+import axios from 'axios';
 
 export default function Login() {
   const navigation = useNavigation();
@@ -27,10 +27,8 @@ export default function Login() {
     setShowPassword(!showPassword);
   };
 
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
-
-
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
 
   useEffect(() => {
     verificarLogin();
@@ -39,32 +37,33 @@ export default function Login() {
   async function verificarLogin() {
     const usuarioLogado = await ChecarLoginUsuario();
     if (usuarioLogado) {
-      navigation.navigate("Home");
+      navigation.navigate('Home');
     }
   }
 
   function Login() {
-    if (email == "" || senha == "") {
-      alert("Preencha todos os campos.");
+    if (email == '' || senha == '') {
+      alert('Preencha todos os campos.');
     } else {
       const formData = new URLSearchParams();
-      formData.append("email", email);
-      formData.append("senha", senha);
-      axios.post(
-        "https://pizzeria3.azurewebsites.net/api/auth/login",
-        formData.toString(),
-        {
-          headers: { "Content-type": "application/x-www-form-urlencoded" },
-        }
-      )
+      formData.append('email', email);
+      formData.append('senha', senha);
+      axios
+        .post(
+          'https://192.168.0.182:44383/api/auth/login',
+          formData.toString(),
+          {
+            headers: { 'Content-type': 'application/x-www-form-urlencoded' },
+          },
+        )
         .then((response) => {
-          SalvarJWT(response.data.token)
+          SalvarJWT(response.data.token);
         })
-        .then(() => navigation.navigate("Home"))
+        .then(() => navigation.navigate('Home'))
         .catch((err) => {
-          alert("Usuário ou senha inválidos.");
-          console.log(err)
-        })
+          alert('Usuário ou senha inválidos.');
+          console.log(err);
+        });
     }
   }
 
@@ -74,11 +73,11 @@ export default function Login() {
         <Text style={styles.textinput}>e-mail</Text>
         <TextInput
           style={styles.input}
-          autoComplete={"email"}
-          keyboardType={"email-address"}
-          autoCapitalize={"none"}
+          autoComplete={'email'}
+          keyboardType={'email-address'}
+          autoCapitalize={'none'}
           autoCorrect={false}
-          returnKeyType={"next"}
+          returnKeyType={'next'}
           placeholder="yourmail@mail.com"
           underlineColorAndroid="transparent"
           onSubmitEditing={handleFirstInputSubmit}
@@ -88,26 +87,26 @@ export default function Login() {
       </View>
       <View style={styles.boxinput}>
         <Text style={styles.textinput}>password</Text>
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <TextInput
             ref={secondInputRef}
             secureTextEntry={!showPassword}
-            placeholderTextColor={"#999"}
+            placeholderTextColor={'#999'}
             placeholder="yourpassword"
-            style={[styles.input, { width: "70%" }]}
+            style={[styles.input, { width: '70%' }]}
             onSubmitEditing={null}
             underlineColorAndroid="transparent"
-            autoCapitalize={"none"}
+            autoCapitalize={'none'}
             autoCorrect={false}
-            returnKeyType={"next"}
+            returnKeyType={'next'}
             value={senha}
             onChangeText={(texto) => setSenha(texto)}
           />
           <TouchableOpacity onPress={handleTogglePasswordVisibility}>
             <Feather
-              name={showPassword ? "eye-off" : "eye"}
+              name={showPassword ? 'eye-off' : 'eye'}
               size={PixelRatio.getPixelSizeForLayoutSize(8)}
-              color={"#8e1c1a"}
+              color={'#8e1c1a'}
             />
           </TouchableOpacity>
         </View>
@@ -121,52 +120,52 @@ export default function Login() {
 
 const styles = StyleSheet.create({
   dockerauth: {
-    width: "100%",
-    height: "40%",
-    backgroundColor: "#efefef",
-    alignItems: "center",
+    width: '100%',
+    height: '40%',
+    backgroundColor: '#efefef',
+    alignItems: 'center',
   },
   boxinput: {
-    width: "50%",
+    width: '50%',
     height: 40,
     borderWidth: 3,
     borderRadius: 5,
-    borderColor: "#8E1C1A",
-    justifyContent: "center",
-    alignItems: "center",
+    borderColor: '#8E1C1A',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginVertical: 15,
   },
   textinput: {
     top: -16,
     left: 10,
-    color: "#8E1C1A",
-    backgroundColor: "#efefef",
-    fontFamily: "Poppins_600SemiBold",
-    position: "absolute",
+    color: '#8E1C1A',
+    backgroundColor: '#efefef',
+    fontFamily: 'Poppins_600SemiBold',
+    position: 'absolute',
     padding: 2,
   },
   input: {
-    width: "80%",
-    height: "85%",
+    width: '80%',
+    height: '85%',
     borderRadius: 2,
-    backgroundColor: "#efefef",
-    outlineStyle: "none",
-    color: "#8E1C1A",
-    fontFamily: "Poppins_400Regular",
+    backgroundColor: '#efefef',
+    outlineStyle: 'none',
+    color: '#8E1C1A',
+    fontFamily: 'Poppins_400Regular',
   },
   next: {
-    backgroundColor: "#8E1C1A",
-    width: "50%",
+    backgroundColor: '#8E1C1A',
+    width: '50%',
     height: 55,
     borderRadius: 5,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     marginVertical: 10,
     elevation: 5,
   },
   nexttext: {
-    color: "#fff",
-    fontFamily: "Poppins_600SemiBold",
+    color: '#fff',
+    fontFamily: 'Poppins_600SemiBold',
     fontSize: 30,
   },
 });

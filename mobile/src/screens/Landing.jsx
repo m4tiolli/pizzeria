@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import {
   View,
   StyleSheet,
@@ -10,12 +10,12 @@ import {
   TouchableOpacity,
   TextInput,
   ActivityIndicator,
-} from "react-native";
-import Item from "../components/Item/Item";
-import { useNavigation } from "@react-navigation/native";
-import Icon from "react-native-vector-icons/AntDesign";
-import { Drawer } from "react-native-drawer-layout";
-import { CheckBox } from "@rneui/themed";
+} from 'react-native';
+import Item from '../components/Item/Item';
+import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/AntDesign';
+import { Drawer } from 'react-native-drawer-layout';
+import { CheckBox } from '@rneui/themed';
 
 export default function Landing() {
   const [pesquisas, setPesquisas] = useState([]);
@@ -27,7 +27,7 @@ export default function Landing() {
     bebida: false,
     sobremesa: false,
   });
-  const [pesquisasFormatadas, setPesquisasFormatadas] = useState("");
+  const [pesquisasFormatadas, setPesquisasFormatadas] = useState('');
 
   const handleCheckboxPress = (checkboxName) => {
     setCheckboxes((prevState) => ({
@@ -45,15 +45,15 @@ export default function Landing() {
       }
     }
     const updatedPesquisas = Object.keys(checkboxes).filter(
-      (checkboxName) => checkboxes[checkboxName]
+      (checkboxName) => checkboxes[checkboxName],
     );
     setPesquisas(updatedPesquisas);
 
-    let pesquisasFormatadas = "";
+    let pesquisasFormatadas = '';
     if (updatedPesquisas.length === 1) {
       pesquisasFormatadas = updatedPesquisas[0];
     } else {
-      pesquisasFormatadas = updatedPesquisas.join(", ");
+      pesquisasFormatadas = updatedPesquisas.join(', ');
     }
     setPesquisasFormatadas(pesquisasFormatadas);
   }, [checkboxes]);
@@ -64,17 +64,17 @@ export default function Landing() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://pizzeria3.azurewebsites.net/api/produto",
+          'https://192.168.0.182:44383/api/produto',
           {
-            method: "GET",
-          }
+            method: 'GET',
+          },
         );
         const json = await response.json();
         setPizza(json);
         setIsLoading(false);
       } catch (error) {
         console.log(error);
-       alert("Erro ao buscar pizzas")
+        alert('Erro ao buscar pizzas');
       }
     };
     fetchData();
@@ -82,15 +82,15 @@ export default function Landing() {
 
   const navigation = useNavigation();
 
-  const [texto, setTexto] = useState("");
-  const [valorEnviado, setValorEnviado] = useState("");
+  const [texto, setTexto] = useState('');
+  const [valorEnviado, setValorEnviado] = useState('');
 
   useEffect(() => {
     const delayDeDigitacao = 1000;
 
     const timeoutId = setTimeout(() => {
       setValorEnviado(texto);
-      if (texto !== "") {
+      if (texto !== '') {
         setPesquisas([...pesquisas, texto]);
       }
     }, delayDeDigitacao);
@@ -107,13 +107,13 @@ export default function Landing() {
     return (
       <View
         style={{
-          width: "100%",
-          height: "100%",
-          justifyContent: "center",
-          alignItems: "center",
+          width: '100%',
+          height: '100%',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
-        <ActivityIndicator size={"large"} color={"#8e1c1a"} />
+        <ActivityIndicator size={'large'} color={'#8e1c1a'} />
       </View>
     );
 
@@ -121,7 +121,7 @@ export default function Landing() {
     <View style={styles.docker}>
       <View style={styles.header}>
         <Image
-          source={require("../assets/text.png")}
+          source={require('../assets/text.png')}
           style={{
             height: PixelRatio.getPixelSizeForLayoutSize(20),
             width: PixelRatio.getPixelSizeForLayoutSize(16),
@@ -129,25 +129,25 @@ export default function Landing() {
         />
         <View
           style={{
-            width: "100%",
-            flexDirection: "row",
-            justifyContent: "space-evenly",
+            width: '100%',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
           }}
         >
           <TouchableOpacity onPress={() => setOpen((prevOpen) => !prevOpen)}>
             <Icon
               name="filter"
               size={PixelRatio.getPixelSizeForLayoutSize(10)}
-              color={"#8e1c1c"}
+              color={'#8e1c1c'}
             />
           </TouchableOpacity>
           <View style={styles.input}>
             <TextInput
               placeholder="search for pizzas"
               style={{
-                fontFamily: "Poppins_300Light_Italic",
-                outline: "none",
-                paddingRight: "40%",
+                fontFamily: 'Poppins_300Light_Italic',
+                outline: 'none',
+                paddingRight: '40%',
                 paddingLeft: 10,
               }}
               onChangeText={handleChangeTexto}
@@ -155,7 +155,7 @@ export default function Landing() {
             />
             <TouchableOpacity
               onPress={() =>
-                navigation.navigate("Search", {
+                navigation.navigate('Search', {
                   pesquisa: pesquisas,
                   pizza: pizza,
                 })
@@ -164,7 +164,7 @@ export default function Landing() {
               <Icon
                 name="search1"
                 size={PixelRatio.getPixelSizeForLayoutSize(10)}
-                color={"#8e1c1c"}
+                color={'#8e1c1c'}
               />
             </TouchableOpacity>
           </View>
@@ -180,17 +180,17 @@ export default function Landing() {
             return (
               <View
                 style={{
-                  width: "100%",
-                  height: "100%",
-                  backgroundColor: "#efefef",
+                  width: '100%',
+                  height: '100%',
+                  backgroundColor: '#efefef',
                 }}
               >
                 <View
                   style={{
-                    flexDirection: "row",
-                    width: "70%",
-                    justifyContent: "space-between",
-                    alignItems: "center",
+                    flexDirection: 'row',
+                    width: '70%',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
                   }}
                 >
                   <TouchableOpacity
@@ -199,20 +199,20 @@ export default function Landing() {
                     <Icon
                       name="close"
                       size={PixelRatio.getPixelSizeForLayoutSize(10)}
-                      color={"#8e1c1c"}
+                      color={'#8e1c1c'}
                     />
                   </TouchableOpacity>
                   <Text
                     style={{
-                      fontFamily: "Poppins_300Light",
+                      fontFamily: 'Poppins_300Light',
                       fontSize: PixelRatio.getPixelSizeForLayoutSize(8),
-                      color: "#8e1c1a",
+                      color: '#8e1c1a',
                     }}
                   >
                     filter by:
                   </Text>
                 </View>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <CheckBox
                     checked={checkboxes.grande}
                     onPress={() => handleCheckboxPress('grande')}
@@ -221,11 +221,11 @@ export default function Landing() {
                     uncheckedIcon="check-box-outline-blank"
                     checkedColor="#8e1e1a"
                     uncheckedColor="#8e1e1a"
-                    containerStyle={{ backgroundColor: "#efefef" }}
+                    containerStyle={{ backgroundColor: '#efefef' }}
                   />
                   <Text style={styles.checkText}>pizzas grandes</Text>
                 </View>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <CheckBox
                     checked={checkboxes.pequena}
                     onPress={() => handleCheckboxPress('pequena')}
@@ -234,11 +234,11 @@ export default function Landing() {
                     uncheckedIcon="check-box-outline-blank"
                     checkedColor="#8e1e1a"
                     uncheckedColor="#8e1e1a"
-                    containerStyle={{ backgroundColor: "#efefef" }}
+                    containerStyle={{ backgroundColor: '#efefef' }}
                   />
                   <Text style={styles.checkText}>pizzas pequenas</Text>
                 </View>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <CheckBox
                     checked={checkboxes.salgada}
                     onPress={() => handleCheckboxPress('salgada')}
@@ -247,11 +247,11 @@ export default function Landing() {
                     uncheckedIcon="check-box-outline-blank"
                     checkedColor="#8e1e1a"
                     uncheckedColor="#8e1e1a"
-                    containerStyle={{ backgroundColor: "#efefef" }}
+                    containerStyle={{ backgroundColor: '#efefef' }}
                   />
                   <Text style={styles.checkText}>pizzas salgadas</Text>
                 </View>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <CheckBox
                     checked={checkboxes.doce}
                     onPress={() => handleCheckboxPress('doce')}
@@ -260,11 +260,11 @@ export default function Landing() {
                     uncheckedIcon="check-box-outline-blank"
                     checkedColor="#8e1e1a"
                     uncheckedColor="#8e1e1a"
-                    containerStyle={{ backgroundColor: "#efefef" }}
+                    containerStyle={{ backgroundColor: '#efefef' }}
                   />
                   <Text style={styles.checkText}>pizzas doces</Text>
                 </View>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <CheckBox
                     checked={checkboxes.bebida}
                     onPress={() => handleCheckboxPress('bebida')}
@@ -273,11 +273,11 @@ export default function Landing() {
                     uncheckedIcon="check-box-outline-blank"
                     checkedColor="#8e1e1a"
                     uncheckedColor="#8e1e1a"
-                    containerStyle={{ backgroundColor: "#efefef" }}
+                    containerStyle={{ backgroundColor: '#efefef' }}
                   />
                   <Text style={styles.checkText}>bebidas</Text>
                 </View>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <CheckBox
                     checked={checkboxes.sobremesa}
                     onPress={() => handleCheckboxPress('sobremesa')}
@@ -286,30 +286,30 @@ export default function Landing() {
                     uncheckedIcon="check-box-outline-blank"
                     checkedColor="#8e1e1a"
                     uncheckedColor="#8e1e1a"
-                    containerStyle={{ backgroundColor: "#efefef" }}
+                    containerStyle={{ backgroundColor: '#efefef' }}
                   />
                   <Text style={styles.checkText}>sobremesas</Text>
                 </View>
                 <View
                   style={{
-                    width: "100%",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    position: "absolute",
+                    width: '100%',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    position: 'absolute',
                     bottom: 10,
                   }}
                 >
                   <TouchableOpacity
                     style={{
-                      backgroundColor: "#8e1c1a",
-                      width: "70%",
+                      backgroundColor: '#8e1c1a',
+                      width: '70%',
                       height: PixelRatio.getPixelSizeForLayoutSize(17),
-                      justifyContent: "center",
-                      alignItems: "center",
+                      justifyContent: 'center',
+                      alignItems: 'center',
                       borderRadius: 10,
                     }}
                     onPress={() =>
-                      navigation.navigate("Search", {
+                      navigation.navigate('Search', {
                         pesquisa: pesquisas,
                         pizza: pizza,
                       })
@@ -317,8 +317,8 @@ export default function Landing() {
                   >
                     <Text
                       style={{
-                        fontFamily: "Poppins_400Regular",
-                        color: "#fff",
+                        fontFamily: 'Poppins_400Regular',
+                        color: '#fff',
                         fontSize: PixelRatio.getPixelSizeForLayoutSize(10),
                       }}
                     >
@@ -332,7 +332,11 @@ export default function Landing() {
         ></Drawer>
       ) : (
         <ScrollView
-          style={{ marginBottom: PixelRatio.getPixelSizeForLayoutSize(2), paddingBottom: PixelRatio.getPixelSizeForLayoutSize(20), paddingTop: PixelRatio.getPixelSizeForLayoutSize(5) }}
+          style={{
+            marginBottom: PixelRatio.getPixelSizeForLayoutSize(2),
+            paddingBottom: PixelRatio.getPixelSizeForLayoutSize(20),
+            paddingTop: PixelRatio.getPixelSizeForLayoutSize(5),
+          }}
         >
           {pizza.map((pizza, index) => (
             <Item pizza={pizza} key={index} />
@@ -344,35 +348,35 @@ export default function Landing() {
 }
 const styles = StyleSheet.create({
   docker: {
-    width: "100%",
-    height: "100%",
-    backgroundColor: "#efefef",
+    width: '100%',
+    height: '100%',
+    backgroundColor: '#efefef',
   },
   header: {
-    height: "20%",
-    flexDirection: "column",
-    alignItems: "center",
+    height: '20%',
+    flexDirection: 'column',
+    alignItems: 'center',
     zIndex: 5,
-    backgroundColor: "#efefef",
+    backgroundColor: '#efefef',
   },
   input: {
-    flexDirection: "row",
-    width: "80%",
+    flexDirection: 'row',
+    width: '80%',
     height: PixelRatio.getPixelSizeForLayoutSize(15),
-    justifyContent: "space-between",
-    alignItems: "center",
-    shadowColor: "#171717",
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    shadowColor: '#171717',
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
     paddingHorizontal: 5,
     borderRadius: 5,
-    backgroundColor: "#efefef",
+    backgroundColor: '#efefef',
     elevation: 5,
   },
   checkText: {
-    color: "#8e1c1a",
-    fontFamily: "Poppins_400Regular",
+    color: '#8e1c1a',
+    fontFamily: 'Poppins_400Regular',
     fontSize: PixelRatio.getPixelSizeForLayoutSize(6),
   },
 });

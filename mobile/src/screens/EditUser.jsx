@@ -1,17 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity, TextInput, StyleSheet, PixelRatio } from "react-native";
-import { DadosUsuario } from "../components/AuthContext";
-import { useNavigation } from "@react-navigation/native";
-import BackButton from "../components/BackButton/BackButton";
+import React, { useState, useEffect } from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  StyleSheet,
+  PixelRatio,
+} from 'react-native';
+import { DadosUsuario } from '../components/AuthContext';
+import { useNavigation } from '@react-navigation/native';
+import BackButton from '../components/BackButton/BackButton';
 
 export default function EditUser() {
   const navigation = useNavigation();
 
-  const [nome, setNome] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [telefone, setTelefone] = useState("");
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const [nome, setNome] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
 
   const [usuario, setUsuario] = useState();
 
@@ -29,18 +36,21 @@ export default function EditUser() {
 
   async function BuscarDados(jwt) {
     if (jwt?.ID) {
-      const response = await fetch(`https://pizzeria3.azurewebsites.net/api/usuario/${jwt.ID}`, {
-        method: "GET",
-      });
+      const response = await fetch(
+        `https://192.168.0.182:44383/api/usuario/${jwt.ID}`,
+        {
+          method: 'GET',
+        },
+      );
       if (response.ok) {
         const json = await response.json();
         setUsuarioID(json);
-        setSenha("");
+        setSenha('');
       } else {
-        throw new Error("Erro ao buscar usuário por ID");
+        throw new Error('Erro ao buscar usuário por ID');
       }
     } else {
-      throw new Error("ID do usuário não definido");
+      throw new Error('ID do usuário não definido');
     }
   }
 
@@ -53,33 +63,32 @@ export default function EditUser() {
     }
   }, [usuarioPorID]);
 
-
   function AlterarDados() {
     if (senha === usuarioPorID?.senha) {
-      const body = { nome, cpf, telefone, email, id: usuarioPorID.id};
-      fetch(`https://pizzeria3.azurewebsites.net/api/usuario`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
+      const body = { nome, cpf, telefone, email, id: usuarioPorID.id };
+      fetch(`https://192.168.0.182:44383/api/usuario`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
         .then((response) => {
-          alert("Dados alterados com sucesso")
+          alert('Dados alterados com sucesso');
         })
-        .then(() => navigation.navigate("Settings"))
+        .then(() => navigation.navigate('Settings'))
         .catch((err) => {
           console.log(err);
-          alert("Erro ao editar informações")
+          alert('Erro ao editar informações');
         });
     } else {
-      alert("Senha incorreta");
+      alert('Senha incorreta');
     }
   }
 
   return (
     <View
       style={{
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: 'center',
+        alignItems: 'center',
         flex: 1,
       }}
     >
@@ -133,12 +142,16 @@ export default function EditUser() {
         />
       </View>
 
-
-      <TouchableOpacity
-        onPress={AlterarDados}
-        style={styles.button}
-      >
-        <Text style={{ fontFamily: 'Poppins_500Medium', color: '#efefef', fontSize: PixelRatio.getPixelSizeForLayoutSize(9) }}>edit data</Text>
+      <TouchableOpacity onPress={AlterarDados} style={styles.button}>
+        <Text
+          style={{
+            fontFamily: 'Poppins_500Medium',
+            color: '#efefef',
+            fontSize: PixelRatio.getPixelSizeForLayoutSize(9),
+          }}
+        >
+          edit data
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -150,28 +163,28 @@ const styles = StyleSheet.create({
     height: PixelRatio.getPixelSizeForLayoutSize(22),
     borderWidth: 3,
     borderRadius: 5,
-    borderColor: "#8E1C1A",
-    justifyContent: "center",
-    alignItems: "center",
+    borderColor: '#8E1C1A',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginVertical: 15,
   },
   textinput: {
     top: -16,
     left: 10,
-    color: "#8E1C1A",
-    backgroundColor: "#efefef",
-    fontFamily: "Poppins_600SemiBold",
-    position: "absolute",
+    color: '#8E1C1A',
+    backgroundColor: '#efefef',
+    fontFamily: 'Poppins_600SemiBold',
+    position: 'absolute',
     padding: 2,
   },
   input: {
-    width: "80%",
-    height: "85%",
+    width: '80%',
+    height: '85%',
     borderRadius: 2,
-    backgroundColor: "#efefef",
-    outlineStyle: "none",
-    color: "#8E1C1A",
-    fontFamily: "Poppins_400Regular",
+    backgroundColor: '#efefef',
+    outlineStyle: 'none',
+    color: '#8E1C1A',
+    fontFamily: 'Poppins_400Regular',
   },
   button: {
     backgroundColor: '#8e1c1c',
@@ -182,12 +195,12 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    elevation: 4
+    elevation: 4,
   },
   text1: {
     fontFamily: 'Poppins_500Medium',
     fontSize: PixelRatio.getPixelSizeForLayoutSize(8),
-    color: "#8e1c1a",
-    textAlign: 'center'
+    color: '#8e1c1a',
+    textAlign: 'center',
   },
-})
+});

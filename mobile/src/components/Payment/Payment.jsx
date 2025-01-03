@@ -6,34 +6,34 @@ import {
   Modal,
   TouchableOpacity,
   TextInput,
-} from "react-native";
-import { useState, useEffect } from "react";
-import AntDesign from "react-native-vector-icons/AntDesign";
+} from 'react-native';
+import { useState, useEffect } from 'react';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 function Payment({ cartao }) {
   const [modalEditVisible, setModalEditVisible] = useState(false);
 
-  const [nome, setName] = useState("");
-  const [numero, setNumber] = useState("");
-  const [datavalidade, setData] = useState("");
+  const [nome, setName] = useState('');
+  const [numero, setNumber] = useState('');
+  const [datavalidade, setData] = useState('');
 
   const handleNumberChange = (text) => {
     if (text.length <= 16) {
       let maskedText = text.replace(
         /(\d{4})(\d{4})(\d{4})(\d{4})/,
-        "$1 $2 $3 $4"
+        '$1 $2 $3 $4',
       );
       setNumber(maskedText);
     }
   };
   const handleCVCChange = (text) => {
     if (text.length <= 3) {
-      let maskedText = text.replace(/\d/g, "*");
+      let maskedText = text.replace(/\d/g, '*');
       setCvc(maskedText);
     }
   };
   const handleDataChange = (text) => {
     if (text.length <= 4) {
-      let maskedText = text.replace(/^(\d{2})(\d{2})$/, "$1/$2");
+      let maskedText = text.replace(/^(\d{2})(\d{2})$/, '$1/$2');
       setData(maskedText);
     }
   };
@@ -44,32 +44,37 @@ function Payment({ cartao }) {
       setNumber(cartao.numero);
       setData(cartao.datavalidade);
     }
-  }, [cartao])
+  }, [cartao]);
 
   //Corpo para edição de dados
-  const body = { id_usuario: Number(cartao?.id_usuario), numero, nome, datavalidade };
+  const body = {
+    id_usuario: Number(cartao?.id_usuario),
+    numero,
+    nome,
+    datavalidade,
+  };
 
   function AlterarCartão() {
-    fetch("https://pizzeria3.azurewebsites.net/api/endereco", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
+    fetch('https://192.168.0.182:44383/api/endereco', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     })
       .then((response) => {
-        alert("Cartão editado com sucesso");
+        alert('Cartão editado com sucesso');
       })
       .then(() => setModalEditVisible(!modalEditVisible))
       .catch((err) => {
         console.log(err);
-        alert("Erro ao editar o cartão");
+        alert('Erro ao editar o cartão');
       });
   }
 
   return (
     <View style={styles.container}>
-      <View style={{ flexDirection: "column" }}>
+      <View style={{ flexDirection: 'column' }}>
         <Text style={styles.text1}>{cartao.nome}</Text>
-        <Text style={styles.text2}>{cartao.numero + " " + cartao.cvc}</Text>
+        <Text style={styles.text2}>{cartao.numero + ' ' + cartao.cvc}</Text>
       </View>
       <TouchableOpacity onPress={() => setModalEditVisible(true)}>
         <AntDesign
@@ -94,7 +99,7 @@ function Payment({ cartao }) {
             <TouchableOpacity
               onPress={() => setModalEditVisible(!modalEditVisible)}
               style={{
-                position: "absolute",
+                position: 'absolute',
                 top: PixelRatio.getPixelSizeForLayoutSize(2),
                 right: PixelRatio.getPixelSizeForLayoutSize(2),
               }}
@@ -112,7 +117,7 @@ function Payment({ cartao }) {
                 style={styles.input}
                 placeholder="Ex: home"
                 underlineColorAndroid="transparent"
-                placeholderTextColor={"#898989"}
+                placeholderTextColor={'#898989'}
                 value={nome}
                 onChangeText={setName}
                 selectTextOnFocus={true}
@@ -124,7 +129,7 @@ function Payment({ cartao }) {
                 style={styles.input}
                 placeholder="1234 5678 9123 4567"
                 underlineColorAndroid="transparent"
-                placeholderTextColor={"#898989"}
+                placeholderTextColor={'#898989'}
                 onChangeText={handleNumberChange}
                 value={numero}
                 selectTextOnFocus={true}
@@ -136,7 +141,7 @@ function Payment({ cartao }) {
                 style={styles.input}
                 placeholder="07/28"
                 underlineColorAndroid="transparent"
-                placeholderTextColor={"#898989"}
+                placeholderTextColor={'#898989'}
                 onChangeText={handleDataChange}
                 value={datavalidade}
                 selectTextOnFocus={true}
@@ -145,8 +150,8 @@ function Payment({ cartao }) {
             <TouchableOpacity style={styles.button} onPress={AlterarCartão}>
               <Text
                 style={{
-                  fontFamily: "Poppins_500Medium",
-                  color: "#efefef",
+                  fontFamily: 'Poppins_500Medium',
+                  color: '#efefef',
                   fontSize: PixelRatio.getPixelSizeForLayoutSize(9),
                 }}
               >
@@ -163,44 +168,44 @@ function Payment({ cartao }) {
 const styles = StyleSheet.create({
   container: {
     height: PixelRatio.getPixelSizeForLayoutSize(25),
-    width: "70%",
-    justifyContent: "space-evenly",
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF",
+    width: '70%',
+    justifyContent: 'space-evenly',
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
     borderRadius: 10,
     elevation: 10,
-    shadowColor: "#171717",
+    shadowColor: '#171717',
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
     marginVertical: PixelRatio.getPixelSizeForLayoutSize(10),
   },
   text1: {
-    fontFamily: "Poppins_500Medium",
+    fontFamily: 'Poppins_500Medium',
     fontSize: PixelRatio.getPixelSizeForLayoutSize(6),
-    color: "#8e1c1a",
+    color: '#8e1c1a',
   },
   text2: {
-    fontFamily: "Poppins_300Light_Italic",
+    fontFamily: 'Poppins_300Light_Italic',
     fontSize: PixelRatio.getPixelSizeForLayoutSize(5),
-    color: "#898989",
+    color: '#898989',
   },
   modalcontainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "none",
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'none',
   },
   modalView: {
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#fff",
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
     padding: PixelRatio.getPixelSizeForLayoutSize(20),
     width: PixelRatio.getPixelSizeForLayoutSize(150),
     borderRadius: 10,
     elevation: 10,
-    shadowColor: "#171717",
+    shadowColor: '#171717',
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
@@ -210,38 +215,38 @@ const styles = StyleSheet.create({
     height: PixelRatio.getPixelSizeForLayoutSize(22),
     borderWidth: 3,
     borderRadius: 5,
-    borderColor: "#8E1C1A",
-    justifyContent: "center",
-    alignItems: "center",
+    borderColor: '#8E1C1A',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginVertical: 15,
   },
   textinput: {
     top: -16,
     left: 10,
-    color: "#8E1C1A",
-    backgroundColor: "#fff",
-    fontFamily: "Poppins_600SemiBold",
-    position: "absolute",
+    color: '#8E1C1A',
+    backgroundColor: '#fff',
+    fontFamily: 'Poppins_600SemiBold',
+    position: 'absolute',
     padding: 2,
   },
   input: {
-    width: "80%",
-    height: "85%",
+    width: '80%',
+    height: '85%',
     borderRadius: 2,
-    backgroundColor: "#fff",
-    outlineStyle: "none",
-    color: "#8E1C1A",
-    fontFamily: "Poppins_400Regular",
+    backgroundColor: '#fff',
+    outlineStyle: 'none',
+    color: '#8E1C1A',
+    fontFamily: 'Poppins_400Regular',
   },
   button: {
-    backgroundColor: "#8e1c1c",
+    backgroundColor: '#8e1c1c',
     borderRadius: 5,
     marginVertical: PixelRatio.getPixelSizeForLayoutSize(10),
-    width: "80%",
+    width: '80%',
     height: PixelRatio.getPixelSizeForLayoutSize(25),
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     elevation: 4,
   },
 });

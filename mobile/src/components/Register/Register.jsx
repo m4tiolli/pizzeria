@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import { useNavigation } from "@react-navigation/native";
+import React, { useState, useRef } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {
   View,
   Text,
@@ -7,33 +7,33 @@ import {
   TouchableOpacity,
   StyleSheet,
   PixelRatio,
-} from "react-native";
-import Feather from "react-native-vector-icons/Feather";
+} from 'react-native';
+import Feather from 'react-native-vector-icons/Feather';
 
 export default function Register() {
-  const [nome, setNome] = useState("");
-  const [cpf, setCPF] = useState("");
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
-  const [tipo, setTipo] = useState("usuario");
+  const [nome, setNome] = useState('');
+  const [cpf, setCPF] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [tipo, setTipo] = useState('usuario');
 
   function Cadastrar() {
     const body = { nome, cpf, email, senha, tipo };
 
-    fetch("https://pizzeria3.azurewebsites.net/api/auth/cadastrar", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    fetch('https://192.168.0.182:44383/api/auth/cadastrar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     })
       .then((response) => {
-        alert("Usuário cadastrado com sucesso");
+        alert('Usuário cadastrado com sucesso');
       })
       .then(() => {
-        navigation.goBack()
+        navigation.goBack();
       })
       .catch((error) => {
         console.log(error);
-        alert("Erro ao cadastrar usúario");
+        alert('Erro ao cadastrar usúario');
       });
   }
   const navigation = useNavigation();
@@ -42,7 +42,7 @@ export default function Register() {
     if (text.length <= 11) {
       let maskedText = text.replace(
         /^(\d{3})(\d{3})(\d{3})(\d{2}).*/,
-        "$1.$2.$3-$4"
+        '$1.$2.$3-$4',
       );
       setCPF(maskedText);
     }
@@ -107,11 +107,11 @@ export default function Register() {
           value={email}
           onChangeText={(texto) => setEmail(texto)}
           style={styles.input}
-          autoComplete={"email"}
-          keyboardType={"email-address"}
-          autoCapitalize={"none"}
+          autoComplete={'email'}
+          keyboardType={'email-address'}
+          autoCapitalize={'none'}
           autoCorrect={false}
-          returnKeyType={"next"}
+          returnKeyType={'next'}
           placeholder="yourmail@mail.com"
           underlineColorAndroid="transparent"
           onSubmitEditing={handleThirdInputSubmit}
@@ -120,14 +120,14 @@ export default function Register() {
       </View>
       <View style={styles.boxinput}>
         <Text style={styles.textinput}>password</Text>
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <TextInput
             secureTextEntry={!showPassword}
             value={senha}
             onChangeText={(texto) => setSenha(texto)}
-            style={[styles.input, {width: "70%",}]}
-            autoComplete={"password"}
-            returnKeyType={"next"}
+            style={[styles.input, { width: '70%' }]}
+            autoComplete={'password'}
+            returnKeyType={'next'}
             onSubmitEditing={() => Cadastrar()}
             placeholder="yourpassword"
             underlineColorAndroid="transparent"
@@ -135,16 +135,16 @@ export default function Register() {
           />
           <TouchableOpacity onPress={handleTogglePasswordVisibility}>
             <Feather
-              name={showPassword ? "eye-off" : "eye"}
+              name={showPassword ? 'eye-off' : 'eye'}
               size={PixelRatio.getPixelSizeForLayoutSize(8)}
-              color={"#8e1c1a"}
+              color={'#8e1c1a'}
             />
           </TouchableOpacity>
         </View>
         <TextInput
-          value={"usuario"}
+          value={'usuario'}
           onChangeText={(texto) => setTipo(texto)}
-          style={{ display: "none" }}
+          style={{ display: 'none' }}
         />
       </View>
       <TouchableOpacity onPress={Cadastrar} style={styles.next}>
@@ -156,51 +156,51 @@ export default function Register() {
 
 const styles = StyleSheet.create({
   dockerauth: {
-    width: "100%",
-    height: "40%",
-    backgroundColor: "#efefef",
-    alignItems: "center",
+    width: '100%',
+    height: '40%',
+    backgroundColor: '#efefef',
+    alignItems: 'center',
   },
   boxinput: {
-    width: "50%",
+    width: '50%',
     height: 40,
     borderWidth: 3,
     borderRadius: 5,
-    borderColor: "#8E1C1A",
-    justifyContent: "center",
-    alignItems: "center",
+    borderColor: '#8E1C1A',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginVertical: 10,
   },
   textinput: {
     top: -16,
     left: 10,
-    color: "#8E1C1A",
-    backgroundColor: "#efefef",
-    fontFamily: "Poppins_600SemiBold",
-    position: "absolute",
+    color: '#8E1C1A',
+    backgroundColor: '#efefef',
+    fontFamily: 'Poppins_600SemiBold',
+    position: 'absolute',
     padding: 2,
   },
   input: {
-    width: "80%",
-    height: "85%",
+    width: '80%',
+    height: '85%',
     borderRadius: 2,
-    backgroundColor: "#efefef",
-    outlineStyle: "none",
-    color: "#8E1C1A",
-    fontFamily: "Poppins_400Regular",
+    backgroundColor: '#efefef',
+    outlineStyle: 'none',
+    color: '#8E1C1A',
+    fontFamily: 'Poppins_400Regular',
   },
   next: {
-    backgroundColor: "#8E1C1A",
-    width: "50%",
+    backgroundColor: '#8E1C1A',
+    width: '50%',
     height: 55,
     borderRadius: 5,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     elevation: 4,
   },
   nexttext: {
-    color: "#fff",
-    fontFamily: "Poppins_600SemiBold",
+    color: '#fff',
+    fontFamily: 'Poppins_600SemiBold',
     fontSize: 30,
   },
 });

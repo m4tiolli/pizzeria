@@ -1,0 +1,139 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\gabriel.engenharia\\Desktop\\pizzeria\\api\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C0E4F345-7589-4AD8-AB15-48D8C8F6A957}|APIPizzeria\\APIPizzeria.csproj|c:\\users\\gabriel.engenharia\\desktop\\pizzeria\\api\\apipizzeria\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0E4F345-7589-4AD8-AB15-48D8C8F6A957}|APIPizzeria\\APIPizzeria.csproj|solutionrelative:apipizzeria\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0E4F345-7589-4AD8-AB15-48D8C8F6A957}|APIPizzeria\\APIPizzeria.csproj|c:\\users\\gabriel.engenharia\\desktop\\pizzeria\\api\\apipizzeria\\dao\\pedidodao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0E4F345-7589-4AD8-AB15-48D8C8F6A957}|APIPizzeria\\APIPizzeria.csproj|solutionrelative:apipizzeria\\dao\\pedidodao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0E4F345-7589-4AD8-AB15-48D8C8F6A957}|APIPizzeria\\APIPizzeria.csproj|c:\\users\\gabriel.engenharia\\desktop\\pizzeria\\api\\apipizzeria\\controllers\\pedidocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0E4F345-7589-4AD8-AB15-48D8C8F6A957}|APIPizzeria\\APIPizzeria.csproj|solutionrelative:apipizzeria\\controllers\\pedidocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0E4F345-7589-4AD8-AB15-48D8C8F6A957}|APIPizzeria\\APIPizzeria.csproj|c:\\users\\gabriel.engenharia\\desktop\\pizzeria\\api\\apipizzeria\\dao\\cartaodao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0E4F345-7589-4AD8-AB15-48D8C8F6A957}|APIPizzeria\\APIPizzeria.csproj|solutionrelative:apipizzeria\\dao\\cartaodao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0E4F345-7589-4AD8-AB15-48D8C8F6A957}|APIPizzeria\\APIPizzeria.csproj|c:\\users\\gabriel.engenharia\\desktop\\pizzeria\\api\\apipizzeria\\controllers\\enderecocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0E4F345-7589-4AD8-AB15-48D8C8F6A957}|APIPizzeria\\APIPizzeria.csproj|solutionrelative:apipizzeria\\controllers\\enderecocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0E4F345-7589-4AD8-AB15-48D8C8F6A957}|APIPizzeria\\APIPizzeria.csproj|c:\\users\\gabriel.engenharia\\desktop\\pizzeria\\api\\apipizzeria\\controllers\\cartaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0E4F345-7589-4AD8-AB15-48D8C8F6A957}|APIPizzeria\\APIPizzeria.csproj|solutionrelative:apipizzeria\\controllers\\cartaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0E4F345-7589-4AD8-AB15-48D8C8F6A957}|APIPizzeria\\APIPizzeria.csproj|c:\\users\\gabriel.engenharia\\desktop\\pizzeria\\api\\apipizzeria\\dto\\cartaodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0E4F345-7589-4AD8-AB15-48D8C8F6A957}|APIPizzeria\\APIPizzeria.csproj|solutionrelative:apipizzeria\\dto\\cartaodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 173,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\gabriel.engenharia\\Desktop\\pizzeria\\api\\APIPizzeria\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "APIPizzeria\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\gabriel.engenharia\\Desktop\\pizzeria\\api\\APIPizzeria\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "APIPizzeria\\Controllers\\UsuarioController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T18:54:23.037Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PedidoDAO.cs",
+              "DocumentMoniker": "C:\\Users\\gabriel.engenharia\\Desktop\\pizzeria\\api\\APIPizzeria\\DAO\\PedidoDAO.cs",
+              "RelativeDocumentMoniker": "APIPizzeria\\DAO\\PedidoDAO.cs",
+              "ToolTip": "C:\\Users\\gabriel.engenharia\\Desktop\\pizzeria\\api\\APIPizzeria\\DAO\\PedidoDAO.cs",
+              "RelativeToolTip": "APIPizzeria\\DAO\\PedidoDAO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAD0AAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T18:43:35.946Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CartaoDTO.cs",
+              "DocumentMoniker": "C:\\Users\\gabriel.engenharia\\Desktop\\pizzeria\\api\\APIPizzeria\\DTO\\CartaoDTO.cs",
+              "RelativeDocumentMoniker": "APIPizzeria\\DTO\\CartaoDTO.cs",
+              "ToolTip": "C:\\Users\\gabriel.engenharia\\Desktop\\pizzeria\\api\\APIPizzeria\\DTO\\CartaoDTO.cs",
+              "RelativeToolTip": "APIPizzeria\\DTO\\CartaoDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAkAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T18:43:36.041Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CartaoDAO.cs",
+              "DocumentMoniker": "C:\\Users\\gabriel.engenharia\\Desktop\\pizzeria\\api\\APIPizzeria\\DAO\\CartaoDAO.cs",
+              "RelativeDocumentMoniker": "APIPizzeria\\DAO\\CartaoDAO.cs",
+              "ToolTip": "C:\\Users\\gabriel.engenharia\\Desktop\\pizzeria\\api\\APIPizzeria\\DAO\\CartaoDAO.cs",
+              "RelativeToolTip": "APIPizzeria\\DAO\\CartaoDAO.cs",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAiwGEAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T18:43:36.049Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PedidoController.cs",
+              "DocumentMoniker": "C:\\Users\\gabriel.engenharia\\Desktop\\pizzeria\\api\\APIPizzeria\\Controllers\\PedidoController.cs",
+              "RelativeDocumentMoniker": "APIPizzeria\\Controllers\\PedidoController.cs",
+              "ToolTip": "C:\\Users\\gabriel.engenharia\\Desktop\\pizzeria\\api\\APIPizzeria\\Controllers\\PedidoController.cs",
+              "RelativeToolTip": "APIPizzeria\\Controllers\\PedidoController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T18:43:36.056Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EnderecoController.cs",
+              "DocumentMoniker": "C:\\Users\\gabriel.engenharia\\Desktop\\pizzeria\\api\\APIPizzeria\\Controllers\\EnderecoController.cs",
+              "RelativeDocumentMoniker": "APIPizzeria\\Controllers\\EnderecoController.cs",
+              "ToolTip": "C:\\Users\\gabriel.engenharia\\Desktop\\pizzeria\\api\\APIPizzeria\\Controllers\\EnderecoController.cs",
+              "RelativeToolTip": "APIPizzeria\\Controllers\\EnderecoController.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAQwCkAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T18:43:36.062Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CartaoController.cs",
+              "DocumentMoniker": "C:\\Users\\gabriel.engenharia\\Desktop\\pizzeria\\api\\APIPizzeria\\Controllers\\CartaoController.cs",
+              "RelativeDocumentMoniker": "APIPizzeria\\Controllers\\CartaoController.cs",
+              "ToolTip": "C:\\Users\\gabriel.engenharia\\Desktop\\pizzeria\\api\\APIPizzeria\\Controllers\\CartaoController.cs",
+              "RelativeToolTip": "APIPizzeria\\Controllers\\CartaoController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACYAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T18:43:36.069Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
